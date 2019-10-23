@@ -1,4 +1,4 @@
-### Micro Job Platform Notes
+# Micro Job Platform Notes
 Riley Miller
 
 
@@ -70,21 +70,6 @@ example: President, Coach, Director, Parent
 Many draw bounding boxes examples
 Translations
 
-Areas for optimization could be how to price a task to encourage workers to pick it up based off of supply and demand.
-
-Workers want to make the most amount of money in the shortest amount of time.
-- Eliminate context switching so they can do alot of one one task
-- Want high paying tasks which don't take a ton of time
-
-Requesters want high quality work (best worker for the job), with the shortest feedback loop, for the lowest price
-
-Use ML to optimize this relationship.
-
-Many people are trying to collect data but it's hard to know that the workers are being honest or to verify what they're saying is true.
-
-Sources: 
-https://www.sidehustlenation.com/amazon-mechanical-turk-review/
-
 #### Figure Eight
 Used to annotate data for Machine Learning Applications
 
@@ -92,4 +77,23 @@ Used to annotate data for Machine Learning Applications
 Has a mobile app, would make it way easier to make this mobile-friendly
 - Has a really cool profile screen, probably to help pair users with tasks
 - Lots of take a video tasks... kinda creepy
+
+Sources: 
+https://www.sidehustlenation.com/amazon-mechanical-turk-review/
+
+# Areas for Optimization
+Areas for optimization could be how to price a task to encourage workers to pick it up based off of supply and demand.
+
+### Efficieny
+*Workers want to make the most amount of money in the shortest amount of time.*
+- Eliminate context switching so they can do alot of one one task
+- Want high paying tasks which don't take a ton of time
+
+*Requesters want high quality work (best worker for the job), with the shortest feedback loop, for the lowest price*
+
+Use ML to optimize this relationship.
+
+### Accountability
+Many people are trying to collect data but it's hard to know that the workers are being honest or to verify what they're saying is true.
+
 
