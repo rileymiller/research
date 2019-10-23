@@ -96,4 +96,6 @@ Use ML to optimize this relationship.
 ### Accountability
 Many people are trying to collect data but it's hard to know that the workers are being honest or to verify what they're saying is true.
 
-
+### Security/Privacy
+Knowing who a worker is/protecting meta data
+Ensuring that tasks are appropriate
