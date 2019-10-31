@@ -1,0 +1,57 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{Cheng2016}
+H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
+  Corrado W. Chai M. Ispir R. Anil Z. Haque L. Hong V. Jain X.~Liu, ``Wide \&
+  deep learning for recommender systems,'' in \emph{Proceedings of the 1st
+  Workshop on Deep Learning for Recommender Systems}, September 2016.
+ \begin{quotation}\noindent Cheng et al. implemented a combonation of wide and
+  deep learning to surface relevant content to users on the Google Play store.
+  They used the two different techniques to combat some of the model fallacies
+  that can appear in recommender systems.
+  https://dl.acm.org/citation.cfm?id=2988454 \end{quotation}
+
+\bibitem{Remy98}
+D.~R\'{e}my and J.~Vouillon, ``Objective {ML}: An effective object-oriented
+  extension to {ML},'' \emph{Theory And Practice of Objects Systems}, vol.~4,
+  no.~1, pp. 27--50, 1998.
+ \begin{quotation}\noindent I need to write about this. \end{quotation}
+
+\bibitem{Thearling98}
+K.~Thearling, B.~Becker, and D.~DeCosta, ``Visualizing data mining models,'' in
+  \emph{Proc. Integration of Data Mining and Data Visualization Workshop},
+  1998.
+ \begin{quotation}\noindent Kurt Thearling et al. provide an excellent review
+  of the most recent work in the arena of data visualization. Although the work
+  is not intended for IVE applications, most of the ideas were instrumental in
+  understanding some of the inherent difficulties in data visualization. For
+  example, from this work it became evident to us that \emph{orienteering} is
+  one of the most important aspects in an IVE. This indicates that it is
+  important to examine possible solutions to properly orient the user early in
+  the project. Some of the ideas presented includes maintaining a grid that
+  defines the three axes $(x, y, z)$ and the notion of a companion menu that,
+  when invoked, aids the user in locating and transporting themselves within
+  the environment. The authors also emphasize the importance of ``trusting the
+  model.'' Trust here refers to the user's ability to comfortably rely on the
+  methods provided to correctly interpret the visual presentation at hand.
+  \end{quotation}
+
+\end{thebibliography}
