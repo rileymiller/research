@@ -18,6 +18,12 @@
 \fi
 #2}}
 
+\bibitem{DeepLearningWithPython:book_typical}
+F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
+  0.4em\relax Shelter Island, NY: Manning, 2018.
+ \begin{quotation}\noindent Notes on the book, key takeaways and deep learning
+  fundamentals \end{quotation}
+
 \bibitem{Cheng2016}
 H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
   Corrado W. Chai M. Ispir R. Anil Z. Haque L. Hong V. Jain X.~Liu, ``Wide \&
