@@ -23,7 +23,25 @@ F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
   0.4em\relax Shelter Island, NY: Manning, 2018.
  \begin{quotation}\noindent Deep learning is a mathematical framework for
   learning representations from data. The author describes deep learning as a
-  multistage way too learn data representations. \\ \\ \textbf{Definitions} \\
+  multistage way too learn data representations. Deep learning has become
+  widely popular because it automates the most crucial step in the machine
+  learning workflow, \emph{feature engineering}. The automation of this process
+  has simplified many complex data pipelines used for \emph{shallow learning}
+  algorithms by learning all of the features in one end-to-end pass through a
+  deep learning model. The author describes the process by which deep learning
+  learns as \emph{the incremental, layer-by-layer way in which increasingly
+  complex representations are developed and the fact that these intermediate
+  representations are learned jointly}. One of the biggest breakthroughs that
+  deep learning introduces is hte ability for a model to learn all layers of
+  representation \emph{jointly}, at the same time, instead of in succession
+  like the approach used for \emph{feature engineering} in shallow models. The
+  author outlines that the two most effective techniques in Machine Learning
+  are \emph{gradient boosting} for shallow learning where structured data is
+  available and deep learning for perceptual problems. Machine Learning is
+  finally accessible due to advances in the internet, providing much larger
+  data sets, and graphics chips that were developed for gaming. The gaming
+  market effectively subsidized supercomputing for the next wave of machine
+  learning, specifically deep learning. \\ \\ \textbf{Definitions} \\
   \textbf{Weights:} The specification of what a layer does to it's input data
   is stored in the layer's \emph{weights}. \\ \textbf{Parameterized:} The
   transformation implemented by a layer is \emph{parameterized} by its weights.
@@ -63,7 +81,24 @@ F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
   and perceptual problems. Since SVMs are a flavor of \emph{shallow learning},
   applying SVMs to perceptual problems like image classification requires
   extracting useful representations manually (\emph{feature engineering}) which
-  is difficult and brittle. \end{quotation}
+  is difficult and brittle. \\ \textbf{Decision Trees:} A flowchart-like
+  structure that enables the classification of input data points or to predict
+  output values given inputs. Preferred to kernel methods by 2010. \\
+  \textbf{Random Forest:} An algorithm based on \emph{decision trees} which
+  builds a large number of specialized decision tres and then ensembles their
+  outputs. Almost always the second-best algorith for shallow machine-learning
+  tasks. \\ \textbf{Gradient Boosting Machines:} Considered one of, if not
+  \emph{the} best shallow learning algorithm. Gradient boosting machines is a
+  technique based on ensembling weak prediction models, generally
+  \emph{decision trees}. It uses \emph{gradient boosting} to improve any
+  machine-learning model by iteratively training new models that specialize in
+  addressing the weak points of the previous models. When applied to
+  \emph{decision trees} the resulting models outperform \emph{decision trees}
+  most of the time. \\ \textbf{CNN}: Deep convolutional neural networks,
+  \emph{convnets}, became the goto algorithm for computer vision problems after
+  becoming the goto technique for the ImageNet competition. Has completely
+  replaced SVMs and decision tress in a wide range of applications.
+  \end{quotation}
 
 \bibitem{Cheng2016}
 H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
