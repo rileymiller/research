@@ -62,6 +62,29 @@
   publisher     = "Manning",
   address       = "Shelter Island, NY",
   year          = "2018",
-  annote        = "Notes on the book, key takeaways and deep learning fundamentals"
+  annote        = "Deep learning is a mathematical framework for learning representations from data. The author describes deep learning as a multistage way too learn data representations.
+  \\
+  \\ \textbf{Definitions}
+  \\ \textbf{Weights:} The specification of what a layer does to it's input data is stored in the layer's \emph{weights}.
+  \\ \textbf{Parameterized:} The transformation implemented by a layer is \emph{parameterized} by its weights.
+  \\ \textbf{Learning:} \emph{Learning} means finding a set of values for the weights of all layers in a networkm such that the network will correctly map example inputs to their associated targets.
+  \\ \textbf{Loss function:} The \emph{loss function} in the context of Deep Learning is the method used to measure the output of a neural network and measure how far this output is from what was expected.
+  \\ \textbf{Optimizer:} Uses \emph{backpropagation} to make the adjustment of weights based off the score of the \emph{loss function} in a manner that will lower the loss score for the current example.
+  \\ \textbf{Backpropagation:} The central algorithm in deep learning. TODO add more here
+  \\ \textbf{Training Loop:} At the beginning of training, the network weight's are assigned random values, thus, the network performs a series of random transformations and the loss score is correspondingly high.
+  Then with every example the neural network processes the weights are adjusted a little each time in the correct direction, causing the loss score to decrease.
+  \\ \textbf{Probabilistic Modeling:} One of the earliest forms of machine learning, Naive Bayes is an example. A closely related model is the \emph{logistic regression}, a classification algorithm. Logist regression is
+  usually one of the first algorithms a data scientist will try on a data set to get a handle on the dataset.
+  \\ \textbf{Support Vector Machines (SVM):} aim to solve classification problems by finding good \emph{decision boundaries} between two sets of points belonging to two different categories. SVMs find these boundaries in two steps: mapping data to a
+  new high-dimensional representation where the \emph{decision boundary} can be expressed as a hyperplane and trying to maximize the distance between the hyperplane and the closest data points from each class in a process called
+  \emph{maximizing the margin}. SVMs use the \emph{kernel trick} to find good decision hyperplanes in the new representation space. This happens by only computing the distance between the pairs of points in that space, which can be done using a \emph{kernel function}.
+  A \emph{kernel function} is a computationally tractable operatoin that maps any two points in the initial space to the distance between these points in the targer representation space, bypassing the explicit computation of the new representation. SVMs were widely popular
+  for a long time but were hard to scale to large data sets and perceptual problems. Since SVMs are a flavor of \emph{shallow learning}, applying SVMs to perceptual problems like image classification requires extracting useful representations manually (\emph{feature engineering}) which
+  is difficult and brittle.
+  "
 }
+
+%% Read Alan Turing's Computing Machinery and Intelligence
+
+
 %% Find articles on Collaborative Topic Regression

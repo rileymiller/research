@@ -1,15 +1,16 @@
 # Fdb version 3
-["bibtex research_literature"] 1572624512 "research_literature.aux" "research_literature.bbl" "research_literature" 1572624584
+["bibtex research_literature"] 1572629370 "research_literature.aux" "research_literature.bbl" "research_literature" 1572629371
   "./IEEEannot.bst" 1572501633 61919 bf06423465058a2272d4ac4bdeb9eab7 ""
-  "annot.bib" 1572624511 5217 54f6b5d6f755117557f94c1164e37c55 ""
-  "research_literature.aux" 1572624584 152 2af576b4f95c29001c5697066c54a531 "pdflatex"
+  "annot.bib" 1572629370 8391 f0c309b034abefae37b3a41c2419a548 ""
+  "research_literature.aux" 1572629371 152 2af576b4f95c29001c5697066c54a531 "pdflatex"
   (generated)
-  "research_literature.blg"
   "research_literature.bbl"
-["pdflatex"] 1572624584 "/Users/rileymiller/code/research/research_literature/research_literature.tex" "/Users/rileymiller/code/research/research_literature/research_literature.pdf" "research_literature" 1572624584
-  "/Users/rileymiller/code/research/research_literature/research_literature.aux" 1572624584 152 2af576b4f95c29001c5697066c54a531 ""
+  "research_literature.blg"
+["pdflatex"] 1572629370 "/Users/rileymiller/code/research/research_literature/research_literature.tex" "/Users/rileymiller/code/research/research_literature/research_literature.pdf" "research_literature" 1572629371
+  "/Users/rileymiller/code/research/research_literature/research_literature.aux" 1572629371 152 2af576b4f95c29001c5697066c54a531 ""
   "/Users/rileymiller/code/research/research_literature/research_literature.tex" 1572624583 545 3ff22eef4d86375da928cf0b5a6b8b45 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
+  "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -23,6 +24,7 @@
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
@@ -34,12 +36,12 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "research_literature.aux" 1572624584 152 2af576b4f95c29001c5697066c54a531 "pdflatex"
-  "research_literature.bbl" 1572624513 5444 335ad89d227ac1856bdcbec512cf730c "bibtex research_literature"
+  "research_literature.aux" 1572629371 152 2af576b4f95c29001c5697066c54a531 "pdflatex"
+  "research_literature.bbl" 1572629370 8599 423d4097c1a7ecee463b1d7f1d8a6f5a "bibtex research_literature"
   "research_literature.tex" 1572624583 545 3ff22eef4d86375da928cf0b5a6b8b45 ""
   (generated)
-  "research_literature.pdf"
+  "research_literature.aux"
   "research_literature.log"
+  "research_literature.pdf"
   "/Users/rileymiller/code/research/research_literature/research_literature.log"
   "/Users/rileymiller/code/research/research_literature/research_literature.pdf"
-  "research_literature.aux"
