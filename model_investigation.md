@@ -7,4 +7,7 @@ Thoughts on potential ML model architecture and algorithms.
 
 - Hybrid Approach
 
+### Deep Learning with Python
+Introduction to Keras and TensorFlow (TF). Either going to use TF or PyTorch to build model.
+
 
