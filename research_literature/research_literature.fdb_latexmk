@@ -1,17 +1,16 @@
 # Fdb version 3
-["bibtex research_literature"] 1572503390 "research_literature.aux" "research_literature.bbl" "research_literature" 1572545842
+["bibtex research_literature"] 1572583687 "research_literature.aux" "research_literature.bbl" "research_literature" 1572583688
   "./IEEEannot.bst" 1572501633 61919 bf06423465058a2272d4ac4bdeb9eab7 ""
-  "annot.bib" 1572503389 2811 26a1361658ed1442328ddd6d459ecd6b ""
-  "research_literature.aux" 1572545842 126 e2ff7497b4f30f6695d04113ddaee4a8 "pdflatex"
+  "annot.bib" 1572583687 4862 1f3e78e5485fb60cef734a5ff36779eb ""
+  "research_literature.aux" 1572583688 103 ca46f7be6f632f57b126686fe3f5a477 "pdflatex"
   (generated)
-  "research_literature.bbl"
   "research_literature.blg"
-["pdflatex"] 1572545842 "/Users/rileymiller/code/research/research_literature/research_literature.tex" "/Users/rileymiller/code/research/research_literature/research_literature.pdf" "research_literature" 1572545842
-  "/Users/rileymiller/code/research/research_literature/research_literature.aux" 1572545842 126 e2ff7497b4f30f6695d04113ddaee4a8 ""
+  "research_literature.bbl"
+["pdflatex"] 1572583688 "/Users/rileymiller/code/research/research_literature/research_literature.tex" "/Users/rileymiller/code/research/research_literature/research_literature.pdf" "research_literature" 1572583688
+  "/Users/rileymiller/code/research/research_literature/research_literature.aux" 1572583688 103 ca46f7be6f632f57b126686fe3f5a477 ""
   "/Users/rileymiller/code/research/research_literature/research_literature.tex" 1572501662 534 97e0325c9fc771c029a99592879a3121 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
-  "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
@@ -25,7 +24,6 @@
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
-  "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
@@ -36,12 +34,12 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "research_literature.aux" 1572545842 126 e2ff7497b4f30f6695d04113ddaee4a8 "pdflatex"
-  "research_literature.bbl" 1572503390 2915 591958bc231583d3a6e63ba799eef293 "bibtex research_literature"
+  "research_literature.aux" 1572583688 103 ca46f7be6f632f57b126686fe3f5a477 "pdflatex"
+  "research_literature.bbl" 1572583688 5165 c1362b73565e7fcf3f0106ea430a326d "bibtex research_literature"
   "research_literature.tex" 1572501662 534 97e0325c9fc771c029a99592879a3121 ""
   (generated)
-  "research_literature.pdf"
-  "research_literature.log"
-  "/Users/rileymiller/code/research/research_literature/research_literature.log"
   "/Users/rileymiller/code/research/research_literature/research_literature.pdf"
+  "research_literature.log"
   "research_literature.aux"
+  "research_literature.pdf"
+  "/Users/rileymiller/code/research/research_literature/research_literature.log"

@@ -17,43 +17,41 @@
   month = {September},
   annote = {Cheng et al. implemented a combonation of wide and deep learning to surface relevant content to 
   users on the Google Play store. They used the two different techniques to combat some of the model fallacies that
-  can appear in recommender systems.
+  can appear in recommender systems. The team of researchers tackled the two primary tradeoffs for recommender systems 
+  by using wide and deep learning to optimize for memorization and generalization. Memorization in recommender
+  systems "can be defined as learning the frequent concurrence of items and features and exploiting the correlation in historical
+  data". On the other hand, generalization is based on transitivity of correlation and explores new and rare feature combination, this
+  approach leads to greater diversity of recommendations. On a practical basis, the researchers utilized wide learning to help with the memorization
+  aspect, many recommender systems utilize simple logistic regression algorithms to surface relevant content. However, this approach falls short when
+  trying to query item feature pairs that haven't appeared in the training data. On the other hand, many researchers have tried to use
+  deep learning neural networks to generate recommendations since they're able to generate feature pairs that haven't appeared in the training set,
+  however, these deep learning approaches can over generalize and make less relevant reccomendations. These researchers made use of joint training
+  which simultaneously optimzes the parameters of the wide and deep models at training time. The teams data pipeline consisted of three stages: data generation, 
+  model training, and model serving. During training their model input layer took in training data and vocabulary and generated sparse and dense features with labels.
+  The wide learning component consisted of the cross product transformation of user installed apps and impression apps. The deep learning model consisted of a 32 dimension
+  embedding vector which is learned for each categorical feature. These embeddings are then concatenated together with dense features, resulting in a dense vector of
+  approximately 1200 dimensions. These models were trained on over 500 billion examples. To optimize for performance, the researchers optimized the performance by using multithreading
+  parallelism by running smaller batches in parallel instead of running all of the candidate inferences through the model at the same time. The recommender servers recommend over 10 million
+  apps a second.
   https://dl.acm.org/citation.cfm?id=2988454
   }
 }
 
-%%
-
-@InProceedings{Thearling98,
-  author    = {Kurt Thearling and Barry Becker and Dennis DeCosta},
-  title     = {Visualizing Data Mining Models},
-  booktitle = {Proc. Integration of Data Mining and Data Visualization Workshop},
-  year      = {1998},
-  annote    = {Kurt Thearling et al. provide an excellent review of the most recent work in
-               the arena of data visualization. Although the work is not intended
-               for IVE applications, most of the ideas were instrumental in understanding some
-               of the inherent difficulties in data visualization. For example, from this
-               work it became evident to us that \emph{orienteering} is one of the most important
-               aspects in an IVE. This indicates that it is important to examine possible solutions
-               to properly orient the user early in the project. Some of the ideas presented
-               includes maintaining a grid that defines the three axes $(x, y, z)$ and the notion
-               of a companion menu that, when invoked, aids the user in locating and transporting
-               themselves within the environment. The authors also emphasize the importance of
-               ``trusting the model.'' Trust here refers to the user's ability to comfortably
-               rely on the methods provided to correctly interpret the visual
-               presentation at hand.}
-}
-
-%% A Journal paper about the object system.
-@ARTICLE{Remy98,
-		author = {Didier R\'{e}my and J\'{e}r\^{o}me Vouillon},
-		title = {Objective {ML}: An effective object-oriented extension to {ML}},
-		journal = {Theory And Practice of Objects Systems},
-		pages = {27-50},
-		volume = {4},
-		number = {1},
-		year = {1998},
-		annote = "I need to write about this."
+%% Article on applying CF and deep learning to reccomender systems.
+@ARTICLE{Wang2015,
+  author = {H. Wang N. Wang and D.-Y Yeung},
+  title = {Collaborative deep learning for recommender systems},
+  journal = {Proc. KDD},
+  pages = {1235-1244},
+  year = {2015},
+  annote = "These researchers introduced a concept they called collaborative deep learning (CDL) which is a hierarchical Bayesian model which combines deep representation learning for the content
+  information and collaborative filtering for the ratings. The paper introduces three main approaches for recommender systems: content based models, collaborative filtering models, and hybrid methods.
+  The content based methods make use of user profiles and product descriptions to make recommendations. CF approaches use history such as past activities or preferences without using user or product info. While
+  hybrid methods utilize a mixture of both content and CF approaches. Limitations for content models are user privacy while CF approaches stumble when ratings on products are sparse. The researchers highlight that deep
+  learning models are state of the art in other fields such as computer vision and NLP and that they are able to learn features automatically, yet they are inferior to shallow models such as CF when it comes to learning similarity and
+  relationships between items. To construct their CDL model, the researchers utilized Stacked Denoising Autoencoders (SDAE) which is a feedforward  neural network for learning representations."
 }
 
 %%
+
+%% Find articles on Collaborative Topic Regression

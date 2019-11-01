@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  31 OCT 2019 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  31 OCT 2019 22:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -43,25 +43,22 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 16.
- (/Users/rileymiller/code/research/research_literature/research_literature.bbl
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 50.
- [1
+ (/Users/rileymiller/code/research/research_literature/research_literature.bbl [1
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) [2] (/Users/rileymiller/code/research/research_literature/research_literature.aux) ) 
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]) [3] (/Users/rileymiller/code/research/research_literature/research_literature.aux) ) 
 Here is how much of TeX's memory you used:
- 247 strings out of 492616
- 3433 string characters out of 6129482
- 64833 words of memory out of 5000000
- 4238 multiletter control sequences out of 15000+600000
- 8542 words of font info for 30 fonts, out of 8000000 for 9000
+ 242 strings out of 492616
+ 3360 string characters out of 6129482
+ 65833 words of memory out of 5000000
+ 4233 multiletter control sequences out of 15000+600000
+ 7926 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 21i,6n,19p,204b,289s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/rileymiller/code/research/research_literature/research_literature.pdf (2 pages, 83790 bytes).
+ 21i,6n,19p,204b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on /Users/rileymiller/code/research/research_literature/research_literature.pdf (3 pages, 75831 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
- 24 compressed objects within 1 object stream
+ 34 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
