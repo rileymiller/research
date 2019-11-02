@@ -97,8 +97,9 @@ F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
   most of the time. \\ \textbf{CNN}: Deep convolutional neural networks,
   \emph{convnets}, became the goto algorithm for computer vision problems after
   becoming the goto technique for the ImageNet competition. Has completely
-  replaced SVMs and decision tress in a wide range of applications.
-  \end{quotation}
+  replaced SVMs and decision tress in a wide range of applications. \\
+  \textbf{Overfitting}: When Machine learning models perform worse on new data
+  than on their training data. TODO, add more \end{quotation}
 
 \bibitem{Cheng2016}
 H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
