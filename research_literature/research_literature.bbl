@@ -99,7 +99,9 @@ F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
   becoming the goto technique for the ImageNet competition. Has completely
   replaced SVMs and decision tress in a wide range of applications. \\
   \textbf{Overfitting}: When Machine learning models perform worse on new data
-  than on their training data. TODO, add more \end{quotation}
+  than on their training data. TODO, add more \\ \textbf{Tensor:} The primitive
+  datastructure for machine learning. A generalization of matrices to an
+  arbitrary number of dimensions. \end{quotation}
 
 \bibitem{Cheng2016}
 H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
