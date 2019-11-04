@@ -14,44 +14,44 @@ Database file #1: annot.bib
 ** Sorting version - not for use with work to be submitted to the IEEE.
 
 Done.
-You've used 4 entries,
+You've used 5 entries,
             4480 wiz_defined-function locations,
-            909 strings with 20270 characters,
-and the built_in function-call counts, 3018 in all, are:
-= -- 250
-> -- 65
-< -- 20
-+ -- 36
-- -- 14
-* -- 157
-:= -- 473
-add.period$ -- 8
-call.type$ -- 4
-change.case$ -- 18
-chr.to.int$ -- 51
-cite$ -- 4
-duplicate$ -- 195
-empty$ -- 246
-format.name$ -- 16
-if$ -- 662
+            917 strings with 21274 characters,
+and the built_in function-call counts, 4108 in all, are:
+= -- 345
+> -- 109
+< -- 28
++ -- 58
+- -- 26
+* -- 219
+:= -- 634
+add.period$ -- 10
+call.type$ -- 5
+change.case$ -- 27
+chr.to.int$ -- 69
+cite$ -- 5
+duplicate$ -- 260
+empty$ -- 314
+format.name$ -- 29
+if$ -- 903
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 29
-newline$ -- 36
-num.names$ -- 8
-pop$ -- 81
+int.to.str$ -- 5
+missing$ -- 41
+newline$ -- 40
+num.names$ -- 10
+pop$ -- 115
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 23
 quote$ -- 2
-skip$ -- 224
+skip$ -- 299
 stack$ -- 0
-substring$ -- 143
-swap$ -- 140
-text.length$ -- 3
+substring$ -- 191
+swap$ -- 195
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 30
+type$ -- 39
 warning$ -- 0
-while$ -- 15
-width$ -- 5
-write$ -- 57
+while$ -- 21
+width$ -- 6
+write$ -- 68
