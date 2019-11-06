@@ -18,6 +18,26 @@
 \fi
 #2}}
 
+\bibitem{allahbakhsh2013quality}
+M.~Allahbakhsh, B.~Benatallah, A.~Ignjatovic, H.~R. Motahari-Nezhad,
+  E.~Bertino, and S.~Dustdar, ``Quality control in crowdsourcing systems:
+  Issues and directions,'' \emph{IEEE Internet Computing}, vol.~17, no.~2, pp.
+  76--81, 2013.
+ \begin{quotation}\noindent This paper focuses on quality control in
+  crowdsourcing platforms like Amazon MTURK focusing on ensuring high quality
+  crowd contributions. The authors introduce a taxonomy for crowdsourcing
+  platoforms that records the workers' reputation and expertise. One of the
+  major issues with quality in crowdsourcing platforms is how subjective
+  quality can be. The researchers outline a potential solution for improving
+  quality-control approaches by developing a machine-learning based recommender
+  system that will surface relevant quality control approaches to requestors
+  based on the requester's profile, history, as well as the history of the
+  crowd and the quality requirements of the task. One of the other topics of
+  potential research is the development of crowdsource platform middleware
+  which will solve the problem of having distributed crowds over various
+  crowdsourcing platforms. This would be an interesting area for a machine
+  learning application. \end{quotation}
+
 \bibitem{DeepLearningWithPython:book_typical}
 F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
   0.4em\relax Shelter Island, NY: Manning, 2018.
@@ -123,6 +143,14 @@ M.~De~Gemmis, L.~Iaquinta, P.~Lops, C.~Musto, F.~Narducci, and G.~Semeraro,
   my research based on worker and requestor ratings based on historical
   performance). \end{quotation}
 
+\bibitem{elkahky2015multi}
+A.~M. Elkahky, Y.~Song, and X.~He, ``A multi-view deep learning approach for
+  cross domain user modeling in recommendation systems,'' in \emph{Proceedings
+  of the 24th International Conference on World Wide Web}.\hskip 1em plus 0.5em
+  minus 0.4em\relax International World Wide Web Conferences Steering
+  Committee, 2015, pp. 278--288.
+ \begin{quotation}\noindent TODO read and annotate \end{quotation}
+
 \bibitem{Ghorbani2019DataSE}
 A.~Ghorbani and J.~Y. Zou, ``Data shapley: Equitable valuation of data for
   machine learning,'' in \emph{ICML}, 2019.
@@ -212,6 +240,19 @@ I.~Portugal, P.~Alencar, and D.~Cowan, ``The use of machine learning algorithms
   commonly because they are less complex than some of the other approaches. The
   authors suggested that there is a lot of work that could be done in
   researching the application of neural networks to RS. \end{quotation}
+
+\bibitem{sun2014chimera}
+C.~Sun, N.~Rampalli, F.~Yang, and A.~Doan, ``Chimera: Large-scale
+  classification using machine learning, rules, and crowdsourcing,''
+  \emph{Proceedings of the VLDB Endowment}, vol.~7, no.~13, pp. 1529--1540,
+  2014.
+ \begin{quotation}\noindent In this paper the team at Walmart Labs developed a
+  tool referred to as Chimera which implements a combination of learning,
+  rules, and crowdsourcing to classify products by their product description.
+  Their solution demonstrates that classical assumptions that are applied to
+  classification problems break down at the scale that they deal with (~5000+
+  categories) and that a combination of approaches is required to solve the
+  problem. \end{quotation}
 
 \bibitem{Wang2015}
 H.~W.~N. Wang and D.-Y. Yeung, ``Collaborative deep learning for recommender
