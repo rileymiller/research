@@ -231,6 +231,16 @@ G.~Linden, B.~Smith, and J.~York, ``Amazon. com recommendations: Item-to-item
   computation and memory concerns of traditional collaborative filtering while
   still surfacing high quality recommendations. \end{quotation}
 
+\bibitem{okura2017embedding}
+S.~Okura, Y.~Tagami, S.~Ono, and A.~Tajima, ``Embedding-based news
+  recommendation for millions of users,'' in \emph{Proceedings of the 23rd ACM
+  SIGKDD International Conference on Knowledge Discovery and Data
+  Mining}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2017, pp. 1933--1942.
+ \begin{quotation}\noindent In this paper the authors utilize a three step
+  process to surface news articles. In the first step of the process they
+  utilize a denoising autencoder, a RNN, and inner product operations to
+  recommend relevant news information quickly. \end{quotation}
+
 \bibitem{portugal2018use}
 I.~Portugal, P.~Alencar, and D.~Cowan, ``The use of machine learning algorithms
   in recommender systems: A systematic review,'' \emph{Expert Systems with
