@@ -317,4 +317,12 @@ H.~W.~N. Wang and D.-Y. Yeung, ``Collaborative deep learning for recommender
   (SDAE) which is a feedforward neural network for learning representations.
   \end{quotation}
 
+\bibitem{wang2017dynamic}
+X.~Wang, L.~Yu, K.~Ren, G.~Tao, W.~Zhang, Y.~Yu, and J.~Wang, ``Dynamic
+  attention deep model for article recommendation by learning human editors'
+  demonstration,'' in \emph{Proceedings of the 23rd ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining}.\hskip 1em plus 0.5em
+  minus 0.4em\relax ACM, 2017, pp. 2051--2059.
+ \begin{quotation}\noindent TODO add summary \end{quotation}
+
 \end{thebibliography}
