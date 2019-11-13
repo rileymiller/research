@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{#1}
 \csname url@rmstyle\endcsname
 \providecommand{\newblock}{\relax}
@@ -211,6 +211,25 @@ H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
   running all of the candidate inferences through the model at the same time.
   The recommender servers recommend over 10 million apps a second.
   https://dl.acm.org/citation.cfm?id=2988454 \end{quotation}
+
+\bibitem{linden2003amazon}
+G.~Linden, B.~Smith, and J.~York, ``Amazon. com recommendations: Item-to-item
+  collaborative filtering,'' \emph{IEEE Internet computing}, no.~1, pp. 76--80,
+  2003.
+ \begin{quotation}\noindent One of the primary drawbacks of collaborative
+  filtering is that it requires online computation and the algorithm
+  performance is linear with regards to the number of customers in the dataset,
+  this isn't scalable for massive retailers like Amazon unless you were to
+  reduce the data sample or the dimensionality of the data set all of which
+  would reduce the quality of the recommendations. An alternative to
+  collaborative filtering is clustering models which perform offline
+  calculations with the primary drawback being reduced quality of
+  recommendations. The approach Amazon took was item-item collaborative
+  filtering where instead of developing recommendations off of similar customer
+  decisions the researchers keyed in only on surfacing items similar to items
+  the customer had either bought or reviewed, drastically reducing the
+  computation and memory concerns of traditional collaborative filtering while
+  still surfacing high quality recommendations. \end{quotation}
 
 \bibitem{portugal2018use}
 I.~Portugal, P.~Alencar, and D.~Cowan, ``The use of machine learning algorithms

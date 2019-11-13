@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  6 NOV 2019 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  13 NOV 2019 15:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -44,8 +44,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 16.
  (/Users/rileymiller/code/research/research_literature/research_literature.bbl
-Underfull \hbox (badness 1199) in paragraph at lines 44--127
-\OT1/cmr/m/it/10.95 fea-ture en-gi-neer-ing\OT1/cmr/m/n/10.95 . The au-toma-tion of this pro-cess has
+Underfull \hbox (badness 1057) in paragraph at lines 44--127
+\OT1/cmr/m/it/10.95 com-plex rep-re-sen-ta-tions are de-vel-oped and the fact that
  []
 
 
@@ -54,41 +54,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--127
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 44--127
-\OT1/cmr/m/n/10.95 weight's are as-signed ran-dom val-ues, thus, the net-work
- []
-
-
-Underfull \hbox (badness 1173) in paragraph at lines 44--127
-\OT1/cmr/m/n/10.95 in the new rep-re-sen-ta-tion space. This hap-pens by only
- []
-
-
-Underfull \hbox (badness 1057) in paragraph at lines 44--127
-\OT1/cmr/bx/n/10.95 Gradient Boost-ing Ma-chines: \OT1/cmr/m/n/10.95 Con-sid-ered one of, if
- []
-
-
-Underfull \hbox (badness 1117) in paragraph at lines 44--127
-\OT1/cmr/m/n/10.95 A gen-er-al-iza-tion of ma-tri-ces to an ar-bi-trary num-ber of
+Underfull \hbox (badness 1838) in paragraph at lines 44--127
+\OT1/cmr/m/n/10.95 rep-re-sen-ta-tions man-u-ally (\OT1/cmr/m/it/10.95 fea-ture en-gi-neer-ing\OT1/cmr/m/n/10.95 ) which is
  []
 
 [1
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7]) [8] (/Users/rileymiller/code/research/research_literature/research_literature.aux) ) 
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8]) [9] (/Users/rileymiller/code/research/research_literature/research_literature.aux) ) 
 Here is how much of TeX's memory you used:
- 251 strings out of 492616
- 3534 string characters out of 6129482
+ 252 strings out of 492616
+ 3552 string characters out of 6129482
  77833 words of memory out of 5000000
- 4241 multiletter control sequences out of 15000+600000
+ 4242 multiletter control sequences out of 15000+600000
  8234 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  21i,6n,19p,204b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /Users/rileymiller/code/research/research_literature/research_literature.pdf (8 pages, 111181 bytes).
+Output written on /Users/rileymiller/code/research/research_literature/research_literature.pdf (9 pages, 112964 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 58 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
