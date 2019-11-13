@@ -216,6 +216,21 @@
     of recommendations. The approach Amazon took was item-item collaborative filtering where instead of developing recommendations off of similar customer decisions the researchers keyed in only on surfacing items similar to items the customer had either bought or reviewed, drastically 
     reducing the computation and memory concerns of traditional collaborative filtering while still surfacing high quality recommendations.}
 }
+
+@inproceedings{okura2017embedding,
+  title={Embedding-based news recommendation for millions of users},
+  author={Okura, Shumpei and Tagami, Yukihiro and Ono, Shingo and Tajima, Akira},
+  booktitle={Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  pages={1933--1942},
+  year={2017},
+  organization={ACM},
+  annote = {In this paper the authors utilize a three step process to surface news articles. In the first step of the process they utilize a denoising autencoder, a RNN, and inner product operations to recommend relevant news information quickly.
+    The authors used cosine similarity to reduce duplication of articles before they submit data to the input layer of the RNN, this allows them to reduce the processing time by reducing the level of useless input. This would be an interesting technique that could be applied to reducing duplicate tasks.
+    They also used offline experiments using logs recorded on their server to determine the accuracy of their RNN. The researchers training set was massive, recording over one billion browses. The test set was reduced to a random sample of 500,000 sessions.
+    The researchers compared a GRU (Gated Recurrent Unit) RNN to a variety of techniques and found the GRU RNN to perform best. However, after left in production for over three months the RNN performance had degraded to that of the words based model approach, due in part 
+    that it took over a week to train the RNN.
+  }
+}
 %% Read Alan Turing's Computing Machinery and Intelligence
 
 %% Find articles on Collaborative Topic Regression
