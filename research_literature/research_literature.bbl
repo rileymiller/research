@@ -351,6 +351,8 @@ X.~Wang, L.~Yu, K.~Ren, G.~Tao, W.~Zhang, Y.~Yu, and J.~Wang, ``Dynamic
   rendering collaborative filtering essentially useless. Encouraging the
   researchers to focus on a content based recommendation system. For their CNN
   the researchers used character level neural network language models (NNLM)
-  for low-level textual feature learning. \end{quotation}
+  for low-level textual feature learning. The researchers found that the deep
+  learning CNN technique had similar but better results that a logistic
+  regression technique. \end{quotation}
 
 \end{thebibliography}
