@@ -20,3 +20,9 @@ Need to do some type of learning based off user data (based on the user profile 
 Need to consider the primary goals of the machine learning model. This needs to be defined to drive the research goals of this development. Should we be trying to help users make the most money? Do we want user's to acquire new skills? High-level we spoke about trying to match the best workers for the task which we hypothesize would result in a higher quality of the task.
 
 
+### Math Links
+https://medium.com/data-science-bootcamp/understand-dot-products-matrix-multiplications-usage-in-deep-learning-in-minutes-beginner-95edf2e66155
+
+https://en.wikipedia.org/wiki/Recurrent_neural_network
+
+https://towardsdatascience.com/

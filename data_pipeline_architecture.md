@@ -22,11 +22,3 @@ Will use the Amazon MTURK API to interact with the Amazon MTURK platform.
 Figure Eight API reference.
 
 
-### Math Links
-https://medium.com/data-science-bootcamp/understand-dot-products-matrix-multiplications-usage-in-deep-learning-in-minutes-beginner-95edf2e66155
-
-https://en.wikipedia.org/wiki/Recurrent_neural_network
-
-https://towardsdatascience.com/
-
-
