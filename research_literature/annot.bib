@@ -239,7 +239,14 @@
   pages={2051--2059},
   year={2017},
   organization={ACM},
-  annote={TODO add summary}
+  annote={In this article the researchers utilize deep learning to learn the relationship between articles and there meta data in conjunction with a deep learning model to learn the underlying preference of the article reviewers which cannot be predicted using bag of word techniques since
+  article reviewer preferences depends more on the writing quality vs. specific keywords found in the metadata or the article. This specific approach was focused on surfacing a subset articles for content reviewers for media companines like Buzzfeed to reduces their workload. These reviewers 
+  then forward interesting/appropriate articles to machine learning models that will match these articles to consumers, an area that has drawn much more attention from researchers. The researchers touched on two traditional recommender techniques in their related work sections stating that collaborative
+  filtering runs into issues with sparse datasets and thus faces the cold-start problem, and also touched on the content-based recommendation approach which deals with relationships between items in the dataset and won't run into issues with a cold start since they're reliant on the relationship between items, however,
+  the content-based approach runs into issues with providing personalized reccomendations to the user, a crucial component of an effective recommendation system. The focus of the researchers was to create models that learned from the textual content of the articles as well as the articles' metadata like the author, original media,
+  author city, and various other contextual information to provide relevant predictions. The authors' problem is unique to other reccommender systems in that the data is sparse becuase news articles become outdated quickly and thus the data they need to perform recommendations on won't have a lot of user interaction, rendering collaborative filtering
+  essentially useless. Encouraging the researchers to focus on a content based recommendation system. For their CNN the researchers used character level neural network language models (NNLM) for low-level textual feature learning.
+  }
 }
 %% Read Alan Turing's Computing Machinery and Intelligence
 
