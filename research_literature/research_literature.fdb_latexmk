@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex research_literature"] 1573686770 "research_literature.aux" "research_literature.bbl" "research_literature" 1573686771
+["bibtex research_literature"] 1573689297 "research_literature.aux" "research_literature.bbl" "research_literature" 1573689298
   "./IEEEannot.bst" 1572501633 61919 bf06423465058a2272d4ac4bdeb9eab7 ""
-  "annot.bib" 1573686770 21683 681748eebd769c48800846daf36a2679 ""
-  "research_literature.aux" 1573686771 401 e362f08849372bc58c92d6f5391497bd "pdflatex"
+  "annot.bib" 1573689297 24373 8d9de5c3c7f263f2cb5e052392196bba ""
+  "research_literature.aux" 1573689297 431 da8a5fee56aa4de2f57bae3587462138 "pdflatex"
   (generated)
   "research_literature.bbl"
   "research_literature.blg"
-["pdflatex"] 1573686770 "/Users/rileymiller/code/research/research_literature/research_literature.tex" "/Users/rileymiller/code/research/research_literature/research_literature.pdf" "research_literature" 1573686771
-  "/Users/rileymiller/code/research/research_literature/research_literature.aux" 1573686771 401 e362f08849372bc58c92d6f5391497bd ""
+["pdflatex"] 1573689297 "/Users/rileymiller/code/research/research_literature/research_literature.tex" "/Users/rileymiller/code/research/research_literature/research_literature.pdf" "research_literature" 1573689298
+  "/Users/rileymiller/code/research/research_literature/research_literature.aux" 1573689297 431 da8a5fee56aa4de2f57bae3587462138 ""
   "/Users/rileymiller/code/research/research_literature/research_literature.tex" 1572624583 545 3ff22eef4d86375da928cf0b5a6b8b45 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -36,12 +36,12 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "research_literature.aux" 1573686771 401 e362f08849372bc58c92d6f5391497bd "pdflatex"
-  "research_literature.bbl" 1573686770 21396 12b960aabfe965d5ed70c70ab337b26f "bibtex research_literature"
+  "research_literature.aux" 1573689297 431 da8a5fee56aa4de2f57bae3587462138 "pdflatex"
+  "research_literature.bbl" 1573689297 24107 514be0282604cbe88c5ecf846e124422 "bibtex research_literature"
   "research_literature.tex" 1572624583 545 3ff22eef4d86375da928cf0b5a6b8b45 ""
   (generated)
-  "research_literature.pdf"
-  "research_literature.aux"
-  "/Users/rileymiller/code/research/research_literature/research_literature.pdf"
-  "/Users/rileymiller/code/research/research_literature/research_literature.log"
   "research_literature.log"
+  "research_literature.pdf"
+  "/Users/rileymiller/code/research/research_literature/research_literature.log"
+  "/Users/rileymiller/code/research/research_literature/research_literature.pdf"
+  "research_literature.aux"
