@@ -26,7 +26,7 @@ M.~Allahbakhsh, B.~Benatallah, A.~Ignjatovic, H.~R. Motahari-Nezhad,
  \begin{quotation}\noindent This paper focuses on quality control in
   crowdsourcing platforms like Amazon MTURK focusing on ensuring high quality
   crowd contributions. The authors introduce a taxonomy for crowdsourcing
-  platoforms that records the workers' reputation and expertise. One of the
+  platforms that records the workers' reputation and expertise. One of the
   major issues with quality in crowdsourcing platforms is how subjective
   quality can be. The researchers outline a potential solution for improving
   quality-control approaches by developing a machine-learning based recommender
@@ -211,6 +211,37 @@ H.~S. H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G.
   running all of the candidate inferences through the model at the same time.
   The recommender servers recommend over 10 million apps a second.
   https://dl.acm.org/citation.cfm?id=2988454 \end{quotation}
+
+\bibitem{kaplan2018striving}
+T.~Kaplan, S.~Saito, K.~Hara, and J.~P. Bigham, ``Striving to earn more: a
+  survey of work strategies and tool use among crowd workers,'' in \emph{Sixth
+  AAAI Conference on Human Computation and Crowdsourcing}, 2018.
+ \begin{quotation}\noindent This paper outlines survey results collected from
+  360 crowdsourcing workers on their approach for earning money on
+  crowdsourcing platforms and the tools they used. One of the interesting tools
+  that crowdsource workers use is called Preview and Accept (commonly referred
+  to as PandA) which finds similar tasks and batches them together to decrease
+  the time that workers spend finding tasks. The survey outlines the inequality
+  between workers and requesters and ultimately how requesters have a way to
+  judge workers based on the reputation, workers don't actually have a way to
+  sift through and filter tasks to find tasks that are efficient and feasible.
+  This is directly related to the problem that I am trying to solve, improving
+  efficiency of workers in crowdsourcing platforms. The researchers explain
+  that much of the previous work done on task recommendation in Amazon MTURK
+  deals with information available in the AMT search like task keywords,
+  reward, qualificatoin, in conjunction with the browser extension Turkopticon,
+  a tool used by crowdworkers to rate requesters, to surface wage-efficient
+  tasks. The researchers also discussed their perspective that task
+  recommendation systems should focus on content dependent factors which affect
+  the amount of time it takes to complete a task like the types of media in a
+  task and the amount of inputs outlined in the task. The survey results
+  reported a large number of forums for MTURK crowdworkers which would be
+  really helpful for empathizing common problems that crowdworkers experience.
+  One of the interesting things from the survey was the level of frustration
+  for finding tasks within the platform and that not being able to find anymore
+  tasks to complete was a high motivation for ending a working session. This is
+  a really important piece of feedback that provides validation for researching
+  approaches for improving the efficiency of crowd workers \end{quotation}
 
 \bibitem{linden2003amazon}
 G.~Linden, B.~Smith, and J.~York, ``Amazon. com recommendations: Item-to-item
