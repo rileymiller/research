@@ -19,6 +19,8 @@ Need to do some type of learning based off user data (based on the user profile 
 ### Goals of the Model
 Need to consider the primary goals of the machine learning model. This needs to be defined to drive the research goals of this development. Should we be trying to help users make the most money? Do we want user's to acquire new skills? High-level we spoke about trying to match the best workers for the task which we hypothesize would result in a higher quality of the task.
 
+### 11/17 Thoughts
+Going to need to take a content based approach due to the nature of the problem that crowdsourcing platforms inherently present where collaborative filtering won't be a viable option due to the frequent turnover of tasks and the customization aspect of having an agnostic model for general crowdsourcing platforms.
 
 ### Math Links
 https://medium.com/data-science-bootcamp/understand-dot-products-matrix-multiplications-usage-in-deep-learning-in-minutes-beginner-95edf2e66155

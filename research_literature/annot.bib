@@ -248,6 +248,22 @@
   essentially useless. Encouraging the researchers to focus on a content based recommendation system. For their CNN the researchers used character level neural network language models (NNLM) for low-level textual feature learning. The researchers found that the deep learning CNN technique had similar but better results that a logistic regression technique.
   }
 }
+
+@inproceedings{wu2016personal,
+  title={Personal recommendation using deep recurrent neural networks in NetEase},
+  author={Wu, Sai and Ren, Weichao and Yu, Chengchao and Chen, Gang and Zhang, Dongxiang and Zhu, Jingbo},
+  booktitle={2016 IEEE 32nd International Conference on Data Engineering (ICDE)},
+  pages={1218--1229},
+  year={2016},
+  organization={IEEE},
+  annote={In this experiment the researchers forged a feedforward neural network which simulated collaborative filtering (accepted user purchase history as input to generate recommendation) and a conventional RNN to generate realtime reccomendations based of the user's browsing session. The researchers explain that an RNN is a 
+  suitable choice of architercture for their problem because an RNN with on inner layer can determine the order of page access and an RNN with multiple layers can determine the combination of page accesses. One of the keypoints that the researchers make concerning their use of deep learning vs. traditional collaborative filtering is that
+  collaborative filtering is effective at making recommendations based off of previous user choices whereas their deep learning model is able to make a new prediction based off of the given information of a user. To train their model the researchers used Stochastic Gradient Descent. Something that was really interesting about the researchers'
+  approach is that they would iteratively retrain the model in real-time to give the most up to date predictions of how users interacted with the ecosystem. Another aspect that was interesting about the researchers' approach was their use of a "history state" that they used to consilidate decisions that dated outside of their sliding window of 
+  sessions concept. The researchers showed that their RNN approach significantly outperformed a collaborative filtering approach.
+  }
+}
+
 %% Read Alan Turing's Computing Machinery and Intelligence
 
 %% Find articles on Collaborative Topic Regression
