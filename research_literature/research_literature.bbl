@@ -241,7 +241,16 @@ T.~Kaplan, S.~Saito, K.~Hara, and J.~P. Bigham, ``Striving to earn more: a
   for finding tasks within the platform and that not being able to find anymore
   tasks to complete was a high motivation for ending a working session. This is
   a really important piece of feedback that provides validation for researching
-  approaches for improving the efficiency of crowd workers \end{quotation}
+  approaches for improving the efficiency of crowd workers. An interesting
+  facet of the survey results was the reported priority of crowdworkers on
+  selecting a task in which "Pay per HIT", "Expected Task Completion Time", and
+  "Requester Reputation" were ranked in the order previously described. In the
+  researchers' future work section they outlined several possibilities for
+  applying machine learning to improve crowdworker efficiency. The researchers
+  outlined some potential approaches: develop a machine learning algorithm to
+  surface recommendations based off of task feasibility and the estimated time
+  it would take to complete the task, as well as to use the task content and
+  metadata to help make a prediction. \end{quotation}
 
 \bibitem{linden2003amazon}
 G.~Linden, B.~Smith, and J.~York, ``Amazon. com recommendations: Item-to-item
