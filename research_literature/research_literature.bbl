@@ -395,4 +395,31 @@ X.~Wang, L.~Yu, K.~Ren, G.~Tao, W.~Zhang, Y.~Yu, and J.~Wang, ``Dynamic
   learning CNN technique had similar but better results that a logistic
   regression technique. \end{quotation}
 
+\bibitem{wu2016personal}
+S.~Wu, W.~Ren, C.~Yu, G.~Chen, D.~Zhang, and J.~Zhu, ``Personal recommendation
+  using deep recurrent neural networks in netease,'' in \emph{2016 IEEE 32nd
+  International Conference on Data Engineering (ICDE)}.\hskip 1em plus 0.5em
+  minus 0.4em\relax IEEE, 2016, pp. 1218--1229.
+ \begin{quotation}\noindent In this experiment the researchers forged a
+  feedforward neural network which simulated collaborative filtering (accepted
+  user purchase history as input to generate recommendation) and a conventional
+  RNN to generate realtime reccomendations based of the user's browsing
+  session. The researchers explain that an RNN is a suitable choice of
+  architercture for their problem because an RNN with on inner layer can
+  determine the order of page access and an RNN with multiple layers can
+  determine the combination of page accesses. One of the keypoints that the
+  researchers make concerning their use of deep learning vs. traditional
+  collaborative filtering is that collaborative filtering is effective at
+  making recommendations based off of previous user choices whereas their deep
+  learning model is able to make a new prediction based off of the given
+  information of a user. To train their model the researchers used Stochastic
+  Gradient Descent. Something that was really interesting about the
+  researchers' approach is that they would iteratively retrain the model in
+  real-time to give the most up to date predictions of how users interacted
+  with the ecosystem. Another aspect that was interesting about the
+  researchers' approach was their use of a "history state" that they used to
+  consilidate decisions that dated outside of their sliding window of sessions
+  concept. The researchers showed that their RNN approach significantly
+  outperformed a collaborative filtering approach. \end{quotation}
+
 \end{thebibliography}
