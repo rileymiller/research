@@ -38,6 +38,11 @@ M.~Allahbakhsh, B.~Benatallah, A.~Ignjatovic, H.~R. Motahari-Nezhad,
   crowdsourcing platforms. This would be an interesting area for a machine
   learning application. \end{quotation}
 
+\bibitem{amer2016task}
+S.~Amer-Yahia, E.~Gaussier, V.~Leroy, J.~Pilourdault, R.~Borromeo, and
+  M.~Toyama, ``Task composition in crowdsourcing,'' 2016.
+
+
 \bibitem{DeepLearningWithPython:book_typical}
 F.~Chollet, \emph{Deep Learning With Python}.\hskip 1em plus 0.5em minus
   0.4em\relax Shelter Island, NY: Manning, 2018.
