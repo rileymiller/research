@@ -1,7 +1,9 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass csm-thesis
 \begin_preamble
 % Uncomment for automatic equation breaking:
@@ -14,16 +16,18 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
-
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -43,16 +47,26 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
-\cite_engine natbib_numerical
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,7 +75,10 @@
 \tocdepth 4
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -100,8 +117,8 @@ status open
 
 \end_layout
 
-\begin_layout --FrontMatter--
-
+\begin_layout \twohyphens
+FrontMatter–
 \end_layout
 
 \begin_layout Standard
@@ -126,8 +143,8 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-% In LyX you must use Ctrl+Enter (Apple+Enter on Mac) to make multi-line
- titles!
+% In \SpecialChar LyX
+ you must use Ctrl+Enter (Apple+Enter on Mac) to make multi-line titles!
 \end_layout
 
 \begin_layout Plain Layout
@@ -822,7 +839,8 @@ status open
 
 \begin_layout Plain Layout
 % Note that you may define symbols anywhere in the document, when you re-run
- LaTeX they
+ \SpecialChar LaTeX
+ they
 \end_layout
 
 \begin_layout Plain Layout
@@ -839,7 +857,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-% Note for LyX users, there are two ways to define symbols:
+% Note for \SpecialChar LyX
+ users, there are two ways to define symbols:
 \end_layout
 
 \end_inset
@@ -852,7 +871,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-% (1) Built-in LyX nomenclature command:
+% (1) Built-in \SpecialChar LyX
+ nomenclature command:
 \end_layout
 
 \end_inset
@@ -865,6 +885,7 @@ status open
 LatexCommand nomenclature
 symbol "$\\alpha_c$"
 description "absorption coefficient"
+literal "true"
 
 \end_inset
 
@@ -1227,7 +1248,8 @@ status open
 
 \begin_layout Plain Layout
 % Note that you may define abbreviations anywhere in the document, when
- you re-run LaTeX they
+ you re-run \SpecialChar LaTeX
+ they
 \end_layout
 
 \begin_layout Plain Layout
@@ -1410,8 +1432,8 @@ status open
 
 \end_layout
 
-\begin_layout --BodyMatter--
-
+\begin_layout \twohyphens
+BodyMatter–
 \end_layout
 
 \begin_layout Standard
@@ -1471,6 +1493,7 @@ A chapter
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ref:A,ref:B,ref:C"
+literal "true"
 
 \end_inset
 
@@ -1754,7 +1777,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -1763,7 +1786,7 @@ name "fig:Stomata"
 
 \end_inset
 
-A pretty picture from the Squier Group --- this is a test of the emergency
+A pretty picture from the Squier Group — this is a test of the emergency
  long-title system.
 \end_layout
 
@@ -2080,10 +2103,10 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -2103,6 +2126,7 @@ A world-class hero
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ref:Wikipedia"
+literal "true"
 
 \end_inset
 
@@ -2145,7 +2169,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Him
@@ -2181,7 +2205,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Importance of Pirates
@@ -2208,7 +2232,7 @@ name "fig:fsm-pirates"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -2243,6 +2267,7 @@ Ugh, another chapter
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ref:D"
+literal "true"
 
 \end_inset
 
@@ -2288,7 +2313,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -2306,9 +2331,9 @@ A table of tabular goodness.
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2421,8 +2446,8 @@ status open
 
 \end_layout
 
-\begin_layout --BackMatter--
-
+\begin_layout \twohyphens
+BackMatter–
 \end_layout
 
 \begin_layout Standard
@@ -2530,7 +2555,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 This is where we have fun testing encoding
@@ -2553,9 +2578,9 @@ name "tab:encoding"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2725,7 +2750,7 @@ longtable.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="18" columns="7">
-<features rotate="true" islongtable="true" longtabularalignment="center">
+<features rotate="90" islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="1.02in">
 <column alignment="center" valignment="top" width="1.15in">
 <column alignment="center" valignment="top" width="1in">
@@ -2733,12 +2758,12 @@ longtable.
 <column alignment="center" valignment="top" width="0.7in">
 <column alignment="center" valignment="top" width="0.67in">
 <column alignment="center" valignment="top" width="2.55in">
-<row caption="true">
+<row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Stratigraphy of the Granite Mountains and Lost Creek areas
@@ -4005,16 +4030,16 @@ Granites, metamorphic and igneous rocks.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="true" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row caption="true">
+<features rotate="90" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Test of a small longtable.
@@ -4114,16 +4139,16 @@ C
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="true" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row caption="true">
+<features rotate="90" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Test of a small longtable on the alternate page.
