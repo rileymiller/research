@@ -31,7 +31,7 @@
 % 3) Put ``cite'' after hyperref, resulting in ugly looking citations
 
 % If you choose not to use natbib then you can set the standard ``numeric'' style like so:
-%\bibliographystyle{unsrt}
+% \bibliographystyle{unsrt}
 
 % Important Note: math-mode in sections, titles, and other bookmarks will generate warnings with hyperref.  You can work around this by either:
 % 1) Not using the hyperref package
@@ -69,7 +69,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-	\title{Thesis Proposal: Deep Learning Task Recommendation for Crowdworkers}
+\title{Thesis Proposal: Deep Learning Task Recommendation for Crowdworkers}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -85,7 +85,7 @@
 \dpthead{Dr. Tracy Camp}{Department Head}
 
 \begin{document}
-
+\nocite{*}
 % Parts of a Thesis
 
 %% Parts of a Thesis - Front Matter
@@ -207,18 +207,24 @@ TODO: Adding after draft of proposal
 %%% Parts of a Thesis - Body - All Chapters and Sections (required)
 
 \chapter{Research Proposal}
-A chapter~\cite{ref:A,ref:B,ref:C}. See nifty ``longtables'' in Appendix~\ref{sec:longtable}.
 
-Nam eget congue lacus. Lorem ipsum dolor sit amet, consectetur faucibus tempor.
+The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines. My research will be centered around the development of a machine learning approach to improve the efficiency of crowdworkers in crowdsourcing platforms.
 
-\begin{equation}
-x+y=7
-\end{equation}
+~\cite{okura2017embedding}
+\subsection{Introduction}% adsfsadf fdaskldf fdslkfds  adslkfj;lads asdfklasdflk sadfladsf adsfadsf asdfadsf}
+In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools, as well as highlight traditional approaches to developing recommendation systems.
+\subsubsection{Background}
+Crowdsourcing platforms have become increasingly popular over the course of the last several years, introducing the concept of utilizing "crowd" intelligence to complete work. These platforms are historically architected to facilitate the relationship between requesters, who create work on the platform in the form of items commonly referred to as tasks, and crowdworkers who are real people that complete tasks that are curated by the requesters. There are a variety of different crowdsourcing platforms that have entered the crowdsourcing market such as Figure Eight, ClickWorker, Spare5, Respondent, Swagbucks, and the most popular platform: Amazon Mechanical Turk (MTURK). These platforms are used for a variety of different reasons ranging from collecting data via surveys, image/video annotation, translations, spreadsheet modifications and analysis, writing, to really anything imagineable. The typical workflow in crowdsourcing platforms starts with requesters who break work that they need to get completed down into tasks. This process usually involves writing a description of what needs to be done, how it needs to be completed, providing the input the crowdworker needs to complete the work, setting a qualification so that only certain crowdworkers may have access to the task based off their work history, setting a lifetime on the task for when the work needs to be completed, and setting a reward for successful completion of the task. All of these specifications vary by platform since a universal specification standard between different crowdsourcing platforms fails to exist. After the requesters finish a task and publish it to the crowdsourcing platform, the task becomes available to crowdworkers (depending on the platform it may only be made available to crowdworkers who match the qualification set by the requesters) who can then attempt to complete the task. After the crowdworkers are satisfied with their work on a given task they can then submit their work on a task to the requesters for approval. After this work is received by the requesters, the requesters have the ability to review the work that was completed by the crowdworker and determine whether they will accept the work, reject the work, or send the task back to the crowdworker because the quality of the work was insufficient. This workflow in crowdsourcing platforms presents several different areas that need to be improved in order for crowdsourcing platforms to continue to grow.
 
-Maecenas posuere luctus ligula sit amet ornare. Pellentesque vitae velit nulla. Ut a turpis massa, id ullamcorper odio.
+% paragraph on the motivation for requesters
 
-\subsection{A Subsection}% adsfsadf fdaskldf fdslkfds  adslkfj;lads asdfklasdflk sadfladsf adsfadsf asdfadsf}
-A subsection of the chapter.  In this particular chapter we're going to an include an example of a list:
+% paragraph on the motivation for workers
+
+% outline problems with the relationship between requesters and workers
+\subsubsection{Existing Tools}
+Provide context on existing tools in the crowdsourcing ecosystem
+
+%% use item for existing tools
 \begin{itemize}
 	\item This little listy went to market
 	\item This little listy stayed home
@@ -226,42 +232,54 @@ A subsection of the chapter.  In this particular chapter we're going to an inclu
 	\item This little listy had none
 	\item And this little listy graduated, and went ''wee wee wee`` all the way home
 \end{itemize}
-See? Wasn't that fun.
 
-\subsection{AA Subsection}
-Another subsection of the chapter.  See cool encoding stuff in Appendix~\ref{app:encoding}.
+\subsubsection{Approaches in Recommendation Systems}
+Provide context on traditional reccomender systems
 
-\subsubsection{Transport of U Through Porous Media: General Elution Procedures}
-\label{sec:important-section}
-I wonder why there's so much detail?
+\paragraph{Collaborative Filtering}
 
-\paragraph{i Subsection}
-Note that using ``three deep'' sections is HIGHLY discouraged.
+\paragraph{Content Based}
 
-\paragraph{ii Subsection}
-So don't make sections this deep unless you really must.
-	
-\subsubsection{aa Subsection}
-Oooo - this topic must be really important! Its importance might be described by Equation~\ref{eq:importance}, which is nothing like the awesome Equation~\ref{eq:newton} or the uber-nifty vector example in Equation~\ref{eq:vector}.
+\subsection{Related Work}
+related work on crowdsourcing platforms and recommender systems. Think about what I’d really like to include. No closely related work for crowdsourcing recommender systems.  Check that there aren’t any existing (Google Scholar/Google Search). Include more work on the recommender systems.
 
-\begin{eqnarray}
-	\label{eq:importance}
-		\textrm{Importance} & \approx & 0 \\
-	\label{eq:newton}
-		\sum_{i}^{\infty}\vec{F_{i}} & = & m\,\vec{a}
-\end{eqnarray}
+\subsection{Proposed Work}
+% \label{sec:important-section}
+Explain that Dr. Yue will be collecting the data needed for reccomendation system.
+\subsubsection{Dataset}
 
-\begin{align}
-	\label{eq:vector}
-	\newcommand{\Tmat}[3][]{{^{#2}_{#3}}#1\mathrm{\mathbf{T}}\;\,}
-	{\left[\begin{matrix}x\\ y\\ 1\end{matrix}\right]}=\Tmat{S}{W}{\left[\begin{matrix}0\\ 0\\ 1\end{matrix}\right]}
-\end{align}
+Review ~5 different types of recommendation systems. Focus more on what type of algorithm/approach I should consider. Itemize potential approaches. Existing approaches have open data sets. Could explore data set for algorithms used in proposed work. Try corresponding approach. Talk about how the team is collecting the data and how that will tie to the crowdsourcing platform. Speak on how I will adapt or create a new algorithm based on the nature of the crowdsourcing platform. More concrete from a technical perspective. Talk about what types of metric I plan on using. Consider all of the metrics discussed with Dr. Yue.
+\subsubsection{Stand-alone Deep Learning}
 
-\subsection{AAA Subsection}
-Yet another subsection (for more information, see Section~\ref{sec:important-section} or Chapter~\ref{cha:important-chapter}).
+\subsubsection{Shallow Learning} % reference paper on how deep learning may not be necessary
 
-\subsection{AAAA Subsection}
-Last subsection\footnote{this is evil}, see \ref{fig:Stomata}.
+\subsubsection{Content-based Deep Learning (NLP)}
+
+\subsubsection{Hybrid Approach}
+
+\subsubsection{Training and Accuracy}
+
+\subsection{Outline of Project Timeline}
+\begin{itemize}
+	\item This little listy went to market
+	\item This little listy stayed home
+	\item This little listy had roast beef
+	\item This little listy had none
+	\item And this little listy graduated, and went ''wee wee wee`` all the way home
+\end{itemize}
+% \begin{eqnarray}
+% 	\label{eq:importance}
+% 		\textrm{Importance} & \approx & 0 \\
+% 	\label{eq:newton}
+% 		\sum_{i}^{\infty}\vec{F_{i}} & = & m\,\vec{a}
+% \end{eqnarray}
+
+% \begin{align}
+% 	\label{eq:vector}
+% 	\newcommand{\Tmat}[3][]{{^{#2}_{#3}}#1\mathrm{\mathbf{T}}\;\,}
+% 	{\left[\begin{matrix}x\\ y\\ 1\end{matrix}\right]}=\Tmat{S}{W}{\left[\begin{matrix}0\\ 0\\ 1\end{matrix}\right]}
+% \end{align}
+
 
 % \csmfigure{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
 
@@ -433,25 +451,25 @@ Last subsection\footnote{this is evil}, see \ref{fig:Stomata}.
 %\end{selected-bibliography}
 
 %%% Parts of a Thesis - Back Matter - Appendices (if applicable)
-\appendix{TODO add if I need to add anything in the appendix}\label{app:encoding}
-\ref{tab:encoding} shows how several symbols appear in the rendered document.
+% \appendix{TODO add if I need to add anything in the appendix}\label{app:encoding}
+% \ref{tab:encoding} shows how several symbols appear in the rendered document.
 
-\begin{table}[H]
-	\caption{\label{tab:encoding}This is where we have fun testing encoding}
-	\begin{center}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			& Normal & Math \\
-			\hline
-			The greater than: & > & $>$ \\
-			\hline
-			The lesss than: & < & $<$ \\
-			\hline
-			The tilde: & \textasciitilde{} & $\sim$ \\
-			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
+% \begin{table}[H]
+% 	\caption{\label{tab:encoding}This is where we have fun testing encoding}
+% 	\begin{center}
+% 		\begin{tabular}{|c|c|c|}
+% 			\hline
+% 			& Normal & Math \\
+% 			\hline
+% 			The greater than: & > & $>$ \\
+% 			\hline
+% 			The lesss than: & < & $<$ \\
+% 			\hline
+% 			The tilde: & \textasciitilde{} & $\sim$ \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% \end{table}
 
 % \subsection{Test Appendix Sub-Section}\label{sec:longtable}
 % \ref{tab:longtable} is an example of a very large ``longtable.''
