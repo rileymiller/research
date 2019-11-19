@@ -1,0 +1,37 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Reference et~al.(2009)Reference, Man, and Cat]{ref:A}
+A.~G. Reference, Magic Man, and Cool Cat.
+\newblock {T}he {T}itle of a {GOOD} {R}eference.
+\newblock \emph{The Journal of Referency-Goodness}, pages 1--1000, 2009.
+
+\bibitem[Reference and Cat(2000)]{ref:B}
+A.~B. Reference and Cool Cat.
+\newblock {T}he {T}itle of a {BAD} {R}eference (j/k).
+\newblock \emph{Science}, \textbf{1}\penalty0 (2):\penalty0 4, 2000.
+
+\bibitem[Inc.(2013)]{ref:C}
+Rockscience Inc.
+\newblock \emph{Examine2D}.
+\newblock Toronto, CA, 2013.
+\newblock A description, but not necessary.
+
+\bibitem[Wikipedia(2009)]{ref:Wikipedia}
+Wikipedia.
+\newblock {S}trong {B}ad --- {W}ikipedia{,} {T}he {F}ree {E}ncyclopedia.
+\newblock
+  \url{http://en.wikipedia.org/w/index.php?title=Strong_Bad&oldid=274899439},
+  2009.
+
+\bibitem[{C. A. T. S.}(A.D. 2101)]{ref:D}
+{C. A. T. S.}
+\newblock {W}ar {W}as {B}eginning.
+\newblock \emph{Zero Wing}, \textbf{200}\penalty0 (42):\penalty0 45--768, A.D.
+  2101.
+
+\end{thebibliography}

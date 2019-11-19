@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: latex-traditional-example.aux
+A level-1 auxiliary file: latex-example-chapter.aux
+The style file: unsrtnat.bst
+Database file #1: thesis.bib
+Warning--empty publisher in ref:C
+You've used 5 entries,
+            2481 wiz_defined-function locations,
+            588 strings with 5072 characters,
+and the built_in function-call counts, 1681 in all, are:
+= -- 145
+> -- 57
+< -- 5
++ -- 26
+- -- 16
+* -- 106
+:= -- 266
+add.period$ -- 16
+call.type$ -- 5
+change.case$ -- 9
+chr.to.int$ -- 5
+cite$ -- 6
+duplicate$ -- 95
+empty$ -- 170
+format.name$ -- 23
+if$ -- 360
+int.to.chr$ -- 1
+int.to.str$ -- 6
+missing$ -- 5
+newline$ -- 34
+num.names$ -- 15
+pop$ -- 46
+preamble$ -- 1
+purify$ -- 5
+quote$ -- 0
+skip$ -- 61
+stack$ -- 0
+substring$ -- 60
+swap$ -- 15
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 32
+warning$ -- 1
+while$ -- 16
+width$ -- 0
+write$ -- 72
+(There was 1 warning)
