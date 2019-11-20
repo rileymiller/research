@@ -214,13 +214,83 @@ The following contains my proposal for the research I plan to conduct under the 
 \subsection{Introduction}% adsfsadf fdaskldf fdslkfds  adslkfj;lads asdfklasdflk sadfladsf adsfadsf asdfadsf}
 In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools, as well as highlight traditional approaches to developing recommendation systems.
 \subsubsection{Background}
-Crowdsourcing platforms have become increasingly popular over the course of the last several years, introducing the concept of utilizing "crowd" intelligence to complete work. These platforms are historically architected to facilitate the relationship between requesters, who create work on the platform in the form of items commonly referred to as tasks, and crowdworkers who are real people that complete tasks that are curated by the requesters. There are a variety of different crowdsourcing platforms that have entered the crowdsourcing market such as Figure Eight, ClickWorker, Spare5, Respondent, Swagbucks, and the most popular platform: Amazon Mechanical Turk (MTURK). These platforms are used for a variety of different reasons ranging from collecting data via surveys, image/video annotation, translations, spreadsheet modifications and analysis, writing, to really anything imagineable. The typical workflow in crowdsourcing platforms starts with requesters who break work that they need to get completed down into tasks. This process usually involves writing a description of what needs to be done, how it needs to be completed, providing the input the crowdworker needs to complete the work, setting a qualification so that only certain crowdworkers may have access to the task based off their work history, setting a lifetime on the task for when the work needs to be completed, and setting a reward for successful completion of the task. All of these specifications vary by platform since a universal specification standard between different crowdsourcing platforms fails to exist. After the requesters finish a task and publish it to the crowdsourcing platform, the task becomes available to crowdworkers (depending on the platform it may only be made available to crowdworkers who match the qualification set by the requesters) who can then attempt to complete the task. After the crowdworkers are satisfied with their work on a given task they can then submit their work on a task to the requesters for approval. After this work is received by the requesters, the requesters have the ability to review the work that was completed by the crowdworker and determine whether they will accept the work, reject the work, or send the task back to the crowdworker because the quality of the work was insufficient. This workflow in crowdsourcing platforms presents several different areas that need to be improved in order for crowdsourcing platforms to continue to grow.
+Crowdsourcing platforms have become increasingly popular over the course of the last\ 
+several years, introducing the concept of utilizing "crowd" intelligence to complete\
+work. \cite{kuek2015global} These platforms are historically architected to facilitate the relationship\ 
+between requesters, who create work on the platform in the form of items commonly\ 
+referred to as tasks, and crowdworkers who are real people that complete tasks that\ 
+are curated by the requesters. There are a variety of different crowdsourcing platforms\ 
+that have entered the crowdsourcing market such as Figure Eight, ClickWorker, Spare5,\ 
+Respondent, Swagbucks, and the most popular platform: Amazon Mechanical Turk (MTURK).\ 
+These platforms are used for a variety of different use cases ranging from collecting\
+data via surveys, image/video annotation, translations, spreadsheet modifications and\ 
+analysis, writing, to really anything imagineable. The typical workflow in crowdsourcing\ 
+platforms starts with requesters who break work that they need to get completed down\ 
+into tasks. This process usually involves writing a description of what needs to be\ 
+ done, how it needs to be completed, providing the input the crowdworker needs to\ 
+ complete the work, setting a qualification so that only certain crowdworkers may\ 
+ have access to the task based off their work history, setting a lifetime on the\ 
+  task for when the work needs to be completed, and setting a reward for successful\ 
+  completion of the task. All of these specifications vary by platform since a\ 
+  universal specification standard between different crowdsourcing platforms fails\ 
+  to exist. After the requesters finish a task and publish it to the crowdsourcing\ 
+  platform, the task becomes available to crowdworkers (depending on the platform it\ 
+  may only be made available to crowdworkers who match the qualification set by the\ 
+  requesters) who can then attempt to complete the task. After the crowdworkers are\ 
+  satisfied with their work on a given task they can then submit their work on a task\ 
+  to the requesters for approval. After this work is received by the requesters, the\ 
+  requesters have the ability to review the work that was completed by the crowdworker\
+   and determine whether they will accept the work, reject the work, or send the task\ 
+   back to the crowdworker because the quality of the work was insufficient. This\ 
+   workflow in crowdsourcing platforms presents several inherent issues that need to\ 
+   be improved in order for crowdsourcing platforms to continue to grow.
 
 % paragraph on the motivation for requesters
+Requesters often utilize crowdsourcing platforms to outsource large pieces of\ 
+work to a distributed workforce to leverage the skills, time, and experience of\ 
+crowdworkers. This allows requesters to offload tasks to ultimately save themselves\ 
+time and allow them to focus on higher priority tasks. Some of the practical use\ 
+cases that requesters offload to crowdsourcing sites are bulk tasks that require\ 
+human input but take a considerable amount of time like data annotation of machine\ 
+learning and computer vision data sets which requires a large amount of accurately\ 
+labeled data to fuel deep learning algorithms. One of the primary benefits that\
+crowdsourcing platforms present requesters is that requesters are able to curate a\ 
+massive amount of tasks and distribute them amongst crowdworkers for a reasonable cost\ 
+considering the average wage for crowdworkers lingers around \$2-\$5 and hour \cite{Kaplan2018,hara2018data}.
+Many of the tasks that requesters publish on crowdsourcing sites have small rewards ranging\
+on average from a couple cents to several dollars. The low average cost of tasks in crowdsourcing\
+platforms inherently allows researchers to publish a large number of tasks which also\
+simultaneously benefits crowdworkers and crowdsourcing platforms by increasing the volume\
+of work available. Some of the issues that exist for requesters in crowdsourcing platforms\
+are the amount of time it takes to curate tasks, the amount of time it takes to review and\
+approve tasks completed by crowdworkers, and the diversity in the quality of the work that\
+crowdworkers perform.
 
 % paragraph on the motivation for workers
+While requesters supply crowdsourcing platforms with the volume of work, crowdworkers supply the labor.\
+The primary motivation of crowdworkers discovered empirically as apart of a study in 2018 by\
+a team of crowdsourcing researchers was to earn money \cite{Kaplan2018}. The distributed workforce\
+of crowdworkers complete tasks all over the world with a wide range of skillsets and experience\
+while providing human intelligence to complete work published by requesters. The researchers
+who performed the survey on crowdsourcing workers in Amazon MTURK discovered that over half (61.7\%) of\
+crowdworkers were employed fulltime and 50.2\% of workers had recieved a four year education.\cite{Kaplan2018}\
+This data shows that many of the crowdworkers don't rely on their crowdsourcing work as a\
+primary source of income and that many crowdworkers are formally educated. However, since\
+many crowdworkers aren't reliant on crowdsourcing platforms as their primary source of income\
+this suggests that quality will be a lower priority for crowdworkers in exchange for efficiency\
+as the repercussions for low quality work have much less severe implications than they would be\
+for low quality work with their full-time employers.
 
+With the primary motivation of crowdworkers regard the wage they receive from crowdsourcing\
+platforms, efficiency is imperative and many of the crowdworkers' interactions with\
+crowdsourcing platforms will be guided by the overarching goal of making as much money\
+as possible as efficiently as possible. Some of the issues that crowdworkers have with\
+crowdsourcing platforms regard the subjectiveness of quality by requesters which leads
+to the rejection of completed work by workers not being accepted by requesters, running out of discoverable\
+tasks to work on, and context switching between dissimilar tasks \cite{allahbakhsh2013quality,Kaplan2018}.
 % outline problems with the relationship between requesters and workers
+
+
 \subsubsection{Existing Tools}
 Provide context on existing tools in the crowdsourcing ecosystem
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -109,21 +109,5 @@ Sihem Amer-Yahia, Eric Gaussier, Vincent Leroy, Julien Pilourdault, Ria
 A.~G. Reference, Magic Man, and Cool Cat.
 \newblock {T}he {T}itle of a {GOOD} {R}eference.
 \newblock \emph{The Journal of Referency-Goodness}, pages 1--1000, 2009.
-
-\bibitem[Hara et~al.(2018)Hara, Adams, Milland, Savage, Callison-Burch, and
-  Bigham]{hara2018data}
-Kotaro Hara, Abigail Adams, Kristy Milland, Saiph Savage, Chris Callison-Burch,
-  and Jeffrey~P Bigham.
-\newblock A data-driven analysis of workers' earnings on amazon mechanical
-  turk.
-\newblock In \emph{Proceedings of the 2018 CHI Conference on Human Factors in
-  Computing Systems}, page 449. ACM, 2018.
-
-\bibitem[Kuek et~al.(2015)Kuek, Paradi-Guilford, Fayomi, Imaizumi, Ipeirotis,
-  Pina, and Singh]{kuek2015global}
-Siou~Chew Kuek, Cecilia Paradi-Guilford, Toks Fayomi, Saori Imaizumi, Panos
-  Ipeirotis, Patricia Pina, and Manpreet Singh.
-\newblock The global opportunity in online outsourcing.
-\newblock 2015.
 
 \end{thebibliography}

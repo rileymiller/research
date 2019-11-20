@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  19 NOV 2019 22:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  19 NOV 2019 20:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -22,9 +22,9 @@ File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis.sty
+) (./csm-thesis.sty
 Package: csm-thesis 2011/11/12 v1.0 .dtx csm-thesis file
- (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-sanity.sty) (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-environments.sty
+ (./csm-thesis-sanity.sty) (./csm-thesis-environments.sty
 \c@csm@abstract@words=\count88
 \c@csm@longtable@pages=\count89
 \c@csm@longtable@startpage=\count90
@@ -32,7 +32,7 @@ Package: csm-thesis 2011/11/12 v1.0 .dtx csm-thesis file
 \temp@output@box=\box27
 \csm@temp@header=\box28
 \c@csm@sideways@depth=\count92
-) (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-title.sty (/usr/local/texlive/2019/texmf-dist/tex/latex/textcase/textcase.sty
+) (./csm-thesis-title.sty (/usr/local/texlive/2019/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 )
 \temp@box=\box29
@@ -55,7 +55,7 @@ Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 \@titlewidth@flex=\skip45
 \@titlewidth=\skip46
 \temp@pdftitle@text=\toks15
-) (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-lists.sty
+) (./csm-thesis-lists.sty
 \c@csm@list@i=\count97
 \c@csm@list@j=\count98
 \c@csm@list@k=\count99
@@ -81,7 +81,7 @@ Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 \csm@contentsline@findkeylength@boxA=\box35
 \csm@contentsline@findkeylength@boxB=\box36
 \csm@contentsline@findkeylength@length=\skip49
-) (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-sections.sty
+) (./csm-thesis-sections.sty
 \csm@temp@box=\box37
 \c@chapter=\count114
 \c@appendix=\count115
@@ -158,12 +158,12 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924.
 )
 \c@csm@symbol@symbolnote=\count130
 \c@csm@symbol@numberednote=\count131
- (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-compat.sty
+ (./csm-thesis-compat.sty
 \c@csm@multibib@job=\count132
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (/Users/rileymiller/code/research/csm-thesis-minimal/csm-thesis-encoding.sty
+) (./csm-thesis-encoding.sty
 \c@csm@encoding@count=\count133
 )) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
@@ -429,7 +429,7 @@ Package caption Info: rotating package is loaded.
 \c@lotdepth=\count179
 \sf@top=\skip68
 \sf@bottom=\skip69
-) (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.aux
+) (/Users/rileymiller/code/research/research_literature/thesis-proposal.aux
 \csm@redefined@appendix@saved=\count180
 \csm@appendicies=\count181
 )
@@ -528,7 +528,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 87.
 LaTeX Info: Redefining \pageref on input line 87.
 LaTeX Info: Redefining \nameref on input line 87.
- (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.out) (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.out)
+ (/Users/rileymiller/code/research/research_literature/thesis-proposal.out) (/Users/rileymiller/code/research/research_literature/thesis-proposal.out)
 \@outlinefile=\write3
 \openout3 = `thesis-proposal.out'.
 
@@ -545,7 +545,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 103.
- [2] [2] [3] (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.toc)
+ [2] [2] [3] (/Users/rileymiller/code/research/research_literature/thesis-proposal.toc)
 \tf@toc=\write4
 \openout4 = `thesis-proposal.toc'.
 
@@ -553,61 +553,38 @@ LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
 
 Package natbib Warning: Citation `okura2017embedding' on page 1 undefined on input line 213.
 
-
-Package natbib Warning: Citation `kuek2015global' on page 1 undefined on input line 219.
-
 [1
 
 ]
-
-Package natbib Warning: Citation `Kaplan2018' on page 2 undefined on input line 259.
-
-
-Package natbib Warning: Citation `hara2018data' on page 2 undefined on input line 259.
-
-[2]
-
-Package natbib Warning: Citation `Kaplan2018' on page 3 undefined on input line 272.
-
-
-Package natbib Warning: Citation `Kaplan2018' on page 3 undefined on input line 276.
-
-
-Package natbib Warning: Citation `allahbakhsh2013quality' on page 3 undefined on input line 290.
-
-
-Package natbib Warning: Citation `Kaplan2018' on page 3 undefined on input line 290.
-
-[3]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 299.
- [4] [5] (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 231.
+ [2] [3] [4] (/Users/rileymiller/code/research/research_literature/thesis-proposal.bbl
 
-/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl:1: LaTeX Error: No counter 'csmsectionline' defined.
+/Users/rileymiller/code/research/research_literature/thesis-proposal.bbl:1: LaTeX Error: No counter 'csmsectionline' defined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \begin{thebibliography}{18}
+l.1 \begin{thebibliography}{16}
                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[6
+[5
 
 ])
 
 LaTeX Warning: It is recommended that you include the 'acknowledgments' section (environment).
 
-[7]
+[6]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 758.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 758.
-(/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.aux
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 690.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 690.
+(/Users/rileymiller/code/research/research_literature/thesis-proposal.aux
 
 Package natbib Warning: Citation(s) may have changed.
 (natbib)                Rerun to get citations correct.
@@ -615,8 +592,8 @@ Package natbib Warning: Citation(s) may have changed.
 \csm@redefined@appendix@saved=\count190
 \csm@appendicies=\count191
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 758.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 758.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 690.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 690.
 
 
 Package rerunfilecheck Warning: File `thesis-proposal.out' has changed.
@@ -626,21 +603,21 @@ Package rerunfilecheck Warning: File `thesis-proposal.out' has changed.
 Package rerunfilecheck Info: Checksums for `thesis-proposal.out':
 (rerunfilecheck)             Before: A9181BB898ECF75A3246402125FEE11B;1126
 (rerunfilecheck)             After:  1BBB1A582822369BCCB6AB183CB0C9BB;1179.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 758.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 690.
  ) 
 Here is how much of TeX's memory you used:
- 10347 strings out of 492616
- 159169 string characters out of 6129482
+ 10337 strings out of 492616
+ 158211 string characters out of 6129482
  271174 words of memory out of 5000000
- 14083 multiletter control sequences out of 15000+600000
+ 14075 multiletter control sequences out of 15000+600000
  7959 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,5n,44p,699b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,5n,44p,2557b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.pdf (12 pages, 92448 bytes).
+Output written on /Users/rileymiller/code/research/research_literature/thesis-proposal.pdf (11 pages, 87260 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 187 PDF objects out of 1000 (max. 8388607)
+ 167 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
