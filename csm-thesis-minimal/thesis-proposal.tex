@@ -334,18 +334,39 @@ task recomendation for crowdworkers, the poor user experience of crowdworkers in
 crowdsourcing platforms, and the disadvantage of crowdworkers in crowdsourcing platforms.
 
 \subsubsection{Existing Tools}
-Provide context on existing tools in the crowdsourcing ecosystem
+Crowdworkers have created a variety of user plugins and browser extensions to help out the community of\
+crowdworkers to try and improve crowdworker efficiency. Some of the more prominent plugins focus on batching\
+similar tasks to reduce the time users spend switching context between dissimilar tasks and plugins for workers\
+to rate requesters based off their interactions directly and indirectly with how the tasks are structured. I've\
+curated a list of tools used by crowdworkers from my own research and from the results of a survey of crowdworkers\
+\cite{Kaplan2018}. 
 
 %% use item for existing tools
 \begin{itemize}
-	\item This little listy went to market
-	\item This little listy stayed home
-	\item This little listy had roast beef
-	\item This little listy had none
-	\item And this little listy graduated, and went ''wee wee wee`` all the way home
+	\item \textbf{HIT Scraper:} A web scraper that helps provide additional search filters not offered as apart of the native offering for Amazon MTurk.
+	\item \textbf{MTurk Suite:} A browser extension used to combine a plethora of other crowdworker tooling.
+	\item \textbf{Turkopticon:} A web tool that allows crowdworkers to rate requesters and tasks.
+	\item \textbf{Greasemonkey/Tampermonkey:} A browser extension that allows crowdworkers to run custom scripts to help boost efficiency in crowdsourcing platforms.
+	\item \textbf{Panda Crazy:} A tool used by crowdworkers to batch similar tasks together.
+	\item \textbf{Turkmaster:} A script that monitors search pages, requesters, and can automatically accepts tasks on Amazon MTurk.
+	\item \textbf{Block Requesters:} Allows users to block and ignore requesters from search results, useful if crowdworkers have a bad experience with a requester and wish to avoid future interactions.
+	\item \textbf{Pending Earning:} Allows crowdworkers to view pending earnings for tasks that have been completed and submitted but not approved.
+	\item \textbf{MTurk HIT DataBase:} Improved interface for searching tasks that you have worked on previously, Amazon MTurk.
+	\item \textbf{MTurk Worst Case Scenario Calculator:} Tool to calculate approval rate and how many rejections it would take to drop your approval percentage to a certain threshold.
+	\item \textbf{MTurk Dashboard HIT Status links:} A tool which provides quick access to rejected and pending tasks, Amazon MTurk.
+	\item \textbf{MTurk Engine:} A browser extension that combines additional search filters with batching, as well as automated task watching for Amazon MTurk. This tool also includes a dashboard to track earnings.
 \end{itemize}
 
-\subsubsection{Approaches in Recommendation Systems}
+These tools show the desire for improvement in the crowdworker user experience from the native\
+crowdsourcing platform and a high level of community involvement and support for crowdworkers.\
+Although there is existing tooling for batching similar tasks using keywords and search filters\
+there still lacks tooling for common painpoints highlighted in the survey results collected by (Kaplan et al).\
+Some of the main areas of the crowdworker user experience that still need to be addressed are: surfacing\
+useful recommendations of tasks that are curated based off worker history, expertise, and preferences,\
+content-based analysis of the feasibility of a task, and intelligent automation based on manual user\
+search for tasks.
+
+\subsubsection{Common Approaches for Recommendation Systems}
 Provide context on traditional reccomender systems
 
 \paragraph{Collaborative Filtering}
