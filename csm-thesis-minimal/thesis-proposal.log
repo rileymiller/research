@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  19 NOV 2019 21:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  19 NOV 2019 22:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -553,16 +553,35 @@ LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
 
 Package natbib Warning: Citation `okura2017embedding' on page 1 undefined on input line 213.
 
+
+Package natbib Warning: Citation `kuek2015global' on page 1 undefined on input line 219.
+
 [1
 
 ]
 
 Package natbib Warning: Citation `Kaplan2018' on page 2 undefined on input line 259.
 
+
+Package natbib Warning: Citation `hara2018data' on page 2 undefined on input line 259.
+
 [2]
+
+Package natbib Warning: Citation `Kaplan2018' on page 3 undefined on input line 272.
+
+
+Package natbib Warning: Citation `Kaplan2018' on page 3 undefined on input line 276.
+
+
+Package natbib Warning: Citation `allahbakhsh2013quality' on page 3 undefined on input line 290.
+
+
+Package natbib Warning: Citation `Kaplan2018' on page 3 undefined on input line 290.
+
+[3]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 278.
- [3] [4] (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 299.
+ [4] [5] (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
 
 /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl:1: LaTeX Error: No counter 'csmsectionline' defined.
 
@@ -570,24 +589,24 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \begin{thebibliography}{16}
+l.1 \begin{thebibliography}{18}
                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[5
+[6
 
 ])
 
 LaTeX Warning: It is recommended that you include the 'acknowledgments' section (environment).
 
-[6]
+[7]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 737.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 737.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 758.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 758.
 (/Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.aux
 
 Package natbib Warning: Citation(s) may have changed.
@@ -596,8 +615,8 @@ Package natbib Warning: Citation(s) may have changed.
 \csm@redefined@appendix@saved=\count190
 \csm@appendicies=\count191
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 737.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 737.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 758.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 758.
 
 
 Package rerunfilecheck Warning: File `thesis-proposal.out' has changed.
@@ -607,21 +626,21 @@ Package rerunfilecheck Warning: File `thesis-proposal.out' has changed.
 Package rerunfilecheck Info: Checksums for `thesis-proposal.out':
 (rerunfilecheck)             Before: A9181BB898ECF75A3246402125FEE11B;1126
 (rerunfilecheck)             After:  1BBB1A582822369BCCB6AB183CB0C9BB;1179.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 737.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 758.
  ) 
 Here is how much of TeX's memory you used:
- 10336 strings out of 492616
- 158960 string characters out of 6129482
+ 10347 strings out of 492616
+ 159169 string characters out of 6129482
  271174 words of memory out of 5000000
- 14075 multiletter control sequences out of 15000+600000
+ 14083 multiletter control sequences out of 15000+600000
  7959 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,5n,44p,699b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.pdf (11 pages, 89165 bytes).
+Output written on /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.pdf (12 pages, 92448 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 167 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
+ 194 PDF objects out of 1000 (max. 8388607)
+ 173 compressed objects within 2 object streams
+ 50 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
