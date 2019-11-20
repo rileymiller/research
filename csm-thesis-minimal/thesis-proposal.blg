@@ -6,45 +6,46 @@ Database file #1: thesis.bib
 Warning--there's a number but no volume in linden2003amazon
 Warning--empty journal in Kaplan2018
 Warning--empty booktitle in amer2016task
-You've used 16 entries,
+Warning--empty journal in kuek2015global
+You've used 18 entries,
             2481 wiz_defined-function locations,
-            651 strings with 7759 characters,
-and the built_in function-call counts, 7331 in all, are:
-= -- 609
-> -- 410
-< -- 10
-+ -- 154
-- -- 122
-* -- 556
-:= -- 1129
-add.period$ -- 52
-call.type$ -- 16
-change.case$ -- 31
-chr.to.int$ -- 16
-cite$ -- 19
-duplicate$ -- 381
-empty$ -- 654
-format.name$ -- 142
-if$ -- 1597
+            660 strings with 8261 characters,
+and the built_in function-call counts, 8274 in all, are:
+= -- 671
+> -- 494
+< -- 11
++ -- 184
+- -- 148
+* -- 635
+:= -- 1289
+add.period$ -- 59
+call.type$ -- 18
+change.case$ -- 35
+chr.to.int$ -- 18
+cite$ -- 22
+duplicate$ -- 428
+empty$ -- 724
+format.name$ -- 170
+if$ -- 1795
 int.to.chr$ -- 1
-int.to.str$ -- 17
-missing$ -- 17
-newline$ -- 88
-num.names$ -- 48
-pop$ -- 164
+int.to.str$ -- 19
+missing$ -- 19
+newline$ -- 98
+num.names$ -- 54
+pop$ -- 188
 preamble$ -- 1
-purify$ -- 16
+purify$ -- 18
 quote$ -- 0
-skip$ -- 237
+skip$ -- 264
 stack$ -- 0
-substring$ -- 358
-swap$ -- 96
-text.length$ -- 6
+substring$ -- 368
+swap$ -- 107
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 109
-warning$ -- 3
-while$ -- 59
+type$ -- 123
+warning$ -- 4
+while$ -- 64
 width$ -- 0
-write$ -- 213
-(There were 3 warnings)
+write$ -- 238
+(There were 4 warnings)
