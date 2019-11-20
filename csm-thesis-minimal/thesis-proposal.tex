@@ -367,10 +367,33 @@ content-based analysis of the feasibility of a task, and intelligent automation 
 search for tasks.
 
 \subsubsection{Common Approaches for Recommendation Systems}
-Provide context on traditional reccomender systems
+Recommendation systems have been around since the early days of the internet and several of the techniques\
+used early on are still heavily relied on today and in some cases their general principles are utilized\
+to develop intelligent approaches in conjunction with traditional methods. The three primary methods that
+the majority of recommendation systems are based off of are collaborative filtering, content based, and\
+hybrid approaches. \cite{portugal2018use}
 
 \paragraph{Collaborative Filtering}
-
+Collaborative filtering is the most popular recommendation system in use historically and today. This approach\
+pertains to considering user data when processing information for recommendations, or in simpler terms, making\
+predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
+traction around the advent of e-commerce websites. An example of how this approach is applied is that for an \
+e-commerce site, after items on the site are purchased by customers, many times the customer who purchased \
+the item will be prompted to rate the product or to leave a review. You probably recognize this pattern from\
+any time you buy something off Amazon and you get an email a couple of days after your package arrives asking\
+you how you liked the product or if you'd be willing to leave a review. Anyways, once customers start interacting\
+with items in the e-commerce store, collaborative filtering will use this data to recommend items to users\
+who are similar to the people who originally bought the item. One of the primary stumbling blocks with this\
+approach is the cold-start problem where the recommendation system isn't able to surface relevant recommendations\
+at the inception of the system since there are a limited number of user interactions with items and thus the\
+quality and relevancy of the recommendations will be poor. \cite{wang2017dynamic} Collaborative filtering is also only effective on\
+data that has already existed on the service and is unable to make recommendations for new items until the new\
+items are interacted with. One thing that is interesting to note is that this idea of collaborative filtering\
+can be used in conjunction with deep learning techniques to create intelligent hybrid recommendation systems based off\
+of basic collaborative filtering principles. One example of this is in a study in which researchers created a model\
+using a technique that they called collaborative deep learning (CDL) which leveraged a hierarchical Bayesian model\
+which combined collaborative filtering and the content based approach using deep learning to create better recommendations\
+. \cite{Wang2015}
 \paragraph{Content Based}
 
 \subsection{Related Work}
@@ -378,7 +401,7 @@ related work on crowdsourcing platforms and recommender systems. Think about wha
 
 \subsection{Proposed Work}
 % \label{sec:important-section}
-Explain that Dr. Yue will be collecting the data needed for reccomendation system.
+Explain that Dr. Yue will be collecting the data needed for recommendation system.
 \subsubsection{Dataset}
 
 Review ~5 different types of recommendation systems. Focus more on what type of algorithm/approach I should consider. Itemize potential approaches. Existing approaches have open data sets. Could explore data set for algorithms used in proposed work. Try corresponding approach. Talk about how the team is collecting the data and how that will tie to the crowdsourcing platform. Speak on how I will adapt or create a new algorithm based on the nature of the crowdsourcing platform. More concrete from a technical perspective. Talk about what types of metric I plan on using. Consider all of the metrics discussed with Dr. Yue.
