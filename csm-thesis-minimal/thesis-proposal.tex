@@ -407,7 +407,15 @@ any type of collaborative filtering approach forseeably ineffective.
 
 Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. Their approach\
 was predicated on using matrix factorization on crowdworker performance history as well as their task searching history\
-to surface relevant reccomendations to crowdworkers.
+to surface relevant reccomendations to crowdworkers. Another set of researchers applied two different techniques based on \
+implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
+of the downfalls of their research was that they only used 24 users to evaluate their approach.
+
+From my initial investigation, I haven't found any research that is directly related to my approach of extracting necessary\
+skills from tasks using text classification. The primary targeted application of my research is to eventually create\
+a content based recommendation system that will match a user to a task in a crowdsourcing platform based on implicit skills\
+the user has obtained (based on previously completed tasks and user provided characteristics) and the required skills that\
+are needed to complete a task.
 
 \subsection{Text Classification of Crowdsourcing Tasks}
 Interesting related work in the field of text classification of tasks in crowdsourcing platforms can be found in an analysis\
