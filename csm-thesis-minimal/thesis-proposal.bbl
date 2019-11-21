@@ -1,0 +1,89 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Kuek et~al.(2015)Kuek, Paradi-Guilford, Fayomi, Imaizumi, Ipeirotis,
+  Pina, and Singh]{kuek2015global}
+Siou~Chew Kuek, Cecilia Paradi-Guilford, Toks Fayomi, Saori Imaizumi, Panos
+  Ipeirotis, Patricia Pina, and Manpreet Singh.
+\newblock The global opportunity in online outsourcing.
+\newblock 2015.
+
+\bibitem[Kaplan et~al.(2018)Kaplan, Saito, Hara, and Bigham]{Kaplan2018}
+Toni Kaplan, Susumu Saito, Kotaro Hara, and Jeffrey~P Bigham.
+\newblock Striving to earn more: a survey of work strategies and tool use among
+  crowd workers.
+\newblock 2018.
+
+\bibitem[Hara et~al.(2018)Hara, Adams, Milland, Savage, Callison-Burch, and
+  Bigham]{hara2018data}
+Kotaro Hara, Abigail Adams, Kristy Milland, Saiph Savage, Chris Callison-Burch,
+  and Jeffrey~P Bigham.
+\newblock A data-driven analysis of workers' earnings on amazon mechanical
+  turk.
+\newblock In \emph{Proceedings of the 2018 CHI Conference on Human Factors in
+  Computing Systems}, page 449. ACM, 2018.
+
+\bibitem[Allahbakhsh et~al.(2013)Allahbakhsh, Benatallah, Ignjatovic,
+  Motahari-Nezhad, Bertino, and Dustdar]{allahbakhsh2013quality}
+Mohammad Allahbakhsh, Boualem Benatallah, Aleksandar Ignjatovic, Hamid~Reza
+  Motahari-Nezhad, Elisa Bertino, and Schahram Dustdar.
+\newblock Quality control in crowdsourcing systems: Issues and directions.
+\newblock \emph{IEEE Internet Computing}, 17\penalty0 (2):\penalty0 76--81,
+  2013.
+
+\bibitem[Wang et~al.(2017)Wang, Yu, Ren, Tao, Zhang, Yu, and
+  Wang]{wang2017dynamic}
+Xuejian Wang, Lantao Yu, Kan Ren, Guanyu Tao, Weinan Zhang, Yong Yu, and Jun
+  Wang.
+\newblock Dynamic attention deep model for article recommendation by learning
+  human editors' demonstration.
+\newblock In \emph{Proceedings of the 23rd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 2051--2059. ACM, 2017.
+
+\bibitem[Ambati et~al.(2011)Ambati, Vogel, and Carbonell]{ambati2011towards}
+Vamsi Ambati, Stephan Vogel, and Jaime Carbonell.
+\newblock Towards task recommendation in micro-task markets.
+\newblock In \emph{Workshops at the Twenty-Fifth AAAI Conference on Artificial
+  Intelligence}, 2011.
+
+\bibitem[Difallah et~al.(2015)Difallah, Catasta, Demartini, Ipeirotis, and
+  Cudr{\'e}-Mauroux]{difallah2015dynamics}
+Djellel~Eddine Difallah, Michele Catasta, Gianluca Demartini, Panagiotis~G
+  Ipeirotis, and Philippe Cudr{\'e}-Mauroux.
+\newblock The dynamics of micro-task crowdsourcing: The case of amazon mturk.
+\newblock In \emph{Proceedings of the 24th international conference on world
+  wide web}, pages 238--247. International World Wide Web Conferences Steering
+  Committee, 2015.
+
+\bibitem[Portugal et~al.(2018)Portugal, Alencar, and Cowan]{portugal2018use}
+Ivens Portugal, Paulo Alencar, and Donald Cowan.
+\newblock The use of machine learning algorithms in recommender systems: A
+  systematic review.
+\newblock \emph{Expert Systems with Applications}, 97:\penalty0 205--227, 2018.
+
+\bibitem[Wang and Yeung(2015)]{Wang2015}
+H.~Wang~N. Wang and D.-Y Yeung.
+\newblock Collaborative deep learning for recommender systems.
+\newblock \emph{Proc. KDD}, pages 1235--1244, 2015.
+
+\bibitem[Pazzani and Billsus(2007)]{pazzani2007content}
+Michael~J Pazzani and Daniel Billsus.
+\newblock Content-based recommendation systems.
+\newblock In \emph{The adaptive web}, pages 325--341. Springer, 2007.
+
+\bibitem[Okura et~al.(2017)Okura, Tagami, Ono, and Tajima]{okura2017embedding}
+Shumpei Okura, Yukihiro Tagami, Shingo Ono, and Akira Tajima.
+\newblock Embedding-based news recommendation for millions of users.
+\newblock In \emph{Proceedings of the 23rd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 1933--1942. ACM, 2017.
+
+\bibitem[Aggarwal and Zhai(2012)]{aggarwal2012survey}
+Charu~C Aggarwal and ChengXiang Zhai.
+\newblock A survey of text classification algorithms.
+\newblock In \emph{Mining text data}, pages 163--222. Springer, 2012.
+
+\end{thebibliography}

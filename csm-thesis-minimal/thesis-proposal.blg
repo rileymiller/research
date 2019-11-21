@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: thesis-proposal.aux
+The style file: unsrtnat.bst
+Database file #1: thesis-proposal.bib
+Warning--empty journal in kuek2015global
+Warning--empty journal in Kaplan2018
+You've used 12 entries,
+            2481 wiz_defined-function locations,
+            622 strings with 7038 characters,
+and the built_in function-call counts, 5990 in all, are:
+= -- 507
+> -- 342
+< -- 10
++ -- 126
+- -- 102
+* -- 442
+:= -- 907
+add.period$ -- 42
+call.type$ -- 12
+change.case$ -- 24
+chr.to.int$ -- 12
+cite$ -- 14
+duplicate$ -- 316
+empty$ -- 517
+format.name$ -- 120
+if$ -- 1330
+int.to.chr$ -- 1
+int.to.str$ -- 13
+missing$ -- 12
+newline$ -- 68
+num.names$ -- 36
+pop$ -- 131
+preamble$ -- 1
+purify$ -- 12
+quote$ -- 0
+skip$ -- 210
+stack$ -- 0
+substring$ -- 286
+swap$ -- 94
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 84
+warning$ -- 2
+while$ -- 46
+width$ -- 0
+write$ -- 164
+(There were 2 warnings)
