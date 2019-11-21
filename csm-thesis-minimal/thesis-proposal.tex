@@ -407,11 +407,11 @@ crowd workers in our use case.
 
 Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
 and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
-to address the cold start problem and the sparseness of interaction interaction of similar users on similar tasks. One example of\
+to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
 this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
-media corporations like Buzzfeed. The researchers (Wang et al.) leverage a character level neual network langauge model (a CNN) to perform\
+media corporations like Buzzfeed. The researchers (Wang et al.) of the study leverage a character level neual network langauge model (a CNN) to perform\
 low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
-platforms are constantly getting outdated and after a worker completes a task, the specific task is resolved and will not be reused, making
+platforms are constantly getting outdated after a worker completes a task, the specific task is resolved and will not be reused, making
 any type of collaborative filtering approach forseeably ineffective.
 
 Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. Their approach\
@@ -443,10 +443,10 @@ the majority of recommendation systems are based off of are collaborative filter
 approaches. \cite{portugal2018use}
 
 \subsubsection{Collaborative Filtering}
-Collaborative filtering is the most popular recommendation system in use historically and today. This approach\
-pertains to considering user data when processing information for recommendations, or in simpler terms, making\
+Collaborative filtering is the most popular recommendation system historically and today. This approach\
+pertains to considering similar user data when processing information for recommendations, or in simpler terms, making\
 predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
-traction around the advent of e-commerce websites. An example of how this approach is applied is that for an \
+traction around the advent of e-commerce websites. An example of this approach can be applied to an arbritary\
 e-commerce site, after items on the site are purchased by customers, many times the customer who purchased \
 the item will be prompted to rate the product or to leave a review. You probably recognize this pattern from\
 any time you buy something off Amazon and you get an email a couple of days after your package arrives asking\
@@ -519,7 +519,7 @@ save users time from context-switching.
 \subsection{Potential Algorithms}
 Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in\
 crowdsourcing platforms. These algorithms will be explored due to their common usage to solve text classification \
-problems as outline in a survey of text classification techniques \cite{aggarwal2012survey}.
+problems as outlined in a survey of common text classification techniques \cite{aggarwal2012survey}.
 \begin{itemize}
 	\item \textbf{Decision Trees}
 	\item \textbf{Rule-based Classifiers}
@@ -536,7 +536,7 @@ from tasks and compare my results accordingly.
 As explained in the "Research Focus" section above, Dr. Yue has created a team of researchers who will be handling\
 the development of a client side browser extension to web scrape crowdsourcing platforms for task data as well as\
 to track user profile information and user interactions with the crowdsourcing sites. We will be able to quickly web scrape\
-crowdsourcing sites to gather enough data for the text classification I plan to perform on crowdsource tasks. But we \
+crowdsourcing sites to gather enough data for the text classification I plan to perform on crowdsource tasks. However, we \
 are envisioning that it will\
 take considerably more time to gather enough user data to develop a machine learning recommendation system which\
 utilizes content based recommendations.
@@ -567,7 +567,7 @@ data can be broked down into two phases:
 
 \textbf{Survey:} I plan on administering a survey to crowd workers on Amazon MTurk to gather data about common skills that are required\
 to complete HITs. At a high level I plan on collecting worker demographic data to analyze the difference in reported skills across\
-different types of workers with different backgrounds and differing qualifications and number of completed tasks. Another facet of the\
+different types of workers who have different backgrounds, qualifications, and amounts of completed tasks. Another facet of the\
 survey will include giving crowd workers a small subset of common tasks from some of the most commonly occuring categories of HITs\
 on MTURK \cite{difallah2015dynamics}:
 \begin{itemize}
@@ -583,7 +583,7 @@ and asking them to list common skills that are required to solve the sample task
 where I will prompt crowd workers to list an \emph{n} number of skills for each general category of tasks.
 
 \textbf{Annotation:} Then after curating a list of skills from the survey, I plan on having crowd workers annotate my dataset of tasks\
-with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated from the survey.
+with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated by the survey.
 
 After I have collected and annotated the dataset of tasks,\
 I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
@@ -592,10 +592,10 @@ training set. After the models are trained, I plan on testing the supervised lea
 generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
 of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
 using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
-supervised learning techniques.
+machine learning techniques.
 
 \paragraph{Unsupervised Learning}
-In addition to the supervised learning techniques outlined above I also plan on experimenting with several unsupervised\
+In addition to the supervised learning techniques outlined above, I also plan on experimenting with several unsupervised\
 learning techniques for comparison's sake, specifically nearest neighbor and clustering approaches. I plan on using the same infrastructure,\
 hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
 in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
@@ -608,9 +608,9 @@ to successfully defend my thesis in April 2020.
 	\item \textbf{December 9:} Address Thesis Proposal feedback, receive data set from Dr. Yue, Create survey for surveying workers on common skills for common tasks
 	\item \textbf{December 16:} Tasks created and published for skills survey on Amazon MTurk
 	\item \textbf{December 23:} Approving skills surveys info, storing skills survey info in database, begin analysis on skills database
-	\item \textbf{January 6:} Tasks created and published for annotation on crowdsourcing site (Amazon MTurk or Figure 8) Apply to Graduate
+	\item \textbf{January 6:} Tasks created and published for annotation on crowdsourcing site (Amazon MTurk or Figure 8), Apply to Graduate
 	\item \textbf{January 13:} Approve, store, and analayze completed annotation data
-	\item \textbf{January 20: } Approve, store, and analayze completed annotation data. Begin applying shallow learning techniques to annotated dataset.
+	\item \textbf{January 20:} Approve, store, and analayze completed annotation data. Begin applying shallow learning techniques to annotated dataset.
 	\item \textbf{January 27:} Developed and tested shallow learning techniques (Decision Trees, Rule-based, SVM, Bayesian). Begin applying deep learning techniques to annotated dataset.
 	\item \textbf{February 10:} Developed and test deep learning techniques (LSTM RNN and CNN approaches), begin writing paper for conference submission
 	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
@@ -626,7 +626,7 @@ to successfully defend my thesis in April 2020.
 \subsection{Further Applications}
 In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
 recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
-inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in crowdsourcing\
+inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in a crowdsourcing\
 platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
 be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
 from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
@@ -636,9 +636,9 @@ skill inference of tasks in the crowdsourcing platform.
 In order to deliver high quality research I request the following meeting cadence with the thesis\
 committee to gather feedback and correction on my approach as needed:
 \begin{itemize}
-	\item \textbf{Dr. Chuan Yue (Thesis Advisor): } Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
+	\item \textbf{Dr. Chuan Yue (Thesis Advisor):} Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
 	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
-	\item \textbf{Dr. Hua Wang (Committee Memer): } Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+	\item \textbf{Dr. Hua Wang (Committee Memer):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
 \end{itemize}
 % \begin{eqnarray}
 % 	\label{eq:importance}
