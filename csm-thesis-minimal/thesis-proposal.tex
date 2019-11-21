@@ -329,13 +329,29 @@ task selection and to intelligently surface relevant tasks that crowdworkers bel
 
 \subsection{Goal}
 %% This section should explicitly state goals of research
+I plan to create an algorithm that determines the skills required to complete a crowdsource task to
+improve crowdworker efficiency through intelligent batching and content based recommendations.
 
 \subsection{Approach}
-After digging into crowdsourcing platforms, I will be focusing my research on improving the efficiency\
-of crowdworkers in crowdsourcing platforms. I believe this is an important facet of the crowdsourcing\
-ecosystem which would greatly benefit crowdsourcing platforms due to the lack of tooling surrounding\
-task recomendation for crowdworkers, the poor user experience of crowdworkers in the current state of\
-crowdsourcing platforms, and the disadvantage of crowdworkers in crowdsourcing platforms.
+I will be focusing my research on improving the efficiency of crowdworkers in crowdsourcing\
+platforms by using text classification of crowdsource tasks to determine from the raw contents\
+and metadata of the task, what the necessary skills to complete the task would be. This categorization will \ 
+lend itself to be leveraged in an approach I have defined as Intelligent Batching. The concept\ 
+of intelligent batching regards the extraction of necessary skills from crowdsource tasks to cluster other similar\ 
+tasks that require similar skills to complete the respective task in an effort to reduce the time it takes to find\
+relevant tasks by clustering similar tasks together and to also reduce the number of rejected\
+task by sufacing the necessary skills to complete a given task to crowdworkers so they're aware\
+of whether or not they actually posses the skills necessary to successfully complete a task. I believe\
+performing research on improving crowdworker efficiency is imperative to the health of crowdsourcing\
+platforms as a whole because by improving the efficiency of crowdworkers the crowd will be able\
+to generate higher throughput of tasks which helps requesters by reducing the amount of time it\
+takes for the tasks that they publish to get completed as well as helping crowdworkers make more\
+money through their newfound efficiency. Specifically regarding my research, by using intelligent batching,\
+workers will reduce the amount of time it takes them to find and complete tasks and will also improve\
+the quality of work that is done through the surfacing of the required skills it takes to complete\
+a task. With explicit information on the required skills that are needed to complete a task,\
+workers can make intelligent and efficient decisions on whether or not they engage with a task\
+depending on whether or not they possess the necessary skillset.
 
 \chapter{Related Work}
 
@@ -712,7 +728,8 @@ to successfully defend my thesis in April 2020.
 %%% Parts of a Thesis - Back Matter - References Cited (required)
 
 % Use "Advanced" Bibliography Techniques
-\bibliography{thesis}
+\bibliography{thesis-proposal.bib}
+% \addbibresource{thesis-proposal.bib}
 %\printbibliography % <-- For using biblatex instead of natbib or the built-in bibliography utility
 
 %%% Parts of a Thesis - Back Matter - Selected Bibliography (optional)
