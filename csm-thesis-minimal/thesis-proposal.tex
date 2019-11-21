@@ -69,7 +69,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-\title{Thesis Proposal: Task Classification and Recommendation for Crowdworkers}
+\title{Thesis Proposal: Micro-task Skill Inference for Crowdworkers}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -111,8 +111,19 @@
 %%% Parts of a Thesis - Front Matter - Abstract (required)
 
 \begin{abstract}
-
-TODO: Adding after draft of proposal
+In this document I propose an approach to infer skills that are required to complete a task in a crowdsourcing\
+platform. In addition to the approach, I provide relevant background information on crowdsourcing platforms, the\
+goal of my research of improving crowdworker efficiency, as well as my approach to improve crowdworker efficiency\
+using skill inference of micro-tasks in crowdsourcing platforms. I also provide background on related work on\
+improving crowdworker efficiency that was derived from my research literature. Specifically, I highlight\
+existing tools that crowdworkers use to be more efficient, task recommendation systems with\
+common approaches, in addition to related work on the text classification and categorization of crowdsourcing tasks. Next, I\
+provide an overview of the proposed work for my thesis development in which I touch on potential approaches to improve\
+crowdworker efficiency, what my specific research focus will be, potential algorithms that I will develop to execute my\
+approach, the dataset I will use to train machine learning models to perform skill inference from micro-tasks, the metrics\
+and methodology I will use to train and test the algorithms I develop, and an overview of the experiments I plan to perform\
+to create and evaluate the implementations of my research approach. Finally, I describe an outline of my project timeline,\
+further applications of my research, as well as a request for continued support from the committee during the development of my thesis.
 \end{abstract}
 
 \newpage
@@ -335,7 +346,7 @@ improve crowdworker efficiency through intelligent batching and content based re
 \subsection{Approach}
 I will be focusing my research on improving the efficiency of crowdworkers in crowdsourcing\
 platforms by using text classification of crowdsource tasks to determine from the raw contents\
-and metadata of the task, what the necessary skills to complete the task would be. This categorization will \ 
+and metadata of tasks, what the necessary skills to complete the task would be. This categorization will \ 
 lend itself to be leveraged in an approach I have defined as Intelligent Batching. The concept\ 
 of intelligent batching regards the extraction of necessary skills from crowdsource tasks to cluster other similar\ 
 tasks that require similar skills to complete the respective task in an effort to reduce the time it takes to find\
@@ -614,6 +625,15 @@ to successfully defend my thesis in April 2020.
 	\item \textbf{May 7:} Graduate
 \end{itemize}
 
+\subsection{Further Applications}
+In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
+recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
+inference method I will be researching I will require a large dataset of crowdworker interactions with tasks in crowdsourcing\
+platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
+be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
+from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
+and then match a user to tasks that they would be able to complete and that were relevant to the calculated user skillset based on\
+skill inference of tasks in the crowdsourcing platform.
 \subsection{Support}
 In order to deliver high quality research I request the following meeting cadence with the thesis\
 committee to gather feedback and correction on my approach as needed:
