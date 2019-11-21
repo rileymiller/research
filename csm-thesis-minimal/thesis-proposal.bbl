@@ -1,0 +1,134 @@
+\begin{thebibliography}{19}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson
+  G. Corrado W. Chai M. Ispir R. Anil Z. Haque L. Hong V. Jain
+  X.~Liu(2016)]{Cheng2016}
+H.~Shah H.~Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson
+  G. Corrado W. Chai M. Ispir R. Anil Z. Haque L. Hong V. Jain X.~Liu.
+\newblock Wide \& deep learning for recommender systems.
+\newblock In \emph{Proceedings of the 1st Workshop on Deep Learning for
+  Recommender Systems}, September 2016.
+
+\bibitem[Sun et~al.(2014)Sun, Rampalli, Yang, and Doan]{sun2014chimera}
+Chong Sun, Narasimhan Rampalli, Frank Yang, and AnHai Doan.
+\newblock Chimera: Large-scale classification using machine learning, rules,
+  and crowdsourcing.
+\newblock \emph{Proceedings of the VLDB Endowment}, 7\penalty0 (13):\penalty0
+  1529--1540, 2014.
+
+\bibitem[Allahbakhsh et~al.(2013)Allahbakhsh, Benatallah, Ignjatovic,
+  Motahari-Nezhad, Bertino, and Dustdar]{allahbakhsh2013quality}
+Mohammad Allahbakhsh, Boualem Benatallah, Aleksandar Ignjatovic, Hamid~Reza
+  Motahari-Nezhad, Elisa Bertino, and Schahram Dustdar.
+\newblock Quality control in crowdsourcing systems: Issues and directions.
+\newblock \emph{IEEE Internet Computing}, 17\penalty0 (2):\penalty0 76--81,
+  2013.
+
+\bibitem[Elkahky et~al.(2015)Elkahky, Song, and He]{elkahky2015multi}
+Ali~Mamdouh Elkahky, Yang Song, and Xiaodong He.
+\newblock A multi-view deep learning approach for cross domain user modeling in
+  recommendation systems.
+\newblock In \emph{Proceedings of the 24th International Conference on World
+  Wide Web}, pages 278--288. International World Wide Web Conferences Steering
+  Committee, 2015.
+
+\bibitem[Ghorbani and Zou(2019)]{Ghorbani2019DataSE}
+Amirata Ghorbani and James~Y. Zou.
+\newblock Data shapley: Equitable valuation of data for machine learning.
+\newblock In \emph{ICML}, 2019.
+
+\bibitem[Portugal et~al.(2018)Portugal, Alencar, and Cowan]{portugal2018use}
+Ivens Portugal, Paulo Alencar, and Donald Cowan.
+\newblock The use of machine learning algorithms in recommender systems: A
+  systematic review.
+\newblock \emph{Expert Systems with Applications}, 97:\penalty0 205--227, 2018.
+
+\bibitem[De~Gemmis et~al.(2009)De~Gemmis, Iaquinta, Lops, Musto, Narducci, and
+  Semeraro]{de2009preference}
+Marco De~Gemmis, Leo Iaquinta, Pasquale Lops, Cataldo Musto, Fedelucio
+  Narducci, and Giovanni Semeraro.
+\newblock Preference learning in recommender systems.
+\newblock \emph{Preference Learning}, 41:\penalty0 41--55, 2009.
+
+\bibitem[Wang and Yeung(2015)]{Wang2015}
+H.~Wang~N. Wang and D.-Y Yeung.
+\newblock Collaborative deep learning for recommender systems.
+\newblock \emph{Proc. KDD}, pages 1235--1244, 2015.
+
+\bibitem[Chollet(2018)]{DeepLearningWithPython:book_typical}
+Francois Chollet.
+\newblock \emph{Deep Learning With Python}.
+\newblock Manning, Shelter Island, NY, 2018.
+
+\bibitem[Linden et~al.(2003)Linden, Smith, and York]{linden2003amazon}
+Greg Linden, Brent Smith, and Jeremy York.
+\newblock Amazon. com recommendations: Item-to-item collaborative filtering.
+\newblock \emph{IEEE Internet computing}, \penalty0 (1):\penalty0 76--80, 2003.
+
+\bibitem[Okura et~al.(2017)Okura, Tagami, Ono, and Tajima]{okura2017embedding}
+Shumpei Okura, Yukihiro Tagami, Shingo Ono, and Akira Tajima.
+\newblock Embedding-based news recommendation for millions of users.
+\newblock In \emph{Proceedings of the 23rd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 1933--1942. ACM, 2017.
+
+\bibitem[Wang et~al.(2017)Wang, Yu, Ren, Tao, Zhang, Yu, and
+  Wang]{wang2017dynamic}
+Xuejian Wang, Lantao Yu, Kan Ren, Guanyu Tao, Weinan Zhang, Yong Yu, and Jun
+  Wang.
+\newblock Dynamic attention deep model for article recommendation by learning
+  human editors' demonstration.
+\newblock In \emph{Proceedings of the 23rd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 2051--2059. ACM, 2017.
+
+\bibitem[Wu et~al.(2016)Wu, Ren, Yu, Chen, Zhang, and Zhu]{wu2016personal}
+Sai Wu, Weichao Ren, Chengchao Yu, Gang Chen, Dongxiang Zhang, and Jingbo Zhu.
+\newblock Personal recommendation using deep recurrent neural networks in
+  netease.
+\newblock In \emph{2016 IEEE 32nd International Conference on Data Engineering
+  (ICDE)}, pages 1218--1229. IEEE, 2016.
+
+\bibitem[Kaplan et~al.(2018)Kaplan, Saito, Hara, and Bigham]{Kaplan2018}
+Toni Kaplan, Susumu Saito, Kotaro Hara, and Jeffrey~P Bigham.
+\newblock Striving to earn more: a survey of work strategies and tool use among
+  crowd workers.
+\newblock 2018.
+
+\bibitem[Amer-Yahia et~al.(2016)Amer-Yahia, Gaussier, Leroy, Pilourdault,
+  Borromeo, and Toyama]{amer2016task}
+Sihem Amer-Yahia, Eric Gaussier, Vincent Leroy, Julien Pilourdault, Ria
+  Borromeo, and Motomichi Toyama.
+\newblock Task composition in crowdsourcing.
+\newblock 2016.
+
+\bibitem[Pazzani and Billsus(2007)]{pazzani2007content}
+Michael~J Pazzani and Daniel Billsus.
+\newblock Content-based recommendation systems.
+\newblock In \emph{The adaptive web}, pages 325--341. Springer, 2007.
+
+\bibitem[Reference et~al.(2009)Reference, Man, and Cat]{ref:A}
+A.~G. Reference, Magic Man, and Cool Cat.
+\newblock {T}he {T}itle of a {GOOD} {R}eference.
+\newblock \emph{The Journal of Referency-Goodness}, pages 1--1000, 2009.
+
+\bibitem[Hara et~al.(2018)Hara, Adams, Milland, Savage, Callison-Burch, and
+  Bigham]{hara2018data}
+Kotaro Hara, Abigail Adams, Kristy Milland, Saiph Savage, Chris Callison-Burch,
+  and Jeffrey~P Bigham.
+\newblock A data-driven analysis of workers' earnings on amazon mechanical
+  turk.
+\newblock In \emph{Proceedings of the 2018 CHI Conference on Human Factors in
+  Computing Systems}, page 449. ACM, 2018.
+
+\bibitem[Kuek et~al.(2015)Kuek, Paradi-Guilford, Fayomi, Imaizumi, Ipeirotis,
+  Pina, and Singh]{kuek2015global}
+Siou~Chew Kuek, Cecilia Paradi-Guilford, Toks Fayomi, Saori Imaizumi, Panos
+  Ipeirotis, Patricia Pina, and Manpreet Singh.
+\newblock The global opportunity in online outsourcing.
+\newblock 2015.
+
+\end{thebibliography}

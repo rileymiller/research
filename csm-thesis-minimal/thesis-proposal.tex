@@ -408,11 +408,37 @@ which combined collaborative filtering and the content based approach using deep
 
 \subsubsection{Content Based}
 The content based approach is less commonly used than collaborative filtering but it is still a prevalent approach\
-for building recommendation systems.
+for building recommendation systems. Content based recommender systems are based on similarity of items in the \
+recommender system. These systems leverage the matching of similar items to a user profile. \cite{pazzani2007content}.\
+Content based approaches inherently don't have to deal with the cold-start problem that is common in collaborative \
+filtering recommendation systems since they don't bother with the behavior of similar users but of similar items within\
+the system. These recommendation systems are also commonly used in systems where content has frequent turnover, or\
+where data is sparse \cite{okura2017embedding}.
+
 \subsubsection{Text Classification}
+Text classification is the process of determining similarity from free text. This is a common \
+area of natural language processing research and pertains to a wide array of different applications. 
+Text classification can leverage either supervised or unsupervised techniques, providing a lot of flexibility\
+for differnet approaches. Supervised text classification techniques use labeled training data to develop models\
+that can then be used to categorize unlabeled free text. The most important piece of the supervised approach\
+to text classification is possesing a large, annotated corpus to train accurate models. Alternative to the\
+supervised approach, unsupervised learning can also be applied to text classification problems. Unsupervised learning\
+relies on discovering similarities within a dataset and grouping together similar data, this approach is typically\
+referred to as clustering. One of the beautiful things about unsupervised learning is that it doesn't rely on
+annotated training data, it will just discover similarities from the data provided. These two approaches can \ 
+be applied to improving efficiency of crowdworkers.
 
 \subsection{Research Focus}
-
+The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
+crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
+on the basis of the data that we will be able to procure from \
+crowdsourcing platforms. As apart of a subsequent faction of the grant that this research is founded on, Dr.\
+Yue' has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
+extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
+this approach are that we will be able to generate a sizeable corpus of raw text from HITs on Amazon MTurk but \
+that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
+under the time constraint of the grant to generate a collaborative filtering based recommendation system due
+to forseeable initial adoption of the plugin.
 \subsection{Potential Algorithms}
 
 % \label{sec:important-section}
