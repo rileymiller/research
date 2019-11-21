@@ -69,7 +69,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-\title{Thesis Proposal: Task Classification and Recommendation for Crowdworkers}
+\title{Thesis Proposal: Task Classification and recommendation for Crowdworkers}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -432,15 +432,45 @@ be applied to improving efficiency of crowdworkers.
 The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
 crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
 on the basis of the data that we will be able to procure from \
-crowdsourcing platforms. As apart of a subsequent faction of the grant that this research is founded on, Dr.\
-Yue' has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
-extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
-this approach are that we will be able to generate a sizeable corpus of raw text from HITs on Amazon MTurk but \
-that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
-under the time constraint of the grant to generate a collaborative filtering based recommendation system due
-to forseeable initial adoption of the plugin.
-\subsection{Potential Algorithms}
+crowdsourcing platforms. 
 
+As apart of a subsequent faction of the grant that this research is founded on, Dr.\
+Yue has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
+extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
+the browser extension are: that we will be able to generate a sizeable corpus of raw text and metadata of HITs\
+on Amazon MTurk but \
+that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
+under the time constraints of the grant to generate a collaborative filtering based recommendation\
+system due to the forseeable initial adoption of the plugin. 
+
+However, once we are able to generate the corpus\
+of tasks, we will be able to apply text classification to extract skills that are needed to perform a task and\
+once we are able generate enough user data from the browser plugin, we will be able to develop a content-based\
+recommendation system for surfacing relevant tasks in crowdsourcing platforms. 
+
+This approach will also give us\
+the ability to improve crowdworker efficiency through the intelligent batching of tasks. This will be the more\
+immediate application of my research. Using text classification\
+to determine the skills needed to perform a task, we will be able to use our algorithm to cluster similar tasks\
+and eventually queue and accept tasks with the same skill requirements which will allow crowdworkers to be able\
+to complete tasks quicker and more efficiently. Ultimately, I predict that intelligent\
+batching will reduce the amount of time that crowdworkers waste sifting through crowdsourcing platforms to find\
+tasks that would be worth doing since they would a) possess\
+the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
+save users time from context-switching.
+\subsection{Potential Algorithms}
+Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in
+crowdsourcing platforms.
+\begin{itemize}
+	\item \textbf{Decision Trees}
+	\item \textbf{Rule-based Classifiers}
+	\item \textbf{SVM Classifiers}
+	\item \textbf{Neural Network Classifiers:} Specifically LSTM RNNs and CNNs
+	\item \textbf{Bayesian Classifiers}
+	\item \textbf{Nearest Neighbor Classifiers}
+\end{itemize}
+
+I will explore the application of the algorithms above to my problem and compare my results accordingly.
 % \label{sec:important-section}
 \subsection{Dataset}
 Explain that Dr. Yue will be collecting the data needed for recommendation system.
