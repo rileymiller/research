@@ -28,3 +28,15 @@ https://medium.com/data-science-bootcamp/understand-dot-products-matrix-multipli
 https://en.wikipedia.org/wiki/Recurrent_neural_network
 
 https://towardsdatascience.com/
+
+
+### 11/20 Recommendation Algorithms
+algorithms for recommender systems
+https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-1-algorithms-evaluation-and-cold-start-6f696683d0ed
+
+pt. 2
+https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-2-deep-recommendation-sequence-prediction-automl-f134bc79d66b
+
+### Text Classification
+https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b
+

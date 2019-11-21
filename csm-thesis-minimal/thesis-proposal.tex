@@ -206,16 +206,14 @@ TODO: Adding after draft of proposal
 
 %%% Parts of a Thesis - Body - All Chapters and Sections (required)
 
-\chapter{Research Proposal}
+\chapter{Introduction}
 
 The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines. My research will be centered around the development of a machine learning approach to improve the efficiency of crowdworkers in crowdsourcing platforms.
 
-~\cite{okura2017embedding}
-\subsection{Introduction}% adsfsadf fdaskldf fdslkfds  adslkfj;lads asdfklasdflk sadfladsf adsfadsf asdfadsf}
 In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools, as well as highlight traditional approaches to developing recommendation systems.
-\subsubsection{Background}
+\subsection{Background}
 Crowdsourcing platforms have become increasingly popular over the course of the last\ 
-several years, introducing the concept of utilizing "crowd" intelligence to complete\
+several years, introducing the concept of utilizing ``crowd``' intelligence to complete\
 work. \cite{kuek2015global} These platforms are historically architected to facilitate the relationship\ 
 between requesters, who create work on the platform in the form of items commonly\ 
 referred to as tasks, and crowdworkers who are real people that complete tasks that\ 
@@ -245,6 +243,7 @@ into tasks. This process usually involves writing a description of what needs to
    workflow in crowdsourcing platforms presents several inherent issues that need to\ 
    be improved in order for crowdsourcing platforms to continue to grow.
 
+\subsection{Requester Role in Crowdsourcing Platforms}
 % paragraph on the motivation for requesters
 Requesters often utilize crowdsourcing platforms to outsource large pieces of\ 
 work to a distributed workforce to leverage the skills, time, and experience of\ 
@@ -266,6 +265,7 @@ are the amount of time it takes to curate tasks, the amount of time it takes to 
 approve tasks completed by crowdworkers, and the diversity in the quality of the work that\
 crowdworkers perform.
 
+\subsection{Crowdworker Role in Crowdsourcing Platforms}
 % paragraph on the motivation for workers
 While requesters supply crowdsourcing platforms with the volume of work, crowdworkers supply the labor.\
 The primary motivation of crowdworkers discovered empirically as apart of a study in 2018 by\
@@ -288,7 +288,7 @@ working sessions, crowdworkers use a variety of different tools to help improve 
 while completing tasks.
 
 % outline problems with the relationship between requesters and workers
-
+\subsection{Requester vs. Crowdworker Imbalance}
 The two differing motives of both requesters and workers develops inherent tension between\
 the primary relationship in crowdsourcing platforms. Requesters desire high quality work whereas\
 crowdworkers desire efficient work resulting in two states in the crowdsourcing platform that\
@@ -306,6 +306,7 @@ Crowdworkers are at an inherent disadvantage\
 in crowdsourcing platforms which harms worker participation, a fundamental requirement for crowdsourcing\
 platforms to be successful.
 
+\subsection{Crowdworker Difficulties}
 More specifically, a survey on crowdworkers showed that the biggest painpoints for crowdworkers\
 in the Amazon MTURK crowdsourcing platform are loss of compensation on rejected or returned tasks,\
 data on whether or not a given task is even completeable (often times a task may not even be \
@@ -326,14 +327,19 @@ a lot of opportunity for research to improve the experience of crowdworkers in t
 including the use of machine learning to aid crowdworkers in making intelligent decisions regarding\
 task selection and to intelligently surface relevant tasks that crowdworkers believe are worth doing.
 
-%% Maybe move this after related work
+\subsection{Goal}
+%% This section should explicitly state goals of research
+
+\subsection{Approach}
 After digging into crowdsourcing platforms, I will be focusing my research on improving the efficiency\
 of crowdworkers in crowdsourcing platforms. I believe this is an important facet of the crowdsourcing\
 ecosystem which would greatly benefit crowdsourcing platforms due to the lack of tooling surrounding\
 task recomendation for crowdworkers, the poor user experience of crowdworkers in the current state of\
 crowdsourcing platforms, and the disadvantage of crowdworkers in crowdsourcing platforms.
 
-\subsubsection{Existing Tools}
+\chapter{Related Work}
+
+\subsection{Existing Tools}
 Crowdworkers have created a variety of user plugins and browser extensions to help out the community of\
 crowdworkers to try and improve crowdworker efficiency. Some of the more prominent plugins focus on batching\
 similar tasks to reduce the time users spend switching context between dissimilar tasks and plugins for workers\
@@ -366,14 +372,19 @@ useful recommendations of tasks that are curated based off worker history, exper
 content-based analysis of the feasibility of a task, and intelligent automation based on manual user\
 search for tasks.
 
-\subsubsection{Common Approaches for Recommendation Systems}
+\subsection{Existing Recommendation Systems}
+%% This section should touch on some research for text classification and recommendation systems
+
+\chapter{Proposed Work}
+
+\subsection{Potential Approaches}
 Recommendation systems have been around since the early days of the internet and several of the techniques\
 used early on are still heavily relied on today and in some cases their general principles are utilized\
 to develop intelligent approaches in conjunction with traditional methods. The three primary methods that
 the majority of recommendation systems are based off of are collaborative filtering, content based, and\
 hybrid approaches. \cite{portugal2018use}
 
-\paragraph{Collaborative Filtering}
+\subsubsection{Collaborative Filtering}
 Collaborative filtering is the most popular recommendation system in use historically and today. This approach\
 pertains to considering user data when processing information for recommendations, or in simpler terms, making\
 predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
@@ -394,34 +405,33 @@ of basic collaborative filtering principles. One example of this is in a study i
 using a technique that they called collaborative deep learning (CDL) which leveraged a hierarchical Bayesian model\
 which combined collaborative filtering and the content based approach using deep learning to create better recommendations\
 . \cite{Wang2015}
-\paragraph{Content Based}
 
-\subsection{Related Work}
-related work on crowdsourcing platforms and recommender systems. Think about what I’d really like to include. No closely related work for crowdsourcing recommender systems.  Check that there aren’t any existing (Google Scholar/Google Search). Include more work on the recommender systems.
+\subsubsection{Content Based}
 
-\subsection{Proposed Work}
+\subsection{Potential Algorithms}
+
+\subsection{Research Focus}
 % \label{sec:important-section}
+\subsection{Dataset}
 Explain that Dr. Yue will be collecting the data needed for recommendation system.
-\subsubsection{Dataset}
 
-Review ~5 different types of recommendation systems. Focus more on what type of algorithm/approach I should consider. Itemize potential approaches. Existing approaches have open data sets. Could explore data set for algorithms used in proposed work. Try corresponding approach. Talk about how the team is collecting the data and how that will tie to the crowdsourcing platform. Speak on how I will adapt or create a new algorithm based on the nature of the crowdsourcing platform. More concrete from a technical perspective. Talk about what types of metric I plan on using. Consider all of the metrics discussed with Dr. Yue.
-\subsubsection{Stand-alone Deep Learning}
+\subsection{Evaluation}
+explain metrics and experiments
 
-\subsubsection{Shallow Learning} % reference paper on how deep learning may not be necessary
+\subsubsection{Metrics}
+%% Explain supervisory learning evaluation for text classification
 
-\subsubsection{Content-based Deep Learning (NLP)}
+\subsubsection{Experiments}
+%% Talk about how to train model with labeled dataset and evaluate on testing data
 
-\subsubsection{Hybrid Approach}
-
-\subsubsection{Training and Accuracy}
-
+\chapter{Project Plan}
 \subsection{Outline of Project Timeline}
 \begin{itemize}
-	\item This little listy went to market
-	\item This little listy stayed home
-	\item This little listy had roast beef
-	\item This little listy had none
-	\item And this little listy graduated, and went ''wee wee wee`` all the way home
+	\item Dates
+	\item Dates
+	\item Dates
+	\item Dates
+	\item Dates
 \end{itemize}
 % \begin{eqnarray}
 % 	\label{eq:importance}
