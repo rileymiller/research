@@ -69,7 +69,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-\title{Thesis Proposal: Deep Learning Task Recommendation for Crowdworkers}
+\title{Thesis Proposal: Task Classification and recommendation for Crowdworkers}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -380,9 +380,9 @@ search for tasks.
 \subsection{Potential Approaches}
 Recommendation systems have been around since the early days of the internet and several of the techniques\
 used early on are still heavily relied on today and in some cases their general principles are utilized\
-to develop intelligent approaches in conjunction with traditional methods. The three primary methods that
-the majority of recommendation systems are based off of are collaborative filtering, content based, and\
-hybrid approaches. \cite{portugal2018use}
+to develop intelligent approaches in conjunction with traditional methods. The two primary methods that
+the majority of recommendation systems are based off of are collaborative filtering and content based\
+approaches. \cite{portugal2018use}
 
 \subsubsection{Collaborative Filtering}
 Collaborative filtering is the most popular recommendation system in use historically and today. This approach\
@@ -407,31 +407,136 @@ which combined collaborative filtering and the content based approach using deep
 . \cite{Wang2015}
 
 \subsubsection{Content Based}
+The content based approach is less commonly used than collaborative filtering but it is still a prevalent approach\
+for building recommendation systems. Content based recommender systems are based on similarity of items in the \
+recommender system. These systems leverage the matching of similar items to a user profile. \cite{pazzani2007content}.\
+Content based approaches inherently don't have to deal with the cold-start problem that is common in collaborative \
+filtering recommendation systems since they don't bother with the behavior of similar users but of similar items within\
+the system. These recommendation systems are also commonly used in systems where content has frequent turnover, or\
+where data is sparse \cite{okura2017embedding}.
 
-\subsection{Potential Algorithms}
+\subsubsection{Text Classification}
+Text classification is the process of determining similarity from free text. This is a common \
+area of natural language processing research and pertains to a wide array of different applications. 
+Text classification can leverage either supervised or unsupervised techniques, providing a lot of flexibility\
+for differnet approaches. Supervised text classification techniques use labeled training data to develop models\
+that can then be used to categorize unlabeled free text. The most important piece of the supervised approach\
+to text classification is possesing a large, annotated corpus to train accurate models. Alternative to the\
+supervised approach, unsupervised learning can also be applied to text classification problems. Unsupervised learning\
+relies on discovering similarities within a dataset and grouping together similar data, this approach is typically\
+referred to as clustering. One of the beautiful things about unsupervised learning is that it doesn't rely on
+annotated training data, it will just discover similarities from the data provided. These two approaches can \ 
+be applied to improving efficiency of crowdworkers.
 
 \subsection{Research Focus}
+The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
+crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
+on the basis of the data that we will be able to procure from \
+crowdsourcing platforms. 
+
+As apart of a subsequent faction of the grant that this research is founded on, Dr.\
+Yue has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
+extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
+the browser extension are: that we will be able to generate a sizeable corpus of raw text and metadata of HITs\
+on Amazon MTurk but \
+that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
+under the time constraints of the grant to generate a collaborative filtering based recommendation\
+system due to the forseeable initial adoption of the plugin. 
+
+However, once we are able to generate the corpus\
+of tasks, we will be able to apply text classification to extract skills that are needed to perform a task and\
+once we are able generate enough user data from the browser plugin, we will be able to develop a content-based\
+recommendation system for surfacing relevant tasks in crowdsourcing platforms. 
+
+This approach will also give us\
+the ability to improve crowdworker efficiency through the intelligent batching of tasks. This will be the more\
+immediate application of my research. Using text classification\
+to determine the skills needed to perform a task, we will be able to use our algorithm to cluster similar tasks\
+and eventually queue and accept tasks with the same skill requirements which will allow crowdworkers to be able\
+to complete tasks quicker and more efficiently. Ultimately, I predict that intelligent\
+batching will reduce the amount of time that crowdworkers waste sifting through crowdsourcing platforms to find\
+tasks that would be worth doing since they would a) possess\
+the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
+save users time from context-switching.
+\subsection{Potential Algorithms}
+Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in
+crowdsourcing platforms.
+\begin{itemize}
+	\item \textbf{Decision Trees}
+	\item \textbf{Rule-based Classifiers}
+	\item \textbf{SVM Classifiers}
+	\item \textbf{Bayesian Classifiers}
+	\item \textbf{Neural Network Classifiers:} Specifically LSTM RNNs and CNNs
+	\item \textbf{Nearest Neighbor Classifiers}
+\end{itemize}
+
+I will explore the application of the algorithms above to the problem of extracting required skills\
+from tasks and compare my results accordingly.
 % \label{sec:important-section}
 \subsection{Dataset}
-Explain that Dr. Yue will be collecting the data needed for recommendation system.
+As explained in the "Research Focus" section above, Dr. Yue has created a team of researchers who will be handling\
+the development of a client side browser extension to web scrape crowdsourcing platforms for task data as well as\
+to track user profile information and user interactions with the crowdsourcing sites. We will be able to quickly web scrape\
+crowdsourcing sites to gather enough data for the text classification I plan to perform on crowdsource tasks. But we \
+are envisioning that it will\
+take considerably more time to gather enough user data to develop a machine learning recommendation system which\
+utilizes content based recommendations.
 
 \subsection{Evaluation}
-explain metrics and experiments
+In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which
+will be able to accurately extract skills that are required to complete tasks.
 
 \subsubsection{Metrics}
-%% Explain supervisory learning evaluation for text classification
-
+To determine the success of different approaches I will allocate the dataset that we collect from scraping the \
+crowdsourcing site into an 80/20 split where 80\% of my data set will be used for training the machine learning\
+algorithms while reserving the remaining 20\% of the data set to test the accuracy of the models and to evaluate\
+which approach is most effective for determining which skills are necessary to perform tasks. Due to the timeline\
+of the grant and time constraint of my graduation date, I will be leveraging offline testing to perform my analysis.\
+Ideally we would be able integrate the models into the browser extension and perform A/B testing in live environments\
+to test the performance of the different techniques but that isn't a viable option given the timeline of the project.
 \subsubsection{Experiments}
 %% Talk about how to train model with labeled dataset and evaluate on testing data
+The two different types of experiments that I plan to conduct can be broken down into the two high-level categories\
+of supervised and unsupervised learning.
 
+\paragraph{Supervised Learning}
+The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
+of shallow learning vs. deep learning algorithms on my data set. For these sets of supervised learning algorithms a large part\
+of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. To perform this annotation I will develop\
+a list of skills that will either be generated using crowdworkers where I will create tasks prompting users to determine the\
+skills necessary to complete a given task or I will generate the list myself and have crowdworkers decide the most relevant skills\
+that are needed to complete a given task from the list of skills. After I have collected and annotated the dataset of tasks,\
+I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
+Jupyter Notebooks on a platform like Google Colab or I will leverage AWS GPU-enabled P-instances to train my models on my\
+training set. After the models are trained, I plan on testing the supervised learning models on my test test and will\
+generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
+of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
+using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
+supervised learning techniques.
+
+\paragraph{Unsupervised Learning}
+In addition to the supervised learning techniques outlined above I also plan on experimenting with several unsupervised\
+learning techniques for comparison's sake, specifically a nearest neighbor approach. I plan on using the same infrastructure,\
+hardware, and frameworks listed above for my unsupervised learning experiments as well.
 \chapter{Project Plan}
+The project plan listed below contains biweekly objectives to keep me on track and hold myself accountable in order
+to successfully defend my thesis in April 2020.
 \subsection{Outline of Project Timeline}
 \begin{itemize}
-	\item Dates
-	\item Dates
-	\item Dates
-	\item Dates
-	\item Dates
+	\item \textbf{November 25:} Thesis Proposal
+	\item \textbf{December 9:} Address Thesis Proposal feedback, receive data set from Dr. Yue
+	\item \textbf{December 23:} Tasks created and published for annotation on crowdsourcing site (Amazon MTurk or Figure 8)
+	\item \textbf{January 6:} Holidays, Apply to Graduate
+	\item \textbf{January 13:} Receive annotated dataset from crowdsourcing platform.
+	\item \textbf{January 27:} Developed and tested shallow learning techniques (Decision Trees, Rule-based, SVM, Bayesian)
+	\item \textbf{February 10:} Developed and test deep learning techniques (LSTM RNN and CNN approaches), begin writing paper for conference submission
+	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
+	\item \textbf{March 9:} Develop visualization and analysis of test results, continue writing paper for conference submission, begin writing thesis
+	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
+	\item \textbf{April 6:} Defend Thesis
+	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
+	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
+	\item \textbf{May 7:} Graduate
 \end{itemize}
 % \begin{eqnarray}
 % 	\label{eq:importance}
