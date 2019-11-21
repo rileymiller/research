@@ -155,9 +155,9 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.toc
-INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
-INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
+INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
+INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.bbl
 INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.aux
 INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.out
 INPUT /Users/rileymiller/code/research/csm-thesis-minimal/thesis-proposal.out
