@@ -390,6 +390,31 @@ search for tasks.
 
 \subsection{Existing Recommendation Systems}
 %% This section should touch on some research for text classification and recommendation systems
+There are several different approaches to developing recommendation systems, the two most common are collaborative\
+filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches\
+however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
+Content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
+crowdworkers in our use case.
+
+Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
+and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
+to address the cold start problem and the sparseness of interaction interaction of similar users on similar tasks. One example of\
+this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
+media corporations like Buzzfeed. The researchers (Wang et al.) leverage a character level neual network langauge model (a CNN) to perform\
+low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
+platforms are constantly getting outdated and after a worker completes a task, the specific task is resolved and will not be reused, making
+any type of collaborative filtering approach forseeably ineffective.
+
+Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. Their approach\
+was predicated on using matrix factorization on crowdworker performance history as well as their task searching history\
+to surface relevant reccomendations to crowdworkers.
+
+\subsection{Text Classification of Crowdsourcing Tasks}
+Interesting related work in the field of text classification of tasks in crowdsourcing platforms can be found in an analysis\
+of the dynamics of crowdsourcing performed by (Difallah et al) in which they used supervised learning to classify\
+types of tasks in Amazon MTurk \cite{difallah2015dynamics}. This research is extremely useful for my approach and\
+will allow me to use the common categories that they defined as apart of their research to gather data from crowdworkers\
+as apart of my research on the \textbf{skills} that are required to complete crowdsource tasks.
 
 \chapter{Proposed Work}
 
