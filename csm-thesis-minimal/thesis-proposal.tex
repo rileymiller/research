@@ -69,7 +69,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-\title{Thesis Proposal: Task Classification and recommendation for Crowdworkers}
+\title{Thesis Proposal: Task Classification and Recommendation for Crowdworkers}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -85,7 +85,7 @@
 \dpthead{Dr. Tracy Camp}{Department Head}
 
 \begin{document}
-\nocite{*}
+% \nocite{*}
 % Parts of a Thesis
 
 %% Parts of a Thesis - Front Matter
@@ -350,8 +350,8 @@ money through their newfound efficiency. Specifically regarding my research, by 
 workers will reduce the amount of time it takes them to find and complete tasks and will also improve\
 the quality of work that is done through the surfacing of the required skills it takes to complete\
 a task. With explicit information on the required skills that are needed to complete a task,\
-workers can make intelligent and efficient decisions on whether or not they engage with a task\
-depending on whether or not they possess the necessary skillset.
+workers can make intelligent and efficient decisions on whether they engage with a task or not\
+depending on if they possess the necessary skillset.
 
 \chapter{Related Work}
 
@@ -475,8 +475,9 @@ tasks that would be worth doing since they would a) possess\
 the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
 save users time from context-switching.
 \subsection{Potential Algorithms}
-Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in
-crowdsourcing platforms.
+Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in\
+crowdsourcing platforms. These algorithms will be explored due to their common usage to solve text classification \
+problems as outline in a survey of text classification techniques \cite{aggarwal2012survey}.
 \begin{itemize}
 	\item \textbf{Decision Trees}
 	\item \textbf{Rule-based Classifiers}
@@ -518,13 +519,34 @@ of supervised and unsupervised learning.
 \paragraph{Supervised Learning}
 The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
 of shallow learning vs. deep learning algorithms on my data set. For these sets of supervised learning algorithms a large part\
-of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. To perform this annotation I will develop\
-a list of skills that will either be generated using crowdworkers where I will create tasks prompting users to determine the\
-skills necessary to complete a given task or I will generate the list myself and have crowdworkers decide the most relevant skills\
-that are needed to complete a given task from the list of skills. After I have collected and annotated the dataset of tasks,\
+of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. My plan for collecting this annotation\
+data can be broked down into two phases:
+
+
+\textbf{Survey:} I plan on administering a survey to crowdworkers on Amazon MTurk to gather data about common skills that are required\
+to complete HITs. At a high level I plan on collecting worker demographic data to analyze the difference in reported skills across\
+different types of workers with different backgrounds and differing qualifications and number of completed tasks. Another facet of the\
+survey will include giving crowdworkers a small subset of common tasks from some of the most commonly occuring categories of HITs\
+on MTURK \cite{difallah2015dynamics}:
+\begin{itemize}
+	\item \textbf{Information Finding:} Searching the web to find certain information
+	\item \textbf{Verification and Validation:} Verifying certain information
+	\item \textbf{Interpretation and Analysis:} Interpreting web content (i.e human generated sentiment analysis)
+	\item \textbf{Content Creation: } Generating content from audio or video input
+	\item \textbf{Surveys \& Questionaires:} A set of questions which gather worker demographic info as well as answers on a subject matter
+	\item \textbf{Content Access:} Interacting with web comment (i.e watching videos, visiting website)
+\end{itemize}
+
+and asking them to list common skills that are required to solve the sample task. There will also be a free response portion of the survey\
+where I will prompt crowdworkers to list an \emph{n} number of skills for each general category of tasks.
+
+\textbf{Annotation:} Then after curating a list of skills from the survey, I plan on having crowdworkers annotate my dataset of tasks\
+with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated from the survey.
+
+After I have collected and annotated the dataset of tasks,\
 I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
 Jupyter Notebooks on a platform like Google Colab or I will leverage AWS GPU-enabled P-instances to train my models on my\
-training set. After the models are trained, I plan on testing the supervised learning models on my test test and will\
+training set. After the models are trained, I plan on testing the supervised learning models on my test set and will\
 generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
 of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
 using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
@@ -532,27 +554,40 @@ supervised learning techniques.
 
 \paragraph{Unsupervised Learning}
 In addition to the supervised learning techniques outlined above I also plan on experimenting with several unsupervised\
-learning techniques for comparison's sake, specifically a nearest neighbor approach. I plan on using the same infrastructure,\
-hardware, and frameworks listed above for my unsupervised learning experiments as well.
+learning techniques for comparison's sake, specifically nearest neighbor and clustering approaches. I plan on using the same infrastructure,\
+hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
+in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
 \chapter{Project Plan}
-The project plan listed below contains biweekly objectives to keep me on track and hold myself accountable in order
+The project plan listed below contains weekly/biweekly objectives to keep me on track and hold myself accountable in order
 to successfully defend my thesis in April 2020.
 \subsection{Outline of Project Timeline}
 \begin{itemize}
 	\item \textbf{November 25:} Thesis Proposal
-	\item \textbf{December 9:} Address Thesis Proposal feedback, receive data set from Dr. Yue
-	\item \textbf{December 23:} Tasks created and published for annotation on crowdsourcing site (Amazon MTurk or Figure 8)
-	\item \textbf{January 6:} Holidays, Apply to Graduate
-	\item \textbf{January 13:} Receive annotated dataset from crowdsourcing platform.
-	\item \textbf{January 27:} Developed and tested shallow learning techniques (Decision Trees, Rule-based, SVM, Bayesian)
+	\item \textbf{December 9:} Address Thesis Proposal feedback, receive data set from Dr. Yue, Create survey for surveying workers on common skills for common tasks
+	\item \textbf{December 16:} Tasks created and published for skills survey on Amazon MTurk
+	\item \textbf{December 23:} Approving skills surveys info, storing skills survey info in database, begin analysis on skills database
+	\item \textbf{January 6:} Tasks created and published for annotation on crowdsourcing site (Amazon MTurk or Figure 8) Apply to Graduate
+	\item \textbf{January 13:} Approve, store, and analayze completed annotation data
+	\item \textbf{January 20: } Approve, store, and analayze completed annotation data. Begin applying shallow learning techniques to annotated dataset.
+	\item \textbf{January 27:} Developed and tested shallow learning techniques (Decision Trees, Rule-based, SVM, Bayesian). Begin applying deep learning techniques to annotated dataset.
 	\item \textbf{February 10:} Developed and test deep learning techniques (LSTM RNN and CNN approaches), begin writing paper for conference submission
 	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
-	\item \textbf{March 9:} Develop visualization and analysis of test results, continue writing paper for conference submission, begin writing thesis
+	\item \textbf{March 9:} Develop visualization and analysis of test results, further iteration and improvement of algorithms, continue writing paper for conference submission, begin writing thesis
 	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
 	\item \textbf{April 6:} Defend Thesis
 	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
 	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
+	\item \textbf{April 17 - May 7:} Continue drafting paper and submit to conferences
 	\item \textbf{May 7:} Graduate
+\end{itemize}
+
+\subsection{Support}
+In order to deliver high quality research I request the following meeting cadence with the thesis\
+committee to gather feedback and correction on my approach as needed:
+\begin{itemize}
+	\item \textbf{Dr. Chuan Yue (Thesis Advisor): } Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
+	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+	\item \textbf{Dr. Hua Wang (Committee Memer): } Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
 \end{itemize}
 % \begin{eqnarray}
 % 	\label{eq:importance}
