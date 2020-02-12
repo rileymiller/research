@@ -40,3 +40,9 @@ https://medium.com/recombee-blog/machine-learning-for-recommender-systems-part-2
 ### Text Classification
 https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b
 
+
+### Skills extraction
+Job Skills extraction with LSTM and Word Embeddings
+ A graph-based approach to skill extraction from text.
+
+**Entity Relations:**https://www.nltk.org/book/ch07.html
