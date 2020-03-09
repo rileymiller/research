@@ -1,0 +1,1056 @@
+\documentclass[letterpaper,12pt]{article}
+
+% csm-thesis automatically includes the following packages:
+%% float
+%% setspace
+%% geometry
+%% graphics
+%% textcase
+%% subfig
+
+% Note: Two package options exist for your convenience: ``insane'' and ``nolabel''.  To use these options together separate them by a comma, ie. \usepackage[insane,nolabel]{csm-thesis}
+% * \usepackage[insane]{csm-thesis}
+% Turn off all document sanity checks.  This option can be used to render a ``sub-document'' that is part of the root thesis document.  It is important to note that you should NEVER disable this check on your root thesis document, as important format errors and warnings will be disabled.
+% * \usepackage[nolabel]{csm-thesis}
+% Disables automatic reference ``labeling'' of figures and tables.  By default the thesis template prepends any reference to a figure or table with ``Figure~'' or ``Table~''.  This option is meant for disabling the labeling behavior when a document already has the appropriate labeling.  It is important to note that if your document DOES NOT have the appropriate labeling (the reference label must EXACTLY MATCH the caption label) then it will not pass the format review.
+\usepackage{csm-thesis}
+
+% For inserting large multi-page tables:
+\usepackage{array}
+\usepackage{longtable}
+
+% For inserting sideways tables and figures
+\usepackage{rotating}
+
+% Since hyperref and cite don't completely get along, the template now recommends using natbib:
+% For an explanation, see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=citesort
+\usepackage[numbers]{natbib}
+% If you wish to use ``cite'' instead then your choices are:
+% 1) Don't use the hyperref package
+% 2) Put ``cite'' before hyperref, resulting in no citation hyperlinks
+% 3) Put ``cite'' after hyperref, resulting in ugly looking citations
+
+% If you choose not to use natbib then you can set the standard ``numeric'' style like so:
+% \bibliographystyle{unsrt}
+
+% Important Note: math-mode in sections, titles, and other bookmarks will generate warnings with hyperref.  You can work around this by either:
+% 1) Not using the hyperref package
+% 2) Using \texorpdfstring{TeX Code}{PDF Replacement} to display an alternative bookmark (for example, \texorpdfstring{H$_2$O}{Water}).
+% The thesis template will automatically import your document information into hyperref, so if you go to ``File | Properties'' in Adobe Acrobat it will display the title and author.  If you would like to over-ride this option then just change the line below to ``\usepackage[]{hyperref}''.
+\usepackage{hyperref}
+
+% For inserting programming code:
+\usepackage{listings}
+
+% For inserting landscape-mode objects:
+\usepackage{pdflscape} % use ``lscape'' if you are not creating a PDF output
+
+% For matrices:
+\usepackage{amsmath}
+
+% For using helvetica instead of Computer Modern
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+
+%% For automatic equation breaking (experimental!):
+%\usepackage{breqn}
+
+% For using row-spanning and column-spanning in tables:
+%\usepackage{multirow}
+
+% The thesis title MUST be in an inverted pyramid shape.  To do this you can either specify the returns in the title manually or have the thesis style attempt to automatically build the title in the shape of an inverted pyramid.  The thesis style will automatically choose the appropriate behavior by detecting the presence of returns (\\) in the title.
+% Please note that by ``inverted pyramid'' the graduate office really means a regular trapezoid with the larger base on the top.
+% <<MANUAL PYRAMID:>>
+% Use ``\\" to end a line, all normal LaTeX should function properly.
+	%\title{%
+	%	Developing a \atom{12}{6}{Th}{2+}{3}esis Template\\%
+	%	to Help Students Graduate\\%
+	%	in a Reasonable Time%
+	%}
+% <<AUTOMATIC PYRAMID:>>
+% Do not put any carriage returns (\\), all normal LaTeX should function properly.
+\title{Thesis: Topic Modelling of Amazon MTURK}
+% Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
+% eg. \texorpdfstring{H$_2$O}{Water}
+% One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
+
+\degreetitle{Master of Science}
+\discipline{Computer Science}
+\department{Computer Science}
+
+\author{Riley Miller}
+\advisor{Dr. Chuan Yue}
+% Comment out the following line if you do not have a co-advisor:
+% \coadvisor{Dr. Secondary B. Advisor}
+\dpthead{Dr. Tracy Camp}{Department Head}
+
+\begin{document}
+% \nocite{*}
+% Parts of a Thesis
+
+%% Parts of a Thesis - Front Matter
+
+\frontmatter
+
+%%% Parts of a Thesis - Front Matter - Title Page (required)
+
+\maketitle
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Copyright Page (optional)
+
+% If the copyright for your document spans multiple years, or does not match the current year, then replace ''\the\year`` below with the appropriate text.
+\makecopyright{\the\year}
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Signature Page (required)
+
+\makesubmittal
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Abstract (required)
+
+\begin{abstract}
+<Insert abstraction upon completion of the document>
+\end{abstract}
+
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Table of Contents (required)
+
+\tableofcontents
+\newpage
+
+%%% Parts of a Thesis - Front Matter - List of Figures (if applicable)
+%%% Parts of a Thesis - Front Matter - List of Tables (if applicable)
+
+% NOTE: If you have more than 2 items in either list they must be separate.
+% This case is generally handled automatically, but if you are told to separate the lists then comment or remove the two lines below:
+% \listoffiguresandtables
+% \newpage
+
+% ... and then uncomment these four lines to force separate lists:
+%\listoffigures
+%\newpage
+%\listoftables
+%\newpage
+
+
+%% NOTE: If included in the front matter, a glossary, a list of abbreviations, or a list of symbols is placed as the last list. If these lists are included in the back matter, they are placed immediately before the REFERENCES CITED.
+
+%%% Parts of a Thesis - Front Matter - Glossary (if applicable)
+%\glossary
+
+%%% Parts of a Thesis - Front Matter - List of Symbols (if applicable)
+
+% Place this call before ''\listofsymbols`` to make the symbols appear on the left instead of the right:
+%\ShowSymbolFirst
+% To call the “List of Symbols” “Nomenclature” instead use:
+%\listofsymbols[Nomenclature]
+% To autosort the list use a star after the command (ie. \listofsymbols*[Nomenclature] or \listofsymbols*)
+% \listofsymbols
+% With very large symbol lists it is sometimes good to split the list into multiple sub-lists.  To output the lists just use the extended \listofsymbols command (below) and to add an element to the list use the optional parameter to ''\addsymbol``.
+%\listofsymbols{General Nomenclature}
+%\listofsymbols{Greek Letters}
+% \newpage
+
+% Note that you may define symbols anywhere in the document, when you re-run LaTeX they
+% will be added to the list (just like all other lists)
+% \addsymbol{absorption coefficient}{$\alpha_c$}
+% \addsymbol{absorption cross section}{$\alpha_{\sigma}$}
+% \addsymbol{average radius of cylindrical shell}{$c$}
+% \addsymbol{activation energy of oxidation reaction of a-C in excited state}{$E^{\ast}_{act}$}
+
+% Example for sub-list symbols (optional parameter specifies which list to use):
+%\addsymbol[General Nomenclature]{absorption coefficient}{$\alpha_c$}
+%\addsymbol[General Nomenclature]{absorption cross section}{$\alpha_{\sigma}$}
+%\addsymbol[Greek Letters]{average radius of cylindrical shell}{$c$}
+%\addsymbol[Greek Letters]{activation energy of oxidation reaction of a-C in excited state}{$E^{\ast}_{act}$}
+
+%%% Parts of a Thesis - Front Matter - List of Abbreviations (if applicable)
+% To autosort the list use a star after the command (ie. \listofabbreviations*)
+% \listofabbreviations
+% \newpage
+
+% Note that you may define abbreviations anywhere in the document, when you re-run LaTeX they
+% will be added to the list (just like all other lists)
+% \addabbreviation{Bio Force Gun, Model 9000}{BFG9000}
+% \addabbreviation{Mammoth Armed Reclamation Vehicle}{MARV}
+% \addabbreviation{Stone of Jordan}{SoJ}
+% %\addabbreviation{Field flow fractionation-inductively coupled plasma-mass\newline spectrometry% with extra% magic and stuff and things
+% \addabbreviation{Field flow fractionation-inductively coupled plasma-mass spectrometry% with extra% magic and stuff and things
+% }{FFF-ICP-MS}
+
+%%% Parts of a Thesis - Front Matter - Acknowledgments (optional)
+
+% \begin{acknowledgments}
+% I would like to thank the academy for granting me this prestigious thesis.  This project would never have succeeded without <friend>, <parent>, and of course <spouse>.
+% \end{acknowledgments}
+% \newpage
+
+%%% Parts of a Thesis - Front Matter - Dedication (optional)
+
+% \begin{dedication}
+% For those that shall follow after.
+% \end{dedication}
+% \newpage
+
+%% Parts of a Thesis - Body
+
+\bodymatter
+
+%%% Parts of a Thesis - Body - Introduction (optional)
+%\chapter{Introduction}
+% A fun introduction would go here, just uncomment!
+
+%%% Parts of a Thesis - Body - All Chapters and Sections (required)
+
+\chapter{Introduction}
+
+The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines. My research will be centered around the development of a machine learning approach to improve the efficiency of crowd workers in crowdsourcing platforms.
+
+In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools, as well as highlight traditional approaches to developing recommendation systems.
+\subsection{Background}
+Crowdsourcing platforms have become increasingly popular over the course of the last\ 
+several years, introducing the concept of utilizing ``crowd`` intelligence to complete\
+work \cite{kuek2015global}. These platforms are historically architected to facilitate the relationship\ 
+between requesters, who create work on the platform in the form of items commonly\ 
+referred to as tasks, and crowd workers who are real people that complete tasks that\ 
+are curated by the requesters. There are a variety of different crowdsourcing platforms\ 
+that have entered the crowdsourcing market such as Figure Eight, ClickWorker, CrowdFlower, Spare5,\ 
+Respondent, Swagbucks, and the most popular platform: Amazon Mechanical Turk (MTURK).\ 
+These platforms are used for a variety of different use cases ranging from collecting\
+data via surveys, image/video annotation, translations, spreadsheet modifications and\ 
+analysis, writing, to theoretically anything. The typical workflow in crowdsourcing\ 
+platforms starts with requesters who breakdown work that they need to get completed\ 
+into smaller chunks called tasks. This process usually involves writing a description of what needs to be\ 
+done, how it needs to be completed, providing the input the crowd worker needs to\ 
+complete the work, setting a qualification so that only certain crowd workers may\ 
+have access to the task based off their work history, setting a lifetime on the\ 
+task for when the work needs to be completed, and setting a reward for successful\ 
+completion of the task. All of these specifications vary by platform since a\ 
+universal specification standard between different crowdsourcing platforms fails\ 
+to exist. \cite{allahbakhsh2013quality} After the requesters finish a task and publish it to the crowdsourcing\ 
+platform, the task becomes available to crowd workers (depending on the platform it\ 
+may only be made available to crowd workers who match the qualification set by the\ 
+requesters) who can then attempt to complete the task. After the crowd workers are\ 
+satisfied with their work on a given task, they can then submit their work on a task\ 
+to the requesters for approval. After this work is received by the requesters, the\ 
+requesters have the ability to review the work that was completed by the crowd worker\
+and determine whether they will accept the work, reject the work, or send the task\ 
+back to the crowd worker because the quality of the work was insufficient. This\ 
+workflow in crowdsourcing platforms presents several inherent issues that need to\ 
+be improved in order for crowdsourcing platforms to continue to grow.
+
+\subsection{Requester Role in Crowdsourcing Platforms}
+% paragraph on the motivation for requesters
+Requesters often utilize crowdsourcing platforms to outsource large pieces of\ 
+work to a distributed workforce to leverage the skills, time, and experience of\ 
+crowd workers. \cite{kuek2015global} This allows requesters to offload tasks to ultimately save themselves\ 
+time and allow them to focus on higher priority tasks. Some of the practical use\ 
+cases that requesters offload to crowdsourcing sites are bulk tasks that require\ 
+human input but take a considerable amount of time like data annotation of machine\ 
+learning and computer vision datasets which requires a large amount of accurately\ 
+labeled data to fuel deep learning algorithms. One of the primary benefits that\
+crowdsourcing platforms present requesters is that requesters are able to curate a\ 
+massive amount of tasks and distribute them amongst crowd workers for a reasonable cost\ 
+considering the average wage for crowd workers lingers around \$2-\$5 and hour \cite{Kaplan2018,hara2018data}.
+In fact, many of the tasks that requesters publish on crowdsourcing sites have small rewards ranging\
+on average from only a couple cents to several dollars. The low average cost of tasks in crowdsourcing\
+platforms inherently allows researchers to publish a large number of tasks which also\
+simultaneously benefits crowd workers and crowdsourcing platforms by increasing the volume\
+of work available. Some of the issues that exist for requesters in crowdsourcing platforms\
+are the amount of time it takes to curate tasks, the amount of time it takes to review and\
+approve tasks completed by crowd workers, and the diversity in the quality of work that\
+crowd workers perform.
+
+\subsection{Crowd Worker Role in Crowdsourcing Platforms}
+% paragraph on the motivation for workers
+While requesters supply crowdsourcing platforms with the volume of work, crowd workers supply the labor.\
+The primary motivation of crowd workers discovered empirically as apart of a study in 2018 by\
+a team of crowdsourcing researchers was simple: earn money \cite{Kaplan2018}. The distributed workforce\
+of crowd workers complete tasks all over the world with a wide range of skillsets and experience\
+while providing human intelligence to complete work published by requesters. The researchers
+who performed the survey on crowdsourcing workers in Amazon MTURK discovered that over half (61.7\%) of\
+crowd workers were employed fulltime and 50.2\% of workers had recieved a four year education.\cite{Kaplan2018}\
+This data shows that many of the crowd workers don't rely on their crowdsourcing work as a\
+primary source of income and that many crowd workers are formally educated. However, since\
+many crowd workers aren't reliant on crowdsourcing platforms as their primary source of income\
+this suggests that quality will be a lower priority for crowd workers in exchange for efficiency\
+as the repercussions for low quality work have much less severe implications than they would\
+for low quality work with their full-time employers. With the primary motivation of crowd workers\
+regarding the wage they receive from crowdsourcing\
+platforms, efficiency is imperative and many of the crowd workers' interactions with\
+crowdsourcing platforms will be guided by the overarching goal of making as much money\
+as possible as efficiently as possible. To help optimize their time during crowdsourcing\
+working sessions, crowd workers use a variety of different tools to help improve their efficiency\
+while completing tasks.
+
+% outline problems with the relationship between requesters and workers
+\subsection{Requester vs. Crowd Worker Imbalance}
+The two differing motives of both requesters and workers develops inherent tension between\
+the primary relationship in crowdsourcing platforms. Requesters desire high quality work, whereas,\
+crowd workers desire efficient work resulting in two states in the crowdsourcing platform that\
+are relatively mutally exclusive. However, unfortunately for crowd workers, the power in this relationship leans heavily towards\
+requesters who are able to dominate the dynamic using several features that are common amongst\
+crowdsourcing platforms such as: the ability to specify certain qualifications that workers must\
+meet to access certain tasks and having ultimate authority over accepting or rejecting the work\
+that crowd workers complete based on their own personal, subjective view on quality. \cite{Kaplan2018,allahbakhsh2013quality}\
+This imbalance\
+places workers at a severe disadvantage in crowdsourcing platforms in addition to flaws in the platforms\
+themselves. Some of the disadvantages that crowdsourcing platforms inflict on workers include: naive search\
+functionality for surfacing tasks, lack of metrics for how long it will take to complete a task,\
+stated feasibility of tasks, and a lack of estimated wage value for tasks \cite{Kaplan2018}.\
+Crowd workers are at an inherent disadvantage\
+in crowdsourcing platforms which harms worker participation, a fundamental requirement for crowdsourcing\
+platforms to be successful.
+
+\subsection{Crowd Worker Difficulties}
+More specifically, a survey on crowd workers showed that the biggest painpoints for crowd workers\
+in the Amazon MTURK crowdsourcing platform are loss of compensation on rejected or returned tasks,\
+data on whether or not a given task is even completeable (often times a task may not even be \
+completeable because requesters may not have provided enough information for workers to successfully\
+complete the task), and the amount of time it takes to find a task or switch context between different\
+types of tasks \cite{Kaplan2018}. The two pain points that I plan to explore as apart of my research\
+are decreasing the number of returned or rejected tasks by providing data upfront to workers regarding\
+the feasibility of a task as well as decreasing the amount of time spent searching for tasks. Another\
+interesting data point the researchers (Kaplan et al) collected from their survey on crowd workers was\
+that 30\% of respondents said that finding a task was reported ``4 - Very`` or ``5 - Extremely`` \
+difficult, but probably even more intriguing was the data that the most pertinent reason for \
+ending a session was that they were unable to find a task worth doing (48\% said this ranked\
+as an ``5 - Extremely Important`` reason in terminating a crowdsourcing session). \cite{Kaplan2018} This dissatisfaction\
+of crowd workers shows that the current working model for crowdsourcing platforms needs to be improved\
+to improve the user experience of crowd workers. The crowdsourcing community has a vested interest to improve\
+the user experience of crowd workers in order to continue to facilitate the adoption\
+of crowdsourcing platforms by new crowd workers. This area of crowdsourcing has\
+a lot of opportunity for research and is relatively sparse compared to other fields\
+of research on crowdsourcing platforms.
+
+\subsection{Goal}
+%% This section should explicitly state goals of research
+\textbf{To analyze common topics and trends found in crowdsourcing tasks on Amazon MTURK to\
+ improve crowdworker efficiency.}
+
+\subsection{Approach}
+I will be focusing my research on improving the efficiency of crowd workers in crowdsourcing\
+platforms through the analysis of crowdsource tasks to determine common topics and trends found \
+in crowdsourcing tasks. Specifically I will focus on applying unsupervised learning techniques in the\
+form of topic modelling to improve the understanding of crowdsourcing tasks curated by researchers \ 
+as well as how this information can be leveraged to optimize crowdworker efficiency. 
+% I predict that the grouping of \ 
+% similar tasks based on the required skills will reduce the number of rejected (the largest painpoint for crowd workers \cite{Kaplan2018})\
+% tasks by sufacing the necessary skills to complete a given task to crowd workers so they're aware\
+% of whether or not they actually posses the skillset to successfully complete a task. I believe\
+% performing research on improving crowd worker efficiency is imperative to the health of crowdsourcing\
+% platforms as a whole because by improving the efficiency of crowd workers the crowd will be able\
+% to generate higher throughput of tasks which helps requesters by reducing the amount of time it\
+% takes for the tasks that they publish to get completed. This improved efficiency will also help crowd workers make more\
+% money. Specifically regarding the application of my research, using Intelligent Batching,\
+% I predict workers would reduce the amount of time it takes them to find and complete tasks and would also improve\
+% the quality of work that is done through the surfacing of the required skills it takes to complete\
+% a task. With explicit information on the required skills that are needed to complete a task,\
+% workers can make intelligent and efficient decisions on whether they should engage with a task or not.
+
+\chapter{Related Work}
+
+\subsection{Existing Tools}
+Crowd workers have created a variety of user plugins and browser extensions to help out the community of\
+crowd workers to try and improve crowd worker efficiency. Some of the more prominent plugins focus on batching\
+similar tasks to reduce the time users spend switching context between dissimilar tasks and plugins for workers\
+to rate requesters based off their interactions directly and indirectly with how the tasks are structured. I've\
+curated a list of tools used by crowd workers from my own research and from the results of a survey of crowd workers\
+\cite{Kaplan2018}. 
+
+%% use item for existing tools
+\begin{itemize}
+	\item \textbf{HIT Scraper:} A web scraper that helps provide additional search filters not offered as apart of the native offering for Amazon MTurk.
+	\item \textbf{MTurk Suite:} A browser extension used to combine a plethora of other crowd worker tooling.
+	\item \textbf{Turkopticon:} A web tool that allows crowd workers to rate requesters and tasks.
+	\item \textbf{Greasemonkey/Tampermonkey:} A browser extension that allows crowd workers to run custom scripts to help boost efficiency in crowdsourcing platforms.
+	\item \textbf{Panda Crazy:} A tool used by crowd workers to batch similar tasks together.
+	\item \textbf{Turkmaster:} A script that monitors search pages, requesters, and can automatically accepts tasks on Amazon MTurk.
+	\item \textbf{Block Requesters:} Allows users to block and ignore requesters from search results, useful if crowd workers have a bad experience with a requester and wish to avoid future interactions.
+	\item \textbf{Pending Earning:} Allows crowd workers to view pending earnings for tasks that have been completed and submitted but not approved.
+	\item \textbf{MTurk HIT DataBase:} Improved interface for searching tasks that you have worked on previously, Amazon MTurk.
+	\item \textbf{MTurk Worst Case Scenario Calculator:} Tool to calculate approval rate and how many rejections it would take to drop your approval percentage to a certain threshold.
+	\item \textbf{MTurk Dashboard HIT Status links:} A tool which provides quick access to rejected and pending tasks, Amazon MTurk.
+	\item \textbf{MTurk Engine:} A browser extension that combines additional search filters with batching, as well as automated task watching for Amazon MTurk. This tool also includes a dashboard to track earnings.
+\end{itemize}
+
+These tools show the desire for improvement in the crowd worker user experience from the native\
+crowdsourcing platform and a high level of community involvement and support for crowd workers.\
+Although there is existing tooling for batching similar tasks using keywords and search filters\
+there still lacks tooling for common painpoints highlighted in the survey results collected by (Kaplan et al).\
+Some of the main areas of the crowd worker user experience that still need to be addressed are: surfacing\
+useful recommendations of tasks that are curated based off worker history, expertise, and preferences,\
+content-based analysis of the feasibility of a task, and Intelligent Batching to reduce time spent switching
+context.
+
+\subsection{Existing Recommendation Systems}
+%% This section should touch on some research for text classification and recommendation systems
+There are several different approaches to developing recommendation systems, the two most common are collaborative\
+filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
+however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
+Alternatively, content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
+crowd workers in our use case.
+
+Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
+and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
+to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
+this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
+media corporations like Buzzfeed. The researchers (Wang et al.) of the study leverage a character level neual network langauge model (a CNN) to perform\
+low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
+platforms are constantly getting outdated after a worker completes a task, the specific task is resolved and will not be reused, making
+any type of collaborative filtering approach forseeably ineffective.
+
+Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. \cite{yuen2012task} Their approach\
+was predicated on using matrix factorization on crowd worker performance history as well as their task searching history\
+to surface relevant reccomendations to crowd workers. Another set of researchers applied two different techniques based on \
+implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
+of the downfalls of their research was that they only used 24 users to evaluate their approach.
+
+From my initial investigation, I haven't found any research that is directly related to my approach of extracting necessary\
+skills from tasks using text classification. The primary targeted application of my research is to eventually create\
+a content based recommendation system that will match a user to a task in a crowdsourcing platform based on implicit skills\
+the user has obtained (based on previously completed tasks and user provided characteristics) and the required skills that\
+are needed to complete a task.
+
+\subsection{Text Classification of Crowdsourcing Tasks}
+Interesting related work in the field of text classification of tasks in crowdsourcing platforms can be found in an analysis\
+of the dynamics of crowdsourcing performed by (Difallah et al) in which they used supervised learning to classify\
+types of tasks in Amazon MTurk \cite{difallah2015dynamics}. This research is extremely useful for my approach and\
+will allow me to use the common categories that they defined as apart of their research to gather data from crowd workers\
+as apart of my research on the \textbf{skills} that are required to complete crowdsource tasks.
+
+\subsection{Topic Modelling of Crowdsourcing Tasks}
+Add stuff here on the topic modelling of crowdsourcing tasks
+\chapter{Proposed Work}
+
+\subsection{Potential Approaches}
+Recommendation systems have been around since the early days of the internet and several of the techniques\
+used early on are still heavily relied on today and in some cases their general principles are utilized\
+to develop intelligent approaches in conjunction with traditional methods. The two primary methods that
+the majority of recommendation systems are based off of are collaborative filtering and content based\
+approaches. \cite{portugal2018use}
+
+\subsubsection{Collaborative Filtering}
+Collaborative filtering is the most popular recommendation system historically and today. This approach\
+pertains to considering similar user data when processing information for recommendations, or in simpler terms, making\
+predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
+traction around the advent of e-commerce websites. An example of this approach can be applied to an arbritary\
+e-commerce site, after items on the site are purchased by customers, many times the customer who purchased \
+the item will be prompted to rate the product or to leave a review. You probably recognize this pattern from\
+any time you buy something off Amazon and you get an email a couple of days after your package arrives asking\
+you how you liked the product or if you'd be willing to leave a review. Anyways, once customers start interacting\
+with items in the e-commerce store, collaborative filtering will use this data to recommend items to users\
+who are similar to the people who originally bought the item. One of the primary stumbling blocks with this\
+approach is the cold-start problem where the recommendation system isn't able to surface relevant recommendations\
+at the inception of the system since there are a limited number of user interactions with items and thus the\
+quality and relevancy of the recommendations will be poor. \cite{wang2017dynamic} Collaborative filtering is also only effective on\
+data that has already existed on the service and is unable to make recommendations for new items until the new\
+items are interacted with. One thing that is interesting to note is that this idea of collaborative filtering\
+can be used in conjunction with deep learning techniques to create intelligent hybrid recommendation systems based off\
+of basic collaborative filtering principles. One example of this is in a study in which researchers created a model\
+using a technique that they called collaborative deep learning (CDL) which leveraged a hierarchical Bayesian model\
+which combined collaborative filtering and the content based approach using deep learning to create better recommendations\
+. \cite{Wang2015}
+
+\subsubsection{Content Based}
+The content based approach is less commonly used than collaborative filtering but it is still a prevalent approach\
+for building recommendation systems. Content based recommender systems are based on similarity of items in the \
+recommender system. These systems leverage the matching of similar items to a user profile. \cite{pazzani2007content}.\
+Content based approaches inherently don't have to deal with the cold-start problem that is common in collaborative \
+filtering recommendation systems since they don't bother with the behavior of similar users but of similar items within\
+the system. These recommendation systems are also commonly used in systems where content has frequent turnover, or\
+where data is sparse \cite{okura2017embedding}.
+
+\subsubsection{Text Classification}
+Text classification is the process of determining similarity from free text. This is a common \
+area of natural language processing research and pertains to a wide array of different applications. 
+Text classification can leverage either supervised or unsupervised techniques, providing a lot of flexibility\
+for differnet approaches. Supervised text classification techniques use labeled training data to develop models\
+that can then be used to categorize unlabeled free text. The most important piece of the supervised approach\
+to text classification is possesing a large, annotated corpus to train accurate models. Alternative to the\
+supervised approach, unsupervised learning can also be applied to text classification problems. Unsupervised learning\
+relies on discovering similarities within a dataset and grouping together similar data, this approach is typically\
+referred to as clustering. One of the beautiful things about unsupervised learning is that it doesn't rely on
+annotated training data, it will just discover similarities from the data provided. These two approaches can \ 
+be applied to improving efficiency of crowd workers.
+
+\subsubsection{Topic Modeling}
+
+\subsection{Research Focus}
+The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
+crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
+on the basis of the data that we will be able to procure from \
+crowdsourcing platforms. 
+
+As apart of a subsequent faction of the grant that this research is founded on, Dr.\
+Yue has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
+extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
+the browser extension are: that we will be able to generate a sizeable corpus of raw text and metadata of HITs\
+on Amazon MTurk but \
+that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
+under the time constraints of the grant to generate a collaborative filtering based recommendation\
+system due to the forseeable initial adoption of the plugin. 
+
+However, once we are able to generate the corpus\
+of tasks, we will be able to apply text classification to extract skills that are needed to perform a task and\
+once we are able generate enough user data from the browser plugin, we will be able to develop a content-based\
+recommendation system for surfacing relevant tasks in crowdsourcing platforms. 
+
+This approach will also give us\
+the ability to improve crowd worker efficiency through the Intelligent Batching of tasks. This will be the more\
+immediate application of my research. Using text classification\
+to determine the skills needed to perform a task, we will be able to use our algorithm to cluster similar tasks\
+and eventually queue and accept tasks with the same skill requirements which will allow crowd workers to be able\
+to complete tasks quicker and more efficiently. Ultimately, I predict that intelligent\
+batching will reduce the amount of time that crowd workers waste sifting through crowdsourcing platforms to find\
+tasks that would be worth doing since they would a) possess\
+the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
+save users time from context-switching.
+\subsection{Potential Algorithms}
+Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in\
+crowdsourcing platforms. These algorithms will be explored due to their common usage to solve text classification \
+problems as outlined in a survey of common text classification techniques \cite{aggarwal2012survey}.
+\begin{itemize}
+	\item \textbf{Decision Trees}
+	\item \textbf{Rule-based Classifiers}
+	\item \textbf{SVM Classifiers}
+	\item \textbf{Bayesian Classifiers}
+	\item \textbf{Neural Network Classifiers:} Specifically LSTM RNNs and CNNs
+	\item \textbf{Nearest Neighbor Classifiers}
+\end{itemize}
+
+I will explore the application of the algorithms above to the problem of extracting required skills\
+from tasks and compare my results accordingly.
+% \label{sec:important-section}
+\subsection{Dataset}
+As explained in the "Research Focus" section above, Dr. Yue has created a team of researchers who will be handling\
+the development of a client side browser extension to web scrape crowdsourcing platforms for task data as well as\
+to track user profile information and user interactions with the crowdsourcing sites. We will be able to quickly web scrape\
+crowdsourcing sites to gather enough data for the text classification I plan to perform on crowdsource tasks. However, we \
+are envisioning that it will\
+take considerably more time to gather enough user data to develop a machine learning recommendation system which\
+utilizes content based recommendations.
+
+\subsection{Evaluation}
+In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which
+will be able to accurately extract skills that are required to complete tasks.
+
+\subsubsection{Metrics}
+To determine the success of different approaches I will allocate the dataset that we collect from scraping the \
+crowdsourcing site into an 80/20 split where 80\% of my data set will be used for training the machine learning\
+algorithms while reserving the remaining 20\% of the data set to test the accuracy of the models and to evaluate\
+which approach is most effective for determining which skills are necessary to perform tasks. Due to the timeline\
+of the grant and time constraint of my graduation date, I will be leveraging offline testing to perform my analysis.\
+Ideally we would be able integrate the models into the browser extension and perform A/B testing in live environments\
+to test the performance of the different techniques but that isn't a viable option given the timeline of the project.
+\subsubsection{Experiments}
+%% Talk about how to train model with labeled dataset and evaluate on testing data
+The two different types of experiments that I plan to conduct can be broken down into the two high-level categories\
+of supervised and unsupervised learning.
+
+\paragraph{Supervised Learning}
+The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
+of shallow learning vs. deep learning algorithms on my data set. For these sets of supervised learning algorithms a large part\
+of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. My plan for collecting this annotation\
+data can be broked down into two phases:
+
+
+\textbf{Survey:} I plan on administering a survey to crowd workers on Amazon MTurk to gather data about common skills that are required\
+to complete HITs. At a high level I plan on collecting worker demographic data to analyze the difference in reported skills across\
+different types of workers who have different backgrounds, qualifications, and amounts of completed tasks. Another facet of the\
+survey will include giving crowd workers a small subset of common tasks from some of the most commonly occuring categories of HITs\
+on MTURK \cite{difallah2015dynamics}:
+\begin{itemize}
+	\item \textbf{Information Finding:} Searching the web to find certain information
+	\item \textbf{Verification and Validation:} Verifying certain information
+	\item \textbf{Interpretation and Analysis:} Interpreting web content (i.e human generated sentiment analysis)
+	\item \textbf{Content Creation: } Generating content from audio or video input
+	\item \textbf{Surveys \& Questionaires:} A set of questions which gather worker demographic info as well as answers on a subject matter
+	\item \textbf{Content Access:} Interacting with web content (i.e watching videos, visiting website)
+\end{itemize}
+
+and asking them to list common skills that are required to solve the sample task. There will also be a free response portion of the survey\
+where I will prompt crowd workers to list an \emph{n} number of skills for each general category of tasks.
+
+\textbf{Annotation:} Then after curating a list of skills from the survey, I plan on having crowd workers annotate my dataset of tasks\
+with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated by the survey.
+
+After I have collected and annotated the dataset of tasks,\
+I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
+Jupyter Notebooks on a platform like Google Colab or I will leverage AWS GPU-enabled P-instances to train my models on my\
+training set. After the models are trained, I plan on testing the supervised learning models on my test set and will\
+generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
+of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
+using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
+machine learning techniques.
+
+\paragraph{Unsupervised Learning}
+In addition to the supervised learning techniques outlined above, I also plan on experimenting with several unsupervised\
+learning techniques for comparison's sake, specifically nearest neighbor and clustering approaches. I plan on using the same infrastructure,\
+hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
+in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
+\chapter{Project Plan}
+The project plan listed below contains weekly/biweekly objectives to keep me on track and hold myself accountable in order
+to successfully defend my thesis in April 2020.
+\subsection{Outline of Project Timeline}
+\begin{itemize}
+	\item \textbf{November 25:} Thesis Proposal
+	\item \textbf{December 16:} Send Thesis Committee updated timeline, research unsupervised learning/transfer learning in NLP
+	\item \textbf{December 23:} Research unsupervised/transfer learning in NLP
+	\item \textbf{January 6:} Develop data pipeline for testing different unsupervised learning/transfer learning techniques. Begin developing transfer learning models.
+	\item \textbf{January 13:} Receive task webscrape data from Dr. Yue's team. Begin testing unsupervised techniques.
+	\item \textbf{January 20:} Begin testing unsupervised techniques. Begin testing transfer learning techniques.
+	\item \textbf{January 27:} Test unsupervised techniques. Test transfer learning techniques.
+	\item \textbf{February 10:} Test unsupervised techniques. Test transfer learning techniques. Begin drafting paper for conference submission.
+	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
+	\item \textbf{March 9:} Develop visualization and analysis of test results, further iteration and improvement of algorithms, continue writing paper for conference submission, begin writing thesis
+	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
+	\item \textbf{April 6:} Defend Thesis
+	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
+	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
+	\item \textbf{April 17 - May 7:} Continue drafting paper and submit to conferences
+	\item \textbf{May 7:} Graduate
+\end{itemize}
+
+\subsection{Further Applications}
+In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
+recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
+inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in a crowdsourcing\
+platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
+be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
+from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
+and then match a user to tasks that they would be able to complete and that were relevant to the calculated user skillset based on\
+skill inference of tasks in the crowdsourcing platform.
+\subsection{Support}
+In order to deliver high quality research I request the following meeting cadence with the thesis\
+committee to gather feedback and correction on my approach as needed:
+\begin{itemize}
+	\item \textbf{Dr. Chuan Yue (Thesis Advisor):} Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
+	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+	\item \textbf{Dr. Hua Wang (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+\end{itemize}
+% \begin{eqnarray}
+% 	\label{eq:importance}
+% 		\textrm{Importance} & \approx & 0 \\
+% 	\label{eq:newton}
+% 		\sum_{i}^{\infty}\vec{F_{i}} & = & m\,\vec{a}
+% \end{eqnarray}
+
+% \begin{align}
+% 	\label{eq:vector}
+% 	\newcommand{\Tmat}[3][]{{^{#2}_{#3}}#1\mathrm{\mathbf{T}}\;\,}
+% 	{\left[\begin{matrix}x\\ y\\ 1\end{matrix}\right]}=\Tmat{S}{W}{\left[\begin{matrix}0\\ 0\\ 1\end{matrix}\right]}
+% \end{align}
+
+
+% \csmfigure{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
+
+%%% Below is a quick test for a figure that moves to another page
+% asdfadsf
+% 
+% asdfasdf
+% 
+% dfsdfds
+% 
+% dsfsd
+% 
+% sdfdsfd
+% %% Note: the ''[H]`` below is optional and means ''always put it exactly here``, normally you do NOT want to use it.  However, in some rare circumstances you may wish to override the default placement.
+% \csmfigure[H]{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
+%%% End special test
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you would like to work on each chapter of your thesis in a separate document then use: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \include{latex-example-chapter}
+
+% \chapter{Second Generation Chapter}
+% \label{cha:important-chapter}
+% Another chapter.
+
+% \subsection{Lots of Mistakes Originally}
+% Fun fun...
+
+% \subsection{Figured out How to Fix Things}
+% Ha-ha!
+
+% \subsection{Could Still Be Better}
+% Interesting huh?
+
+% \subsection{Testing Procedure}
+% I thought you'd like this.
+
+% \subsection{Final Results}
+% It's over (see \ref{fig:Strongbad})!  Also it is important to note the placement of labels in subfigures: \ref{fig:fsm}, and \ref{fig:fsm-pirates}.
+% % NOTE: You may wish to provide a shortened caption in the list of figures, \csmlongfigure allows you to do this (the two captions are combined in the text):
+% \csmlongfigure{Strongbad}{figures/strongbad}{1in}{A world-class hero}{ of awesomeness~\cite{ref:Wikipedia}.}
+
+% \begin{figure}
+% 	\begin{center}
+% 		\subfigure[Him]{
+% 			% Example for including pictures when using the ``graphicx'' package:
+% 			%\includegraphics[width=4in]{figures/fsm}
+% 			% Example for including pictures when using the ``graphics'' package:
+% 			\resizebox{4in}{!}{\includegraphics{figures/fsm}}
+% 		} \\
+% 		\subfigure[Importance of Pirates]{
+% 			\resizebox{4in}{!}{\includegraphics{figures/fsm-pirates}}
+% 			\label{fig:fsm-pirates}
+% 		}
+% 		% Normal caption:
+% 		\caption{\label{fig:fsm}The Flying Spaghetti Monster Knows All}
+% 		% This caption is for testing purposes, it has borders :
+% 		%\caption{\label{fig:fsm}Total electron density isosurface at 1.7 electrons/\AA$^3$ (a) showing higher electron concentration at 6-6 interfaces compared to 6-5 interfaces. (b) Total wave function density isosurface of 0.04 electrons/\AA$^3$ shows the relatively uniform density over 5-6 membered rings and the definite wave function holes through the eight-membered rings.}
+% 	\end{center}
+% \end{figure}
+
+% \chapter{The Way Ahead}
+% Ugh, another chapter~\cite{ref:D}!
+
+% \subsection{How Things Could Be Better}
+% We thought that was the end!
+
+% \subsection{Why We Think Things Aren't Better}
+% We really hoped it was anyway.
+
+% \subsection{We Love Our Advisors}
+% Are you really still reading this? Ok, then check out \ref{tab:magic}!
+
+% \begin{table}
+% 	\caption{\label{tab:magic} A table of tabular goodness.}
+% 	\begin{center}
+% 		\begin{tabular}{|c|c|c|}
+% 			\hline
+% 			& B & b \\
+% 			\hline
+% 			B & BB & Bb \\
+% 			\hline
+% 			b & Bb & bb \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% \end{table}
+
+%% Below is a test for sideways figure and table floats (it also works to wrap figures and tables in a ``landscape'' environment, but the method below is preferred)
+% magic text a
+% 
+% \begin{sidewaystable}
+% 
+% \centering
+% 
+% \caption[Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates]{Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates; For a breakdown of the Pottery Assemblages see Tables I and
+% III; for the Flints see Tables II and IV; for the Animal Bones see
+% Table V.}
+% 
+% \begin{tabular}{|llllllllp{1in}lp{1in}|}
+% \hline
+% Context   &Length   &Breadth/   &Depth   &Profile   &Pottery   &Flint   &Animal   &Stone   &Other    &C14 Dates \\
+%   &         &Diameter   &        &          &          &        & 
+% Bones&&&\\
+% \hline
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Grooved Ware}&\\
+% 784 &---   &0.90m &0.18m &Sloping U &P1    &$\times$46  &  $\times$8  &&$\times$2 bone&  2150$\pm$ 100 BC\\
+% 785 &---   &1.00m &0.12  &Sloping U &P2--4 &$\times$23  &  $\times$21 & Hammerstone &---&---\\
+% 962 &---   &1.37m &0.20m &Sloping U &P5--6 &$\times$48  &  $\times$57* & ---&     ---&1990 $\pm$ 80 BC (Layer 4) 1870 $\pm$90 BC (Layer 1)\\
+% 983 &0.83m &0.73m &0.25m &Stepped U &---   &$\times$18  &  $\times$8 & ---& Fired clay&---\\
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Beaker}&\\
+% 552 &---   &0.68m &0.12m &Saucer    &P7--14 &---        & --- & --- &--- &---\\
+% 790 &---   &0.60m &0.25m &U         &P15    &$\times$12 & --- & Quartzite-lump&--- &---\\
+% 794 &2.89m &0.75m &0.25m &Irreg.    &P16    $\times$3   & --- & --- &--- &---\\
+% \hline
+% \end{tabular}
+% \end{sidewaystable} 
+% 
+% \begin{sidewaystable}
+% \centering
+% 
+% \caption[Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates]{Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates; For a breakdown of the Pottery Assemblages see Tables I and
+% III; for the Flints see Tables II and IV; for the Animal Bones see
+% Table V.}
+% 
+% \begin{tabular}{|llllllllp{1in}lp{1in}|}
+% \hline
+% Context   &Length   &Breadth/   &Depth   &Profile   &Pottery   &Flint   &Animal   &Stone   &Other    &C14 Dates \\
+%   &         &Diameter   &        &          &          &        & 
+% Bones&&&\\
+% \hline
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Grooved Ware}&\\
+% 784 &---   &0.90m &0.18m &Sloping U &P1    &$\times$46  &  $\times$8  &&$\times$2 bone&  2150$\pm$ 100 BC\\
+% 785 &---   &1.00m &0.12  &Sloping U &P2--4 &$\times$23  &  $\times$21 & Hammerstone &---&---\\
+% 962 &---   &1.37m &0.20m &Sloping U &P5--6 &$\times$48  &  $\times$57* & ---&     ---&1990 $\pm$ 80 BC (Layer 4) 1870 $\pm$90 BC (Layer 1)\\
+% 983 &0.83m &0.73m &0.25m &Stepped U &---   &$\times$18  &  $\times$8 & ---& Fired clay&---\\
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Beaker}&\\
+% 552 &---   &0.68m &0.12m &Saucer    &P7--14 &---        & --- & --- &--- &---\\
+% 790 &---   &0.60m &0.25m &U         &P15    &$\times$12 & --- & Quartzite-lump&--- &---\\
+% 794 &2.89m &0.75m &0.25m &Irreg.    &P16    $\times$3   & --- & --- &--- &---\\
+% \hline
+% \end{tabular}
+% \end{sidewaystable} 
+% 
+% magic text b
+
+%% Parts of a Thesis - Back Matter
+\backmatter
+
+%%% Parts of a Thesis - Back Matter - References Cited (required)
+
+% Use "Advanced" Bibliography Techniques
+% \bibliography{thesis-proposal.bib}
+% \bibliographystyle{IEEEannot}
+\bibliography{thesis}
+% \addbibresource{thesis-proposal.bib}
+%\printbibliography % <-- For using biblatex instead of natbib or the built-in bibliography utility
+
+%%% Parts of a Thesis - Back Matter - Selected Bibliography (optional)
+%\cleardoublepage
+%\begin{selected-bibliography}
+% Your selected bibliogrpahy would go here, a page break might also be necessary above.
+%\end{selected-bibliography} 
+
+%%% Parts of a Thesis - Back Matter - Appendices (if applicable)
+% \appendix{TODO add if I need to add anything in the appendix}\label{app:encoding}
+% \ref{tab:encoding} shows how several symbols appear in the rendered document.
+
+% \begin{table}[H]
+% 	\caption{\label{tab:encoding}This is where we have fun testing encoding}
+% 	\begin{center}
+% 		\begin{tabular}{|c|c|c|}
+% 			\hline
+% 			& Normal & Math \\
+% 			\hline
+% 			The greater than: & > & $>$ \\
+% 			\hline
+% 			The lesss than: & < & $<$ \\
+% 			\hline
+% 			The tilde: & \textasciitilde{} & $\sim$ \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% \end{table}
+
+% \subsection{Test Appendix Sub-Section}\label{sec:longtable}
+% \ref{tab:longtable} is an example of a very large ``longtable.''
+% \begin{landscape}
+% \begin{longtable}{|>{\centering}p{1.02in}|>{\centering}p{1.15in}|>{\centering}p{1in}|>{\centering}p{0.7in}|>{\centering}p{0.7in}|>{\centering}p{0.67in}|>{\centering}p{2.55in}|} %
+% 	\endfirsthead % Remove this line to use the main header for the first page
+% 	\hline%
+% 	Age & Formation  & Thickness (feet)   & Thickness (feet)  & Thickness (feet)  & Aquifer?  & Lithology%
+% 	\endhead%
+% 	\caption{Stratigraphy of the Granite Mountains and Lost Creek areas\label{tab:longtable}}\\ %
+% 	\hline
+% 	Age & Formation%
+% 	\footnote{Only major unconformities shown, indicated by break in table.%
+% 	} & Thickness (feet)%
+% 	\footnote{Generalized thicknesses from.%
+% 	}  & Thickness (feet)%
+% 	\footnote{Thicknesses shown are approximate and apply to Lost Creek vicinity
+% 	only.%
+% 	} & Thickness (feet)%
+% 	\footnote{Thicknesses shown are from a public screened dataset of logged formation
+% 	tops from the 12 townships surrounding Lost Creek.%
+% 	} & Aquifer?%
+% 	\footnote{Aquifer designations \textendash{} Lost Creek vicinity only.%
+% 	} & Lithology \tabularnewline
+% 	\hline 
+% 	Quaternary  & Alluvium & - & 0-20 & - & Yes & Sands and clays derived chiefly from the Tertiary formations in the
+% 	area. \tabularnewline
+% 	\hline 
+% 	Paleocene & Fort Union  & up to 3,000 & 4,650 & 6,500? & Yes & Consists of alternating fine to coarse grained sandstone siltstone
+% 	and mudstone. Contains various layers of lignitic coal beds. \tabularnewline
+% 	\hline
+% 	\hline 
+% 	Cretaceous  & Lance  & 1,700 to 2,700 & 2,950 & 4,000? & Yes & Interbedded sandstone, siltstone and mudstone. Gray to brownish gray.
+% 	Locally carbonaceous. Sandstone is white to grayish orange. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Fox Hills  &  & 550 & 1,800? & No & Consists of coarsening upward shale and fine-grained sand with thin
+% 	coal beds near the top. Represents a transition from marine to non-marine
+% 	environment. Grades into Lewis Shale at the base. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Lewis Shale  & 1,250 & 1,200 & 1,050 to 2,000 & No & Interbedded dark-gray and olive-gray shale and olive-gray sandstone. \tabularnewline
+% 	\hline
+% 	\hline 
+% 	Cretaceous & Mesaverde Group  & 0 to 1,000 & 800 & 300 to 500? & No & Gray to dark gray shales with interbedded buff to tan fine to medium
+% 	grained sandstones. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Steele and Niobrara Shales  & Cody Shale 4,500 to 5,000 & 2,000 to 2,500 & 2,400 to 5,000 & No & Steele shale is soft gray marine, Niobrara shale is dark gray and
+% 	contains calcareous zones. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Frontier  & 700 to 900 & 500 to 1,000 & 750 to 1,500 & Yes & Gray sandstone and sandy shale. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Dakota  &  & 300 to 400 &  & Yes & Marine sandstone, tan to buff, fine to medium grained may contain
+% 	carbonaceous shale layer. \tabularnewline
+% 	\hline 
+% 	Jurassic  & Nugget Sandstone  & 400 to 525 & 500 &  & Yes & Grayish to dull red coarse grained cross-bedded quartz sandstone. \tabularnewline
+% 	\hline 
+% 	Triassic  & Chugwater  & 1,275 & 1,500 &  & No & Red shale and siltstone contains gypsum partings near the base. \tabularnewline
+% 	\hline 
+% 	Permian  & Phosphoria  & 275 to 325 & 300 &  & No & Black to dark gray shale, chert and phosphorite. \tabularnewline
+% 	\hline 
+% 	Pennsylvanian  & Tensleep and Amsden and Madison  & 600 to 700 & 750 &  & No & White to gray sandstone containing thin limestone and dolomite partings.
+% 	Red and green shale and dolomite, sandstone near base. \tabularnewline
+% 	\hline 
+% 	Cambrian  & Undifferentiated  & 900 to 1,000 & 1,000 &  & No & Siltstone and quartzite, including Flathead sandstone. \tabularnewline
+% 	\hline
+% 	\hline 
+% 	Precambrian  & Basement  & - & - &  & No & Granites, metamorphic and igneous rocks. \tabularnewline
+% 	\hline
+% % %% Extend the above example to cross a double-page boundary
+% % 	%\hline
+% % 	Quaternary  & Alluvium & - & 0-20 & - & Yes & Sands and clays derived chiefly from the Tertiary formations in the
+% % 	area. \tabularnewline
+% % 	\hline 
+% % 	Paleocene & Fort Union  & up to 3,000 & 4,650 & 6,500? & Yes & Consists of alternating fine to coarse grained sandstone siltstone
+% % 	and mudstone. Contains various layers of lignitic coal beds. \tabularnewline
+% % 	\hline
+% % 	\hline 
+% % 	Cretaceous  & Lance  & 1,700 to 2,700 & 2,950 & 4,000? & Yes & Interbedded sandstone, siltstone and mudstone. Gray to brownish gray.
+% % 	Locally carbonaceous. Sandstone is white to grayish orange. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Fox Hills  &  & 550 & 1,800? & No & Consists of coarsening upward shale and fine-grained sand with thin
+% % 	coal beds near the top. Represents a transition from marine to non-marine
+% % 	environment. Grades into Lewis Shale at the base. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Lewis Shale  & 1,250 & 1,200 & 1,050 to 2,000 & No & Interbedded dark-gray and olive-gray shale and olive-gray sandstone. \tabularnewline
+% % 	\hline
+% % 	\hline 
+% % 	Cretaceous & Mesaverde Group  & 0 to 1,000 & 800 & 300 to 500? & No & Gray to dark gray shales with interbedded buff to tan fine to medium
+% % 	grained sandstones. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Steele and Niobrara Shales  & Cody Shale 4,500 to 5,000 & 2,000 to 2,500 & 2,400 to 5,000 & No & Steele shale is soft gray marine, Niobrara shale is dark gray and
+% % 	contains calcareous zones. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Frontier  & 700 to 900 & 500 to 1,000 & 750 to 1,500 & Yes & Gray sandstone and sandy shale. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Dakota  &  & 300 to 400 &  & Yes & Marine sandstone, tan to buff, fine to medium grained may contain
+% % 	carbonaceous shale layer. \tabularnewline
+% % 	\hline 
+% % 	Jurassic  & Nugget Sandstone  & 400 to 525 & 500 &  & Yes & Grayish to dull red coarse grained cross-bedded quartz sandstone. \tabularnewline
+% % 	\hline 
+% % 	Triassic  & Chugwater  & 1,275 & 1,500 &  & No & Red shale and siltstone contains gypsum partings near the base. \tabularnewline
+% % 	\hline 
+% % 	Permian  & Phosphoria  & 275 to 325 & 300 &  & No & Black to dark gray shale, chert and phosphorite. \tabularnewline
+% % 	\hline 
+% % 	Pennsylvanian  & Tensleep and Amsden and Madison  & 600 to 700 & 750 &  & No & White to gray sandstone containing thin limestone and dolomite partings.
+% % 	Red and green shale and dolomite, sandstone near base. \tabularnewline
+% % 	\hline 
+% % 	Cambrian  & Undifferentiated  & 900 to 1,000 & 1,000 &  & No & Siltstone and quartzite, including Flathead sandstone. \tabularnewline
+% % 	\hline
+% % 	\hline 
+% % 	Precambrian  & Basement  & - & - &  & No & Granites, metamorphic and igneous rocks. \tabularnewline
+% % 	\hline
+% % %% END DOUBLE PAGE BOUNDARY EXAMPLE
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \begin{longtable}{|c|c|c|}
+% 	\endfirsthead
+% 	\caption{Test of a small longtable.} \\
+% 	\hline
+% 	A & B & C \\
+% 	\hline
+% 	1 & 2 & 3 \\
+% 	\hline
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \begin{longtable}{|c|c|c|}
+% 	\endfirsthead
+% 	\caption{Test of a small longtable on the alternate page.} \\
+% 	\hline
+% 	1 & 2 & 3 \\
+% 	\hline
+% 	A & B & C \\
+% 	\hline
+% \end{longtable}
+% \end{landscape}
+
+% \subsection{Sub-Sections are Fun}
+% Sorta...
+
+% \appendix{Special Coolness}
+
+% Insert ice cubes here (\ref{lst:hello-world}).
+
+% \lstinputlisting[language=Matlab,label={lst:hello-world},caption={A MATLAB ``Hello World`` Example}]{matlab_code.m}
+
+% %% Example for use with ``breqn'' automatic equation breaking:
+% \ifbreqn
+% 	\appendix{Equation Breaking Tests}
+
+% 	\begin{equation*}
+% 	r = \frac{i}{n F} = k' c_i \exp\left\{ \frac{-G^{\ddagger}}{R T} \right\}
+% 	\end{equation*}
+% 	\begin{equation*}
+% 	r = \frac{i}{n F} = k' c_i \exp\left\{ \frac{-G^{\ddagger}}{R T} \right\}
+% 	\end{equation*}
+
+% 	Replace $j$ by $h-j$ and by $k-j$ in these sums to get [cf.~(\ref{sna74})]
+% 	\begin{equation*}
+% 	\label{sna74}
+% 	\frac{1}{6} \left(\sigma(k,h,0) +\frac{3(h-1)}{h}\right)
+% 	+\frac{1}{6} \left(\sigma(h,k,0) +\frac{3(k-1)}{k}\right)
+% 	=\frac{1}{6} \left(\frac{h}{k} +\frac{k}{h} +\frac{1}{hk}\right)
+% 	+\frac{1}{2} -\frac{1}{2h} -\frac{1}{2k},
+% 	\end{equation*}
+% 	which is equivalent to the desired result.
+% \fi
+
+
+% %% For figuring out the LyX multi-row problem
+% \begin{table}
+% \caption{\label{tab:Important-experimental-propertie}General experimental
+% properties}
+% \centering{}%
+% \begin{tabular}{|c|c|c|}
+% \cline{2-3} 
+% \multicolumn{1}{c|}{} & Parameter & \tabularnewline
+% \hline 
+% \multirow{8}{*}{Silurian dolomite} & Speed, rpm (drainage) & 1200 \tabularnewline
+% \cline{2-3} 
+%  & Speed, rpm (forced imbibition) & 884\tabularnewline
+% \cline{2-3} 
+%  & Surfactant type  & S13D\tabularnewline
+% \cline{2-3} 
+%  & Surfactant concentration, ppm  & 5000\tabularnewline
+% \cline{2-3} 
+%  & IFT$\left(\frac{dyne}{cm}\right)$ & 16\tabularnewline
+% \cline{2-3} 
+%  & $\mu_{o}(cp)$ & 22\tabularnewline
+% \cline{2-3} 
+%  & $k_{f}(md)$ & 10000\tabularnewline
+% \cline{2-3} 
+%  & $\phi_{f}$ & 0.9\tabularnewline
+% \cline{2-3} 
+% \multirow{8}{*}{Thamama} & Speed, rpm (drainage) & 4000\tabularnewline
+% \cline{2-3} 
+%  & Speed, rpm (forced imbibition) & 3000\tabularnewline
+% \cline{2-3} 
+%  & Surfactant type  & Ethoxylated alcohol\tabularnewline
+% \cline{2-3} 
+%  & Surfactant concentration, ppm  & 20000\tabularnewline
+% \cline{2-3} 
+%  & IFT$\left(\frac{dyne}{cm}\right)$ & 18\tabularnewline
+% \cline{2-3} 
+%  & $\mu_{o}(cp)$ & 9.5\tabularnewline
+% \cline{2-3} 
+%  & $k_{f}(md)$ & 7000-10000\tabularnewline
+% \cline{2-3} 
+%  & $\phi_{f}$ & 0.9\tabularnewline
+% \hline 
+% \end{tabular}
+% \end{table}
+
+\end{document}
