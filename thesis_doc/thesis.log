@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 MAR 2020 23:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 MAR 2020 00:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/rileymiller/code/research/thesis_doc/thesis-proposal.tex
-(/Users/rileymiller/code/research/thesis_doc/thesis-proposal.tex
+**/Users/rileymiller/code/research/thesis_doc/thesis.tex
+(/Users/rileymiller/code/research/thesis_doc/thesis.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -430,11 +430,11 @@ Package caption Info: rotating package is loaded.
 \c@lotdepth=\count180
 \sf@top=\skip68
 \sf@bottom=\skip69
-) (/Users/rileymiller/code/research/thesis_doc/thesis-proposal.aux
+) (/Users/rileymiller/code/research/thesis_doc/thesis.aux
 \csm@redefined@appendix@saved=\count181
 \csm@appendicies=\count182
 )
-\openout1 = `thesis-proposal.aux'.
+\openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
 LaTeX Font Info:    ... okay on input line 87.
@@ -451,8 +451,8 @@ LaTeX Font Info:    ... okay on input line 87.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
 LaTeX Font Info:    ... okay on input line 87.
 
-No file thesis-proposal.lot.
-No file thesis-proposal.lof.
+No file thesis.lot.
+No file thesis.lof.
 
 LaTeX Warning: There are no tables or figures..
 
@@ -529,9 +529,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 87.
 LaTeX Info: Redefining \pageref on input line 87.
 LaTeX Info: Redefining \nameref on input line 87.
- (/Users/rileymiller/code/research/thesis_doc/thesis-proposal.out) (/Users/rileymiller/code/research/thesis_doc/thesis-proposal.out)
+ (/Users/rileymiller/code/research/thesis_doc/thesis.out) (/Users/rileymiller/code/research/thesis_doc/thesis.out)
 \@outlinefile=\write3
-\openout3 = `thesis-proposal.out'.
+\openout3 = `thesis.out'.
 
 \c@lstlisting=\count190
 Package caption Info: Begin \AtBeginDocument code.
@@ -546,53 +546,60 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 103.
- [2] [2] [3] (/Users/rileymiller/code/research/thesis_doc/thesis-proposal.toc [4])
+ [2] [2]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 114.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 114.
+ [3] (/Users/rileymiller/code/research/thesis_doc/thesis.toc [4])
 \tf@toc=\write4
-\openout4 = `thesis-proposal.toc'.
+\openout4 = `thesis.toc'.
 
  [5] [1
 
-] [2] [3] [4] [5] [6]
+] [2] [3] [4] [5]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 377.
- [7
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 366.
+ [6
 
-] [8] [9] [10] [11
+] [7] [8] [9] [10
 
-] [12] [13] [14] [15] [16] [17] [18
+] [11] [12] [13] [14] [15] [16] [17
 
-] [19] [20] (/Users/rileymiller/code/research/thesis_doc/thesis-proposal.bbl [21
+] [18] [19] (/Users/rileymiller/code/research/thesis_doc/thesis.bbl [20
 
 ])
 
 LaTeX Warning: It is recommended that you include the 'acknowledgments' section (environment).
 
-[22]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1063.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1063.
- (/Users/rileymiller/code/research/thesis_doc/thesis-proposal.aux
+[21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1054.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1054.
+ (/Users/rileymiller/code/research/thesis_doc/thesis.aux
 \csm@redefined@appendix@saved=\count191
 \csm@appendicies=\count192
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1063.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1063.
-Package rerunfilecheck Info: File `thesis-proposal.out' has not changed.
-(rerunfilecheck)             Checksum: C4CBFD8130427112781055A1DF34D272;2006.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1063.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1054.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1054.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: B53EE02E835EA7AB5CE6A24D65CFEEC0;2095.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1054.
  ) 
 Here is how much of TeX's memory you used:
- 10406 strings out of 492616
- 159660 string characters out of 6129482
- 270189 words of memory out of 5000000
- 14118 multiletter control sequences out of 15000+600000
+ 10422 strings out of 492616
+ 159786 string characters out of 6129482
+ 271167 words of memory out of 5000000
+ 14131 multiletter control sequences out of 15000+600000
  7959 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,6n,44p,635b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on /Users/rileymiller/code/research/thesis_doc/thesis-proposal.pdf (28 pages, 122944 bytes).
+ 48i,6n,44p,626b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on /Users/rileymiller/code/research/thesis_doc/thesis.pdf (27 pages, 128173 bytes).
 PDF statistics:
- 357 PDF objects out of 1000 (max. 8388607)
- 318 compressed objects within 4 object streams
+ 361 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
  74 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
