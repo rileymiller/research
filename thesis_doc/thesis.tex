@@ -353,7 +353,11 @@ as well as how this information can be leveraged to optimize crowdworker efficie
 
 \chapter{Related Work}
 
-\subsection{Existing Tools}
+\subsection{Topic Modeling of Crowdsourcing Tasks}
+Add stuff here on the topic modeling of crowdsourcing tasks
+
+\subsection{Crowdworker Efficiency}
+\subsubsection{Existing Tools}
 Crowd workers have created a variety of user plugins and browser extensions to help out the community of\
 crowd workers to try and improve crowd worker efficiency. Some of the more prominent plugins focus on batching\
 similar tasks to reduce the time users spend switching context between dissimilar tasks and plugins for workers\
@@ -386,7 +390,7 @@ useful recommendations of tasks that are curated based off worker history, exper
 content-based analysis of the feasibility of a task, and Intelligent Batching to reduce time spent switching
 context.
 
-\subsection{Existing Recommendation Systems}
+\subsubsection{Existing Recommendation Systems}
 %% This section should touch on some research for text classification and recommendation systems
 There are several different approaches to developing recommendation systems, the two most common are collaborative\
 filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
@@ -415,115 +419,113 @@ a content based recommendation system that will match a user to a task in a crow
 the user has obtained (based on previously completed tasks and user provided characteristics) and the required skills that\
 are needed to complete a task.
 
-\subsection{Text Classification of Crowdsourcing Tasks}
+\subsubsection{Text Classification of Crowdsourcing Tasks}
 Interesting related work in the field of text classification of tasks in crowdsourcing platforms can be found in an analysis\
 of the dynamics of crowdsourcing performed by (Difallah et al) in which they used supervised learning to classify\
 types of tasks in Amazon MTurk \cite{difallah2015dynamics}. This research is extremely useful for my approach and\
 will allow me to use the common categories that they defined as apart of their research to gather data from crowd workers\
 as apart of my research on the \textbf{skills} that are required to complete crowdsource tasks.
 
-\subsection{Topic Modelling of Crowdsourcing Tasks}
-Add stuff here on the topic modelling of crowdsourcing tasks
-\chapter{Proposed Work}
+\chapter{Topic Modeling Approach and Focus}
 
-\subsection{Potential Approaches}
-Recommendation systems have been around since the early days of the internet and several of the techniques\
-used early on are still heavily relied on today and in some cases their general principles are utilized\
-to develop intelligent approaches in conjunction with traditional methods. The two primary methods that
-the majority of recommendation systems are based off of are collaborative filtering and content based\
-approaches. \cite{portugal2018use}
+% \subsection{Potential Approaches}
+% Recommendation systems have been around since the early days of the internet and several of the techniques\
+% used early on are still heavily relied on today and in some cases their general principles are utilized\
+% to develop intelligent approaches in conjunction with traditional methods. The two primary methods that
+% the majority of recommendation systems are based off of are collaborative filtering and content based\
+% approaches. \cite{portugal2018use}
 
-\subsubsection{Collaborative Filtering}
-Collaborative filtering is the most popular recommendation system historically and today. This approach\
-pertains to considering similar user data when processing information for recommendations, or in simpler terms, making\
-predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
-traction around the advent of e-commerce websites. An example of this approach can be applied to an arbritary\
-e-commerce site, after items on the site are purchased by customers, many times the customer who purchased \
-the item will be prompted to rate the product or to leave a review. You probably recognize this pattern from\
-any time you buy something off Amazon and you get an email a couple of days after your package arrives asking\
-you how you liked the product or if you'd be willing to leave a review. Anyways, once customers start interacting\
-with items in the e-commerce store, collaborative filtering will use this data to recommend items to users\
-who are similar to the people who originally bought the item. One of the primary stumbling blocks with this\
-approach is the cold-start problem where the recommendation system isn't able to surface relevant recommendations\
-at the inception of the system since there are a limited number of user interactions with items and thus the\
-quality and relevancy of the recommendations will be poor. \cite{wang2017dynamic} Collaborative filtering is also only effective on\
-data that has already existed on the service and is unable to make recommendations for new items until the new\
-items are interacted with. One thing that is interesting to note is that this idea of collaborative filtering\
-can be used in conjunction with deep learning techniques to create intelligent hybrid recommendation systems based off\
-of basic collaborative filtering principles. One example of this is in a study in which researchers created a model\
-using a technique that they called collaborative deep learning (CDL) which leveraged a hierarchical Bayesian model\
-which combined collaborative filtering and the content based approach using deep learning to create better recommendations\
-. \cite{Wang2015}
+% \subsubsection{Collaborative Filtering}
+% Collaborative filtering is the most popular recommendation system historically and today. This approach\
+% pertains to considering similar user data when processing information for recommendations, or in simpler terms, making\
+% predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
+% traction around the advent of e-commerce websites. An example of this approach can be applied to an arbritary\
+% e-commerce site, after items on the site are purchased by customers, many times the customer who purchased \
+% the item will be prompted to rate the product or to leave a review. You probably recognize this pattern from\
+% any time you buy something off Amazon and you get an email a couple of days after your package arrives asking\
+% you how you liked the product or if you'd be willing to leave a review. Anyways, once customers start interacting\
+% with items in the e-commerce store, collaborative filtering will use this data to recommend items to users\
+% who are similar to the people who originally bought the item. One of the primary stumbling blocks with this\
+% approach is the cold-start problem where the recommendation system isn't able to surface relevant recommendations\
+% at the inception of the system since there are a limited number of user interactions with items and thus the\
+% quality and relevancy of the recommendations will be poor. \cite{wang2017dynamic} Collaborative filtering is also only effective on\
+% data that has already existed on the service and is unable to make recommendations for new items until the new\
+% items are interacted with. One thing that is interesting to note is that this idea of collaborative filtering\
+% can be used in conjunction with deep learning techniques to create intelligent hybrid recommendation systems based off\
+% of basic collaborative filtering principles. One example of this is in a study in which researchers created a model\
+% using a technique that they called collaborative deep learning (CDL) which leveraged a hierarchical Bayesian model\
+% which combined collaborative filtering and the content based approach using deep learning to create better recommendations\
+% . \cite{Wang2015}
 
-\subsubsection{Content Based}
-The content based approach is less commonly used than collaborative filtering but it is still a prevalent approach\
-for building recommendation systems. Content based recommender systems are based on similarity of items in the \
-recommender system. These systems leverage the matching of similar items to a user profile. \cite{pazzani2007content}.\
-Content based approaches inherently don't have to deal with the cold-start problem that is common in collaborative \
-filtering recommendation systems since they don't bother with the behavior of similar users but of similar items within\
-the system. These recommendation systems are also commonly used in systems where content has frequent turnover, or\
-where data is sparse \cite{okura2017embedding}.
+% \subsubsection{Content Based}
+% The content based approach is less commonly used than collaborative filtering but it is still a prevalent approach\
+% for building recommendation systems. Content based recommender systems are based on similarity of items in the \
+% recommender system. These systems leverage the matching of similar items to a user profile. \cite{pazzani2007content}.\
+% Content based approaches inherently don't have to deal with the cold-start problem that is common in collaborative \
+% filtering recommendation systems since they don't bother with the behavior of similar users but of similar items within\
+% the system. These recommendation systems are also commonly used in systems where content has frequent turnover, or\
+% where data is sparse \cite{okura2017embedding}.
 
-\subsubsection{Text Classification}
-Text classification is the process of determining similarity from free text. This is a common \
-area of natural language processing research and pertains to a wide array of different applications. 
-Text classification can leverage either supervised or unsupervised techniques, providing a lot of flexibility\
-for differnet approaches. Supervised text classification techniques use labeled training data to develop models\
-that can then be used to categorize unlabeled free text. The most important piece of the supervised approach\
-to text classification is possesing a large, annotated corpus to train accurate models. Alternative to the\
-supervised approach, unsupervised learning can also be applied to text classification problems. Unsupervised learning\
-relies on discovering similarities within a dataset and grouping together similar data, this approach is typically\
-referred to as clustering. One of the beautiful things about unsupervised learning is that it doesn't rely on
-annotated training data, it will just discover similarities from the data provided. These two approaches can \ 
-be applied to improving efficiency of crowd workers.
+% \subsubsection{Text Classification}
+% Text classification is the process of determining similarity from free text. This is a common \
+% area of natural language processing research and pertains to a wide array of different applications. 
+% Text classification can leverage either supervised or unsupervised techniques, providing a lot of flexibility\
+% for differnet approaches. Supervised text classification techniques use labeled training data to develop models\
+% that can then be used to categorize unlabeled free text. The most important piece of the supervised approach\
+% to text classification is possesing a large, annotated corpus to train accurate models. Alternative to the\
+% supervised approach, unsupervised learning can also be applied to text classification problems. Unsupervised learning\
+% relies on discovering similarities within a dataset and grouping together similar data, this approach is typically\
+% referred to as clustering. One of the beautiful things about unsupervised learning is that it doesn't rely on
+% annotated training data, it will just discover similarities from the data provided. These two approaches can \ 
+% be applied to improving efficiency of crowd workers.
 
-\subsubsection{Topic Modeling}
+% \subsubsection{Topic Modeling}
 
-\subsection{Research Focus}
-The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
-crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
-on the basis of the data that we will be able to procure from \
-crowdsourcing platforms. 
+% \subsection{Research Focus}
+% The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
+% crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
+% on the basis of the data that we will be able to procure from \
+% crowdsourcing platforms. 
 
-As apart of a subsequent faction of the grant that this research is founded on, Dr.\
-Yue has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
-extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
-the browser extension are: that we will be able to generate a sizeable corpus of raw text and metadata of HITs\
-on Amazon MTurk but \
-that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
-under the time constraints of the grant to generate a collaborative filtering based recommendation\
-system due to the forseeable initial adoption of the plugin. 
+% As apart of a subsequent faction of the grant that this research is founded on, Dr.\
+% Yue has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
+% extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
+% the browser extension are: that we will be able to generate a sizeable corpus of raw text and metadata of HITs\
+% on Amazon MTurk but \
+% that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
+% under the time constraints of the grant to generate a collaborative filtering based recommendation\
+% system due to the forseeable initial adoption of the plugin. 
 
-However, once we are able to generate the corpus\
-of tasks, we will be able to apply text classification to extract skills that are needed to perform a task and\
-once we are able generate enough user data from the browser plugin, we will be able to develop a content-based\
-recommendation system for surfacing relevant tasks in crowdsourcing platforms. 
+% However, once we are able to generate the corpus\
+% of tasks, we will be able to apply text classification to extract skills that are needed to perform a task and\
+% once we are able generate enough user data from the browser plugin, we will be able to develop a content-based\
+% recommendation system for surfacing relevant tasks in crowdsourcing platforms. 
 
-This approach will also give us\
-the ability to improve crowd worker efficiency through the Intelligent Batching of tasks. This will be the more\
-immediate application of my research. Using text classification\
-to determine the skills needed to perform a task, we will be able to use our algorithm to cluster similar tasks\
-and eventually queue and accept tasks with the same skill requirements which will allow crowd workers to be able\
-to complete tasks quicker and more efficiently. Ultimately, I predict that intelligent\
-batching will reduce the amount of time that crowd workers waste sifting through crowdsourcing platforms to find\
-tasks that would be worth doing since they would a) possess\
-the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
-save users time from context-switching.
-\subsection{Potential Algorithms}
-Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in\
-crowdsourcing platforms. These algorithms will be explored due to their common usage to solve text classification \
-problems as outlined in a survey of common text classification techniques \cite{aggarwal2012survey}.
-\begin{itemize}
-	\item \textbf{Decision Trees}
-	\item \textbf{Rule-based Classifiers}
-	\item \textbf{SVM Classifiers}
-	\item \textbf{Bayesian Classifiers}
-	\item \textbf{Neural Network Classifiers:} Specifically LSTM RNNs and CNNs
-	\item \textbf{Nearest Neighbor Classifiers}
-\end{itemize}
+% This approach will also give us\
+% the ability to improve crowd worker efficiency through the Intelligent Batching of tasks. This will be the more\
+% immediate application of my research. Using text classification\
+% to determine the skills needed to perform a task, we will be able to use our algorithm to cluster similar tasks\
+% and eventually queue and accept tasks with the same skill requirements which will allow crowd workers to be able\
+% to complete tasks quicker and more efficiently. Ultimately, I predict that intelligent\
+% batching will reduce the amount of time that crowd workers waste sifting through crowdsourcing platforms to find\
+% tasks that would be worth doing since they would a) possess\
+% the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
+% save users time from context-switching.
+% \subsection{Potential Algorithms}
+% Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in\
+% crowdsourcing platforms. These algorithms will be explored due to their common usage to solve text classification \
+% problems as outlined in a survey of common text classification techniques \cite{aggarwal2012survey}.
+% \begin{itemize}
+% 	\item \textbf{Decision Trees}
+% 	\item \textbf{Rule-based Classifiers}
+% 	\item \textbf{SVM Classifiers}
+% 	\item \textbf{Bayesian Classifiers}
+% 	\item \textbf{Neural Network Classifiers:} Specifically LSTM RNNs and CNNs
+% 	\item \textbf{Nearest Neighbor Classifiers}
+% \end{itemize}
 
-I will explore the application of the algorithms above to the problem of extracting required skills\
-from tasks and compare my results accordingly.
+% I will explore the application of the algorithms above to the problem of extracting required skills\
+% from tasks and compare my results accordingly.
 % \label{sec:important-section}
 \subsection{Dataset}
 As explained in the "Research Focus" section above, Dr. Yue has created a team of researchers who will be handling\
@@ -551,87 +553,93 @@ to test the performance of the different techniques but that isn't a viable opti
 The two different types of experiments that I plan to conduct can be broken down into the two high-level categories\
 of supervised and unsupervised learning.
 
-\paragraph{Supervised Learning}
-The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
-of shallow learning vs. deep learning algorithms on my data set. For these sets of supervised learning algorithms a large part\
-of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. My plan for collecting this annotation\
-data can be broked down into two phases:
+% \paragraph{Supervised Learning}
+% The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
+% of shallow learning vs. deep learning algorithms on my data set. For these sets of supervised learning algorithms a large part\
+% of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. My plan for collecting this annotation\
+% data can be broked down into two phases:
 
 
-\textbf{Survey:} I plan on administering a survey to crowd workers on Amazon MTurk to gather data about common skills that are required\
-to complete HITs. At a high level I plan on collecting worker demographic data to analyze the difference in reported skills across\
-different types of workers who have different backgrounds, qualifications, and amounts of completed tasks. Another facet of the\
-survey will include giving crowd workers a small subset of common tasks from some of the most commonly occuring categories of HITs\
-on MTURK \cite{difallah2015dynamics}:
-\begin{itemize}
-	\item \textbf{Information Finding:} Searching the web to find certain information
-	\item \textbf{Verification and Validation:} Verifying certain information
-	\item \textbf{Interpretation and Analysis:} Interpreting web content (i.e human generated sentiment analysis)
-	\item \textbf{Content Creation: } Generating content from audio or video input
-	\item \textbf{Surveys \& Questionaires:} A set of questions which gather worker demographic info as well as answers on a subject matter
-	\item \textbf{Content Access:} Interacting with web content (i.e watching videos, visiting website)
-\end{itemize}
+% \textbf{Survey:} I plan on administering a survey to crowd workers on Amazon MTurk to gather data about common skills that are required\
+% to complete HITs. At a high level I plan on collecting worker demographic data to analyze the difference in reported skills across\
+% different types of workers who have different backgrounds, qualifications, and amounts of completed tasks. Another facet of the\
+% survey will include giving crowd workers a small subset of common tasks from some of the most commonly occuring categories of HITs\
+% on MTURK \cite{difallah2015dynamics}:
+% \begin{itemize}
+% 	\item \textbf{Information Finding:} Searching the web to find certain information
+% 	\item \textbf{Verification and Validation:} Verifying certain information
+% 	\item \textbf{Interpretation and Analysis:} Interpreting web content (i.e human generated sentiment analysis)
+% 	\item \textbf{Content Creation: } Generating content from audio or video input
+% 	\item \textbf{Surveys \& Questionaires:} A set of questions which gather worker demographic info as well as answers on a subject matter
+% 	\item \textbf{Content Access:} Interacting with web content (i.e watching videos, visiting website)
+% \end{itemize}
 
-and asking them to list common skills that are required to solve the sample task. There will also be a free response portion of the survey\
-where I will prompt crowd workers to list an \emph{n} number of skills for each general category of tasks.
+% and asking them to list common skills that are required to solve the sample task. There will also be a free response portion of the survey\
+% where I will prompt crowd workers to list an \emph{n} number of skills for each general category of tasks.
 
-\textbf{Annotation:} Then after curating a list of skills from the survey, I plan on having crowd workers annotate my dataset of tasks\
-with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated by the survey.
+% \textbf{Annotation:} Then after curating a list of skills from the survey, I plan on having crowd workers annotate my dataset of tasks\
+% with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated by the survey.
 
-After I have collected and annotated the dataset of tasks,\
-I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
-Jupyter Notebooks on a platform like Google Colab or I will leverage AWS GPU-enabled P-instances to train my models on my\
-training set. After the models are trained, I plan on testing the supervised learning models on my test set and will\
-generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
-of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
-using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
-machine learning techniques.
+% After I have collected and annotated the dataset of tasks,\
+% I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
+% Jupyter Notebooks on a platform like Google Colab or I will leverage AWS GPU-enabled P-instances to train my models on my\
+% training set. After the models are trained, I plan on testing the supervised learning models on my test set and will\
+% generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
+% of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
+% using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
+% machine learning techniques.
 
-\paragraph{Unsupervised Learning}
-In addition to the supervised learning techniques outlined above, I also plan on experimenting with several unsupervised\
-learning techniques for comparison's sake, specifically nearest neighbor and clustering approaches. I plan on using the same infrastructure,\
-hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
-in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
-\chapter{Project Plan}
-The project plan listed below contains weekly/biweekly objectives to keep me on track and hold myself accountable in order
-to successfully defend my thesis in April 2020.
-\subsection{Outline of Project Timeline}
-\begin{itemize}
-	\item \textbf{November 25:} Thesis Proposal
-	\item \textbf{December 16:} Send Thesis Committee updated timeline, research unsupervised learning/transfer learning in NLP
-	\item \textbf{December 23:} Research unsupervised/transfer learning in NLP
-	\item \textbf{January 6:} Develop data pipeline for testing different unsupervised learning/transfer learning techniques. Begin developing transfer learning models.
-	\item \textbf{January 13:} Receive task webscrape data from Dr. Yue's team. Begin testing unsupervised techniques.
-	\item \textbf{January 20:} Begin testing unsupervised techniques. Begin testing transfer learning techniques.
-	\item \textbf{January 27:} Test unsupervised techniques. Test transfer learning techniques.
-	\item \textbf{February 10:} Test unsupervised techniques. Test transfer learning techniques. Begin drafting paper for conference submission.
-	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
-	\item \textbf{March 9:} Develop visualization and analysis of test results, further iteration and improvement of algorithms, continue writing paper for conference submission, begin writing thesis
-	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
-	\item \textbf{April 6:} Defend Thesis
-	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
-	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
-	\item \textbf{April 17 - May 7:} Continue drafting paper and submit to conferences
-	\item \textbf{May 7:} Graduate
-\end{itemize}
+% \paragraph{Unsupervised Learning}
+% In addition to the supervised learning techniques outlined above, I also plan on experimenting with several unsupervised\
+% learning techniques for comparison's sake, specifically nearest neighbor and clustering approaches. I plan on using the same infrastructure,\
+% hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
+% in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
 
-\subsection{Further Applications}
-In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
-recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
-inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in a crowdsourcing\
-platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
-be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
-from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
-and then match a user to tasks that they would be able to complete and that were relevant to the calculated user skillset based on\
-skill inference of tasks in the crowdsourcing platform.
-\subsection{Support}
-In order to deliver high quality research I request the following meeting cadence with the thesis\
-committee to gather feedback and correction on my approach as needed:
-\begin{itemize}
-	\item \textbf{Dr. Chuan Yue (Thesis Advisor):} Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
-	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
-	\item \textbf{Dr. Hua Wang (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
-\end{itemize}
+\chapter{What are the primary topics of Amazon MTURK HITs?}
+Answer the question
+
+\chapter{Analysis}
+Additional analysis and questions
+
+\chapter{Conclusion}
+% \subsection{Outline of Project Timeline}
+% \begin{itemize}
+% 	\item \textbf{November 25:} Thesis Proposal
+% 	\item \textbf{December 16:} Send Thesis Committee updated timeline, research unsupervised learning/transfer learning in NLP
+% 	\item \textbf{December 23:} Research unsupervised/transfer learning in NLP
+% 	\item \textbf{January 6:} Develop data pipeline for testing different unsupervised learning/transfer learning techniques. Begin developing transfer learning models.
+% 	\item \textbf{January 13:} Receive task webscrape data from Dr. Yue's team. Begin testing unsupervised techniques.
+% 	\item \textbf{January 20:} Begin testing unsupervised techniques. Begin testing transfer learning techniques.
+% 	\item \textbf{January 27:} Test unsupervised techniques. Test transfer learning techniques.
+% 	\item \textbf{February 10:} Test unsupervised techniques. Test transfer learning techniques. Begin drafting paper for conference submission.
+% 	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
+% 	\item \textbf{March 9:} Develop visualization and analysis of test results, further iteration and improvement of algorithms, continue writing paper for conference submission, begin writing thesis
+% 	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
+% 	\item \textbf{April 6:} Defend Thesis
+% 	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
+% 	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
+% 	\item \textbf{April 17 - May 7:} Continue drafting paper and submit to conferences
+% 	\item \textbf{May 7:} Graduate
+% \end{itemize}
+
+% \subsection{Further Applications}
+% In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
+% recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
+% inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in a crowdsourcing\
+% platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
+% be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
+% from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
+% and then match a user to tasks that they would be able to complete and that were relevant to the calculated user skillset based on\
+% skill inference of tasks in the crowdsourcing platform.
+% \subsection{Support}
+% In order to deliver high quality research I request the following meeting cadence with the thesis\
+% committee to gather feedback and correction on my approach as needed:
+% \begin{itemize}
+% 	\item \textbf{Dr. Chuan Yue (Thesis Advisor):} Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
+% 	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+% 	\item \textbf{Dr. Hua Wang (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+% \end{itemize}
+
 % \begin{eqnarray}
 % 	\label{eq:importance}
 % 		\textrm{Importance} & \approx & 0 \\
