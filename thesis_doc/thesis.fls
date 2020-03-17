@@ -157,9 +157,9 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT /Users/rileymiller/code/research/thesis_doc/thesis.toc
+INPUT /Users/rileymiller/code/research/thesis_doc/thesis.bbl
+INPUT /Users/rileymiller/code/research/thesis_doc/thesis.bbl
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
-INPUT /Users/rileymiller/code/research/thesis_doc/thesis.bbl
-INPUT /Users/rileymiller/code/research/thesis_doc/thesis.bbl
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.aux
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.out
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.out
