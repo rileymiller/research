@@ -536,22 +536,31 @@ are envisioning that it will\
 take considerably more time to gather enough user data to develop a machine learning recommendation system which\
 utilizes content based recommendations.
 
+Briefly Discuss the dataset, touch on related work. Justification of literature here.
+
+\subsection{Topic Models}
+This section will discuss the prominent topic models as well as the justification for the models that will be selected
+for evaluation of the dataset.
+\subsubsection{Overview}
+Give an overview of the most prominent topic models
+\subsubsection{LSI}
+Discuss the LSI model and why this is being used for the experiments, justify with literature
+\subsubsection{LDA}
+Discuss the LDA model and why this is being used for the experiments, justify with literature
+\subsubsection{Lda2vec}
+Discuss the Lda2vec model and why this is being used for the experiments, justify with literature
+
 \subsection{Evaluation}
 In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which
 will be able to accurately extract skills that are required to complete tasks.
 
 \subsubsection{Metrics}
-To determine the success of different approaches I will allocate the dataset that we collect from scraping the \
-crowdsourcing site into an 80/20 split where 80\% of my data set will be used for training the machine learning\
-algorithms while reserving the remaining 20\% of the data set to test the accuracy of the models and to evaluate\
-which approach is most effective for determining which skills are necessary to perform tasks. Due to the timeline\
-of the grant and time constraint of my graduation date, I will be leveraging offline testing to perform my analysis.\
-Ideally we would be able integrate the models into the browser extension and perform A/B testing in live environments\
-to test the performance of the different techniques but that isn't a viable option given the timeline of the project.
-\subsubsection{Experiments}
-%% Talk about how to train model with labeled dataset and evaluate on testing data
-The two different types of experiments that I plan to conduct can be broken down into the two high-level categories\
-of supervised and unsupervised learning.
+Discuss the differing metrics of evaluating topic models. Discuss topic coherence vs. perplexity.
+Provide figures and dank math stuff here
+Explain which specific topic coherence metrics you are going to use and justify with literature.
+
+\subsection{Approach}
+Summarize the approach with the research justification
 
 % \paragraph{Supervised Learning}
 % The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
@@ -595,13 +604,154 @@ of supervised and unsupervised learning.
 % hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
 % in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
 
-\chapter{What are the primary topics of Amazon MTURK HITs?}
-Answer the question
 
-\chapter{Analysis}
-Additional analysis and questions
+
+
+\chapter{What are the primary topics of Amazon MTURK HITs?}
+
+\subsection{Data}
+This section will analyze the data that was collected by Dr. Chuan Yue's research team.
+
+\subsubsection{HIT Dataset}
+Chat about the dataset.
+
+\paragraph{Collection}
+How was it collected?
+What were the constraints (level/experience of the "worker" during the scrape)?
+
+\paragraph{Architecture}
+What were the tools used? 
+What was the architecture of the data pipeline?
+
+\paragraph{Duration}
+What was the duration of the webscrape?
+
+\paragraph{Document Explanation}
+Talk about the actual fields that were collected
+
+\paragraph{Related Works}
+Is there any previous work on MTURK webscrapes, how does our data differ?
+
+\subsubsection{Implications}
+Explain the findings of Thien Ngo's HIT Analysis
+How would this effect topic modeling?
+Cite the literature on how duplicate documents shouldn't influence the result of the topics.
+
+\subsection{Experiments}
+This section should talk about the experiments that were run
+
+\subsubsection{Preprocessing}
+Talk about why document duplication matters,
+(maybe run an experiment on topic coherence for document dup vs. taking out dups) relate this to
+how certain requesters dominate much of the HITs
+
+Talk about related work on stopwords, lemmatization, etc, and decisions for preprocessing
+
+\subsubsection{Number of Topics}
+Discuss the number of topics used for extracting topics during these experiments
+
+\subsubsection{HIT Descriptions}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+
+\paragraph{LSI}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{LDA}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Lda2vec}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\subsubsection{HIT Title}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+
+\paragraph{LSI}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{LDA}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Lda2vec}
+result of Lda2vec on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\subsubsection{HIT Preview}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+
+\paragraph{Preprocessing}
+Talk about why you need to preprocess the previews
+\paragraph{LSI}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{LDA}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Lda2vec}
+result of Lda2vec on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\subsubsection{Results}
+Discuss the difference between models on the different datasets.
+Discuss the differences between different datasets, what gives us more meaningful information
+
+
+
+\chapter{Implications}
+Discuss the implications of this research.
+
+What do these topics tell us about crowdsourcing
+What do these topics tell us about the value of different parts of the dataset
+What is the most valuable part of HITs on MTURK (in regards to title, description, preview)?
+How can this information be used to improve crowdworker efficiency?
 
 \chapter{Conclusion}
+Conclude
 % \subsection{Outline of Project Timeline}
 % \begin{itemize}
 % 	\item \textbf{November 25:} Thesis Proposal
