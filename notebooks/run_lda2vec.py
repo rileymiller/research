@@ -58,23 +58,14 @@ print('INFO: beginning to clean dataframe')
 
 # constructs allowable english chars
 def clean_dat(chunk):
-    allowable_chars = [ chr(i) for i in range(128) ]
-    allowable_chars = set(allowable_chars)
+    # allowable_chars = [ chr(i) for i in range(128) ]
+    # allowable_chars = set(allowable_chars)
 
-    print('chunk before', chunk)
+    # Read stopwords
+    with open('datasets/stops.txt', 'r') as f:
+        stops = f.read().split('\n')
 
-    clean_chunk = ''
-    for word in chunk:
-        isClean = True
-        for char in word:
-            if char not in allowable_chars:
-                isClean = False
-                break
-        if isClean:
-            clean_chunk = clean_chunk + word
-    print('chunk after:', clean_chunk)
-
-    return clean_chunk
+    return ' '.join([ w for w in chunk.split() if w not in set(stops) and not w.isnumeric()])
 
 # converts to low caps
 hits['processed_description'] = hits['processed_description'].map(lambda x: x.lower())
@@ -84,12 +75,15 @@ print('processed_description shape before dropping empty descriptions',hits['pro
 # removes non allowable characters
 hits['processed_description'] = hits['processed_description'].map(lambda x: clean_dat(x))
 
+descriptions = pd.DataFrame(data = hits['processed_description'])
 # drops row if processed_description is empty
-hits.dropna(subset=['processed_description'])
+#hits.dropna(subset=['processed_description'])
+descriptions.dropna()
+descriptions.drop_duplicates(keep=False, inplace=True)
+# hits.drop_duplicates(subset=['processed_description'])
+print('processed_description shape after dropping empty descriptions', descriptions.shape)
 
-print('processed_description shape after dropping empty descriptions', hits['processed_description'].shape)
-
-print('INFO: finished removing non english characters in %0.3fs' % (t0 - time()))
+print('INFO: finished removing non english characters in %0.3fs' % (time() - t0))
 
 hits['processed_title'] = hits['processed_title'].map(lambda x: x.lower())
 
@@ -98,7 +92,8 @@ hits['processed_title'] = hits['processed_title'].map(lambda x: x.lower())
 
 
 # print out the first couple processed descriptions
-hits['processed_description'].head()
+#hits['processed_description'].head()
+descriptions.head()
 
 
 
@@ -111,7 +106,7 @@ clean_data_dir = "data/clean_data"
 load_embeds = True
 
 # Initialize a preprocessor
-P = Preprocessor(hits, "processed_description", max_features=30000, maxlen=10000, min_count=30)
+P = Preprocessor(descriptions, "processed_description", max_features=30000, maxlen=10000, min_count=30)
 
 # Run the preprocessing on your dataframe
 t0 = time()
@@ -155,7 +150,7 @@ print('INFO: loading preprocessed data')
 print('INFO: finished loading preprocessed data in %0.3fs.' % (time() - t0))
 
 # Number of unique documents
-num_docs = doc_ids.max()
+num_docs = doc_ids.max() + 1
 # Number of unique words in vocabulary (int)
 vocab_size = len(freqs)
 # Embed layer dimension size
@@ -164,11 +159,11 @@ embed_size = embed_matrix.shape[1] if load_embeds else 128
 # Number of topics to cluster into
 num_topics = 10
 # Amount of iterations over entire dataset
-num_epochs = 100
+num_epochs = 250
 # Batch size - Increase/decrease depending on memory usage
 batch_size = 4096
 # Epoch that we want to "switch on" LDA loss
-switch_loss_epoch = 0
+switch_loss_epoch = 100
 # Pretrained embeddings value
 pretrained_embeddings = embed_matrix if load_embeds else None
 # If True, save logdir, otherwise don't
@@ -206,6 +201,4 @@ m.train(pivot_ids,
         switch_loss_epoch=switch_loss_epoch)
 
 print('INFO: finished training lda2vec model in %0.3fs.' % (time() - t0))
-
-utils.generate_ldavis_data(clean_data_dir, m, idx_to_word, freqs, vocab_size)
 
