@@ -1,0 +1,11 @@
+---------Closest 10 words to given indexes----------
+Topic 0 : picture, qualities, simple, page, web, screen, content, shot, answer, questions
+Topic 1 : picture, qualities, simple, answer, enclosed, box, red, questions, images, click
+Topic 2 : picture, qualities, enclosed, simple, box, red, click, images, answer, questions
+Topic 3 : qualities, picture, simple, answer, enclosed, box, questions, red, images, click
+Topic 4 : part, study, answer, short, participate, read, complete, make, survey, experience
+Topic 5 : page, web, content, screen, picture, shown, shot, qualities, box, simple
+Topic 6 : read, complete, study, survey, part, opinions, make, minutes, short, participate
+Topic 7 : study, part, answer, simple, red, box, participate, questions, survey, complete
+Topic 8 : picture, part, qualities, simple, page, shown, web, screen, content, shot
+Topic 9 : part, study, complete, participate, answer, picture, simple, questions, survey, short

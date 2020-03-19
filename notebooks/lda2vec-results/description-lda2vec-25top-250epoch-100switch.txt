@@ -1,0 +1,26 @@
+---------Closest 10 words to given indexes----------
+Topic 0 : box, enclosed, red, unique, images, click, shown, qualities, picture, series
+Topic 1 : page, simple, web, picture, qualities, content, screen, shot, answer, questions
+Topic 2 : part, study, participate, complete, survey, short, make, experience, research, read
+Topic 3 : answer, part, complete, short, picture, participate, read, simple, experience, work
+Topic 4 : part, participate, picture, qualities, complete, study, simple, survey, answer, questions
+Topic 5 : simple, qualities, picture, page, web, screen, shot, content, answer, questions
+Topic 6 : picture, qualities, simple, click, enclosed, box, answer, red, images, content
+Topic 7 : answer, picture, complete, part, simple, questions, opinions, participate, short, study
+Topic 8 : click, enclosed, box, red, images, shown, picture, qualities, content, series
+Topic 9 : simple, picture, qualities, click, enclosed, red, box, unique, shown, images
+Topic 10 : part, participate, study, make, research, short, complete, task, people, read
+Topic 11 : picture, qualities, simple, click, answer, enclosed, box, red, images, questions
+Topic 12 : picture, qualities, simple, content, web, page, screen, shot, shown, click
+Topic 13 : picture, qualities, simple, click, enclosed, box, content, shown, red, images
+Topic 14 : part, participate, complete, answer, minutes, study, opinions, short, make, questions
+Topic 15 : page, web, screen, shot, simple, picture, qualities, content, people, read
+Topic 16 : click, enclosed, box, red, images, picture, qualities, simple, series, answer
+Topic 17 : part, task, short, participate, experience, tasks, study, write, read, complete
+Topic 18 : page, web, simple, screen, picture, qualities, shot, content, answer, questions
+Topic 19 : part, complete, enclosed, click, red, images, participate, picture, study, answer
+Topic 20 : picture, qualities, simple, web, page, content, shot, screen, shown, answer
+Topic 21 : answer, hit, web, page, simple, survey, shot, short, picture, screen
+Topic 22 : part, complete, study, picture, participate, survey, short, simple, read, $
+Topic 23 : unique, page, task, web, qualities, picture, simple, screen, content, tasks
+Topic 24 : short, study, part, survey, complete, read, simple, answer, opinions, questions
