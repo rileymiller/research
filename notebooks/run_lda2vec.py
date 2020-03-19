@@ -5,22 +5,22 @@ import re
 from pprint import pprint
 
 
-import gensim
-from gensim.utils import simple_preprocess
-import gensim.corpora as corpora
-from gensim.models import CoherenceModel
-
-from matplotlib.ticker import FuncFormatter
-from matplotlib import pyplot as plt
+# import gensim
+# from gensim.utils import simple_preprocess
+# import gensim.corpora as corpora
+# from gensim.models import CoherenceModel
+#
+# from matplotlib.ticker import FuncFormatter
+# from matplotlib import pyplot as plt
 
 
 import pyLDAvis
 import pyLDAvis.gensim
 import pickle
 
-import nltk
-nltk.download('stopwords')
-from nltk.corpus import stopwords
+# import nltk
+# nltk.download('stopwords')
+# from nltk.corpus import stopwords
 
 t0 = time()
 
@@ -52,13 +52,49 @@ hits['processed_title'] = hits['title'].map(lambda t : re.sub('[,.!?]', '', t))
 print('INFO: done removing punctuation from title and description in %0.3fs.' % (time() - t0))
 
 
-# converts the text to lowercase
+# cleans dataframe by converting all characters to lowercase and removing non-english characters
 t0 = time()
+print('INFO: beginning to clean dataframe')
 
+# constructs allowable english chars
+def clean_dat(chunk):
+    allowable_chars = [ chr(i) for i in range(128) ]
+    allowable_chars = set(allowable_chars)
+
+    print('chunk before', chunk)
+
+    clean_chunk = ''
+    for word in chunk:
+        isClean = True
+        for char in word:
+            if char not in allowable_chars:
+                isClean = False
+                break
+        if isClean:
+            clean_chunk = clean_chunk + word
+    print('chunk after:', clean_chunk)
+
+    return clean_chunk
+
+# converts to low caps
 hits['processed_description'] = hits['processed_description'].map(lambda x: x.lower())
+
+print('processed_description shape before dropping empty descriptions',hits['processed_description'].shape)
+
+# removes non allowable characters
+hits['processed_description'] = hits['processed_description'].map(lambda x: clean_dat(x))
+
+# drops row if processed_description is empty
+hits.dropna(subset=['processed_description'])
+
+print('processed_description shape after dropping empty descriptions', hits['processed_description'].shape)
+
+print('INFO: finished removing non english characters in %0.3fs' % (t0 - time()))
+
 hits['processed_title'] = hits['processed_title'].map(lambda x: x.lower())
 
-print('INFO: done converting text to lowercase in %0.3fs.' % (time() - t0))
+
+
 
 
 # print out the first couple processed descriptions
@@ -66,23 +102,13 @@ hits['processed_description'].head()
 
 
 
-# !pip3 install lda2vec
-# !pip install spacy
-# !pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz
-# import spacy
-# import en_core_web_sm
-# spacy.load('en_core_web_sm')
-# !python -m spacy link 'en_core_web_sm'
 from lda2vec.nlppipe import Preprocessor
+
 # Where to save preprocessed data
 clean_data_dir = "data/clean_data"
-# Name of input file. Should be inside of data_dir
-# input_file = "20_newsgroups.txt"
+
 # Should we load pretrained embeddings from file
 load_embeds = True
-
-# Read in data file
-# df = pd.read_csv(data_dir+"/"+input_file, sep="\t")
 
 # Initialize a preprocessor
 P = Preprocessor(hits, "processed_description", max_features=30000, maxlen=10000, min_count=30)
@@ -102,7 +128,7 @@ if load_embeds:
     t0 = time()
 
     print('INFO: loading glove embeddings')
-    embedding_matrix = P.load_glove("embeddings/glove.42B.300d.txt")
+    embedding_matrix = P.load_glove("embeddings/glove.6B.300d.txt")
 
     print('INFO: finished loading glove embeddings in %0.3fs.' % (time() - t0))
 else:
@@ -181,4 +207,5 @@ m.train(pivot_ids,
 
 print('INFO: finished training lda2vec model in %0.3fs.' % (time() - t0))
 
+utils.generate_ldavis_data(clean_data_dir, m, idx_to_word, freqs, vocab_size)
 
