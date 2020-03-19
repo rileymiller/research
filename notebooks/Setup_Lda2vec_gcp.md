@@ -2,7 +2,7 @@
 
 - Follow https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52 for instance setup
 - Configure GPUs
-- Install cuda if not installed
+- Install cuda if not installed (https://tech.amikelive.com/node-859/installing-cuda-toolkit-9-2-on-ubuntu-16-04-fresh-install-install-by-removing-older-version-install-and-retain-old-version/)
 
 - Install Anaconda
 ```
@@ -36,7 +36,8 @@ setuptools==40.1.0
 pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz
 ```
 - install nltk
-
+- install `pyLDAvis`
+- install lda2vec
 ### Notes
 
 Training takes forever but hey.. it works now which is amazing. I was about ready to jump off a bridge. Learned a lot about python, basically that versioning sucks and that python should be deprecated... or that you HAVE to use virtual environments or all of your shit will break. Honestly I'm super surprised that Python has such horrific backwards compatability issues.. kinda makes me wanna cry.
