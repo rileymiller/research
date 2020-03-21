@@ -2,25 +2,8 @@ from time import time
 import pandas as pd
 import os
 import re
+import numpy as np
 from pprint import pprint
-
-
-# import gensim
-# from gensim.utils import simple_preprocess
-# import gensim.corpora as corpora
-# from gensim.models import CoherenceModel
-#
-# from matplotlib.ticker import FuncFormatter
-# from matplotlib import pyplot as plt
-
-
-# import pyLDAvis
-# import pyLDAvis.gensim
-# import pickle
-
-# import nltk
-# nltk.download('stopwords')
-# from nltk.corpus import stopwords
 
 t0 = time()
 
@@ -29,7 +12,7 @@ print('INFO: done importing libraries and dataset in %0.3fs.' % (time() - t0))
 
 t0 = time()
 
-hits = pd.read_json('datasets/clean_hits_full_week.json', lines=True)
+hits = pd.read_json('datasets/20200126-20200312-hits.json', lines=True)
 hits.head()
 
 print('INFO: done reading in dataset to pandas dataframe in %0.3fs.' % (time() - t0))
@@ -46,58 +29,72 @@ print('INFO: done columns from dataframe in %0.3fs.' % (time() - t0))
 # removes all punctuation from the description and title if any
 t0 = time()
 
-hits['processed_description'] = hits['description'].map(lambda d : re.sub('[,.!?]', '', d))
-hits['processed_title'] = hits['title'].map(lambda t : re.sub('[,.!?]', '', t))
+hits['processed_description'] = hits['description'].map(lambda d : re.sub('[,.$()@#%&~!?]', '', d))
+hits['processed_title'] = hits['title'].map(lambda t : re.sub('[,.$()@#%&~!?]', '', t))
 
 print('INFO: done removing punctuation from title and description in %0.3fs.' % (time() - t0))
 
 
 # cleans dataframe by converting all characters to lowercase and removing non-english characters
 t0 = time()
-print('INFO: beginning to clean dataframe')
 
-# constructs allowable english chars
 def clean_dat(chunk):
-    allowable_chars = [ chr(i) for i in range(128) ]
-    allowable_chars = set(allowable_chars)
+    # Read stopwords
+    with open('datasets/stops.txt', 'r') as f:
+        stops = f.read().split('\n')
 
-
-    clean_chunk = ''
-    for word in chunk:
-        isClean = True
-        for char in word:
-            if char not in allowable_chars:
-                isClean = False
-                break
-        if isClean:
-            clean_chunk = clean_chunk + word
-
-    return clean_chunk
+    return ' '.join([ w for w in chunk.split() if w not in set(stops) and not w.isnumeric()])
 
 # converts to low caps
 hits['processed_description'] = hits['processed_description'].map(lambda x: x.lower())
 
-print('processed_description shape before dropping empty descriptions',hits['processed_description'].shape)
+hits['processed_title'] = hits['processed_title'].map(lambda x: x.lower())
+
+print('INFO: removing stopwords, duplicates, and numbers')
+
+print('INFO: processed_description shape before dropping empty descriptions',hits['processed_description'].shape[0])
+print('INFO: processed_title shape before dropping stop words and number', hits['processed_title'].shape[0])
+
+t0 = time()
 
 # removes non allowable characters
 hits['processed_description'] = hits['processed_description'].map(lambda x: clean_dat(x))
+hits['processed_title'] = hits['processed_title'].map(lambda x: clean_dat(x))
 
+# create a descriptions data frame
 descriptions = pd.DataFrame(data = hits['processed_description'])
+titles = pd.DataFrame(data = hits['processed_title'])
+
 # drops row if processed_description is empty
-#hits.dropna(subset=['processed_description'])
 descriptions.dropna()
+titles.dropna()
+
 descriptions.drop_duplicates(keep=False, inplace=True)
-# hits.drop_duplicates(subset=['processed_description'])
-print('processed_description shape after dropping empty descriptions', descriptions.shape)
+titles.drop_duplicates(keep=False, inplace=True)
 
-print('INFO: finished removing non english characters in %0.3fs' % (time() - t0))
+print('INFO: processed_description shape after removing stopwords, duplicates, and numbers', descriptions.shape[0])
 
-hits['processed_title'] = hits['processed_title'].map(lambda x: x.lower())
+print('INFO: processed_title shape after removing stopwords, duplicates, and numbers', titles.shape[0])
+
+print('INFO: finished removing stopwords, duplicates, and numbers in %0.3fs' % (time() - t0))
+
 
 
 
 
 
 # print out the first couple processed descriptions
-#hits['processed_description'].head()
-descriptions.head()
+t0 = time()
+print('INFO: loading descriptions into text file')
+
+descriptions.to_csv(r'datasets/parsed_full_descriptions.txt', header=None, index=None, sep=' ', mode='a')
+print('INFO: finished loading descriptions into text file in %0.3fs' % (time() - t0))
+
+
+# print out the first couple processed titles
+t0 = time()
+print('INFO: loading titles into text file')
+
+descriptions.to_csv(r'datasets/parsed_full_titles.txt', header=None, index=None, sep=' ', mode='a')
+print('INFO: finished loading titles into text file in %0.3fs' % (time() - t0))
+
