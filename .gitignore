@@ -1,1 +1,6 @@
 .DS_Store
+mturk/
+data/
+embeddings/
+datasets/
+notebooks/l2v/
