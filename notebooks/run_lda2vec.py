@@ -2,25 +2,20 @@ from time import time
 import pandas as pd
 import os
 import re
+import numpy as np
 from pprint import pprint
+import argparse
+from lda2vec.nlppipe import Preprocessor
 
 
-# import gensim
-# from gensim.utils import simple_preprocess
-# import gensim.corpora as corpora
-# from gensim.models import CoherenceModel
-#
-# from matplotlib.ticker import FuncFormatter
-# from matplotlib import pyplot as plt
+
+parser = argparse.ArgumentParser(description='Gather lda2vec topics')
+parser.add_argument('--num_topics', type=int, default=10, help='number of topics')
+parser.add_argument('--data_type', type=str, default='description', help='description or title')
 
 
-import pyLDAvis
-import pyLDAvis.gensim
-import pickle
+args = parser.parse_args()
 
-# import nltk
-# nltk.download('stopwords')
-# from nltk.corpus import stopwords
 
 t0 = time()
 
@@ -28,94 +23,58 @@ print('INFO: done importing libraries and dataset in %0.3fs.' % (time() - t0))
 
 
 t0 = time()
+if args.data_type == 'title':
 
-hits = pd.read_json('datasets/clean_hits_full_week.json', lines=True)
-hits.head()
+    clean_titles = []
+    with open('datasets/parsed_full_titles.txt') as f:
+        for line in f.readlines():
+            clean_titles.append(line)
 
-print('INFO: done reading in dataset to pandas dataframe in %0.3fs.' % (time() - t0))
-
-
-
-t0 = time()
-
-hits = hits.drop(columns=['_id', 'hit_set_id', 'requester_id','requester_name', 'assignment_duration_in_seconds', 'creation_time', 'assignable_hits_count', 'latest_expiration_time', 'caller_meets_requirements', 'caller_meets_preview_requirements', 'last_updated_time', 'monetary_reward', 'accept_project_task_url', 'requester_url', 'project_tasks_url', 'project_requirements', 'requesterInfo'], axis=1)
-hits.head()
-
-print('INFO: done columns from dataframe in %0.3fs.' % (time() - t0))
-
-# removes all punctuation from the description and title if any
-t0 = time()
-
-hits['processed_description'] = hits['description'].map(lambda d : re.sub('[,.!?]', '', d))
-hits['processed_title'] = hits['title'].map(lambda t : re.sub('[,.!?]', '', t))
-
-print('INFO: done removing punctuation from title and description in %0.3fs.' % (time() - t0))
+    titles = pd.DataFrame(clean_titles, columns=['processed_title'])
 
 
-# cleans dataframe by converting all characters to lowercase and removing non-english characters
-t0 = time()
-print('INFO: beginning to clean dataframe')
+    # Where to save preprocessed data
+    clean_data_dir = "data/clean_data"
 
-# constructs allowable english chars
-def clean_dat(chunk):
-    # allowable_chars = [ chr(i) for i in range(128) ]
-    # allowable_chars = set(allowable_chars)
+    # Should we load pretrained embeddings from file
+    load_embeds = True
 
-    # Read stopwords
-    with open('datasets/stops.txt', 'r') as f:
-        stops = f.read().split('\n')
+    # Initialize a preprocessor
+    P = Preprocessor(titles, "processed_title", max_features=30000, maxlen=10000, min_count=30)
 
-    return ' '.join([ w for w in chunk.split() if w not in set(stops) and not w.isnumeric()])
+    # Run the preprocessing on your dataframe
+    t0 = time()
 
-# converts to low caps
-hits['processed_description'] = hits['processed_description'].map(lambda x: x.lower())
+    print('INFO: beginning preprocesssing tokens from titles')
 
-print('processed_description shape before dropping empty descriptions',hits['processed_description'].shape)
+    P.preprocess()
 
-# removes non allowable characters
-hits['processed_description'] = hits['processed_description'].map(lambda x: clean_dat(x))
+    print('INFO: finished preprocessing tokens from titles in %0.3fs.' % (time() - t0))
+else:
+    clean_descriptions = []
+    with open('datasets/parsed_full_descriptions.txt') as f:
+        for line in f.readlines():
+            clean_descriptions.append(line)
 
-descriptions = pd.DataFrame(data = hits['processed_description'])
-# drops row if processed_description is empty
-#hits.dropna(subset=['processed_description'])
-descriptions.dropna()
-descriptions.drop_duplicates(keep=False, inplace=True)
-# hits.drop_duplicates(subset=['processed_description'])
-print('processed_description shape after dropping empty descriptions', descriptions.shape)
+    descriptions = pd.DataFrame(clean_descriptions, columns=['processed_description'])
 
-print('INFO: finished removing non english characters in %0.3fs' % (time() - t0))
+    # Where to save preprocessed data
+    clean_data_dir = "data/clean_data"
 
-hits['processed_title'] = hits['processed_title'].map(lambda x: x.lower())
+    # Should we load pretrained embeddings from file
+    load_embeds = True
 
+    # Initialize a preprocessor
+    P = Preprocessor(descriptions, "processed_description", max_features=30000, maxlen=10000, min_count=30)
 
+    # Run the preprocessing on your dataframe
+    t0 = time()
 
+    print('INFO: beginning preprocesssing tokens from descriptions')
 
+    P.preprocess()
 
-# print out the first couple processed descriptions
-#hits['processed_description'].head()
-descriptions.head()
-
-
-
-from lda2vec.nlppipe import Preprocessor
-
-# Where to save preprocessed data
-clean_data_dir = "data/clean_data"
-
-# Should we load pretrained embeddings from file
-load_embeds = True
-
-# Initialize a preprocessor
-P = Preprocessor(descriptions, "processed_description", max_features=30000, maxlen=10000, min_count=30)
-
-# Run the preprocessing on your dataframe
-t0 = time()
-
-print('INFO: beginning preprocesssing tokens from descriptions')
-
-P.preprocess()
-
-print('INFO: finished preprocessing tokens from descriptions in %0.3fs.' % (time() - t0))
+    print('INFO: finished preprocessing tokens from descriptions in %0.3fs.' % (time() - t0))
 
 # Load embeddings from file if we choose to do so
 if load_embeds:
@@ -157,9 +116,9 @@ vocab_size = len(freqs)
 # If not loading embeds, change 128 to whatever size you want.
 embed_size = embed_matrix.shape[1] if load_embeds else 128
 # Number of topics to cluster into
-num_topics = 10
+num_topics = args.num_topics
 # Amount of iterations over entire dataset
-num_epochs = 250
+num_epochs = 300
 # Batch size - Increase/decrease depending on memory usage
 batch_size = 4096
 # Epoch that we want to "switch on" LDA loss
@@ -201,4 +160,3 @@ m.train(pivot_ids,
         switch_loss_epoch=switch_loss_epoch)
 
 print('INFO: finished training lda2vec model in %0.3fs.' % (time() - t0))
-
