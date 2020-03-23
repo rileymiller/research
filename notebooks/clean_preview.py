@@ -15,7 +15,6 @@ from gensim.utils import simple_preprocess
 import gensim.corpora as corpora
 from gensim.models import CoherenceModel
 
-
 preview_src_cnt = 0
 preview_no_src_cnt = 0
 previews = []
@@ -25,7 +24,7 @@ def clean_dat(chunk):
     with open('datasets/stops.txt', 'r') as f:
         stops = f.read().split('\n')
 
-    return ' '.join([ w for w in chunk.split() if w not in set(stops) and not w.isnumeric()])
+    return ' '.join([ w for w in chunk.split() if w not in set(stops)])
 
 for line in open('datasets/20200126-20200312-preview.json'):
       preview = json.loads(line)
@@ -59,7 +58,9 @@ preview_df = pd.DataFrame(previews, columns=['processed_previews'])
 preview_df.head()
 
 preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : re.sub('[,.$()@#%&~!?]', '', d))
-
+hits['processed_previews'] = hits['processed_previews'].str.replace('\W', ' ')
+hits['processed_previews'] = hits['processed_previews'].map(lambda d : re.sub('\d', '', d))
+hits['processed_previews'] = hits['processed_previews'].str.replace('\s+', ' ')
 preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : d.lower())
 
 print('INFO: processed_preview shape before removing stop words and dropping empty previews', preview_df['processed_previews'].shape[0])
@@ -87,8 +88,8 @@ print('INFO: processed_preview shape after removing stop words and dropping empt
 t0 = time()
 
 print('INFO: loading previews into text file')
-new_preview = pd.DataFrame(preview_df['processed_previews'])
-new_preview.to_csv(r'datasets/parsed_full_previews.txt', header=None, index=None, sep=' ', mode='a')
+preview_df['processed_previews'].to_csv(r'datasets/parsed_full_previews.txt', header=None, index=None, sep=' ', mode='a')
 
 print('INFO: finished loading previews into text file in %0.3fs' % (time() - t0))
 
+print(new_preview)

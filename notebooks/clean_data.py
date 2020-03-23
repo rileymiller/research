@@ -29,21 +29,32 @@ print('INFO: done columns from dataframe in %0.3fs.' % (time() - t0))
 # removes all punctuation from the description and title if any
 t0 = time()
 
-hits['processed_description'] = hits['description'].map(lambda d : re.sub('[,.$()@#%&~!?]', '', d))
-hits['processed_title'] = hits['title'].map(lambda t : re.sub('[,.$()@#%&~!?]', '', t))
-
-print('INFO: done removing punctuation from title and description in %0.3fs.' % (time() - t0))
+hits['processed_description'] = hits['description'].map(lambda d : re.sub('[,.$()@#%&~!?]', ' ', d))
+hits['processed_title'] = hits['title'].map(lambda t : re.sub('[,.$()@#%&~!?]', ' ', t))
 
 
+hits['processed_description'] = hits['processed_description'].str.replace('\W', ' ')
+hits['processed_description'] = hits['processed_description'].map(lambda d : re.sub('\d', '', d))
+hits['processed_description'] = hits['processed_description'].str.replace('\s+', ' ')
+
+hits['processed_title'] = hits['processed_title'].map(lambda d : re.sub('\d', '', d))
+hits['processed_title'] = hits['processed_title'].str.replace('\W', ' ')
+hits['processed_title'] = hits['processed_title'].str.replace('\s+', ' ')
+
+
+
+print('INFO: done removing punctuation and numbers from title and description in %0.3fs.' % (time() - t0))
+
+print(hits['processed_description'])
 # cleans dataframe by converting all characters to lowercase and removing non-english characters
-t0 = time()
+# t0 = time()
 
 def clean_dat(chunk):
     # Read stopwords
     with open('datasets/stops.txt', 'r') as f:
         stops = f.read().split('\n')
 
-    return ' '.join([ w for w in chunk.split() if w not in set(stops) and not w.isnumeric()])
+    return ' '.join([ w for w in chunk.split() if w not in set(stops)])
 
 # converts to low caps
 hits['processed_description'] = hits['processed_description'].map(lambda x: x.lower())
@@ -61,20 +72,21 @@ t0 = time()
 hits['processed_description'] = hits['processed_description'].map(lambda x: clean_dat(x))
 hits['processed_title'] = hits['processed_title'].map(lambda x: clean_dat(x))
 
-# create a descriptions data frame
-descriptions = pd.DataFrame(data = hits['processed_description'])
-titles = pd.DataFrame(data = hits['processed_title'])
+print(hits['processed_description'])
 
-# drops row if processed_description is empty
-descriptions.dropna()
-titles.dropna()
+nan_value = float("NaN")
+hits.replace("", nan_value, inplace=True)
 
-descriptions.drop_duplicates(keep=False, inplace=True)
-titles.drop_duplicates(keep=False, inplace=True)
+hits.dropna(subset = ['processed_description', 'processed_title'], inplace=True)
 
-print('INFO: processed_description shape after removing stopwords, duplicates, and numbers', descriptions.shape[0])
 
-print('INFO: processed_title shape after removing stopwords, duplicates, and numbers', titles.shape[0])
+hits['processed_description'].drop_duplicates(keep=False, inplace=True)
+hits['processed_title'].drop_duplicates(keep=False, inplace=True)
+
+
+print('INFO: processed_description shape after removing stopwords, duplicates, and numbers', hits['processed_description'].shape[0])
+
+print('INFO: processed_title shape after removing stopwords, duplicates, and numbers', hits['processed_title'].shape[0])
 
 print('INFO: finished removing stopwords, duplicates, and numbers in %0.3fs' % (time() - t0))
 
@@ -82,14 +94,13 @@ print('INFO: finished removing stopwords, duplicates, and numbers in %0.3fs' % (
 t0 = time()
 print('INFO: loading descriptions into text file')
 
-descriptions.to_csv(r'datasets/parsed_full_descriptions.txt', header=None, index=None, sep=' ', mode='a')
-print('INFO: finished loading descriptions into text file in %0.3fs' % (time() - t0))
-
+hits['processed_description'].to_csv(r'datasets/parsed_full_descriptions.txt', header=None, index=None, sep=' ', mode='a')
 
 # print out the first couple processed titles
 t0 = time()
 print('INFO: loading titles into text file')
 
-titles.to_csv(r'datasets/parsed_full_titles.txt', header=None, index=None, sep=' ', mode='a')
+hits['processed_title'].to_csv(r'datasets/parsed_full_titles.txt', header=None, index=None, sep=' ', mode='a')
 print('INFO: finished loading titles into text file in %0.3fs' % (time() - t0))
+
 
