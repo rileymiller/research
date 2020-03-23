@@ -209,9 +209,10 @@ This project would never have succeeded without the love and support of my frien
 
 \chapter{Introduction}
 
-The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines. My research will be centered around the development of a machine learning approach to improve the efficiency of crowd workers in crowdsourcing platforms.
+The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines.\
+My research will be centered around the extraction and analysis of topics in HITS on Amazon MTURK. 
 
-In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools, as well as highlight traditional approaches to developing recommendation systems.
+In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools.
 \subsection{Background}
 Crowdsourcing platforms have become increasingly popular over the course of the last\ 
 several years, introducing the concept of utilizing ``crowd`` intelligence to complete\
@@ -431,7 +432,7 @@ as apart of my research on the \textbf{skills} that are required to complete cro
 \chapter{Topic Modeling Approach and Focus}
 This chapter is focused on the explanation of my research and design decisions. In this chapter I cover the dataset that \
 was used for the experiments, the preprocessing decisions and methodology, the topic modeling algorithms used to \
-analyze the dataset, and the evaluation methods that were leveraged.
+analyze the dataset, and the evaluation methods that were leveraged in the experiments.
 % \ref{fig:Stomata}
 
 % \csmfigure{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
@@ -523,15 +524,51 @@ is incomplete since it is difficult for these lists to encompass corpus-specific
 to automate the selection of stopwords by only allowing words over a certain threshold. While another study shows that removing additional stopwords beyond the top 12 most occurent stop words doesn't\
 have an acknowledgeable effect on model performance or topic coherence \cite{schofieldunderstanding}. This same study did, however, find that the\
 removal of determiners, conjunctions, and prepositions did in fact improve performance. For my performance I decided to use a fixed list of stop words\
-as apart of my preprocessing phase. The driving reason for doing so was to implement the ETM model \cite{dieng2019topic}, a state of the art topic model\
-which utilizes a stop word list during it's preprocessing step. Removing stop words from the raw data during preprocessing allows for fair comparison across\
+as apart of my preprocessing phase. The driving reason for doing so was to implement the ETM model \cite{dieng2019topic}, a state of the art topic model,\
+on our dataset which utilizes a stop word list during it's preprocessing step. Removing stop words from the raw data during preprocessing allows for fair comparison across\
 models as well as replication of the ETM model. One of the other benefits of using a fixed stop word list over using the \emph{tfidf} approach discussed in \cite{boyd2014care}\
 is the persistence of sparse words that would otherwise be removed from the corpus but may have a strong correlation to a specific topic.
 
-\subsection{Topic Models}
-This section will discuss the prominent topic models as well as the justification for the models that will be selected
-for evaluation of the dataset.
+Document duplication removal is a rather common text modeling preprocessing technique. In essence, this technique is used to simply remove duplicates from the corpus. \
+This is a large consideration in our dataset since requesters in crowdsourcing platforms often publish HITs in large batches ranging from a couple hundred to tens of thousand\
+HITs that are duplicates. This is due in large part to one of the primary use cases for requesters on the platform being data annotation, many researchers will\
+publish massive annotation task batches that duplicative which would bloat the size of the corpus used in this analysis without additional preprocessing. One study\
+found that duplication in the corpus can in fact effect model performance but only for large quantities of duplicates and that these duplicate documents in the corpus\
+can be quickly clustered into individual topics \cite{schofieldunderstanding}. This means that document duplication wouldn't have a profound effect on the topics\
+discovered by the topic models since the effect would be contained to several specific topics without effecting unrelated topics. However, for the topic analysis I decided \
+to remove document duplicates since there exists a large number of duplicate HITS in the corpus which would increase the training time exponentially without any positive effect\
+on the results of the models on the corpus.
 
+While the original LDA paper was trained for unigram tokens and made the assumption that words are generally independent of one another \cite{blei2003latent}, the LDA has also\
+been extended to perform topic modeling on n-gram tokens as well \cite{wang2005note}. However, the use of \texttt{n-gram} in topic models such as the LDA increase the complexity\
+of the model \cite{wang2007topical}. To mitigate increasing the model perplexity and simultaneously increasing the training time of the models and also respecting the implentation of\
+the modern topic models that are implemented in the analysis of the corpus which used unigrams as input for their models \cite{moody2016mixing}\cite{dieng2019topic}, the analysis\
+will only consider unigrams as input to the models to allow for a fair, consistent, and efficient comparison of the different topic models on our dataset.
+
+In addition to removing stop words from a fixed list and removing duplicates from the corpus, I also filter out punctuation and several comon symbols using a regular expression\
+as well as cast all of the unigram tokens to lowercase to consolidate capitalization into one word. During the removal of stop words, the preprocessing step also includes a simple check\
+to remove standalone numbers using the \texttt{nltk} \cite{loper2002nltk} \texttt{isnumeric()} function.
+
+For the preview corpus there is also an additional preprocessing step to clean up the page source that captures the raw text of the preview from the web page. Often time when\
+extracting data from a web page there exists a good deal of noise that comes with extracting raw text from the web such as HTML, styling, scripts injected into the web page as\
+well as web page boiler plate. Gathering input from the page source of a website requires significant preprocessing in order for the data to be a good input for topic models \cite{boyd2014care}.\
+To clean up the page source of documents in the preview corpus, each document is put through additional preprocessing than the title and descriptions which are extracted only as strings\
+rather than web source code and each preview is stripped of all HTML, scripts, styles, and new lines using the Beautiful Soup tool \cite{richardson2007beautiful}.
+
+\subsection{Topic Models}
+Topic modeling is a commonly used approach to perform unsupervised analysis of unstructured text. The field has become increasingly more popular as the amount of unstructured\
+data that businesses continue to collect increases, one study estimated that up to 80\% of an organizations data is unstructured \cite{Sint2009CombiningUF} making the development\
+of algorithms and models that can extract insights and meaning from this unstructured data increasingly more important. The ability to process and extract meaning\
+from unstructured data makes topic modeling an excellent candidate to analyze and extract common topics and themes that appear in HITs on Amazon MTURK. The extraction and understanding\
+of this data will be valuable for implementing future works related to improving crowdworker efficiency.
+
+Topic modeling has its origins around the beginning of the 21st century beginning with a several algorithms published on the subject of topic modeling such as \
+Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing \cite{papadimitriou2000latent} (LSI) which would pave the way for the\
+creating of the Latent Dirichlet allocation (LDA) \cite{blei2003latent} which is the most commonly implemented topic modeling algorithm in use today. In recent years, \
+researchers have begun to develop topic modeling algorithms that have acheived state of the art performance leveraging word embeddings \cite{mikolov2013distributed} \cite{dieng2019topic}.\
+Word embeddings have opened the door for innovations across the field of natural language processing and topic modeling is no different. 
+
+The dataset will be analyzed using four different topic models. 
 \subsubsection{LSI}
 Discuss the LSI model and why this is being used for the experiments, justify with literature
 \subsubsection{LDA}
