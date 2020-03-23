@@ -78,11 +78,6 @@ print('INFO: processed_title shape after removing stopwords, duplicates, and num
 
 print('INFO: finished removing stopwords, duplicates, and numbers in %0.3fs' % (time() - t0))
 
-
-
-
-
-
 # print out the first couple processed descriptions
 t0 = time()
 print('INFO: loading descriptions into text file')
@@ -95,6 +90,6 @@ print('INFO: finished loading descriptions into text file in %0.3fs' % (time() -
 t0 = time()
 print('INFO: loading titles into text file')
 
-descriptions.to_csv(r'datasets/parsed_full_titles.txt', header=None, index=None, sep=' ', mode='a')
+titles.to_csv(r'datasets/parsed_full_titles.txt', header=None, index=None, sep=' ', mode='a')
 print('INFO: finished loading titles into text file in %0.3fs' % (time() - t0))
 

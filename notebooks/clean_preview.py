@@ -7,46 +7,28 @@ from pprint import pprint
 from getpass import getpass
 from html import unescape
 
+import json
+from bs4 import BeautifulSoup
 
 import gensim
 from gensim.utils import simple_preprocess
 import gensim.corpora as corpora
 from gensim.models import CoherenceModel
 
-from matplotlib.ticker import FuncFormatter
-from matplotlib import pyplot as plt
-
-
-import pyLDAvis
-import pyLDAvis.gensim
-import pickle
-
-import nltk
-nltk.download('stopwords')
-from nltk.corpus import stopwords
-
-import json
-from bs4 import BeautifulSoup
-
-
-t0 = time()
-
-
-print('INFO: done importing libraries in %0.3fs.' % (time() - t0))
-
-# convert preview.json file into dictionary, populate previews list
 
 preview_src_cnt = 0
 preview_no_src_cnt = 0
 previews = []
-count = 0
+
+def clean_dat(chunk):
+    # Read stopwords
+    with open('datasets/stops.txt', 'r') as f:
+        stops = f.read().split('\n')
+
+    return ' '.join([ w for w in chunk.split() if w not in set(stops) and not w.isnumeric()])
+
 for line in open('datasets/20200126-20200312-preview.json'):
       preview = json.loads(line)
-
-      count += 1
-
-      if count == 25:
-        break
 
       if 'page_src' in preview:
         preview_src_cnt += 1
@@ -64,6 +46,7 @@ for line in open('datasets/20200126-20200312-preview.json'):
 
         # print(soup.get_text())
         clean_src = re.sub("<.*?>", "", soup.get_text())
+        clean_src = re.sub("\n", " ", clean_src)
         previews.append(clean_src)
       else:
         preview_no_src_cnt += 1
@@ -71,6 +54,41 @@ for line in open('datasets/20200126-20200312-preview.json'):
 print('INFO: done parsing preview dataset, finished in %0.3fs.' % (time() - t0))
 print('INFO: total previews: ', (preview_src_cnt + preview_no_src_cnt), ' Previews with page src: ', preview_src_cnt, ' Preview w/o page src: ', preview_no_src_cnt)
 
-preview = pd.DataFrame(previews, columns=['processed_previews'])
 
+preview_df = pd.DataFrame(previews, columns=['processed_previews'])
+preview_df.head()
+
+preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : re.sub('[,.$()@#%&~!?]', '', d))
+
+preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : d.lower())
+
+print('INFO: processed_preview shape before removing stop words and dropping empty previews', preview_df['processed_previews'].shape[0])
+
+preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : clean_dat(d))
+
+preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : re.sub('"', '', d))
+preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : re.sub("''", '', d))
+
+nan_value = float("NaN")
+preview_df.replace("", nan_value, inplace=True)
+
+preview_df.dropna(subset = ['processed_previews'], inplace=True)
+
+
+preview_df['processed_previews'].drop_duplicates(keep=False, inplace=True)
+
+
+print('INFO: processed_preview shape after removing stop words and dropping empty previews', preview_df['processed_previews'].shape[0])
+
+
+
+
+# print out the first couple processed descriptions
+t0 = time()
+
+print('INFO: loading previews into text file')
+new_preview = pd.DataFrame(preview_df['processed_previews'])
+new_preview.to_csv(r'datasets/parsed_full_previews.txt', header=None, index=None, sep=' ', mode='a')
+
+print('INFO: finished loading previews into text file in %0.3fs' % (time() - t0))
 
