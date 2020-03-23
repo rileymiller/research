@@ -127,13 +127,13 @@
 % NOTE: If you have more than 2 items in either list they must be separate.
 % This case is generally handled automatically, but if you are told to separate the lists then comment or remove the two lines below:
 % \listoffiguresandtables
-% \newpage
+% \newpages
 
 % ... and then uncomment these four lines to force separate lists:
-%\listoffigures
-%\newpage
-%\listoftables
-%\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
 
 
 %% NOTE: If included in the front matter, a glossary, a list of abbreviations, or a list of symbols is placed as the last list. If these lists are included in the back matter, they are placed immediately before the REFERENCES CITED.
@@ -183,10 +183,12 @@
 
 %%% Parts of a Thesis - Front Matter - Acknowledgments (optional)
 
-% \begin{acknowledgments}
-% I would like to thank the academy for granting me this prestigious thesis.  This project would never have succeeded without <friend>, <parent>, and of course <spouse>.
-% \end{acknowledgments}
-% \newpage
+\begin{acknowledgments}
+I would like to thank my advisor, Dr. Chuan Yue, for the opportunity to work on this project and for his continued guidance.\
+I would also like to thank my research team for their insights and assistance: Zhiju Yang, Weiping Pei, and Thien Ngo Le. \
+This project would never have succeeded without the love and support of my friends, girlfriend, and family.
+\end{acknowledgments}
+\newpage
 
 %%% Parts of a Thesis - Front Matter - Dedication (optional)
 
@@ -328,14 +330,14 @@ of research on crowdsourcing platforms.
 
 \subsection{Goal}
 %% This section should explicitly state goals of research
-\textbf{To analyze common topics and trends found in crowdsourcing tasks on Amazon MTURK to\
+\textbf{To analyze common topics and trends found in crowdsourcing tasks on Amazon Mechanical Turk to\
  improve crowdworker efficiency.}
 
 \subsection{Approach}
 I will be focusing my research on improving the efficiency of crowd workers in crowdsourcing\
 platforms through the analysis of crowdsource tasks to determine common topics and trends found \
 in crowdsourcing tasks. Specifically I will focus on applying unsupervised learning techniques in the\
-form of topic modelling to improve the understanding of crowdsourcing tasks curated by researchers \ 
+form of topic modeling to improve the understanding of crowdsourcing tasks administered by requesters \ 
 as well as how this information can be leveraged to optimize crowdworker efficiency. 
 % I predict that the grouping of \ 
 % similar tasks based on the required skills will reduce the number of rejected (the largest painpoint for crowd workers \cite{Kaplan2018})\
@@ -427,122 +429,109 @@ will allow me to use the common categories that they defined as apart of their r
 as apart of my research on the \textbf{skills} that are required to complete crowdsource tasks.
 
 \chapter{Topic Modeling Approach and Focus}
+This chapter is focused on the explanation of my research and design decisions. In this chapter I cover the dataset that \
+was used for the experiments, the preprocessing decisions and methodology, the topic modeling algorithms used to \
+analyze the dataset, and the evaluation methods that were leveraged.
+% \ref{fig:Stomata}
 
-% \subsection{Potential Approaches}
-% Recommendation systems have been around since the early days of the internet and several of the techniques\
-% used early on are still heavily relied on today and in some cases their general principles are utilized\
-% to develop intelligent approaches in conjunction with traditional methods. The two primary methods that
-% the majority of recommendation systems are based off of are collaborative filtering and content based\
-% approaches. \cite{portugal2018use}
-
-% \subsubsection{Collaborative Filtering}
-% Collaborative filtering is the most popular recommendation system historically and today. This approach\
-% pertains to considering similar user data when processing information for recommendations, or in simpler terms, making\
-% predictions based off of other users. This approach has been in use since the earlier days of the internet, getting\
-% traction around the advent of e-commerce websites. An example of this approach can be applied to an arbritary\
-% e-commerce site, after items on the site are purchased by customers, many times the customer who purchased \
-% the item will be prompted to rate the product or to leave a review. You probably recognize this pattern from\
-% any time you buy something off Amazon and you get an email a couple of days after your package arrives asking\
-% you how you liked the product or if you'd be willing to leave a review. Anyways, once customers start interacting\
-% with items in the e-commerce store, collaborative filtering will use this data to recommend items to users\
-% who are similar to the people who originally bought the item. One of the primary stumbling blocks with this\
-% approach is the cold-start problem where the recommendation system isn't able to surface relevant recommendations\
-% at the inception of the system since there are a limited number of user interactions with items and thus the\
-% quality and relevancy of the recommendations will be poor. \cite{wang2017dynamic} Collaborative filtering is also only effective on\
-% data that has already existed on the service and is unable to make recommendations for new items until the new\
-% items are interacted with. One thing that is interesting to note is that this idea of collaborative filtering\
-% can be used in conjunction with deep learning techniques to create intelligent hybrid recommendation systems based off\
-% of basic collaborative filtering principles. One example of this is in a study in which researchers created a model\
-% using a technique that they called collaborative deep learning (CDL) which leveraged a hierarchical Bayesian model\
-% which combined collaborative filtering and the content based approach using deep learning to create better recommendations\
-% . \cite{Wang2015}
-
-% \subsubsection{Content Based}
-% The content based approach is less commonly used than collaborative filtering but it is still a prevalent approach\
-% for building recommendation systems. Content based recommender systems are based on similarity of items in the \
-% recommender system. These systems leverage the matching of similar items to a user profile. \cite{pazzani2007content}.\
-% Content based approaches inherently don't have to deal with the cold-start problem that is common in collaborative \
-% filtering recommendation systems since they don't bother with the behavior of similar users but of similar items within\
-% the system. These recommendation systems are also commonly used in systems where content has frequent turnover, or\
-% where data is sparse \cite{okura2017embedding}.
-
-% \subsubsection{Text Classification}
-% Text classification is the process of determining similarity from free text. This is a common \
-% area of natural language processing research and pertains to a wide array of different applications. 
-% Text classification can leverage either supervised or unsupervised techniques, providing a lot of flexibility\
-% for differnet approaches. Supervised text classification techniques use labeled training data to develop models\
-% that can then be used to categorize unlabeled free text. The most important piece of the supervised approach\
-% to text classification is possesing a large, annotated corpus to train accurate models. Alternative to the\
-% supervised approach, unsupervised learning can also be applied to text classification problems. Unsupervised learning\
-% relies on discovering similarities within a dataset and grouping together similar data, this approach is typically\
-% referred to as clustering. One of the beautiful things about unsupervised learning is that it doesn't rely on
-% annotated training data, it will just discover similarities from the data provided. These two approaches can \ 
-% be applied to improving efficiency of crowd workers.
-
-% \subsubsection{Topic Modeling}
-
-% \subsection{Research Focus}
-% The area of research that I plan to explore is the extraction of skills that are needed to perform tasks in\
-% crowdsourcing platforms using text classification natural language processing techniques. This idea is formed\
-% on the basis of the data that we will be able to procure from \
-% crowdsourcing platforms. 
-
-% As apart of a subsequent faction of the grant that this research is founded on, Dr.\
-% Yue has formed a team to garner data collection from crowdsourcing platforms using a client side browser\
-% extension. Some of the predictions of the dataset we believe that we are going to be able to collect using \
-% the browser extension are: that we will be able to generate a sizeable corpus of raw text and metadata of HITs\
-% on Amazon MTurk but \
-% that we aren't going to be able to procure enough data on user sessions, user profiles, and user interactions\
-% under the time constraints of the grant to generate a collaborative filtering based recommendation\
-% system due to the forseeable initial adoption of the plugin. 
-
-% However, once we are able to generate the corpus\
-% of tasks, we will be able to apply text classification to extract skills that are needed to perform a task and\
-% once we are able generate enough user data from the browser plugin, we will be able to develop a content-based\
-% recommendation system for surfacing relevant tasks in crowdsourcing platforms. 
-
-% This approach will also give us\
-% the ability to improve crowd worker efficiency through the Intelligent Batching of tasks. This will be the more\
-% immediate application of my research. Using text classification\
-% to determine the skills needed to perform a task, we will be able to use our algorithm to cluster similar tasks\
-% and eventually queue and accept tasks with the same skill requirements which will allow crowd workers to be able\
-% to complete tasks quicker and more efficiently. Ultimately, I predict that intelligent\
-% batching will reduce the amount of time that crowd workers waste sifting through crowdsourcing platforms to find\
-% tasks that would be worth doing since they would a) possess\
-% the skills necessary to complete the task and b) the tasks would be similar to the other enqueued tasks which would\
-% save users time from context-switching.
-% \subsection{Potential Algorithms}
-% Listed below are some of the algorithms that I plan to investigate to perform the skill extraction of tasks in\
-% crowdsourcing platforms. These algorithms will be explored due to their common usage to solve text classification \
-% problems as outlined in a survey of common text classification techniques \cite{aggarwal2012survey}.
-% \begin{itemize}
-% 	\item \textbf{Decision Trees}
-% 	\item \textbf{Rule-based Classifiers}
-% 	\item \textbf{SVM Classifiers}
-% 	\item \textbf{Bayesian Classifiers}
-% 	\item \textbf{Neural Network Classifiers:} Specifically LSTM RNNs and CNNs
-% 	\item \textbf{Nearest Neighbor Classifiers}
-% \end{itemize}
-
+% \csmfigure{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
 % I will explore the application of the algorithms above to the problem of extracting required skills\
 % from tasks and compare my results accordingly.
 % \label{sec:important-section}
 \subsection{Dataset}
-As explained in the "Research Focus" section above, Dr. Yue has created a team of researchers who will be handling\
-the development of a client side browser extension to web scrape crowdsourcing platforms for task data as well as\
-to track user profile information and user interactions with the crowdsourcing sites. We will be able to quickly web scrape\
-crowdsourcing sites to gather enough data for the text classification I plan to perform on crowdsource tasks. However, we \
-are envisioning that it will\
-take considerably more time to gather enough user data to develop a machine learning recommendation system which\
-utilizes content based recommendations.
+The dataset that was leveraged for the experiments in my thesis was collected over the course of January 26, 2020 to March 12, 2020 \
+by Dr. Yue's research team. The dataset was collected by a webscraping tool built by the team that ran on a brand new Amazon MTurk account.\
+One of the constraints of this dataset is that the HITs that were collected from the tool will only include HITs that would be accessible\
+to crowdworkers who haven't completed any previous HITs. Since requesters have the ability to restrict who can access their HITs based off of \
+crowdworker qualifications such as HIT approval rate, HIT submission rate, Location, total approved HITs, as well as several other HIT related\
+criteria--the tool is not going to be able to cover the bredth of every possible HIT that would be available on MTurk due to the subjective\
+nature of the requester restrictions. To mitigate this, the team decided to collect data from the perspective of a new crowdworker on Amazon MTurk\
+and thus the corresponding analysis and topics that are surfaced from the dataset will reflect this perspective.
 
-Briefly Discuss the dataset, touch on related work. Justification of literature here.
+The tool leveraged several tools to collect the dataset. Specifically the Amazon MTurk account used a Chrome extension to refresh the page periodically\
+and record new HITs as they became available in conjunction with Selenium which would be used to access the HIT Preview, record screenshots of the preview\
+and access and record external links. All of the data that is collected from a HIT is then stored locally in a MongoDB database on an external hard drive.\
+The tool records three different documents for each HIT that are stored whenever a new HIT becomes available: HIT data which store relevant HIT metadata,\
+HIT lifetime data which stores metadata corresponding to the lifecycle of the HIT, preview data which holds metadata the tool records from accessing the HIT\
+preview, as well as external links data that the tool records while accessing the preview. For my analysis I only leveraged the HIT and preview collections\
+in the database since the documents in these collections contained the raw text that was unique to the HIT itself which lends itself nicely to the\
+unsupervised analysis of topic modeling on unstructured, raw text.
+
+The specific fields recorded by the tool for a given HIT document are listed in the JSON snippet below:
+
+\begin{lstlisting}
+{	
+  _id: the ID created by Mongo database
+  hit_set_id: the hit set ID that assigned by AMT
+  requester_id: the ID of the requester who creates the hit
+  requester_name: name of the requester
+  title: title of the hit
+  description: description of the hit
+  assignment_duration_in_seconds: the amount of time the hit has been posted
+  creation_time: time when the hit is created
+  assignable_hits_count: number of hits available for accepting
+  latest_expiration_time: the expiration time of the hit
+  caller_meets_requirements: check if the worker meets the requirement to accept the hit (TRUE/FALSE)
+  caller_meets_preview_requirements: check if the worker is eligible for opening the preview page 
+}
+\end{lstlisting}
+
+The corresponding fields recorded by the tool for the preview itself (not including the external links embedded in the preview) are listed in the JSON snippet below:\
+\newpage
+
+\begin{lstlisting}
+{
+  _id : this ID was created by Mongo Database
+  type : type of the link (visualized or href)
+  from : location of the preview page? (on AMT or from external link)
+  hit_set_id : ID of the hit set, this will correspond to the hit set ID on HITs DATA
+  url : link to the preview page
+  date : date time format
+  uid : requester ID
+  has_visited : has the preview page been visited
+  links_saved : all the links on preview page
+  has_link_visited : whether the preview link has been visited (TRUE/FALSE)
+  href_arr : links to all of the urls listed on the preview page
+  img_name_map :  images from the preview page
+	page_src : source code of the preview page
+}	
+\end{lstlisting}
+
+In my analysis I leveraged the ``title'' and ``description'' fields from the HIT data and the ``page\_src''\
+field from the preview data. This raw text was then passed through preprocessing before eventually being sent on to the different\
+topic models that were leveraged for the topic modeling analysis. Preprocessing was a necessary part of the topic modeling analysis.\
+There are a variety of different perspectives on the effectiveness of different preprocessing methodologies that I will explain in depth\
+in the following section.
+
+\subsection{Preprocessing}
+In the field of natural language processing (NLP) and text mining there are a wide variety of techniques related to the preprocessing of data.\
+Some of the preprocessing techniques that relate specifically to topic modeling include stemming \cite{lovins1968development}, stop word\
+removal \cite{silva2003importance}, and document duplication \cite{bouayad1999duplication}. The effectiveness of these techniques on\
+topic modeling is debated and I have taken these considerations into my experimental design decisions.
+
+Stemming and lemmatization are commonly found in NLP libraries. These techniques have bee around for years and have been studied thoroughly \cite{lovins1968development, kanis2010comparison, jivani2011comparative, larkey2002improving}.
+The process of stemming essentially consolidates similar words down into a root word, often times removing prefixes and suffixes or other semantic\
+modifications. However, in context to topic modeling, stemming techniques have been found to do more harm then good and actually decrease model performance \cite{schofieldunderstanding} \
+by "diminishing interpretability" \cite{boyd2014care}. For this reason I chose note to utilize lemmatization techniques as apart of the preprocessing of my \
+data so as not to decrease model performance--especially since some of the recent innovations in the field of topic modeling leverage word embeddings \cite{mikolov2013distributed} and the\
+semantic meaning of the word becomes more important than distribution based models such as the Latent Dirichlet Allocation (LDA) \cite{blei2003latent} which rely on the appearance of the\
+word in the document rather then it's position relative to its surroundings.
+
+Stop word removal, the removal of words that don't add contextual meaning to a sentence such as ``the'', ``and'', ``a'' is another common preprocessing technique in topic modeling.\
+As far as literature goes, there are several studies that debate the effectiveness of removing stopwords during processing. One study states that using stop-word lists\
+is incomplete since it is difficult for these lists to encompass corpus-specific stopwords \cite{boyd2014care} and that alternative methods are to leverage \emph{tf-idf}\cite{Salton1968AutomaticIO}\
+to automate the selection of stopwords by only allowing words over a certain threshold. While another study shows that removing additional stopwords beyond the top 12 most occurent stop words doesn't\
+have an acknowledgeable effect on model performance or topic coherence \cite{schofieldunderstanding}. This same study did, however, find that the\
+removal of determiners, conjunctions, and prepositions did in fact improve performance. For my performance I decided to use a fixed list of stop words\
+as apart of my preprocessing phase. The driving reason for doing so was to implement the ETM model \cite{dieng2019topic}, a state of the art topic model\
+which utilizes a stop word list during it's preprocessing step. Removing stop words from the raw data during preprocessing allows for fair comparison across\
+models as well as replication of the ETM model. One of the other benefits of using a fixed stop word list over using the \emph{tfidf} approach discussed in \cite{boyd2014care}\
+is the persistence of sparse words that would otherwise be removed from the corpus but may have a strong correlation to a specific topic.
 
 \subsection{Topic Models}
 This section will discuss the prominent topic models as well as the justification for the models that will be selected
 for evaluation of the dataset.
-\subsubsection{Overview}
-Give an overview of the most prominent topic models
+
 \subsubsection{LSI}
 Discuss the LSI model and why this is being used for the experiments, justify with literature
 \subsubsection{LDA}
@@ -559,53 +548,9 @@ Discuss the differing metrics of evaluating topic models. Discuss topic coherenc
 Provide figures and dank math stuff here
 Explain which specific topic coherence metrics you are going to use and justify with literature.
 
+\subsubsection{Qualitative Analysis}
 \subsection{Approach}
 Summarize the approach with the research justification
-
-% \paragraph{Supervised Learning}
-% The majority of my time will be spent performing experiments on supervised learning techniques, comparing the performance\
-% of shallow learning vs. deep learning algorithms on my data set. For these sets of supervised learning algorithms a large part\
-% of my research will be predicated on annotating the dataset that is collected by Dr. Yue's team. My plan for collecting this annotation\
-% data can be broked down into two phases:
-
-
-% \textbf{Survey:} I plan on administering a survey to crowd workers on Amazon MTurk to gather data about common skills that are required\
-% to complete HITs. At a high level I plan on collecting worker demographic data to analyze the difference in reported skills across\
-% different types of workers who have different backgrounds, qualifications, and amounts of completed tasks. Another facet of the\
-% survey will include giving crowd workers a small subset of common tasks from some of the most commonly occuring categories of HITs\
-% on MTURK \cite{difallah2015dynamics}:
-% \begin{itemize}
-% 	\item \textbf{Information Finding:} Searching the web to find certain information
-% 	\item \textbf{Verification and Validation:} Verifying certain information
-% 	\item \textbf{Interpretation and Analysis:} Interpreting web content (i.e human generated sentiment analysis)
-% 	\item \textbf{Content Creation: } Generating content from audio or video input
-% 	\item \textbf{Surveys \& Questionaires:} A set of questions which gather worker demographic info as well as answers on a subject matter
-% 	\item \textbf{Content Access:} Interacting with web content (i.e watching videos, visiting website)
-% \end{itemize}
-
-% and asking them to list common skills that are required to solve the sample task. There will also be a free response portion of the survey\
-% where I will prompt crowd workers to list an \emph{n} number of skills for each general category of tasks.
-
-% \textbf{Annotation:} Then after curating a list of skills from the survey, I plan on having crowd workers annotate my dataset of tasks\
-% with \emph{n} skills that are required or helpful to complete a given task using skills from the pool of skills generated by the survey.
-
-% After I have collected and annotated the dataset of tasks,\
-% I will then train the supervised learning techniques listed in the ``Potential Algorithms`` section above using either\
-% Jupyter Notebooks on a platform like Google Colab or I will leverage AWS GPU-enabled P-instances to train my models on my\
-% training set. After the models are trained, I plan on testing the supervised learning models on my test set and will\
-% generate a wide-variety of insightful tables and visualizations that will provide additional insight into the effectiveness\
-% of each of the different techniques. I also plan on leveraging GitHub for version control as well as creating a data pipeline\
-% using continuous integration and machine learning frameworks like PyTorch or TensorFlow to iterate quickly on the different\
-% machine learning techniques.
-
-% \paragraph{Unsupervised Learning}
-% In addition to the supervised learning techniques outlined above, I also plan on experimenting with several unsupervised\
-% learning techniques for comparison's sake, specifically nearest neighbor and clustering approaches. I plan on using the same infrastructure,\
-% hardware, and frameworks listed above for my unsupervised learning experiments while forgoing the training and data collection steps listed\
-% in the "Supervised Learning" since these steps are not required for unsupervised learning algorithms.
-
-
-
 
 \chapter{What are the primary topics of Amazon MTURK HITs?}
 
@@ -614,23 +559,6 @@ This section will analyze the data that was collected by Dr. Chuan Yue's researc
 
 \subsubsection{HIT Dataset}
 Chat about the dataset.
-
-\paragraph{Collection}
-How was it collected?
-What were the constraints (level/experience of the "worker" during the scrape)?
-
-\paragraph{Architecture}
-What were the tools used? 
-What was the architecture of the data pipeline?
-
-\paragraph{Duration}
-What was the duration of the webscrape?
-
-\paragraph{Document Explanation}
-Talk about the actual fields that were collected
-
-\paragraph{Related Works}
-Is there any previous work on MTURK webscrapes, how does our data differ?
 
 \subsubsection{Implications}
 Explain the findings of Thien Ngo's HIT Analysis
@@ -804,21 +732,20 @@ Conclude
 % \end{align}
 
 
-% \csmfigure{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
+%% Below is a quick test for a figure that moves to another page
+asdfadsf
 
-%%% Below is a quick test for a figure that moves to another page
-% asdfadsf
-% 
-% asdfasdf
-% 
-% dfsdfds
-% 
-% dsfsd
-% 
-% sdfdsfd
-% %% Note: the ''[H]`` below is optional and means ''always put it exactly here``, normally you do NOT want to use it.  However, in some rare circumstances you may wish to override the default placement.
+asdfasdf
+
+dfsdfds
+
+asd 
+
+
+
+%% Note: the ''[H]`` below is optional and means ''always put it exactly here``, normally you do NOT want to use it.  However, in some rare circumstances you may wish to override the default placement.
 % \csmfigure[H]{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
-%%% End special test
+%% End special test
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % If you would like to work on each chapter of your thesis in a separate document then use: %
@@ -876,21 +803,21 @@ Conclude
 
 % \subsection{We Love Our Advisors}
 % Are you really still reading this? Ok, then check out \ref{tab:magic}!
-
-% \begin{table}
-% 	\caption{\label{tab:magic} A table of tabular goodness.}
-% 	\begin{center}
-% 		\begin{tabular}{|c|c|c|}
-% 			\hline
-% 			& B & b \\
-% 			\hline
-% 			B & BB & Bb \\
-% 			\hline
-% 			b & Bb & bb \\
-% 			\hline
-% 		\end{tabular}
-% 	\end{center}
-% \end{table}
+\ref{tab:magic}
+\begin{table}
+	\caption{\label{tab:magic} A table of tabular goodness.}
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			& B & b \\
+			\hline
+			B & BB & Bb \\
+			\hline
+			b & Bb & bb \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
 %% Below is a test for sideways figure and table floats (it also works to wrap figures and tables in a ``landscape'' environment, but the method below is preferred)
 % magic text a
