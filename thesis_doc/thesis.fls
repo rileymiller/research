@@ -169,13 +169,13 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7
 OUTPUT /Users/rileymiller/code/research/thesis_doc/thesis.toc
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.lof
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.lof
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 OUTPUT /Users/rileymiller/code/research/thesis_doc/thesis.lof
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.lot
 INPUT /Users/rileymiller/code/research/thesis_doc/thesis.lot
 OUTPUT /Users/rileymiller/code/research/thesis_doc/thesis.lot
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /Users/rileymiller/code/research/thesis_doc/figures/lda_diagram.png
 INPUT /Users/rileymiller/code/research/thesis_doc/figures/lda_diagram.png

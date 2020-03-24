@@ -566,7 +566,7 @@ from unstructured data makes topic modeling an excellent candidate to analyze an
 of this data will be valuable for implementing future works related to improving crowdworker efficiency.
 
 Topic modeling has its origins around the beginning of the 21st century beginning with a several algorithms published on the subject of topic modeling such as \
-Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing (LSI)\cite{papadimitriou2000latent} (LSI) which would pave the way for the\
+Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing (LSI) \cite{papadimitriou2000latent} (LSI) which would pave the way for the\
 creation of the Latent Dirichlet allocation (LDA) \cite{blei2003latent} which is the most commonly implemented topic modeling algorithm in use today. In recent years, \
 researchers have begun to develop topic modeling algorithms that have acheived state of the art performance leveraging word embeddings \cite{mikolov2013distributed} \cite{dieng2019topic}.\
 Word embeddings have opened the door for innovations across the field of natural language processing and topic modeling is no different. 
@@ -638,7 +638,7 @@ the word is assigned in documents across the bredth of the corpus.
 From the performance perspective, in the original paper the LDA is cited as outperforming the \emph{pLSI} \cite{hofmann1999probabilistic}, an adaption of the original \emph{LSI},\
 measured on the perplexity metric which was commonly used to evaluate early topic models. In the empirical evaluation section of the paper the authors\
 cited that the design of the LDA led to the avoidance of some of the shortcomings of the \emph{pLSI} especially overfitting by utilizing a variational\
-Bayesian smoothing scheme\cite{attias2000variational} \cite{blei2003latent}. 
+Bayesian smoothing scheme \cite{attias2000variational} \cite{blei2003latent}. 
 
 For the implementation of the LDA in the experiments, the \emph{gensim} library is leveraged which is based off of the code presented by some of the original authors of the LDA \cite{hoffman2010online}.
 The specific hyperparameters that were implemented in the experiments are discussed at greater lengths in experiments in Chapter 4.
@@ -648,14 +648,14 @@ models compare their performance.
 \subsubsection{lda2vec}
 The \emph{lda2vec} model was one of the first topic models to develop a hybrid approach which married the sparse document-topic representation of a corpus used in\
 traditional topic modeling like the LDA with the innovation of word embeddings. \emph{lda2vec} was developed to address one of the primary shortcoming of traditional\
-topic modeling approach--the failure to take advantage of recent innovations in distributed word representation such as the skip gram representation presented in \emph{word2vec}\cite{mikolov2013distributed}.\
+topic modeling approach--the failure to take advantage of recent innovations in distributed word representation such as the skip gram representation presented in \emph{word2vec} \cite{mikolov2013distributed}.\
 Word embeddings as previously addressed have had a substantial effect on the field of NLP over a wide array of applications and the development of hybrid topic models\
 that leverage these distributed word representations to account for semantically meaningful relationships between words has led to advances in topic modeling as well as\
 the development of state of the art topic models.
 
 From an implentation perspective the \emph{lda2vec} model modifies the Skipgram Negative-Sampling (SGNS) objective from \cite{mikolov2013distributed} to learn document-wide\
 feature vectors in concurrence with discovering document weights that are loaded onto topic vectors \cite{moody2016mixing}. \
-The loss of the \emph{lda2vec} model can be represented with the following equations (\ref{eqn:lda2vec1} \ref{eqn:lda2vec2} \cite{moody2016mixing}):
+The loss of the \emph{lda2vec} model can be represented with the following equations (\ref{eqn:lda2vec1}, \ref{eqn:lda2vec2} \cite{moody2016mixing}):
 
 \begin{eqnarray}
 	\label{eqn:lda2vec1}
@@ -663,14 +663,32 @@ The loss of the \emph{lda2vec} model can be represented with the following equat
 	\label{eqn:lda2vec2}
 	\mathcal{L}^{neg}_{ij} = log \sigma (\vec{c_j} \cdot \vec{w_i}) + \Sigma^n_{l=0} log \sigma (-\vec{c_j} \cdot \vec{w_i})
 \end{eqnarray}
-\ref{fig:lda2vec}
 
-Explain the equations
+In the equations above the total loss $\mathcal{L}$ is represented by the sum of the Dirichlet likelihood of term of document weights $\mathcal{L}^d$ \
+while the summation of $\mathcal{L}^{neg}_{ij}$ represents the paper's modification of the Skipgram objective. In further depth \
+$\vec{c_j}$ represents the context vector which accounts for the models combination of word and document vectors (See Equation \ref{eqn:lda2vec3} below).
 
-\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture -- note the combination of the skipgrams from word2vec \cite{mikolov2013distributed} used in conjunction with the LDA\
-architecture \cite{blei2003latent}}
+\begin{eqnarray}
+	\label{eqn:lda2vec3}
+	\vec{c_j} = \vec{w_j} + \vec{d_j}
+\end{eqnarray}
+
+For additional explanation please reference the visual of the \emph{lda2vec} model architecture in Figure \ref{fig:lda2vec} on the page below.
+
+\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture -- note the combination of the Skip grams from \emph{word2vec} \cite{mikolov2013distributed} used in conjunction with the LDA architecture \cite{blei2003latent}}
 
 \newpage
+From an application perspective, the author states that he used several preprocessing techniques including lemmatization which as discussed in the preprocessing\
+section above, can be detrimental to model performance. The author also leverage pretrained word embeddings in one of the experiments using the\
+pretrained values discussed in the Skipgram paper \cite{mikolov2013distributed}. During the experiments the researcher used the \emph{C\_v} topic coherence mertric \
+which was shown to correlate with human interpretability \cite{roder2015exploring}. The \emph{C\_v} analysis on this experiment was used with \
+the online \emph{Palmetto} \cite{palmetto} topic evaluation tool. However, the \emph{C\_v} coherence metric that was used to evaluate topic coherence in these experiments \
+has been discovered to have a negative correlation other topic coherence metrics \cite{palmetto} that correlate with human interpretability \cite{mimno2011optimizing} \cite{newman2010automatic}\
+and thus this metric will not be leveraged to evaluate topic coherence in the experiments on the MTurk dataset.
+
+\emph{lda2vec} is an excellent comparison against traditional topic models and will reveal valuable insights on how leveraging topic-document distributions in\
+conjunction with word embeddings can effect the interpretability of topics on our dataset.
+
 \subsubsection{Embedded Topic Model (ETM)}
 \subsection{Evaluation}
 In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which

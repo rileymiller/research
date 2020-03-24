@@ -1,565 +1,1292 @@
-% This is annote.bib
-% Author: Ayman Ammoura
-% A demo for CMPUT 603 Fall 2002.
-% The order of the following entries is irrelevant. They will be sorted according to the
-% bibliography style used.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper,12pt]{article}
 
-% The following is a conference paper
-@article{lovins1968development,
-  title={Development of a stemming algorithm},
-  author={Lovins, Julie Beth},
-  journal={Mech. Translat. \& Comp. Linguistics},
-  volume={11},
-  number={1-2},
-  pages={22--31},
-  year={1968}
+% csm-thesis automatically includes the following packages:
+%% float
+%% setspace
+%% geometry
+%% graphics
+%% textcase
+%% subfig
+
+% Note: Two package options exist for your convenience: ``insane'' and ``nolabel''.  To use these options together separate them by a comma, ie. \usepackage[insane,nolabel]{csm-thesis}
+% * \usepackage[insane]{csm-thesis}
+% Turn off all document sanity checks.  This option can be used to render a ``sub-document'' that is part of the root thesis document.  It is important to note that you should NEVER disable this check on your root thesis document, as important format errors and warnings will be disabled.
+% * \usepackage[nolabel]{csm-thesis}
+% Disables automatic reference ``labeling'' of figures and tables.  By default the thesis template prepends any reference to a figure or table with ``Figure~'' or ``Table~''.  This option is meant for disabling the labeling behavior when a document already has the appropriate labeling.  It is important to note that if your document DOES NOT have the appropriate labeling (the reference label must EXACTLY MATCH the caption label) then it will not pass the format review.
+\usepackage{csm-thesis}
+
+% For inserting large multi-page tables:
+\usepackage{array}
+\usepackage{longtable}
+
+% For inserting sideways tables and figures
+\usepackage{rotating}
+
+
+\usepackage{mathtools}
+
+% Since hyperref and cite don't completely get along, the template now recommends using natbib:
+% For an explanation, see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=citesort
+\usepackage[numbers]{natbib}
+% If you wish to use ``cite'' instead then your choices are:
+% 1) Don't use the hyperref package
+% 2) Put ``cite'' before hyperref, resulting in no citation hyperlinks
+% 3) Put ``cite'' after hyperref, resulting in ugly looking citations
+
+% If you choose not to use natbib then you can set the standard ``numeric'' style like so:
+% \bibliographystyle{unsrt}
+
+% Important Note: math-mode in sections, titles, and other bookmarks will generate warnings with hyperref.  You can work around this by either:
+% 1) Not using the hyperref package
+% 2) Using \texorpdfstring{TeX Code}{PDF Replacement} to display an alternative bookmark (for example, \texorpdfstring{H$_2$O}{Water}).
+% The thesis template will automatically import your document information into hyperref, so if you go to ``File | Properties'' in Adobe Acrobat it will display the title and author.  If you would like to over-ride this option then just change the line below to ``\usepackage[]{hyperref}''.
+\usepackage{hyperref}
+
+% For inserting programming code:
+\usepackage{listings}
+
+% For inserting landscape-mode objects:
+\usepackage{pdflscape} % use ``lscape'' if you are not creating a PDF output
+
+% For matrices:
+\usepackage{amsmath}
+
+% For using helvetica instead of Computer Modern
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+
+%% For automatic equation breaking (experimental!):
+%\usepackage{breqn}
+
+% For using row-spanning and column-spanning in tables:
+%\usepackage{multirow}
+
+% The thesis title MUST be in an inverted pyramid shape.  To do this you can either specify the returns in the title manually or have the thesis style attempt to automatically build the title in the shape of an inverted pyramid.  The thesis style will automatically choose the appropriate behavior by detecting the presence of returns (\\) in the title.
+% Please note that by ``inverted pyramid'' the graduate office really means a regular trapezoid with the larger base on the top.
+% <<MANUAL PYRAMID:>>
+% Use ``\\" to end a line, all normal LaTeX should function properly.
+	%\title{%
+	%	Developing a \atom{12}{6}{Th}{2+}{3}esis Template\\%
+	%	to Help Students Graduate\\%
+	%	in a Reasonable Time%
+	%}
+% <<AUTOMATIC PYRAMID:>>
+% Do not put any carriage returns (\\), all normal LaTeX should function properly.
+\title{Thesis: Topic Modelling of Amazon MTURK}
+% Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
+% eg. \texorpdfstring{H$_2$O}{Water}
+% One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
+
+\degreetitle{Master of Science}
+\discipline{Computer Science}
+\department{Computer Science}
+
+\author{Riley Miller}
+\advisor{Dr. Chuan Yue}
+% Comment out the following line if you do not have a co-advisor:
+% \coadvisor{Dr. Secondary B. Advisor}
+\dpthead{Dr. Tracy Camp}{Department Head}
+
+\begin{document}
+% \nocite{*}
+% Parts of a Thesis
+
+%% Parts of a Thesis - Front Matter
+
+\frontmatter
+
+%%% Parts of a Thesis - Front Matter - Title Page (required)
+
+\maketitle
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Copyright Page (optional)
+
+% If the copyright for your document spans multiple years, or does not match the current year, then replace ''\the\year`` below with the appropriate text.
+\makecopyright{\the\year}
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Signature Page (required)
+
+\makesubmittal
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Abstract (required)
+
+\begin{abstract}
+<Insert abstraction upon completion of the document>
+\end{abstract}
+
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Table of Contents (required)
+
+\tableofcontents
+\newpage
+
+%%% Parts of a Thesis - Front Matter - List of Figures (if applicable)
+%%% Parts of a Thesis - Front Matter - List of Tables (if applicable)
+
+% NOTE: If you have more than 2 items in either list they must be separate.
+% This case is generally handled automatically, but if you are told to separate the lists then comment or remove the two lines below:
+% \listoffiguresandtables
+% \newpages
+
+% ... and then uncomment these four lines to force separate lists:
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+
+%% NOTE: If included in the front matter, a glossary, a list of abbreviations, or a list of symbols is placed as the last list. If these lists are included in the back matter, they are placed immediately before the REFERENCES CITED.
+
+%%% Parts of a Thesis - Front Matter - Glossary (if applicable)
+%\glossary
+
+%%% Parts of a Thesis - Front Matter - List of Symbols (if applicable)
+
+% Place this call before ''\listofsymbols`` to make the symbols appear on the left instead of the right:
+%\ShowSymbolFirst
+% To call the “List of Symbols” “Nomenclature” instead use:
+%\listofsymbols[Nomenclature]
+% To autosort the list use a star after the command (ie. \listofsymbols*[Nomenclature] or \listofsymbols*)
+% \listofsymbols
+% With very large symbol lists it is sometimes good to split the list into multiple sub-lists.  To output the lists just use the extended \listofsymbols command (below) and to add an element to the list use the optional parameter to ''\addsymbol``.
+%\listofsymbols{General Nomenclature}
+%\listofsymbols{Greek Letters}
+% \newpage
+
+% Note that you may define symbols anywhere in the document, when you re-run LaTeX they
+% will be added to the list (just like all other lists)
+% \addsymbol{absorption coefficient}{$\alpha_c$}
+% \addsymbol{absorption cross section}{$\alpha_{\sigma}$}
+% \addsymbol{average radius of cylindrical shell}{$c$}
+% \addsymbol{activation energy of oxidation reaction of a-C in excited state}{$E^{\ast}_{act}$}
+
+% Example for sub-list symbols (optional parameter specifies which list to use):
+%\addsymbol[General Nomenclature]{absorption coefficient}{$\alpha_c$}
+%\addsymbol[General Nomenclature]{absorption cross section}{$\alpha_{\sigma}$}
+%\addsymbol[Greek Letters]{average radius of cylindrical shell}{$c$}
+%\addsymbol[Greek Letters]{activation energy of oxidation reaction of a-C in excited state}{$E^{\ast}_{act}$}
+
+%%% Parts of a Thesis - Front Matter - List of Abbreviations (if applicable)
+% To autosort the list use a star after the command (ie. \listofabbreviations*)
+% \listofabbreviations
+% \newpage
+
+% Note that you may define abbreviations anywhere in the document, when you re-run LaTeX they
+% will be added to the list (just like all other lists)
+% \addabbreviation{Bio Force Gun, Model 9000}{BFG9000}
+% \addabbreviation{Mammoth Armed Reclamation Vehicle}{MARV}
+% \addabbreviation{Stone of Jordan}{SoJ}
+% %\addabbreviation{Field flow fractionation-inductively coupled plasma-mass\newline spectrometry% with extra% magic and stuff and things
+% \addabbreviation{Field flow fractionation-inductively coupled plasma-mass spectrometry% with extra% magic and stuff and things
+% }{FFF-ICP-MS}
+
+%%% Parts of a Thesis - Front Matter - Acknowledgments (optional)
+
+\begin{acknowledgments}
+I would like to thank my advisor, Dr. Chuan Yue, for the opportunity to work on this project and for his continued guidance.\
+I would also like to thank my research team for their insights and assistance: Zhiju Yang, Weiping Pei, and Thien Ngo Le. \
+This project would never have succeeded without the love and support of my friends, girlfriend, and family.
+\end{acknowledgments}
+\newpage
+
+%%% Parts of a Thesis - Front Matter - Dedication (optional)
+
+% \begin{dedication}
+% For those that shall follow after.
+% \end{dedication}
+% \newpage
+
+%% Parts of a Thesis - Body
+
+\bodymatter
+
+%%% Parts of a Thesis - Body - Introduction (optional)
+%\chapter{Introduction}
+% A fun introduction would go here, just uncomment!
+
+%%% Parts of a Thesis - Body - All Chapters and Sections (required)
+
+\chapter{Introduction}
+
+The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines.\
+My research will be centered around the extraction and analysis of topics in HITS on Amazon MTURK. 
+
+In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools.
+\subsection{Background}
+Crowdsourcing platforms have become increasingly popular over the course of the last\ 
+several years, introducing the concept of utilizing ``crowd`` intelligence to complete\
+work \cite{kuek2015global}. These platforms are historically architected to facilitate the relationship\ 
+between requesters, who create work on the platform in the form of items commonly\ 
+referred to as tasks, and crowd workers who are real people that complete tasks that\ 
+are curated by the requesters. There are a variety of different crowdsourcing platforms\ 
+that have entered the crowdsourcing market such as Figure Eight, ClickWorker, CrowdFlower, Spare5,\ 
+Respondent, Swagbucks, and the most popular platform: Amazon Mechanical Turk (MTURK).\ 
+These platforms are used for a variety of different use cases ranging from collecting\
+data via surveys, image/video annotation, translations, spreadsheet modifications and\ 
+analysis, writing, to theoretically anything. The typical workflow in crowdsourcing\ 
+platforms starts with requesters who breakdown work that they need to get completed\ 
+into smaller chunks called tasks. This process usually involves writing a description of what needs to be\ 
+done, how it needs to be completed, providing the input the crowd worker needs to\ 
+complete the work, setting a qualification so that only certain crowd workers may\ 
+have access to the task based off their work history, setting a lifetime on the\ 
+task for when the work needs to be completed, and setting a reward for successful\ 
+completion of the task. All of these specifications vary by platform since a\ 
+universal specification standard between different crowdsourcing platforms fails\ 
+to exist. \cite{allahbakhsh2013quality} After the requesters finish a task and publish it to the crowdsourcing\ 
+platform, the task becomes available to crowd workers (depending on the platform it\ 
+may only be made available to crowd workers who match the qualification set by the\ 
+requesters) who can then attempt to complete the task. After the crowd workers are\ 
+satisfied with their work on a given task, they can then submit their work on a task\ 
+to the requesters for approval. After this work is received by the requesters, the\ 
+requesters have the ability to review the work that was completed by the crowd worker\
+and determine whether they will accept the work, reject the work, or send the task\ 
+back to the crowd worker because the quality of the work was insufficient. This\ 
+workflow in crowdsourcing platforms presents several inherent issues that need to\ 
+be improved in order for crowdsourcing platforms to continue to grow.
+
+\subsection{Requester Role in Crowdsourcing Platforms}
+% paragraph on the motivation for requesters
+Requesters often utilize crowdsourcing platforms to outsource large pieces of\ 
+work to a distributed workforce to leverage the skills, time, and experience of\ 
+crowd workers. \cite{kuek2015global} This allows requesters to offload tasks to ultimately save themselves\ 
+time and allow them to focus on higher priority tasks. Some of the practical use\ 
+cases that requesters offload to crowdsourcing sites are bulk tasks that require\ 
+human input but take a considerable amount of time like data annotation of machine\ 
+learning and computer vision datasets which requires a large amount of accurately\ 
+labeled data to fuel deep learning algorithms. One of the primary benefits that\
+crowdsourcing platforms present requesters is that requesters are able to curate a\ 
+massive amount of tasks and distribute them amongst crowd workers for a reasonable cost\ 
+considering the average wage for crowd workers lingers around \$2-\$5 and hour \cite{Kaplan2018,hara2018data}.
+In fact, many of the tasks that requesters publish on crowdsourcing sites have small rewards ranging\
+on average from only a couple cents to several dollars. The low average cost of tasks in crowdsourcing\
+platforms inherently allows researchers to publish a large number of tasks which also\
+simultaneously benefits crowd workers and crowdsourcing platforms by increasing the volume\
+of work available. Some of the issues that exist for requesters in crowdsourcing platforms\
+are the amount of time it takes to curate tasks, the amount of time it takes to review and\
+approve tasks completed by crowd workers, and the diversity in the quality of work that\
+crowd workers perform.
+
+\subsection{Crowd Worker Role in Crowdsourcing Platforms}
+% paragraph on the motivation for workers
+While requesters supply crowdsourcing platforms with the volume of work, crowd workers supply the labor.\
+The primary motivation of crowd workers discovered empirically as apart of a study in 2018 by\
+a team of crowdsourcing researchers was simple: earn money \cite{Kaplan2018}. The distributed workforce\
+of crowd workers complete tasks all over the world with a wide range of skillsets and experience\
+while providing human intelligence to complete work published by requesters. The researchers
+who performed the survey on crowdsourcing workers in Amazon MTURK discovered that over half (61.7\%) of\
+crowd workers were employed fulltime and 50.2\% of workers had recieved a four year education.\cite{Kaplan2018}\
+This data shows that many of the crowd workers don't rely on their crowdsourcing work as a\
+primary source of income and that many crowd workers are formally educated. However, since\
+many crowd workers aren't reliant on crowdsourcing platforms as their primary source of income\
+this suggests that quality will be a lower priority for crowd workers in exchange for efficiency\
+as the repercussions for low quality work have much less severe implications than they would\
+for low quality work with their full-time employers. With the primary motivation of crowd workers\
+regarding the wage they receive from crowdsourcing\
+platforms, efficiency is imperative and many of the crowd workers' interactions with\
+crowdsourcing platforms will be guided by the overarching goal of making as much money\
+as possible as efficiently as possible. To help optimize their time during crowdsourcing\
+working sessions, crowd workers use a variety of different tools to help improve their efficiency\
+while completing tasks.
+
+% outline problems with the relationship between requesters and workers
+\subsection{Requester vs. Crowd Worker Imbalance}
+The two differing motives of both requesters and workers develops inherent tension between\
+the primary relationship in crowdsourcing platforms. Requesters desire high quality work, whereas,\
+crowd workers desire efficient work resulting in two states in the crowdsourcing platform that\
+are relatively mutally exclusive. However, unfortunately for crowd workers, the power in this relationship leans heavily towards\
+requesters who are able to dominate the dynamic using several features that are common amongst\
+crowdsourcing platforms such as: the ability to specify certain qualifications that workers must\
+meet to access certain tasks and having ultimate authority over accepting or rejecting the work\
+that crowd workers complete based on their own personal, subjective view on quality. \cite{Kaplan2018,allahbakhsh2013quality}\
+This imbalance\
+places workers at a severe disadvantage in crowdsourcing platforms in addition to flaws in the platforms\
+themselves. Some of the disadvantages that crowdsourcing platforms inflict on workers include: naive search\
+functionality for surfacing tasks, lack of metrics for how long it will take to complete a task,\
+stated feasibility of tasks, and a lack of estimated wage value for tasks \cite{Kaplan2018}.\
+Crowd workers are at an inherent disadvantage\
+in crowdsourcing platforms which harms worker participation, a fundamental requirement for crowdsourcing\
+platforms to be successful.
+
+\subsection{Crowd Worker Difficulties}
+More specifically, a survey on crowd workers showed that the biggest painpoints for crowd workers\
+in the Amazon MTURK crowdsourcing platform are loss of compensation on rejected or returned tasks,\
+data on whether or not a given task is even completeable (often times a task may not even be \
+completeable because requesters may not have provided enough information for workers to successfully\
+complete the task), and the amount of time it takes to find a task or switch context between different\
+types of tasks \cite{Kaplan2018}. The two pain points that I plan to explore as apart of my research\
+are decreasing the number of returned or rejected tasks by providing data upfront to workers regarding\
+the feasibility of a task as well as decreasing the amount of time spent searching for tasks. Another\
+interesting data point the researchers (Kaplan et al) collected from their survey on crowd workers was\
+that 30\% of respondents said that finding a task was reported ``4 - Very`` or ``5 - Extremely`` \
+difficult, but probably even more intriguing was the data that the most pertinent reason for \
+ending a session was that they were unable to find a task worth doing (48\% said this ranked\
+as an ``5 - Extremely Important`` reason in terminating a crowdsourcing session). \cite{Kaplan2018} This dissatisfaction\
+of crowd workers shows that the current working model for crowdsourcing platforms needs to be improved\
+to improve the user experience of crowd workers. The crowdsourcing community has a vested interest to improve\
+the user experience of crowd workers in order to continue to facilitate the adoption\
+of crowdsourcing platforms by new crowd workers. This area of crowdsourcing has\
+a lot of opportunity for research and is relatively sparse compared to other fields\
+of research on crowdsourcing platforms.
+
+\subsection{Goal}
+%% This section should explicitly state goals of research
+\textbf{To analyze common topics and trends found in crowdsourcing tasks on Amazon Mechanical Turk to\
+ improve crowdworker efficiency.}
+
+\subsection{Approach}
+I will be focusing my research on improving the efficiency of crowd workers in crowdsourcing\
+platforms through the analysis of crowdsource tasks to determine common topics and trends found \
+in crowdsourcing tasks. Specifically I will focus on applying unsupervised learning techniques in the\
+form of topic modeling to improve the understanding of crowdsourcing tasks administered by requesters \ 
+as well as how this information can be leveraged to optimize crowdworker efficiency. 
+% I predict that the grouping of \ 
+% similar tasks based on the required skills will reduce the number of rejected (the largest painpoint for crowd workers \cite{Kaplan2018})\
+% tasks by sufacing the necessary skills to complete a given task to crowd workers so they're aware\
+% of whether or not they actually posses the skillset to successfully complete a task. I believe\
+% performing research on improving crowd worker efficiency is imperative to the health of crowdsourcing\
+% platforms as a whole because by improving the efficiency of crowd workers the crowd will be able\
+% to generate higher throughput of tasks which helps requesters by reducing the amount of time it\
+% takes for the tasks that they publish to get completed. This improved efficiency will also help crowd workers make more\
+% money. Specifically regarding the application of my research, using Intelligent Batching,\
+% I predict workers would reduce the amount of time it takes them to find and complete tasks and would also improve\
+% the quality of work that is done through the surfacing of the required skills it takes to complete\
+% a task. With explicit information on the required skills that are needed to complete a task,\
+% workers can make intelligent and efficient decisions on whether they should engage with a task or not.
+
+\chapter{Related Work}
+
+\subsection{Topic Modeling of Crowdsourcing Tasks}
+Add stuff here on the topic modeling of crowdsourcing tasks
+
+\subsection{Crowdworker Efficiency}
+\subsubsection{Existing Tools}
+Crowd workers have created a variety of user plugins and browser extensions to help out the community of\
+crowd workers to try and improve crowd worker efficiency. Some of the more prominent plugins focus on batching\
+similar tasks to reduce the time users spend switching context between dissimilar tasks and plugins for workers\
+to rate requesters based off their interactions directly and indirectly with how the tasks are structured. I've\
+curated a list of tools used by crowd workers from my own research and from the results of a survey of crowd workers\
+\cite{Kaplan2018}. 
+
+%% use item for existing tools
+\begin{itemize}
+	\item \textbf{HIT Scraper:} A web scraper that helps provide additional search filters not offered as apart of the native offering for Amazon MTurk.
+	\item \textbf{MTurk Suite:} A browser extension used to combine a plethora of other crowd worker tooling.
+	\item \textbf{Turkopticon:} A web tool that allows crowd workers to rate requesters and tasks.
+	\item \textbf{Greasemonkey/Tampermonkey:} A browser extension that allows crowd workers to run custom scripts to help boost efficiency in crowdsourcing platforms.
+	\item \textbf{Panda Crazy:} A tool used by crowd workers to batch similar tasks together.
+	\item \textbf{Turkmaster:} A script that monitors search pages, requesters, and can automatically accepts tasks on Amazon MTurk.
+	\item \textbf{Block Requesters:} Allows users to block and ignore requesters from search results, useful if crowd workers have a bad experience with a requester and wish to avoid future interactions.
+	\item \textbf{Pending Earning:} Allows crowd workers to view pending earnings for tasks that have been completed and submitted but not approved.
+	\item \textbf{MTurk HIT DataBase:} Improved interface for searching tasks that you have worked on previously, Amazon MTurk.
+	\item \textbf{MTurk Worst Case Scenario Calculator:} Tool to calculate approval rate and how many rejections it would take to drop your approval percentage to a certain threshold.
+	\item \textbf{MTurk Dashboard HIT Status links:} A tool which provides quick access to rejected and pending tasks, Amazon MTurk.
+	\item \textbf{MTurk Engine:} A browser extension that combines additional search filters with batching, as well as automated task watching for Amazon MTurk. This tool also includes a dashboard to track earnings.
+\end{itemize}
+
+These tools show the desire for improvement in the crowd worker user experience from the native\
+crowdsourcing platform and a high level of community involvement and support for crowd workers.\
+Although there is existing tooling for batching similar tasks using keywords and search filters\
+there still lacks tooling for common painpoints highlighted in the survey results collected by (Kaplan et al).\
+Some of the main areas of the crowd worker user experience that still need to be addressed are: surfacing\
+useful recommendations of tasks that are curated based off worker history, expertise, and preferences,\
+content-based analysis of the feasibility of a task, and Intelligent Batching to reduce time spent switching
+context.
+
+\subsubsection{Existing Recommendation Systems}
+%% This section should touch on some research for text classification and recommendation systems
+There are several different approaches to developing recommendation systems, the two most common are collaborative\
+filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
+however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
+Alternatively, content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
+crowd workers in our use case.
+
+Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
+and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
+to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
+this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
+media corporations like Buzzfeed. The researchers (Wang et al.) of the study leverage a character level neual network langauge model (a CNN) to perform\
+low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
+platforms are constantly getting outdated after a worker completes a task, the specific task is resolved and will not be reused, making
+any type of collaborative filtering approach forseeably ineffective.
+
+Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. \cite{yuen2012task} Their approach\
+was predicated on using matrix factorization on crowd worker performance history as well as their task searching history\
+to surface relevant reccomendations to crowd workers. Another set of researchers applied two different techniques based on \
+implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
+of the downfalls of their research was that they only used 24 users to evaluate their approach.
+
+From my initial investigation, I haven't found any research that is directly related to my approach of extracting necessary\
+skills from tasks using text classification. The primary targeted application of my research is to eventually create\
+a content based recommendation system that will match a user to a task in a crowdsourcing platform based on implicit skills\
+the user has obtained (based on previously completed tasks and user provided characteristics) and the required skills that\
+are needed to complete a task.
+
+\subsubsection{Text Classification of Crowdsourcing Tasks}
+Interesting related work in the field of text classification of tasks in crowdsourcing platforms can be found in an analysis\
+of the dynamics of crowdsourcing performed by (Difallah et al) in which they used supervised learning to classify\
+types of tasks in Amazon MTurk \cite{difallah2015dynamics}. This research is extremely useful for my approach and\
+will allow me to use the common categories that they defined as apart of their research to gather data from crowd workers\
+as apart of my research on the \textbf{skills} that are required to complete crowdsource tasks.
+
+\chapter{Topic Modeling Approach and Focus}
+This chapter is focused on the explanation of my research and design decisions. In this chapter I cover the dataset that \
+was used for the experiments, the preprocessing decisions and methodology, the topic modeling algorithms used to \
+analyze the dataset, and the evaluation methods that were leveraged in the experiments.
+% \ref{fig:Stomata}
+
+% \csmfigure{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
+% I will explore the application of the algorithms above to the problem of extracting required skills\
+% from tasks and compare my results accordingly.
+% \label{sec:important-section}
+\subsection{Dataset}
+The dataset that was leveraged for the experiments in my thesis was collected over the course of January 26, 2020 to March 12, 2020 \
+by Dr. Yue's research team. The dataset was collected by a webscraping tool built by the team that ran on a brand new Amazon MTurk account.\
+One of the constraints of this dataset is that the HITs that were collected from the tool will only include HITs that would be accessible\
+to crowdworkers who haven't completed any previous HITs. Since requesters have the ability to restrict who can access their HITs based off of \
+crowdworker qualifications such as HIT approval rate, HIT submission rate, Location, total approved HITs, as well as several other HIT related\
+criteria--the tool is not going to be able to cover the bredth of every possible HIT that would be available on MTurk due to the subjective\
+nature of the requester restrictions. To mitigate this, the team decided to collect data from the perspective of a new crowdworker on Amazon MTurk\
+and thus the corresponding analysis and topics that are surfaced from the dataset will reflect this perspective.
+
+The tool leveraged several tools to collect the dataset. Specifically the Amazon MTurk account used a Chrome extension to refresh the page periodically\
+and record new HITs as they became available in conjunction with Selenium which would be used to access the HIT Preview, record screenshots of the preview\
+and access and record external links. All of the data that is collected from a HIT is then stored locally in a MongoDB database on an external hard drive.\
+The tool records three different documents for each HIT that are stored whenever a new HIT becomes available: HIT data which store relevant HIT metadata,\
+HIT lifetime data which stores metadata corresponding to the lifecycle of the HIT, preview data which holds metadata the tool records from accessing the HIT\
+preview, as well as external links data that the tool records while accessing the preview. For my analysis I only leveraged the HIT and preview collections\
+in the database since the documents in these collections contained the raw text that was unique to the HIT itself which lends itself nicely to the\
+unsupervised analysis of topic modeling on unstructured, raw text.
+
+The specific fields recorded by the tool for a given HIT document are listed in the JSON snippet below:
+
+\begin{lstlisting}
+{	
+  _id: the ID created by Mongo database
+  hit_set_id: the hit set ID that assigned by AMT
+  requester_id: the ID of the requester who creates the hit
+  requester_name: name of the requester
+  title: title of the hit
+  description: description of the hit
+  assignment_duration_in_seconds: the amount of time the hit has been posted
+  creation_time: time when the hit is created
+  assignable_hits_count: number of hits available for accepting
+  latest_expiration_time: the expiration time of the hit
+  caller_meets_requirements: check if the worker meets the requirement to accept the hit (TRUE/FALSE)
+  caller_meets_preview_requirements: check if the worker is eligible for opening the preview page 
 }
+\end{lstlisting}
 
-@inproceedings{silva2003importance,
-  title={The importance of stop word removal on recall values in text categorization},
-  author={Silva, Catarina and Ribeiro, Bernardete},
-  booktitle={Proceedings of the International Joint Conference on Neural Networks, 2003.},
-  volume={3},
-  pages={1661--1666},
-  year={2003},
-  organization={IEEE}
-}
+The corresponding fields recorded by the tool for the preview itself (not including the external links embedded in the preview) are listed in the JSON snippet below:\
+\newpage
 
-@inproceedings{kanis2010comparison,
-  title={Comparison of different lemmatization approaches through the means of information retrieval performance},
-  author={Kanis, Jakub and Skorkovsk{\'a}, Lucie},
-  booktitle={International Conference on Text, Speech and Dialogue},
-  pages={93--100},
-  year={2010},
-  organization={Springer}
-}
+\begin{lstlisting}
+{
+  _id : this ID was created by Mongo Database
+  type : type of the link (visualized or href)
+  from : location of the preview page? (on AMT or from external link)
+  hit_set_id : ID of the hit set, this will correspond to the hit set ID on HITs DATA
+  url : link to the preview page
+  date : date time format
+  uid : requester ID
+  has_visited : has the preview page been visited
+  links_saved : all the links on preview page
+  has_link_visited : whether the preview link has been visited (TRUE/FALSE)
+  href_arr : links to all of the urls listed on the preview page
+  img_name_map :  images from the preview page
+	page_src : source code of the preview page
+}	
+\end{lstlisting}
 
-@article{jivani2011comparative,
-  title={A comparative study of stemming algorithms},
-  author={Jivani, Anjali Ganesh and others},
-  journal={Int. J. Comp. Tech. Appl},
-  volume={2},
-  number={6},
-  pages={1930--1938},
-  year={2011}
-}
+In my analysis I leveraged the ``title'' and ``description'' fields from the HIT data and the ``page\_src''\
+field from the preview data. This raw text was then passed through preprocessing before eventually being sent on to the different\
+topic models that were leveraged for the topic modeling analysis. Preprocessing was a necessary part of the topic modeling analysis.\
+There are a variety of different perspectives on the effectiveness of different preprocessing methodologies that I will explain in depth\
+in the following section.
 
-@inproceedings{larkey2002improving,
-  title={Improving stemming for Arabic information retrieval: light stemming and co-occurrence analysis},
-  author={Larkey, Leah S and Ballesteros, Lisa and Connell, Margaret E},
-  booktitle={Proceedings of the 25th annual international ACM SIGIR conference on Research and development in information retrieval},
-  pages={275--282},
-  year={2002}
-}
+\subsection{Preprocessing}
+In the field of natural language processing (NLP) and text mining there are a wide variety of techniques related to the preprocessing of data.\
+Some of the preprocessing techniques that relate specifically to topic modeling include stemming \cite{lovins1968development}, stop word\
+removal \cite{silva2003importance}, and document duplication \cite{bouayad1999duplication}. The effectiveness of these techniques on\
+topic modeling is debated and I have taken these considerations into my experimental design decisions.
 
-@article{schofieldunderstanding,
-  title={Understanding Text Pre-Processing for Latent Dirichlet Allocation},
-  author={Schofield, Alexandra and Magnusson, M{\aa}ns and Thompson, Laure and Mimno, David}
-}
+Stemming and lemmatization are commonly found in NLP libraries. These techniques have bee around for years and have been studied thoroughly \cite{lovins1968development, kanis2010comparison, jivani2011comparative, larkey2002improving}.
+The process of stemming essentially consolidates similar words down into a root word, often times removing prefixes and suffixes or other semantic\
+modifications. However, in context to topic modeling, stemming techniques have been found to do more harm then good and actually decrease model performance \cite{schofieldunderstanding} \
+by "diminishing interpretability" \cite{boyd2014care}. For this reason I chose note to utilize lemmatization techniques as apart of the preprocessing of my \
+data so as not to decrease model performance--especially since some of the recent innovations in the field of topic modeling leverage word embeddings \cite{mikolov2013distributed} and the\
+semantic meaning of the word becomes more important than distribution based models such as the Latent Dirichlet Allocation (LDA) \cite{blei2003latent} which rely on the appearance of the\
+word in the document rather then it's position relative to its surroundings.
 
-@article{boyd2014care,
-  title={Care and feeding of topic models: Problems, diagnostics, and improvements},
-  author={Boyd-Graber, Jordan and Mimno, David and Newman, David},
-  journal={Handbook of mixed membership models and their applications},
-  volume={225255},
-  year={2014},
-  publisher={CRC Press Boca Raton, FL}
-}
+Stop word removal, the removal of words that don't add contextual meaning to a sentence such as ``the'', ``and'', ``a'' is another common preprocessing technique in topic modeling.\
+As far as literature goes, there are several studies that debate the effectiveness of removing stopwords during processing. One study states that using stop-word lists\
+is incomplete since it is difficult for these lists to encompass corpus-specific stopwords \cite{boyd2014care} and that alternative methods are to leverage \emph{tf-idf}\cite{Salton1968AutomaticIO}\
+to automate the selection of stopwords by only allowing words over a certain threshold. While another study shows that removing additional stopwords beyond the top 12 most occurent stop words doesn't\
+have an acknowledgeable effect on model performance or topic coherence \cite{schofieldunderstanding}. This same study did, however, find that the\
+removal of determiners, conjunctions, and prepositions did in fact improve performance. For my performance I decided to use a fixed list of stop words\
+as apart of my preprocessing phase. The driving reason for doing so was to implement the ETM model \cite{dieng2019topic}, a state of the art topic model,\
+on our dataset which utilizes a stop word list during it's preprocessing step. Removing stop words from the raw data during preprocessing allows for fair comparison across\
+models as well as replication of the ETM model. One of the other benefits of using a fixed stop word list over using the \emph{tfidf} approach discussed in \cite{boyd2014care}\
+is the persistence of sparse words that would otherwise be removed from the corpus but may have a strong correlation to a specific topic.
 
-@article{blei2003latent,
-  title={Latent dirichlet allocation},
-  author={Blei, David M and Ng, Andrew Y and Jordan, Michael I},
-  journal={Journal of machine Learning research},
-  volume={3},
-  number={Jan},
-  pages={993--1022},
-  year={2003}
-}
+Document duplication removal is a rather common text modeling preprocessing technique. In essence, this technique is used to simply remove duplicates from the corpus. \
+This is a large consideration in our dataset since requesters in crowdsourcing platforms often publish HITs in large batches ranging from a couple hundred to tens of thousand\
+HITs that are duplicates. This is due in large part to one of the primary use cases for requesters on the platform being data annotation, many researchers will\
+publish massive annotation task batches that duplicative which would bloat the size of the corpus used in this analysis without additional preprocessing. One study\
+found that duplication in the corpus can in fact effect model performance but only for large quantities of duplicates and that these duplicate documents in the corpus\
+can be quickly clustered into individual topics \cite{schofieldunderstanding}. This means that document duplication wouldn't have a profound effect on the topics\
+discovered by the topic models since the effect would be contained to several specific topics without effecting unrelated topics. However, for the topic analysis I decided \
+to remove document duplicates since there exists a large number of duplicate HITS in the corpus which would increase the training time exponentially without any positive effect\
+on the results of the models on the corpus.
 
-@article{dieng2019topic,
-  title={Topic modeling in embedding spaces},
-  author={Dieng, Adji B and Ruiz, Francisco JR and Blei, David M},
-  journal={arXiv preprint arXiv:1907.04907},
-  year={2019}
-}
+While the original LDA paper was trained for unigram tokens and made the assumption that words are generally independent of one another \cite{blei2003latent}, the LDA has also\
+been extended to perform topic modeling on n-gram tokens as well \cite{wang2005note}. However, the use of \texttt{n-gram} in topic models such as the LDA increase the complexity\
+of the model \cite{wang2007topical}. To mitigate increasing the model perplexity and simultaneously increasing the training time of the models and also respecting the implentation of\
+the modern topic models that are implemented in the analysis of the corpus which used unigrams as input for their models \cite{moody2016mixing}\cite{dieng2019topic}, the analysis\
+will only consider unigrams as input to the models to allow for a fair, consistent, and efficient comparison of the different topic models on our dataset.
 
-@article{loper2002nltk,
-  title={NLTK: the natural language toolkit},
-  author={Loper, Edward and Bird, Steven},
-  journal={arXiv preprint cs/0205028},
-  year={2002}
-}
+In addition to removing stop words from a fixed list and removing duplicates from the corpus, I also filter out punctuation and several comon symbols using a regular expression\
+as well as cast all of the unigram tokens to lowercase to consolidate capitalization into one word. During the removal of stop words, the preprocessing step also includes a simple check\
+to remove standalone numbers using the \texttt{nltk} \cite{loper2002nltk} \texttt{isnumeric()} function.
 
-@inproceedings{wang2007topical,
-  title={Topical n-grams: Phrase and topic discovery, with an application to information retrieval},
-  author={Wang, Xuerui and McCallum, Andrew and Wei, Xing},
-  booktitle={Seventh IEEE international conference on data mining (ICDM 2007)},
-  pages={697--702},
-  year={2007},
-  organization={IEEE}
-}
+For the preview corpus there is also an additional preprocessing step to clean up the page source that captures the raw text of the preview from the web page. Often time when\
+extracting data from a web page there exists a good deal of noise that comes with extracting raw text from the web such as HTML, styling, scripts injected into the web page as\
+well as web page boiler plate. Gathering input from the page source of a website requires significant preprocessing in order for the data to be a good input for topic models \cite{boyd2014care}.\
+To clean up the page source of documents in the preview corpus, each document is put through additional preprocessing than the title and descriptions which are extracted only as strings\
+rather than web source code and each preview is stripped of all HTML, scripts, styles, and new lines using the Beautiful Soup tool \cite{richardson2007beautiful}.
 
-@article{moody2016mixing,
-  title={Mixing dirichlet topic models and word embeddings to make lda2vec},
-  author={Moody, Christopher E},
-  journal={arXiv preprint arXiv:1605.02019},
-  year={2016}
-}
+\subsection{Topic Models}
+Topic modeling is a commonly used approach to perform unsupervised analysis of unstructured text. The field has become increasingly more popular as the amount of unstructured\
+data that businesses continue to collect increases, one study estimated that up to 80\% of an organizations data is unstructured \cite{Sint2009CombiningUF} making the development\
+of algorithms and models that can extract insights and meaning from this unstructured data increasingly more important. The ability to process and extract meaning\
+from unstructured data makes topic modeling an excellent candidate to analyze and extract common topics and themes that appear in HITs on Amazon MTURK. The extraction and understanding\
+of this data will be valuable for implementing future works related to improving crowdworker efficiency.
 
-@article{richardson2007beautiful,
-  title={Beautiful soup documentation},
-  author={Richardson, Leonard},
-  journal={April},
-  year={2007}
-}
+Topic modeling has its origins around the beginning of the 21st century beginning with a several algorithms published on the subject of topic modeling such as \
+Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing (LSI) \cite{papadimitriou2000latent} (LSI) which would pave the way for the\
+creation of the Latent Dirichlet allocation (LDA) \cite{blei2003latent} which is the most commonly implemented topic modeling algorithm in use today. In recent years, \
+researchers have begun to develop topic modeling algorithms that have acheived state of the art performance leveraging word embeddings \cite{mikolov2013distributed} \cite{dieng2019topic}.\
+Word embeddings have opened the door for innovations across the field of natural language processing and topic modeling is no different. 
 
-@inproceedings{Sint2009CombiningUF,
-  title={Combining Unstructured, Fully Structured and Semi-Structured Information in Semantic Wikis},
-  author={Rolf Sint and Stephanie Stroka and Sebastian Schaffert and Roland Ferstl},
-  booktitle={SemWiki},
-  year={2009}
-}
-@article{papadimitriou2000latent,
-  title={Latent semantic indexing: A probabilistic analysis},
-  author={Papadimitriou, Christos H and Raghavan, Prabhakar and Tamaki, Hisao and Vempala, Santosh},
-  journal={Journal of Computer and System Sciences},
-  volume={61},
-  number={2},
-  pages={217--235},
-  year={2000},
-  publisher={Elsevier}
-}
+The dataset will be analyzed using four different topic models namely LSI, LDA, lda2vec, and the Embedded Topic Model (ETM). 
+\subsubsection{Latent Semantic Indexing (LSI)}
+Latent Semantic indexing was originally proposed in the paper ``Indexing by latent semantic analysis'' by Deerwester et al. \cite{deerwester1990indexing}. The authors\
+proposed the algorithm as a means to improve information reteival (IR) by treating IR as a statistical problem. One of the shortcomings in the field of IR at the time\
+the paper was written was the inability to capture conceptual meaning from a user search on the corpus. LSI was created to address these problems by assuming that there\
+exists underlying semantic meaning in a document and thus through estimating the noise in a given set of data with respect to word choice their methodology can associate\
+terms and documents through the expression of a singular value decomposition (SVD) on term to document data.
 
-@software{gensim,
-title={gensim},
-medium={Online},
-available={https://radimrehurek.com/gensim/}
-}
+Specifically, LSI can be defined by a $n$ $x$ $m$ matrix $A$ where the rows are represented by the words in the corpus and the columns represent the documents with a rank of \emph{r}.\
+From this matrix, using a SVD, \emph{A} can then be represented as the product of 3 separate matrices as shown in Equation \ref{eqn:lsi}:
 
-@article{rehurek2011,
-  added-at = {2018-08-13T00:00:00.000+0200},
-  author = {Rehurek, Radim},
-  biburl = {https://www.bibsonomy.org/bibtex/279e686466735408be365ea22b622beb2/dblp},
-  ee = {http://arxiv.org/abs/1102.5597},
-  interhash = {018cc6da76f65159ae8066529ab6fdad},
-  intrahash = {79e686466735408be365ea22b622beb2},
-  journal = {CoRR},
-  keywords = {dblp},
-  timestamp = {2018-08-14T14:54:39.000+0200},
-  title = {Fast and Faster: A Comparison of Two Streamed Matrix Decomposition Algorithms},
-  url = {http://dblp.uni-trier.de/db/journals/corr/corr1102.html#abs-1102-5597},
-  volume = {abs/1102.5597},
-  year = 2011
-}
+\begin{eqnarray}
+		A = UDV^T
+	\label{eqn:lsi}
+\end{eqnarray}
 
-@inproceedings{attias2000variational,
-  title={A variational baysian framework for graphical models},
-  author={Attias, Hagai},
-  booktitle={Advances in neural information processing systems},
-  pages={209--215},
-  year={2000}
-}
+Where $D$ is a diagonal $r$ $x$ $r$ matrix of the eigenvalues of $AA^T$, $U$ is a $n$ $x$ $r$ matrix of rank $r$ that has orthonormal columns,\
+and $V$ is an $m$ $x$ $r$ matrix with orthonormal columns as well \cite{papadimitriou2000latent}. This SVD is the LSI space of the term-document\
+representation of the corpus. 
 
-@inproceedings{hoffman2010online,
-  title={Online learning for latent dirichlet allocation},
-  author={Hoffman, Matthew and Bach, Francis R and Blei, David M},
-  booktitle={advances in neural information processing systems},
-  pages={856--864},
-  year={2010}
-}
+For the implementation of the LSI in the experiments, the \emph{gensim} \cite{gensim} library is utilized. The \emph{gensim} implementation of the library\
+makes use of the Singular Value Decomposition algorithm described in ``Fast and Faster: A Comparison of Two Streamed Matrix Decomposition Algorithms'' by Radim Rehurek\
+which allows the model to traverse the corpus in a single pass, decreasing the amount of time it takes LSI to train \cite{rehurek2011}.
 
-@article{deerwester1990indexing,
-  title={Indexing by latent semantic analysis},
-  author={Deerwester, Scott and Dumais, Susan T and Furnas, George W and Landauer, Thomas K and Harshman, Richard},
-  journal={Journal of the American society for information science},
-  volume={41},
-  number={6},
-  pages={391--407},
-  year={1990},
-  publisher={Wiley Online Library}
-}
+This model was selected due to its similarity to LDA and because many studies often compare the performance of LSI on topic modeling to the performance of LDA.
 
-@inproceedings{hofmann1999probabilistic,
-  title={Probabilistic latent semantic indexing},
-  author={Hofmann, Thomas},
-  booktitle={Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval},
-  pages={50--57},
-  year={1999}
-}
+\subsubsection{Latent Dirichlet Allocation (LDA)}
+The LDA is a topic model developed by Blei et al. in 2003, the model has been widely used and accepted since its inception in the field of topic modeling and is frequently\
+implemented as the baseline from which new topic models are compared against. From an implementation perspective the LDA is described as a generative probabilistic model of\
+a corpus in which documents in a corpus are represented as a random mixture of a fixed number of latent topics and a topic is \
+a probability distribution over words in the corpus. In the paper, the LDA is defined by the following generative procedure in \ref{eqn:lda}:
 
-@techreport{wang2005note,
-  title={A note on topical n-grams},
-  author={Wang, Xuerui and McCallum, Andrew},
-  year={2005},
-  institution={MASSACHUSETTS UNIV AMHERST DEPT OF COMPUTER SCIENCE}
-}
+\begin{figure}
+	\begin{enumerate}
+		\item Choose $N \sim Poisson(\xi)$
+		\item Choose $\theta \sim Dir(\alpha)$
+		\item For each of the $N$ words $w_n$:
+		\begin{itemize}
+			\item Choose a topic $z_n \sim Multinomial(\theta)$.
+			\item Choose a word $w_n$ from $p(w_n|z_n,\beta)$, a multinomial probability conditioned on the topic $z_n$.
+		\end{itemize}
+	\end{enumerate}
+	\caption{LDA model \cite{blei2003latent}}
+	\label{eqn:lda}
+\end{figure}
 
-@inproceedings{mikolov2013distributed,
-  title={Distributed representations of words and phrases and their compositionality},
-  author={Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff},
-  booktitle={Advances in neural information processing systems},
-  pages={3111--3119},
-  year={2013}
-}
+In laymen terms, the LDA is fed a paremeter for the number of topics $z$ that the model will be trained for and from those topics it then generates \
+a topic mixture for a document using a Dirichlet distribution over $z$, then for each word, select a topic that the word should belong\
+based off of what topics are in the selected document as well as how many times the word has been assigned to a topic in other documents. \
+A visualization of this model can be seen in \ref{fig:lda}: 
 
-@inproceedings{Salton1968AutomaticIO,
-  title={Automatic information organization and retrieval mcgraw-hill (1968)},
-  author={Gerard Salton},
-  year={1968}
-}
+\csmfigure{lda}{figures/lda_diagram}{4in}{Basic LDA model architecture \cite{blei2003latent}}
 
-@inproceedings{bouayad1999duplication,
-  title={Duplication in corpora},
-  author={Bouayad-Agha, Nadjet and Kilgarriff, Adam},
-  booktitle={Proceedings of the Second CLUK Colloquium},
-  year={1999}
-}
-%% ACM conference paper
-@InProceedings{Cheng2016,
-  title = {Wide \& Deep Learning for Recommender Systems},
-  author = {H. Cheng L. Koc J. Harmsen T. Shaked T. Chandra H. Aradhye G. Anderson G. Corrado W. Chai M. Ispir R. Anil Z. Haque L. Hong V. Jain X. Liu, H. Shah},
-  booktitle = {Proceedings of the 1st Workshop on Deep Learning for Recommender Systems},
-  year = {2016},
-  month = {September},
-  annote = {Cheng et al. implemented a combonation of wide and deep learning to surface relevant content to 
-  users on the Google Play store. They used the two different techniques to combat some of the model fallacies that
-  can appear in recommender systems. The team of researchers tackled the two primary tradeoffs for recommender systems 
-  by using wide and deep learning to optimize for memorization and generalization. Memorization in recommender
-  systems "can be defined as learning the frequent concurrence of items and features and exploiting the correlation in historical
-  data". On the other hand, generalization is based on transitivity of correlation and explores new and rare feature combination, this
-  approach leads to greater diversity of recommendations. On a practical basis, the researchers utilized wide learning to help with the memorization
-  aspect, many recommender systems utilize simple logistic regression algorithms to surface relevant content. However, this approach falls short when
-  trying to query item feature pairs that haven't appeared in the training data. On the other hand, many researchers have tried to use
-  deep learning neural networks to generate recommendations since they're able to generate feature pairs that haven't appeared in the training set,
-  however, these deep learning approaches can over generalize and make less relevant reccomendations. These researchers made use of joint training
-  which simultaneously optimzes the parameters of the wide and deep models at training time. The teams data pipeline consisted of three stages: data generation, 
-  model training, and model serving. During training their model input layer took in training data and vocabulary and generated sparse and dense features with labels.
-  The wide learning component consisted of the cross product transformation of user installed apps and impression apps. The deep learning model consisted of a 32 dimension
-  embedding vector which is learned for each categorical feature. These embeddings are then concatenated together with dense features, resulting in a dense vector of
-  approximately 1200 dimensions. These models were trained on over 500 billion examples. To optimize for performance, the researchers optimized the performance by using multithreading
-  parallelism by running smaller batches in parallel instead of running all of the candidate inferences through the model at the same time. The recommender servers recommend over 10 million
-  apps a second.
-  https://dl.acm.org/citation.cfm?id=2988454
-  }
-}
+In the visualization above (\ref{fig:lda}), $\alpha$ signifies topic-document distribution of the whole corpus, $\theta$ represents the \
+document specific topic distribution, $z$ signifies the topic for the selected word in a document, and $w$ is the selected word. Outside \
+of the box $\beta$ represents the per-topic word distribution throughout the corpus. The outer boxes $M$ and $N$ are representative of \
+the generative approach of the LDA in that $N$ represents the assignment of words to topics in a document while $M$ represents the collection\
+of documents that make up the corpus.
+The bread and butter of the LDA is this two-headed process by which a word is assigned to a topic according to the topic-document distribution\
+in conjunction with how the selected word has been assigned to other topics across documents in the corpus.\
+The LDA then repeats this process until it reaches the number of passes that are specified as a parameter to the model, resulting in the formation of $z$\
+topics across the corpus with words that were topically assigned based off of the the context of the word in the document it appears as well as how\
+the word is assigned in documents across the bredth of the corpus.
 
-%% Classification in crowd sourcing platforms
-@article{sun2014chimera,
-  title={Chimera: Large-scale classification using machine learning, rules, and crowdsourcing},
-  author={Sun, Chong and Rampalli, Narasimhan and Yang, Frank and Doan, AnHai},
-  journal={Proceedings of the VLDB Endowment},
-  volume={7},
-  number={13},
-  pages={1529--1540},
-  year={2014},
-  publisher={VLDB Endowment},
-  annote = {
-    In this paper the team at Walmart Labs developed a tool referred to as Chimera which implements a combination of learning, rules, and crowdsourcing to classify products by their
-    product description. Their solution demonstrates that classical assumptions that are applied to classification problems break down at the scale that they deal with (~5000+ categories)
-    and that a combination of approaches is required to solve the problem.
-  }
-}
+From the performance perspective, in the original paper the LDA is cited as outperforming the \emph{pLSI} \cite{hofmann1999probabilistic}, an adaption of the original \emph{LSI},\
+measured on the perplexity metric which was commonly used to evaluate early topic models. In the empirical evaluation section of the paper the authors\
+cited that the design of the LDA led to the avoidance of some of the shortcomings of the \emph{pLSI} especially overfitting by utilizing a variational\
+Bayesian smoothing scheme \cite{attias2000variational} \cite{blei2003latent}. 
 
-%% Quality Control in crowdsourcing systems
-@article{allahbakhsh2013quality,
-  title={Quality control in crowdsourcing systems: Issues and directions},
-  author={Allahbakhsh, Mohammad and Benatallah, Boualem and Ignjatovic, Aleksandar and Motahari-Nezhad, Hamid Reza and Bertino, Elisa and Dustdar, Schahram},
-  journal={IEEE Internet Computing},
-  volume={17},
-  number={2},
-  pages={76--81},
-  year={2013},
-  publisher={IEEE},
-  annote={
-  This paper focuses on quality control in crowdsourcing platforms like Amazon MTURK focusing on ensuring high quality crowd contributions. The authors introduce a taxonomy for crowdsourcing platforms
-  that records the workers' reputation and expertise. One of the major issues with quality in crowdsourcing platforms is how subjective quality can be. The researchers outline a potential solution for improving
-  quality-control approaches by developing a machine-learning based recommender system that will surface relevant quality control approaches to requestors based on the requester's profile, history, as well as the history
-  of the crowd and the quality requirements of the task. One of the other topics of potential research is the development of crowdsource platform middleware which will solve the problem of having distributed crowds over various
-  crowdsourcing platforms. This would be an interesting area for a machine learning application.
-  }
-}
+For the implementation of the LDA in the experiments, the \emph{gensim} library is leveraged which is based off of the code presented by some of the original authors of the LDA \cite{hoffman2010online}.
+The specific hyperparameters that were implemented in the experiments are discussed at greater lengths in experiments in Chapter 4.
 
-%% Deep Learning in recommendation systems
-@inproceedings{elkahky2015multi,
-  title={A multi-view deep learning approach for cross domain user modeling in recommendation systems},
-  author={Elkahky, Ali Mamdouh and Song, Yang and He, Xiaodong},
-  booktitle={Proceedings of the 24th International Conference on World Wide Web},
-  pages={278--288},
-  year={2015},
-  organization={International World Wide Web Conferences Steering Committee},
-  annote={
-  TODO read and annotate
-  }
-}
+The LDA was selected for the experiments because it is the most widely used and implemented topic model and is the baseline for which state of the art\
+models compare their performance.
+\subsubsection{lda2vec}
+The \emph{lda2vec} model was one of the first topic models to develop a hybrid approach which married the sparse document-topic representation of a corpus used in\
+traditional topic modeling like the LDA with the innovation of word embeddings. \emph{lda2vec} was developed to address one of the primary shortcoming of traditional\
+topic modeling approach--the failure to take advantage of recent innovations in distributed word representation such as the skip gram representation presented in \emph{word2vec} \cite{mikolov2013distributed}.\
+Word embeddings as previously addressed have had a substantial effect on the field of NLP over a wide array of applications and the development of hybrid topic models\
+that leverage these distributed word representations to account for semantically meaningful relationships between words has led to advances in topic modeling as well as\
+the development of state of the art topic models.
 
-%% Data Shapley, quantifying value of data
-@inproceedings{Ghorbani2019DataSE,
-  title={Data Shapley: Equitable Valuation of Data for Machine Learning},
-  author={Amirata Ghorbani and James Y. Zou},
-  booktitle={ICML},
-  year={2019},
-  annote={
-    In this paper the authors applied Shapley techniques from game theory in economics to quantify the value of a data point in a data set used to train a model. This researcher
-    is interesting because it shows quantitative performance improvement of existing machine learning models applied to an existing data set. It was really interesting how the authors
-    were able to apply this concept from game theory to evaluate the contribution of a data point in training data on the model data and the corresponding actions of removing poisoning data
-    or add similar data points was able to considerably increase or decrease the performance of machine learning techniques. This research shines light on two very interesting concepts, the first
-    being how to improve model effectiveness by quantitating the contribution of each data point in the training set--the second being how to evaluate the value of user data to compensate user's for
-    their data. This concept may be used in my research to evaluate the contribution of users or tasks in my training data sets which can be removed or lead to the addition of valuable data based on
-    similar data to improve my algorithm performance.
-  }
-}
+From an implentation perspective the \emph{lda2vec} model modifies the Skipgram Negative-Sampling (SGNS) objective from \cite{mikolov2013distributed} to learn document-wide\
+feature vectors in concurrence with discovering document weights that are loaded onto topic vectors \cite{moody2016mixing}. \
+The loss of the \emph{lda2vec} model can be represented with the following equations (\ref{eqn:lda2vec1}, \ref{eqn:lda2vec2} \cite{moody2016mixing}):
 
-%% Survey of Machine Learning in Recommender Systems
-@article{portugal2018use,
-  title={The use of machine learning algorithms in recommender systems: A systematic review},
-  author={Portugal, Ivens and Alencar, Paulo and Cowan, Donald},
-  journal={Expert Systems with Applications},
-  volume={97},
-  pages={205--227},
-  year={2018},
-  publisher={Elsevier},
-  annote = {
-  This study researches many of the primary machine learning algorithms used in real reccommender systems (RS). The purpose of their study was to provide researchers a comprehensive overview
-  of the work being done on RSs and potential areas for further research, specifically targeting the identification of ML algorithms that are used in RSs and to discover open questions in RS development that might be impacted
-  by software engineering. The authors outline that there are three main categories of recommender systems: collaborative, content-based, and hybrid filtering.
-  The collaborative approach pertains to considering user data when processing information for recommendations (recommendations based off other users). The content-based approach has to do with item data the
-  user can access. The hybrid approach combines both collaborative and content based filtering. Many applications collect both explicit and implicit information about the user and store it on the
-  user's computer using the browser's local storage, accessed using the browser's API. The explicit data that is collected occurs when users are aware that they are providing information
-  about themselves, whereas, during implicit data collection user's are often unaware that their data is being collected (user history on the site, clicks, keystrokes, etc.). The most commonly used algorithms included Bayesian,
-  Decision Tree, Matrix factorization-based, Neighbor-based, Neural Networks, and rule learning. The authors theorized that Bayesian and Decision Tree algorithms appeared most commonly because they are less complex than some of
-  the other approaches. The authors suggested that there is a lot of work that could be done in researching the application of neural networks to RS.
-  }
-}
-  
-%% Preference Learning for Reccomender Systems
-@article{de2009preference,
-  title={Preference learning in recommender systems},
-  author={De Gemmis, Marco and Iaquinta, Leo and Lops, Pasquale and Musto, Cataldo and Narducci, Fedelucio and Semeraro, Giovanni},
-  journal={Preference Learning},
-  volume={41},
-  pages={41--55},
-  year={2009},
-  annote={
-    The authors outlines the need for reccomender systems to surface relevant content in the internet of information overload. The authors begin by describing the need to collect implicit and explicit user data to develop contextual
-    recommendation systems. The basic architecture for recommender systems outlined in this paper includes a user profile, an algorithm to update the profile given usage/input information, and an adaptice tool that exploits the profile
-    in order to provide personalization. One of the primary methodologies the authors pointed out was Collaborative Filtering which they defined as system's recommendation based on evaluation from users who share similar interests among
-    them (may apply to my research based on worker and requestor ratings based on historical performance).
-  }
-}
+\begin{eqnarray}
+	\label{eqn:lda2vec1}
+		\mathcal{L} = \mathcal{L}^d +\Sigma_{ij} \mathcal{L}^{neg}_{ij}  \\
+	\label{eqn:lda2vec2}
+	\mathcal{L}^{neg}_{ij} = log \sigma (\vec{c_j} \cdot \vec{w_i}) + \Sigma^n_{l=0} log \sigma (-\vec{c_j} \cdot \vec{w_i})
+\end{eqnarray}
 
-%% Article on applying CF and deep learning to reccomender systems.
-@ARTICLE{Wang2015,
-  author = {H. Wang N. Wang and D.-Y Yeung},
-  title = {Collaborative deep learning for recommender systems},
-  journal = {Proc. KDD},
-  pages = {1235-1244},
-  year = {2015},
-  annote = "These researchers introduced a concept they called collaborative deep learning (CDL) which is a hierarchical Bayesian model which combines deep representation learning for the content
-  information and collaborative filtering for the ratings. The paper introduces three main approaches for recommender systems: content based models, collaborative filtering models, and hybrid methods.
-  The content based methods make use of user profiles and product descriptions to make recommendations. CF approaches use history such as past activities or preferences without using user or product info. While
-  hybrid methods utilize a mixture of both content and CF approaches. Limitations for content models are user privacy while CF approaches stumble when ratings on products are sparse. The researchers highlight that deep
-  learning models are state of the art in other fields such as computer vision and NLP and that they are able to learn features automatically, yet they are inferior to shallow models such as CF when it comes to learning similarity and
-  relationships between items. To construct their CDL model, the researchers utilized Stacked Denoising Autoencoders (SDAE) which is a feedforward  neural network for learning representations."
-}
+In the equations above the total loss $\mathcal{L}$ is represented by the sum of the Dirichlet likelihood of term of document weights $\mathcal{L}^d$ \
+while the summation of $\mathcal{L}^{neg}_{ij}$ represents the paper's modification of the Skipgram objective. In further depth \
+$\vec{c_j}$ represents the context vector which accounts for the models combination of word and document vectors (See Equation \ref{eqn:lda2vec3} below).
 
-%%
+\begin{eqnarray}
+	\label{eqn:lda2vec3}
+	\vec{c_j} = \vec{w_j} + \vec{d_j}
+\end{eqnarray}
+
+For additional explanation please reference the visual of the \emph{lda2vec} model architecture in Figure \ref{fig:lda2vec} on the page below.
+
+\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture -- note the combination of the Skip grams from \emph{word2vec} \cite{mikolov2013distributed} used in conjunction with the LDA architecture \cite{blei2003latent}}
+
+\newpage
+From an application perspective, the author states that he used several preprocessing techniques including lemmatization which as discussed in the preprocessing\
+section above, can be detrimental to model performance. The author also leverage pretrained word embeddings in one of the experiments using the\
+pretrained values discussed in the Skipgram paper \cite{mikolov2013distributed}. During the experiments the researcher used the \emph{C\_v} topic coherence mertric \
+which was shown to correlate with human interpretability \cite{roder2015exploring}. The \emph{C\_v} analysis on this experiment was used with \
+the online \emph{Palmetto} \cite{palmetto} topic evaluation tool. However, the \emph{C\_v} coherence metric that was used to evaluate topic coherence in these experiments \
+has been discovered to have a negative correlation other topic coherence metrics \cite{palmetto} that correlate with human interpretability \cite{mimno2011optimizing} \cite{newman2010automatic}\
+and thus this metric will not be leveraged to evaluate topic coherence in the experiments on the MTurk dataset.
+
+\emph{lda2vec} is an excellent comparison against traditional topic models and will reveal valuable insights on how leveraging topic-document distributions in\
+conjunction with word embeddings can effect the interpretability of topics on our dataset.
+
+\subsubsection{Embedded Topic Model (ETM)}
+\subsection{Evaluation}
+In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which
+will be able to accurately extract skills that are required to complete tasks.
+
+\subsubsection{Metrics}
+Discuss the differing metrics of evaluating topic models. Discuss topic coherence vs. perplexity.
+Provide figures and dank math stuff here
+Explain which specific topic coherence metrics you are going to use and justify with literature.
+
+\subsubsection{Qualitative Analysis}
+\subsection{Approach}
+Summarize the approach with the research justification
+
+\chapter{What are the primary topics of Amazon MTURK HITs?}
+
+\subsection{Data}
+This section will analyze the data that was collected by Dr. Chuan Yue's research team.
+
+\subsubsection{HIT Dataset}
+Chat about the dataset.
+
+\subsubsection{Implications}
+Explain the findings of Thien Ngo's HIT Analysis
+How would this effect topic modeling?
+Cite the literature on how duplicate documents shouldn't influence the result of the topics.
+
+\subsection{Experiments}
+This section should talk about the experiments that were run
+
+\subsubsection{Preprocessing}
+Talk about why document duplication matters,
+(maybe run an experiment on topic coherence for document dup vs. taking out dups) relate this to
+how certain requesters dominate much of the HITs
+
+Talk about related work on stopwords, lemmatization, etc, and decisions for preprocessing
+
+\subsubsection{Number of Topics}
+Discuss the number of topics used for extracting topics during these experiments
+
+\subsubsection{HIT Descriptions}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+
+\paragraph{LSI}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{LDA}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Lda2vec}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\subsubsection{HIT Title}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+
+\paragraph{LSI}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{LDA}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Lda2vec}
+result of Lda2vec on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\subsubsection{HIT Preview}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+
+\paragraph{Preprocessing}
+Talk about why you need to preprocess the previews
+\paragraph{LSI}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{LDA}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Lda2vec}
+result of Lda2vec on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+t-SNE visualization
+Observations and analysis on the topics
+
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\subsubsection{Results}
+Discuss the difference between models on the different datasets.
+Discuss the differences between different datasets, what gives us more meaningful information
 
 
-% Deep Learning with Python Francois Chollet
-@book{DeepLearningWithPython:book_typical,
-  author        = "Francois Chollet",
-  title         = "Deep Learning With Python",
-  publisher     = "Manning",
-  address       = "Shelter Island, NY",
-  year          = "2018",
-  annote        = "Deep learning is a mathematical framework for learning representations from data. The author describes deep learning as a multistage way too learn data representations.
-  Deep learning has become widely popular because it automates the most crucial step in the machine learning workflow, \emph{feature engineering}. The automation of this process has simplified
-  many complex data pipelines used for \emph{shallow learning} algorithms by learning all of the features in one end-to-end pass through a deep learning model. The author describes the process by which
-  deep learning learns as \emph{the incremental, layer-by-layer way in which increasingly complex representations are developed and the fact that these intermediate representations are learned jointly}.
-  One of the biggest breakthroughs that deep learning introduces is hte ability for a model to learn all layers of representation \emph{jointly}, at the same time, instead of in succession like the approach used
-  for \emph{feature engineering} in shallow models. The author outlines that the two most effective techniques in Machine Learning are \emph{gradient boosting} for shallow learning where structured data is available and 
-  deep learning for perceptual problems. Machine Learning is finally accessible due to advances in the internet, providing much larger data sets, and graphics chips that were developed for gaming. The gaming market effectively
-  subsidized supercomputing for the next wave of machine learning, specifically deep learning.
-  \\
-  \\ \textbf{Definitions}
-  \\ \textbf{Weights:} The specification of what a layer does to it's input data is stored in the layer's \emph{weights}.
-  \\ \textbf{Parameterized:} The transformation implemented by a layer is \emph{parameterized} by its weights.
-  \\ \textbf{Learning:} \emph{Learning} means finding a set of values for the weights of all layers in a networkm such that the network will correctly map example inputs to their associated targets.
-  \\ \textbf{Loss function:} The \emph{loss function} in the context of Deep Learning is the method used to measure the output of a neural network and measure how far this output is from what was expected.
-  \\ \textbf{Optimizer:} Uses \emph{backpropagation} to make the adjustment of weights based off the score of the \emph{loss function} in a manner that will lower the loss score for the current example.
-  \\ \textbf{Backpropagation:} The central algorithm in deep learning. TODO add more here
-  \\ \textbf{Training Loop:} At the beginning of training, the network weight's are assigned random values, thus, the network performs a series of random transformations and the loss score is correspondingly high.
-  Then with every example the neural network processes the weights are adjusted a little each time in the correct direction, causing the loss score to decrease.
-  \\ \textbf{Probabilistic Modeling:} One of the earliest forms of machine learning, Naive Bayes is an example. A closely related model is the \emph{logistic regression}, a classification algorithm. Logist regression is
-  usually one of the first algorithms a data scientist will try on a data set to get a handle on the dataset.
-  \\ \textbf{Support Vector Machines (SVM):} aim to solve classification problems by finding good \emph{decision boundaries} between two sets of points belonging to two different categories. SVMs find these boundaries in two steps: mapping data to a
-  new high-dimensional representation where the \emph{decision boundary} can be expressed as a hyperplane and trying to maximize the distance between the hyperplane and the closest data points from each class in a process called
-  \emph{maximizing the margin}. SVMs use the \emph{kernel trick} to find good decision hyperplanes in the new representation space. This happens by only computing the distance between the pairs of points in that space, which can be done using a \emph{kernel function}.
-  A \emph{kernel function} is a computationally tractable operatoin that maps any two points in the initial space to the distance between these points in the targer representation space, bypassing the explicit computation of the new representation. SVMs were widely popular
-  for a long time but were hard to scale to large data sets and perceptual problems. Since SVMs are a flavor of \emph{shallow learning}, applying SVMs to perceptual problems like image classification requires extracting useful representations manually (\emph{feature engineering}) which
-  is difficult and brittle.
-  \\ \textbf{Decision Trees:} A flowchart-like structure that enables the classification of input data points or to predict output values given inputs. Preferred to kernel methods by 2010.
-  \\ \textbf{Random Forest:} An algorithm based on \emph{decision trees} which builds a large number of specialized decision tres and then ensembles their outputs. Almost always the second-best algorith for shallow machine-learning tasks.
-  \\ \textbf{Gradient Boosting Machines:} Considered one of, if not \emph{the} best shallow learning algorithm. Gradient boosting machines is a technique based on ensembling weak prediction models, generally \emph{decision trees}. It uses \emph{gradient boosting} to improve any machine-learning model by iteratively training new models that specialize in addressing the weak points
-  of the previous models. When applied to \emph{decision trees} the resulting models outperform \emph{decision trees} most of the time.
-  \\ \textbf{CNN:} Deep convolutional neural networks, \emph{convnets}, became the goto algorithm for computer vision problems after becoming the goto technique for the ImageNet competition. Has completely replaced SVMs and decision tress in a wide range of applications.
-  \\ \textbf{Overfitting:} When Machine learning models perform worse on new data than on their training data. TODO, add more
-  \\ \textbf{Tensor:} The primitive datastructure for machine learning. A generalization of matrices to an arbitrary number of dimensions.
-  \\ \textbf{Rank:} The number of dimensions of a matrix, in the context of ML the number of dimensions of a tensor. \emph{Dimensions} are often called an \emph{axis} in the context of tensors.
-  "
-}
 
-@article{linden2003amazon,
-  title={Amazon. com recommendations: Item-to-item collaborative filtering},
-  author={Linden, Greg and Smith, Brent and York, Jeremy},
-  journal={IEEE Internet computing},
-  number={1},
-  pages={76--80},
-  year={2003},
-  publisher={IEEE},
-  annote= {One of the primary drawbacks of collaborative filtering is that it requires online computation and the algorithm performance is linear with regards to the number of customers in the dataset, this isn't scalable for massive retailers like Amazon unless you
-   were to reduce the data sample or the dimensionality of the data set all of which would reduce the quality of the recommendations. An alternative to collaborative filtering is clustering models which perform offline calculations with the primary drawback being reduced quality
-    of recommendations. The approach Amazon took was item-item collaborative filtering where instead of developing recommendations off of similar customer decisions the researchers keyed in only on surfacing items similar to items the customer had either bought or reviewed, drastically 
-    reducing the computation and memory concerns of traditional collaborative filtering while still surfacing high quality recommendations.}
-}
+\chapter{Implications}
+Discuss the implications of this research.
 
-@inproceedings{okura2017embedding,
-  title={Embedding-based news recommendation for millions of users},
-  author={Okura, Shumpei and Tagami, Yukihiro and Ono, Shingo and Tajima, Akira},
-  booktitle={Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
-  pages={1933--1942},
-  year={2017},
-  organization={ACM},
-  annote = {In this paper the authors utilize a three step process to surface news articles. In the first step of the process they utilize a denoising autencoder, a RNN, and inner product operations to recommend relevant news information quickly.
-    The authors used cosine similarity to reduce duplication of articles before they submit data to the input layer of the RNN, this allows them to reduce the processing time by reducing the level of useless input. This would be an interesting technique that could be applied to reducing duplicate tasks.
-    They also used offline experiments using logs recorded on their server to determine the accuracy of their RNN. The researchers training set was massive, recording over one billion browses. The test set was reduced to a random sample of 500,000 sessions.
-    The researchers compared a GRU (Gated Recurrent Unit) RNN to a variety of techniques and found the GRU RNN to perform best. However, after left in production for over three months the RNN performance had degraded to that of the words based model approach, due in part 
-    that it took over a week to train the RNN.
-  }
-}
+What do these topics tell us about crowdsourcing
+What do these topics tell us about the value of different parts of the dataset
+What is the most valuable part of HITs on MTURK (in regards to title, description, preview)?
+How can this information be used to improve crowdworker efficiency?
 
-@inproceedings{wang2017dynamic,
-  title={Dynamic attention deep model for article recommendation by learning human editors' demonstration},
-  author={Wang, Xuejian and Yu, Lantao and Ren, Kan and Tao, Guanyu and Zhang, Weinan and Yu, Yong and Wang, Jun},
-  booktitle={Proceedings of the 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
-  pages={2051--2059},
-  year={2017},
-  organization={ACM},
-  annote={In this article the researchers utilize deep learning to learn the relationship between articles and there meta data in conjunction with a deep learning model to learn the underlying preference of the article reviewers which cannot be predicted using bag of word techniques since
-  article reviewer preferences depends more on the writing quality vs. specific keywords found in the metadata or the article. This specific approach was focused on surfacing a subset articles for content reviewers for media companines like Buzzfeed to reduces their workload. These reviewers 
-  then forward interesting/appropriate articles to machine learning models that will match these articles to consumers, an area that has drawn much more attention from researchers. The researchers touched on two traditional recommender techniques in their related work sections stating that collaborative
-  filtering runs into issues with sparse datasets and thus faces the cold-start problem, and also touched on the content-based recommendation approach which deals with relationships between items in the dataset and won't run into issues with a cold start since they're reliant on the relationship between items, however,
-  the content-based approach runs into issues with providing personalized reccomendations to the user, a crucial component of an effective recommendation system. The focus of the researchers was to create models that learned from the textual content of the articles as well as the articles' metadata like the author, original media,
-  author city, and various other contextual information to provide relevant predictions. The authors' problem is unique to other reccommender systems in that the data is sparse becuase news articles become outdated quickly and thus the data they need to perform recommendations on won't have a lot of user interaction, rendering collaborative filtering
-  essentially useless. Encouraging the researchers to focus on a content based recommendation system. For their CNN the researchers used character level neural network language models (NNLM) for low-level textual feature learning. The researchers found that the deep learning CNN technique had similar but better results that a logistic regression technique.
-  }
-}
+\chapter{Conclusion}
+Conclude
+% \subsection{Outline of Project Timeline}
+% \begin{itemize}
+% 	\item \textbf{November 25:} Thesis Proposal
+% 	\item \textbf{December 16:} Send Thesis Committee updated timeline, research unsupervised learning/transfer learning in NLP
+% 	\item \textbf{December 23:} Research unsupervised/transfer learning in NLP
+% 	\item \textbf{January 6:} Develop data pipeline for testing different unsupervised learning/transfer learning techniques. Begin developing transfer learning models.
+% 	\item \textbf{January 13:} Receive task webscrape data from Dr. Yue's team. Begin testing unsupervised techniques.
+% 	\item \textbf{January 20:} Begin testing unsupervised techniques. Begin testing transfer learning techniques.
+% 	\item \textbf{January 27:} Test unsupervised techniques. Test transfer learning techniques.
+% 	\item \textbf{February 10:} Test unsupervised techniques. Test transfer learning techniques. Begin drafting paper for conference submission.
+% 	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
+% 	\item \textbf{March 9:} Develop visualization and analysis of test results, further iteration and improvement of algorithms, continue writing paper for conference submission, begin writing thesis
+% 	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
+% 	\item \textbf{April 6:} Defend Thesis
+% 	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
+% 	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
+% 	\item \textbf{April 17 - May 7:} Continue drafting paper and submit to conferences
+% 	\item \textbf{May 7:} Graduate
+% \end{itemize}
+
+% \subsection{Further Applications}
+% In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
+% recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
+% inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in a crowdsourcing\
+% platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
+% be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
+% from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
+% and then match a user to tasks that they would be able to complete and that were relevant to the calculated user skillset based on\
+% skill inference of tasks in the crowdsourcing platform.
+% \subsection{Support}
+% In order to deliver high quality research I request the following meeting cadence with the thesis\
+% committee to gather feedback and correction on my approach as needed:
+% \begin{itemize}
+% 	\item \textbf{Dr. Chuan Yue (Thesis Advisor):} Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
+% 	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+% 	\item \textbf{Dr. Hua Wang (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
+% \end{itemize}
+
+% \begin{eqnarray}
+% 	\label{eq:importance}
+% 		\textrm{Importance} & \approx & 0 \\
+% 	\label{eq:newton}
+% 		\sum_{i}^{\infty}\vec{F_{i}} & = & m\,\vec{a}
+% \end{eqnarray}
+
+% \begin{align}
+% 	\label{eq:vector}
+% 	\newcommand{\Tmat}[3][]{{^{#2}_{#3}}#1\mathrm{\mathbf{T}}\;\,}
+% 	{\left[\begin{matrix}x\\ y\\ 1\end{matrix}\right]}=\Tmat{S}{W}{\left[\begin{matrix}0\\ 0\\ 1\end{matrix}\right]}
+% \end{align}
 
 
-@inproceedings{wu2016personal,
-  title={Personal recommendation using deep recurrent neural networks in NetEase},
-  author={Wu, Sai and Ren, Weichao and Yu, Chengchao and Chen, Gang and Zhang, Dongxiang and Zhu, Jingbo},
-  booktitle={2016 IEEE 32nd International Conference on Data Engineering (ICDE)},
-  pages={1218--1229},
-  year={2016},
-  organization={IEEE},
-  annote={In this experiment the researchers forged a feedforward neural network which simulated collaborative filtering (accepted user purchase history as input to generate recommendation) and a conventional RNN to generate realtime reccomendations based of the user's browsing session. The researchers explain that an RNN is a 
-  suitable choice of architercture for their problem because an RNN with on inner layer can determine the order of page access and an RNN with multiple layers can determine the combination of page accesses. One of the keypoints that the researchers make concerning their use of deep learning vs. traditional collaborative filtering is that
-  collaborative filtering is effective at making recommendations based off of previous user choices whereas their deep learning model is able to make a new prediction based off of the given information of a user. To train their model the researchers used Stochastic Gradient Descent. Something that was really interesting about the researchers'
-  approach is that they would iteratively retrain the model in real-time to give the most up to date predictions of how users interacted with the ecosystem. Another aspect that was interesting about the researchers' approach was their use of a "history state" that they used to consilidate decisions that dated outside of their sliding window of 
-  sessions concept. The researchers showed that their RNN approach significantly outperformed a collaborative filtering approach.
-  }
-}
+%% Below is a quick test for a figure that moves to another page
+asdfadsf
 
-%% HUGE related work here
-@article{Kaplan2018,
-  title={Striving to earn more: a survey of work strategies and tool use among crowd workers},
-  author={Kaplan, Toni and Saito, Susumu and Hara, Kotaro and Bigham, Jeffrey P},
-  booktitle={Sixth AAAI Conference on Human Computation and Crowdsourcing},
-  year={2018},
-  annote={This paper outlines survey results collected from 360 crowdsourcing workers on their approach for earning money on crowdsourcing platforms and the tools they used. One of the interesting tools that crowdsource workers use is called Preview and Accept (commonly referred to as PandA) which finds similar
-  tasks and batches them together to decrease the time that workers spend finding tasks. The survey outlines the inequality between workers and requesters and ultimately how requesters have a way to judge workers based on the reputation, workers don't actually have a way to sift through and filter tasks to find tasks that are efficient and feasible. This is
-  directly related to the problem that I am trying to solve, improving efficiency of workers in crowdsourcing platforms. The researchers explain that much of the previous work done on task recommendation in Amazon MTURK deals with information available in the AMT search like task keywords, reward, qualificatoin, in conjunction with the
-  browser extension Turkopticon, a tool used by crowdworkers to rate requesters, to surface wage-efficient tasks. The researchers also discussed their perspective that task recommendation systems should focus on content dependent factors which affect the amount of time it takes to complete a task like the types of media in a task and the 
-  amount of inputs outlined in the task. The survey results reported a large number of forums for MTURK crowdworkers which would be really helpful for empathizing common problems that crowdworkers experience. One of the interesting things from the survey was the level of frustration for finding tasks within the platform and that not being
-  able to find anymore tasks to complete was a high motivation for ending a working session. This is a really important piece of feedback that provides validation for researching approaches for improving the efficiency of crowd workers. An interesting facet of the survey results was the reported priority of crowdworkers on selecting a task in which "Pay per HIT", "Expected Task Completion Time",
-  and "Requester Reputation" were ranked in the order previously described. In the researchers' future work section they outlined several possibilities for applying machine learning to improve crowdworker efficiency. The researchers outlined some potential approaches: develop a machine learning algorithm to surface recommendations based off of task feasibility and the
-  estimated time it would take to complete the task, as well as to use the task content and metadata to help make a prediction. }
-}
+asdfasdf
 
-%% MTURK recommendation system: (Hanrahan et al. 2015), (Alsayasneh et al. 2018)
+dfsdfds
 
-@inproceedings{amer2016task,
-  title={Task Composition in Crowdsourcing},
-  author={Amer-Yahia, Sihem and Gaussier, Eric and Leroy, Vincent and Pilourdault, Julien and Borromeo, Ria and Toyama, Motomichi},
-  year={2016}
-}
-%% Read Alan Turing's Computing Machinery and Intelligence
+asd 
 
-%% Find articles on Collaborative Topic Regression
 
-%% Content based recommendation
-@incollection{pazzani2007content,
-  title={Content-based recommendation systems},
-  author={Pazzani, Michael J and Billsus, Daniel},
-  booktitle={The adaptive web},
-  pages={325--341},
-  year={2007},
-  publisher={Springer}
-}
 
-@incollection{aggarwal2012survey,
-  title={A survey of text classification algorithms},
-  author={Aggarwal, Charu C and Zhai, ChengXiang},
-  booktitle={Mining text data},
-  pages={163--222},
-  year={2012},
-  publisher={Springer}
-}
+%% Note: the ''[H]`` below is optional and means ''always put it exactly here``, normally you do NOT want to use it.  However, in some rare circumstances you may wish to override the default placement.
+% \csmfigure[H]{Stomata}{figures/stomata}{4in}{A pretty picture from the Squier Group --- this is a test of the emergency long-title system.}
+%% End special test
 
-%% Survey on earnings
-@inproceedings{hara2018data,
-  title={A data-driven analysis of workers' earnings on amazon mechanical turk},
-  author={Hara, Kotaro and Adams, Abigail and Milland, Kristy and Savage, Saiph and Callison-Burch, Chris and Bigham, Jeffrey P},
-  booktitle={Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems},
-  pages={449},
-  year={2018},
-  organization={ACM}
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you would like to work on each chapter of your thesis in a separate document then use: %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \include{latex-example-chapter}
 
-% common types of HITs in MTURK
-@inproceedings{difallah2015dynamics,
-  title={The dynamics of micro-task crowdsourcing: The case of amazon mturk},
-  author={Difallah, Djellel Eddine and Catasta, Michele and Demartini, Gianluca and Ipeirotis, Panagiotis G and Cudr{\'e}-Mauroux, Philippe},
-  booktitle={Proceedings of the 24th international conference on world wide web},
-  pages={238--247},
-  year={2015},
-  organization={International World Wide Web Conferences Steering Committee}
-}
+% \chapter{Second Generation Chapter}
+% \label{cha:important-chapter}
+% Another chapter.
 
-% Task recommendation in MTurk, matrix factorization
-@inproceedings{yuen2012task,
-  title={Task recommendation in crowdsourcing systems},
-  author={Yuen, Man-Ching and King, Irwin and Leung, Kwong-Sak},
-  booktitle={Proceedings of the first international workshop on crowdsourcing and data mining},
-  pages={22--26},
-  year={2012},
-  organization={ACM}
-}
+% \subsection{Lots of Mistakes Originally}
+% Fun fun...
 
-% Task recommendation in MTURK, BoW and Classification
-@inproceedings{ambati2011towards,
-  title={Towards task recommendation in micro-task markets},
-  author={Ambati, Vamsi and Vogel, Stephan and Carbonell, Jaime},
-  booktitle={Workshops at the Twenty-Fifth AAAI Conference on Artificial Intelligence},
-  year={2011}
-}
+% \subsection{Figured out How to Fix Things}
+% Ha-ha!
 
-%% Crowdsourcing is growing
-@article{kuek2015global,
-  title={The global opportunity in online outsourcing},
-  author={Kuek, Siou Chew and Paradi-Guilford, Cecilia and Fayomi, Toks and Imaizumi, Saori and Ipeirotis, Panos and Pina, Patricia and Singh, Manpreet},
-  year={2015},
-  publisher={World Bank, Washington, DC}
-}
+% \subsection{Could Still Be Better}
+% Interesting huh?
+
+% \subsection{Testing Procedure}
+% I thought you'd like this.
+
+% \subsection{Final Results}
+% It's over (see \ref{fig:Strongbad})!  Also it is important to note the placement of labels in subfigures: \ref{fig:fsm}, and \ref{fig:fsm-pirates}.
+% % NOTE: You may wish to provide a shortened caption in the list of figures, \csmlongfigure allows you to do this (the two captions are combined in the text):
+% \csmlongfigure{Strongbad}{figures/strongbad}{1in}{A world-class hero}{ of awesomeness~\cite{ref:Wikipedia}.}
+
+% \begin{figure}
+% 	\begin{center}
+% 		\subfigure[Him]{
+% 			% Example for including pictures when using the ``graphicx'' package:
+% 			%\includegraphics[width=4in]{figures/fsm}
+% 			% Example for including pictures when using the ``graphics'' package:
+% 			\resizebox{4in}{!}{\includegraphics{figures/fsm}}
+% 		} \\
+% 		\subfigure[Importance of Pirates]{
+% 			\resizebox{4in}{!}{\includegraphics{figures/fsm-pirates}}
+% 			\label{fig:fsm-pirates}
+% 		}
+% 		% Normal caption:
+% 		\caption{\label{fig:fsm}The Flying Spaghetti Monster Knows All}
+% 		% This caption is for testing purposes, it has borders :
+% 		%\caption{\label{fig:fsm}Total electron density isosurface at 1.7 electrons/\AA$^3$ (a) showing higher electron concentration at 6-6 interfaces compared to 6-5 interfaces. (b) Total wave function density isosurface of 0.04 electrons/\AA$^3$ shows the relatively uniform density over 5-6 membered rings and the definite wave function holes through the eight-membered rings.}
+% 	\end{center}
+% \end{figure}
+
+% \chapter{The Way Ahead}
+% Ugh, another chapter~\cite{ref:D}!
+
+% \subsection{How Things Could Be Better}
+% We thought that was the end!
+
+% \subsection{Why We Think Things Aren't Better}
+% We really hoped it was anyway.
+
+% \subsection{We Love Our Advisors}
+% Are you really still reading this? Ok, then check out \ref{tab:magic}!
+\ref{tab:magic}
+\begin{table}
+	\caption{\label{tab:magic} A table of tabular goodness.}
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			& B & b \\
+			\hline
+			B & BB & Bb \\
+			\hline
+			b & Bb & bb \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+%% Below is a test for sideways figure and table floats (it also works to wrap figures and tables in a ``landscape'' environment, but the method below is preferred)
+% magic text a
+% 
+% \begin{sidewaystable}
+% 
+% \centering
+% 
+% \caption[Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates]{Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates; For a breakdown of the Pottery Assemblages see Tables I and
+% III; for the Flints see Tables II and IV; for the Animal Bones see
+% Table V.}
+% 
+% \begin{tabular}{|llllllllp{1in}lp{1in}|}
+% \hline
+% Context   &Length   &Breadth/   &Depth   &Profile   &Pottery   &Flint   &Animal   &Stone   &Other    &C14 Dates \\
+%   &         &Diameter   &        &          &          &        & 
+% Bones&&&\\
+% \hline
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Grooved Ware}&\\
+% 784 &---   &0.90m &0.18m &Sloping U &P1    &$\times$46  &  $\times$8  &&$\times$2 bone&  2150$\pm$ 100 BC\\
+% 785 &---   &1.00m &0.12  &Sloping U &P2--4 &$\times$23  &  $\times$21 & Hammerstone &---&---\\
+% 962 &---   &1.37m &0.20m &Sloping U &P5--6 &$\times$48  &  $\times$57* & ---&     ---&1990 $\pm$ 80 BC (Layer 4) 1870 $\pm$90 BC (Layer 1)\\
+% 983 &0.83m &0.73m &0.25m &Stepped U &---   &$\times$18  &  $\times$8 & ---& Fired clay&---\\
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Beaker}&\\
+% 552 &---   &0.68m &0.12m &Saucer    &P7--14 &---        & --- & --- &--- &---\\
+% 790 &---   &0.60m &0.25m &U         &P15    &$\times$12 & --- & Quartzite-lump&--- &---\\
+% 794 &2.89m &0.75m &0.25m &Irreg.    &P16    $\times$3   & --- & --- &--- &---\\
+% \hline
+% \end{tabular}
+% \end{sidewaystable} 
+% 
+% \begin{sidewaystable}
+% \centering
+% 
+% \caption[Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates]{Grooved Ware and Beaker Features, their Finds and Radiocarbon
+% Dates; For a breakdown of the Pottery Assemblages see Tables I and
+% III; for the Flints see Tables II and IV; for the Animal Bones see
+% Table V.}
+% 
+% \begin{tabular}{|llllllllp{1in}lp{1in}|}
+% \hline
+% Context   &Length   &Breadth/   &Depth   &Profile   &Pottery   &Flint   &Animal   &Stone   &Other    &C14 Dates \\
+%   &         &Diameter   &        &          &          &        & 
+% Bones&&&\\
+% \hline
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Grooved Ware}&\\
+% 784 &---   &0.90m &0.18m &Sloping U &P1    &$\times$46  &  $\times$8  &&$\times$2 bone&  2150$\pm$ 100 BC\\
+% 785 &---   &1.00m &0.12  &Sloping U &P2--4 &$\times$23  &  $\times$21 & Hammerstone &---&---\\
+% 962 &---   &1.37m &0.20m &Sloping U &P5--6 &$\times$48  &  $\times$57* & ---&     ---&1990 $\pm$ 80 BC (Layer 4) 1870 $\pm$90 BC (Layer 1)\\
+% 983 &0.83m &0.73m &0.25m &Stepped U &---   &$\times$18  &  $\times$8 & ---& Fired clay&---\\
+% &&&&&&&&&&\\
+% \multicolumn{10}{|l}{\bf Beaker}&\\
+% 552 &---   &0.68m &0.12m &Saucer    &P7--14 &---        & --- & --- &--- &---\\
+% 790 &---   &0.60m &0.25m &U         &P15    &$\times$12 & --- & Quartzite-lump&--- &---\\
+% 794 &2.89m &0.75m &0.25m &Irreg.    &P16    $\times$3   & --- & --- &--- &---\\
+% \hline
+% \end{tabular}
+% \end{sidewaystable} 
+% 
+% magic text b
+
+%% Parts of a Thesis - Back Matter
+\backmatter
+
+%%% Parts of a Thesis - Back Matter - References Cited (required)
+
+% Use "Advanced" Bibliography Techniques
+% \bibliography{thesis-proposal.bib}
+% \bibliographystyle{IEEEannot}
+\bibliography{thesis}
+% \addbibresource{thesis-proposal.bib}
+%\printbibliography % <-- For using biblatex instead of natbib or the built-in bibliography utility
+
+%%% Parts of a Thesis - Back Matter - Selected Bibliography (optional)
+%\cleardoublepage
+%\begin{selected-bibliography}
+% Your selected bibliogrpahy would go here, a page break might also be necessary above.
+%\end{selected-bibliography} 
+
+%%% Parts of a Thesis - Back Matter - Appendices (if applicable)
+% \appendix{TODO add if I need to add anything in the appendix}\label{app:encoding}
+% \ref{tab:encoding} shows how several symbols appear in the rendered document.
+
+% \begin{table}[H]
+% 	\caption{\label{tab:encoding}This is where we have fun testing encoding}
+% 	\begin{center}
+% 		\begin{tabular}{|c|c|c|}
+% 			\hline
+% 			& Normal & Math \\
+% 			\hline
+% 			The greater than: & > & $>$ \\
+% 			\hline
+% 			The lesss than: & < & $<$ \\
+% 			\hline
+% 			The tilde: & \textasciitilde{} & $\sim$ \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% \end{table}
+
+% \subsection{Test Appendix Sub-Section}\label{sec:longtable}
+% \ref{tab:longtable} is an example of a very large ``longtable.''
+% \begin{landscape}
+% \begin{longtable}{|>{\centering}p{1.02in}|>{\centering}p{1.15in}|>{\centering}p{1in}|>{\centering}p{0.7in}|>{\centering}p{0.7in}|>{\centering}p{0.67in}|>{\centering}p{2.55in}|} %
+% 	\endfirsthead % Remove this line to use the main header for the first page
+% 	\hline%
+% 	Age & Formation  & Thickness (feet)   & Thickness (feet)  & Thickness (feet)  & Aquifer?  & Lithology%
+% 	\endhead%
+% 	\caption{Stratigraphy of the Granite Mountains and Lost Creek areas\label{tab:longtable}}\\ %
+% 	\hline
+% 	Age & Formation%
+% 	\footnote{Only major unconformities shown, indicated by break in table.%
+% 	} & Thickness (feet)%
+% 	\footnote{Generalized thicknesses from.%
+% 	}  & Thickness (feet)%
+% 	\footnote{Thicknesses shown are approximate and apply to Lost Creek vicinity
+% 	only.%
+% 	} & Thickness (feet)%
+% 	\footnote{Thicknesses shown are from a public screened dataset of logged formation
+% 	tops from the 12 townships surrounding Lost Creek.%
+% 	} & Aquifer?%
+% 	\footnote{Aquifer designations \textendash{} Lost Creek vicinity only.%
+% 	} & Lithology \tabularnewline
+% 	\hline 
+% 	Quaternary  & Alluvium & - & 0-20 & - & Yes & Sands and clays derived chiefly from the Tertiary formations in the
+% 	area. \tabularnewline
+% 	\hline 
+% 	Paleocene & Fort Union  & up to 3,000 & 4,650 & 6,500? & Yes & Consists of alternating fine to coarse grained sandstone siltstone
+% 	and mudstone. Contains various layers of lignitic coal beds. \tabularnewline
+% 	\hline
+% 	\hline 
+% 	Cretaceous  & Lance  & 1,700 to 2,700 & 2,950 & 4,000? & Yes & Interbedded sandstone, siltstone and mudstone. Gray to brownish gray.
+% 	Locally carbonaceous. Sandstone is white to grayish orange. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Fox Hills  &  & 550 & 1,800? & No & Consists of coarsening upward shale and fine-grained sand with thin
+% 	coal beds near the top. Represents a transition from marine to non-marine
+% 	environment. Grades into Lewis Shale at the base. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Lewis Shale  & 1,250 & 1,200 & 1,050 to 2,000 & No & Interbedded dark-gray and olive-gray shale and olive-gray sandstone. \tabularnewline
+% 	\hline
+% 	\hline 
+% 	Cretaceous & Mesaverde Group  & 0 to 1,000 & 800 & 300 to 500? & No & Gray to dark gray shales with interbedded buff to tan fine to medium
+% 	grained sandstones. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Steele and Niobrara Shales  & Cody Shale 4,500 to 5,000 & 2,000 to 2,500 & 2,400 to 5,000 & No & Steele shale is soft gray marine, Niobrara shale is dark gray and
+% 	contains calcareous zones. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Frontier  & 700 to 900 & 500 to 1,000 & 750 to 1,500 & Yes & Gray sandstone and sandy shale. \tabularnewline
+% 	\hline 
+% 	Cretaceous & Dakota  &  & 300 to 400 &  & Yes & Marine sandstone, tan to buff, fine to medium grained may contain
+% 	carbonaceous shale layer. \tabularnewline
+% 	\hline 
+% 	Jurassic  & Nugget Sandstone  & 400 to 525 & 500 &  & Yes & Grayish to dull red coarse grained cross-bedded quartz sandstone. \tabularnewline
+% 	\hline 
+% 	Triassic  & Chugwater  & 1,275 & 1,500 &  & No & Red shale and siltstone contains gypsum partings near the base. \tabularnewline
+% 	\hline 
+% 	Permian  & Phosphoria  & 275 to 325 & 300 &  & No & Black to dark gray shale, chert and phosphorite. \tabularnewline
+% 	\hline 
+% 	Pennsylvanian  & Tensleep and Amsden and Madison  & 600 to 700 & 750 &  & No & White to gray sandstone containing thin limestone and dolomite partings.
+% 	Red and green shale and dolomite, sandstone near base. \tabularnewline
+% 	\hline 
+% 	Cambrian  & Undifferentiated  & 900 to 1,000 & 1,000 &  & No & Siltstone and quartzite, including Flathead sandstone. \tabularnewline
+% 	\hline
+% 	\hline 
+% 	Precambrian  & Basement  & - & - &  & No & Granites, metamorphic and igneous rocks. \tabularnewline
+% 	\hline
+% % %% Extend the above example to cross a double-page boundary
+% % 	%\hline
+% % 	Quaternary  & Alluvium & - & 0-20 & - & Yes & Sands and clays derived chiefly from the Tertiary formations in the
+% % 	area. \tabularnewline
+% % 	\hline 
+% % 	Paleocene & Fort Union  & up to 3,000 & 4,650 & 6,500? & Yes & Consists of alternating fine to coarse grained sandstone siltstone
+% % 	and mudstone. Contains various layers of lignitic coal beds. \tabularnewline
+% % 	\hline
+% % 	\hline 
+% % 	Cretaceous  & Lance  & 1,700 to 2,700 & 2,950 & 4,000? & Yes & Interbedded sandstone, siltstone and mudstone. Gray to brownish gray.
+% % 	Locally carbonaceous. Sandstone is white to grayish orange. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Fox Hills  &  & 550 & 1,800? & No & Consists of coarsening upward shale and fine-grained sand with thin
+% % 	coal beds near the top. Represents a transition from marine to non-marine
+% % 	environment. Grades into Lewis Shale at the base. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Lewis Shale  & 1,250 & 1,200 & 1,050 to 2,000 & No & Interbedded dark-gray and olive-gray shale and olive-gray sandstone. \tabularnewline
+% % 	\hline
+% % 	\hline 
+% % 	Cretaceous & Mesaverde Group  & 0 to 1,000 & 800 & 300 to 500? & No & Gray to dark gray shales with interbedded buff to tan fine to medium
+% % 	grained sandstones. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Steele and Niobrara Shales  & Cody Shale 4,500 to 5,000 & 2,000 to 2,500 & 2,400 to 5,000 & No & Steele shale is soft gray marine, Niobrara shale is dark gray and
+% % 	contains calcareous zones. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Frontier  & 700 to 900 & 500 to 1,000 & 750 to 1,500 & Yes & Gray sandstone and sandy shale. \tabularnewline
+% % 	\hline 
+% % 	Cretaceous & Dakota  &  & 300 to 400 &  & Yes & Marine sandstone, tan to buff, fine to medium grained may contain
+% % 	carbonaceous shale layer. \tabularnewline
+% % 	\hline 
+% % 	Jurassic  & Nugget Sandstone  & 400 to 525 & 500 &  & Yes & Grayish to dull red coarse grained cross-bedded quartz sandstone. \tabularnewline
+% % 	\hline 
+% % 	Triassic  & Chugwater  & 1,275 & 1,500 &  & No & Red shale and siltstone contains gypsum partings near the base. \tabularnewline
+% % 	\hline 
+% % 	Permian  & Phosphoria  & 275 to 325 & 300 &  & No & Black to dark gray shale, chert and phosphorite. \tabularnewline
+% % 	\hline 
+% % 	Pennsylvanian  & Tensleep and Amsden and Madison  & 600 to 700 & 750 &  & No & White to gray sandstone containing thin limestone and dolomite partings.
+% % 	Red and green shale and dolomite, sandstone near base. \tabularnewline
+% % 	\hline 
+% % 	Cambrian  & Undifferentiated  & 900 to 1,000 & 1,000 &  & No & Siltstone and quartzite, including Flathead sandstone. \tabularnewline
+% % 	\hline
+% % 	\hline 
+% % 	Precambrian  & Basement  & - & - &  & No & Granites, metamorphic and igneous rocks. \tabularnewline
+% % 	\hline
+% % %% END DOUBLE PAGE BOUNDARY EXAMPLE
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \begin{longtable}{|c|c|c|}
+% 	\endfirsthead
+% 	\caption{Test of a small longtable.} \\
+% 	\hline
+% 	A & B & C \\
+% 	\hline
+% 	1 & 2 & 3 \\
+% 	\hline
+% \end{longtable}
+% \end{landscape}
+
+% \begin{landscape}
+% \begin{longtable}{|c|c|c|}
+% 	\endfirsthead
+% 	\caption{Test of a small longtable on the alternate page.} \\
+% 	\hline
+% 	1 & 2 & 3 \\
+% 	\hline
+% 	A & B & C \\
+% 	\hline
+% \end{longtable}
+% \end{landscape}
+
+% \subsection{Sub-Sections are Fun}
+% Sorta...
+
+% \appendix{Special Coolness}
+
+% Insert ice cubes here (\ref{lst:hello-world}).
+
+% \lstinputlisting[language=Matlab,label={lst:hello-world},caption={A MATLAB ``Hello World`` Example}]{matlab_code.m}
+
+% %% Example for use with ``breqn'' automatic equation breaking:
+% \ifbreqn
+% 	\appendix{Equation Breaking Tests}
+
+% 	\begin{equation*}
+% 	r = \frac{i}{n F} = k' c_i \exp\left\{ \frac{-G^{\ddagger}}{R T} \right\}
+% 	\end{equation*}
+% 	\begin{equation*}
+% 	r = \frac{i}{n F} = k' c_i \exp\left\{ \frac{-G^{\ddagger}}{R T} \right\}
+% 	\end{equation*}
+
+% 	Replace $j$ by $h-j$ and by $k-j$ in these sums to get [cf.~(\ref{sna74})]
+% 	\begin{equation*}
+% 	\label{sna74}
+% 	\frac{1}{6} \left(\sigma(k,h,0) +\frac{3(h-1)}{h}\right)
+% 	+\frac{1}{6} \left(\sigma(h,k,0) +\frac{3(k-1)}{k}\right)
+% 	=\frac{1}{6} \left(\frac{h}{k} +\frac{k}{h} +\frac{1}{hk}\right)
+% 	+\frac{1}{2} -\frac{1}{2h} -\frac{1}{2k},
+% 	\end{equation*}
+% 	which is equivalent to the desired result.
+% \fi
+
+
+% %% For figuring out the LyX multi-row problem
+% \begin{table}
+% \caption{\label{tab:Important-experimental-propertie}General experimental
+% properties}
+% \centering{}%
+% \begin{tabular}{|c|c|c|}
+% \cline{2-3} 
+% \multicolumn{1}{c|}{} & Parameter & \tabularnewline
+% \hline 
+% \multirow{8}{*}{Silurian dolomite} & Speed, rpm (drainage) & 1200 \tabularnewline
+% \cline{2-3} 
+%  & Speed, rpm (forced imbibition) & 884\tabularnewline
+% \cline{2-3} 
+%  & Surfactant type  & S13D\tabularnewline
+% \cline{2-3} 
+%  & Surfactant concentration, ppm  & 5000\tabularnewline
+% \cline{2-3} 
+%  & IFT$\left(\frac{dyne}{cm}\right)$ & 16\tabularnewline
+% \cline{2-3} 
+%  & $\mu_{o}(cp)$ & 22\tabularnewline
+% \cline{2-3} 
+%  & $k_{f}(md)$ & 10000\tabularnewline
+% \cline{2-3} 
+%  & $\phi_{f}$ & 0.9\tabularnewline
+% \cline{2-3} 
+% \multirow{8}{*}{Thamama} & Speed, rpm (drainage) & 4000\tabularnewline
+% \cline{2-3} 
+%  & Speed, rpm (forced imbibition) & 3000\tabularnewline
+% \cline{2-3} 
+%  & Surfactant type  & Ethoxylated alcohol\tabularnewline
+% \cline{2-3} 
+%  & Surfactant concentration, ppm  & 20000\tabularnewline
+% \cline{2-3} 
+%  & IFT$\left(\frac{dyne}{cm}\right)$ & 18\tabularnewline
+% \cline{2-3} 
+%  & $\mu_{o}(cp)$ & 9.5\tabularnewline
+% \cline{2-3} 
+%  & $k_{f}(md)$ & 7000-10000\tabularnewline
+% \cline{2-3} 
+%  & $\phi_{f}$ & 0.9\tabularnewline
+% \hline 
+% \end{tabular}
+% \end{table}
+
+\end{document}
