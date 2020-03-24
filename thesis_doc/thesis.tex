@@ -22,6 +22,9 @@
 % For inserting sideways tables and figures
 \usepackage{rotating}
 
+
+\usepackage{mathtools}
+
 % Since hyperref and cite don't completely get along, the template now recommends using natbib:
 % For an explanation, see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=citesort
 \usepackage[numbers]{natbib}
@@ -563,19 +566,112 @@ from unstructured data makes topic modeling an excellent candidate to analyze an
 of this data will be valuable for implementing future works related to improving crowdworker efficiency.
 
 Topic modeling has its origins around the beginning of the 21st century beginning with a several algorithms published on the subject of topic modeling such as \
-Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing \cite{papadimitriou2000latent} (LSI) which would pave the way for the\
-creating of the Latent Dirichlet allocation (LDA) \cite{blei2003latent} which is the most commonly implemented topic modeling algorithm in use today. In recent years, \
+Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing (LSI)\cite{papadimitriou2000latent} (LSI) which would pave the way for the\
+creation of the Latent Dirichlet allocation (LDA) \cite{blei2003latent} which is the most commonly implemented topic modeling algorithm in use today. In recent years, \
 researchers have begun to develop topic modeling algorithms that have acheived state of the art performance leveraging word embeddings \cite{mikolov2013distributed} \cite{dieng2019topic}.\
 Word embeddings have opened the door for innovations across the field of natural language processing and topic modeling is no different. 
 
-The dataset will be analyzed using four different topic models. 
-\subsubsection{LSI}
-Discuss the LSI model and why this is being used for the experiments, justify with literature
-\subsubsection{LDA}
-Discuss the LDA model and why this is being used for the experiments, justify with literature
-\subsubsection{Lda2vec}
-Discuss the Lda2vec model and why this is being used for the experiments, justify with literature
+The dataset will be analyzed using four different topic models namely LSI, LDA, lda2vec, and the Embedded Topic Model (ETM). 
+\subsubsection{Latent Semantic Indexing (LSI)}
+Latent Semantic indexing was originally proposed in the paper ``Indexing by latent semantic analysis'' by Deerwester et al. \cite{deerwester1990indexing}. The authors\
+proposed the algorithm as a means to improve information reteival (IR) by treating IR as a statistical problem. One of the shortcomings in the field of IR at the time\
+the paper was written was the inability to capture conceptual meaning from a user search on the corpus. LSI was created to address these problems by assuming that there\
+exists underlying semantic meaning in a document and thus through estimating the noise in a given set of data with respect to word choice their methodology can associate\
+terms and documents through the expression of a singular value decomposition (SVD) on term to document data.
 
+Specifically, LSI can be defined by a $n$ $x$ $m$ matrix $A$ where the rows are represented by the words in the corpus and the columns represent the documents with a rank of \emph{r}.\
+From this matrix, using a SVD, \emph{A} can then be represented as the product of 3 separate matrices as shown in Equation \ref{eqn:lsi}:
+
+\begin{eqnarray}
+		A = UDV^T
+	\label{eqn:lsi}
+\end{eqnarray}
+
+Where $D$ is a diagonal $r$ $x$ $r$ matrix of the eigenvalues of $AA^T$, $U$ is a $n$ $x$ $r$ matrix of rank $r$ that has orthonormal columns,\
+and $V$ is an $m$ $x$ $r$ matrix with orthonormal columns as well \cite{papadimitriou2000latent}. This SVD is the LSI space of the term-document\
+representation of the corpus. 
+
+For the implementation of the LSI in the experiments, the \emph{gensim} \cite{gensim} library is utilized. The \emph{gensim} implementation of the library\
+makes use of the Singular Value Decomposition algorithm described in ``Fast and Faster: A Comparison of Two Streamed Matrix Decomposition Algorithms'' by Radim Rehurek\
+which allows the model to traverse the corpus in a single pass, decreasing the amount of time it takes LSI to train \cite{rehurek2011}.
+
+This model was selected due to its similarity to LDA and because many studies often compare the performance of LSI on topic modeling to the performance of LDA.
+
+\subsubsection{Latent Dirichlet Allocation (LDA)}
+The LDA is a topic model developed by Blei et al. in 2003, the model has been widely used and accepted since its inception in the field of topic modeling and is frequently\
+implemented as the baseline from which new topic models are compared against. From an implementation perspective the LDA is described as a generative probabilistic model of\
+a corpus in which documents in a corpus are represented as a random mixture of a fixed number of latent topics and a topic is \
+a probability distribution over words in the corpus. In the paper, the LDA is defined by the following generative procedure in \ref{eqn:lda}:
+
+\begin{figure}
+	\begin{enumerate}
+		\item Choose $N \sim Poisson(\xi)$
+		\item Choose $\theta \sim Dir(\alpha)$
+		\item For each of the $N$ words $w_n$:
+		\begin{itemize}
+			\item Choose a topic $z_n \sim Multinomial(\theta)$.
+			\item Choose a word $w_n$ from $p(w_n|z_n,\beta)$, a multinomial probability conditioned on the topic $z_n$.
+		\end{itemize}
+	\end{enumerate}
+	\caption{LDA model \cite{blei2003latent}}
+	\label{eqn:lda}
+\end{figure}
+
+In laymen terms, the LDA is fed a paremeter for the number of topics $z$ that the model will be trained for and from those topics it then generates \
+a topic mixture for a document using a Dirichlet distribution over $z$, then for each word, select a topic that the word should belong\
+based off of what topics are in the selected document as well as how many times the word has been assigned to a topic in other documents. \
+A visualization of this model can be seen in \ref{fig:lda}: 
+
+\csmfigure{lda}{figures/lda_diagram}{4in}{Basic LDA model architecture \cite{blei2003latent}}
+
+In the visualization above (\ref{fig:lda}), $\alpha$ signifies topic-document distribution of the whole corpus, $\theta$ represents the \
+document specific topic distribution, $z$ signifies the topic for the selected word in a document, and $w$ is the selected word. Outside \
+of the box $\beta$ represents the per-topic word distribution throughout the corpus. The outer boxes $M$ and $N$ are representative of \
+the generative approach of the LDA in that $N$ represents the assignment of words to topics in a document while $M$ represents the collection\
+of documents that make up the corpus.
+The bread and butter of the LDA is this two-headed process by which a word is assigned to a topic according to the topic-document distribution\
+in conjunction with how the selected word has been assigned to other topics across documents in the corpus.\
+The LDA then repeats this process until it reaches the number of passes that are specified as a parameter to the model, resulting in the formation of $z$\
+topics across the corpus with words that were topically assigned based off of the the context of the word in the document it appears as well as how\
+the word is assigned in documents across the bredth of the corpus.
+
+From the performance perspective, in the original paper the LDA is cited as outperforming the \emph{pLSI} \cite{hofmann1999probabilistic}, an adaption of the original \emph{LSI},\
+measured on the perplexity metric which was commonly used to evaluate early topic models. In the empirical evaluation section of the paper the authors\
+cited that the design of the LDA led to the avoidance of some of the shortcomings of the \emph{pLSI} especially overfitting by utilizing a variational\
+Bayesian smoothing scheme\cite{attias2000variational} \cite{blei2003latent}. 
+
+For the implementation of the LDA in the experiments, the \emph{gensim} library is leveraged which is based off of the code presented by some of the original authors of the LDA \cite{hoffman2010online}.
+The specific hyperparameters that were implemented in the experiments are discussed at greater lengths in experiments in Chapter 4.
+
+The LDA was selected for the experiments because it is the most widely used and implemented topic model and is the baseline for which state of the art\
+models compare their performance.
+\subsubsection{lda2vec}
+The \emph{lda2vec} model was one of the first topic models to develop a hybrid approach which married the sparse document-topic representation of a corpus used in\
+traditional topic modeling like the LDA with the innovation of word embeddings. \emph{lda2vec} was developed to address one of the primary shortcoming of traditional\
+topic modeling approach--the failure to take advantage of recent innovations in distributed word representation such as the skip gram representation presented in \emph{word2vec}\cite{mikolov2013distributed}.\
+Word embeddings as previously addressed have had a substantial effect on the field of NLP over a wide array of applications and the development of hybrid topic models\
+that leverage these distributed word representations to account for semantically meaningful relationships between words has led to advances in topic modeling as well as\
+the development of state of the art topic models.
+
+From an implentation perspective the \emph{lda2vec} model modifies the Skipgram Negative-Sampling (SGNS) objective from \cite{mikolov2013distributed} to learn document-wide\
+feature vectors in concurrence with discovering document weights that are loaded onto topic vectors \cite{moody2016mixing}. \
+The loss of the \emph{lda2vec} model can be represented with the following equations (\ref{eqn:lda2vec1} \ref{eqn:lda2vec2} \cite{moody2016mixing}):
+
+\begin{eqnarray}
+	\label{eqn:lda2vec1}
+		\mathcal{L} = \mathcal{L}^d +\Sigma_{ij} \mathcal{L}^{neg}_{ij}  \\
+	\label{eqn:lda2vec2}
+	\mathcal{L}^{neg}_{ij} = log \sigma (\vec{c_j} \cdot \vec{w_i}) + \Sigma^n_{l=0} log \sigma (-\vec{c_j} \cdot \vec{w_i})
+\end{eqnarray}
+\ref{fig:lda2vec}
+
+Explain the equations
+
+\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture -- note the combination of the skipgrams from word2vec \cite{mikolov2013distributed} used in conjunction with the LDA\
+architecture \cite{blei2003latent}}
+
+\newpage
+\subsubsection{Embedded Topic Model (ETM)}
 \subsection{Evaluation}
 In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which
 will be able to accurately extract skills that are required to complete tasks.

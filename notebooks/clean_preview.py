@@ -26,6 +26,7 @@ def clean_dat(chunk):
 
     return ' '.join([ w for w in chunk.split() if w not in set(stops)])
 
+t0 = time()
 for line in open('datasets/20200126-20200312-preview.json'):
       preview = json.loads(line)
 
@@ -58,9 +59,9 @@ preview_df = pd.DataFrame(previews, columns=['processed_previews'])
 preview_df.head()
 
 preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : re.sub('[,.$()@#%&~!?]', '', d))
-hits['processed_previews'] = hits['processed_previews'].str.replace('\W', ' ')
-hits['processed_previews'] = hits['processed_previews'].map(lambda d : re.sub('\d', '', d))
-hits['processed_previews'] = hits['processed_previews'].str.replace('\s+', ' ')
+preview_df['processed_previews'] = preview_df['processed_previews'].str.replace('\W', ' ')
+preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : re.sub('\d', '', d))
+preview_df['processed_previews'] = preview_df['processed_previews'].str.replace('\s+', ' ')
 preview_df['processed_previews'] = preview_df['processed_previews'].map(lambda d : d.lower())
 
 print('INFO: processed_preview shape before removing stop words and dropping empty previews', preview_df['processed_previews'].shape[0])
@@ -92,4 +93,3 @@ preview_df['processed_previews'].to_csv(r'datasets/parsed_full_previews.txt', he
 
 print('INFO: finished loading previews into text file in %0.3fs' % (time() - t0))
 
-print(new_preview)
