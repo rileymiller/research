@@ -19,6 +19,7 @@
 \usepackage{array}
 \usepackage{longtable}
 
+\usepackage{enumitem}
 % For inserting sideways tables and figures
 \usepackage{rotating}
 
@@ -343,25 +344,12 @@ platforms through the analysis of crowdsource tasks to determine common topics a
 in crowdsourcing tasks. Specifically I will focus on applying unsupervised learning techniques in the\
 form of topic modeling to improve the understanding of crowdsourcing tasks administered by requesters \ 
 as well as how this information can be leveraged to optimize crowdworker efficiency. 
-% I predict that the grouping of \ 
-% similar tasks based on the required skills will reduce the number of rejected (the largest painpoint for crowd workers \cite{Kaplan2018})\
-% tasks by sufacing the necessary skills to complete a given task to crowd workers so they're aware\
-% of whether or not they actually posses the skillset to successfully complete a task. I believe\
-% performing research on improving crowd worker efficiency is imperative to the health of crowdsourcing\
-% platforms as a whole because by improving the efficiency of crowd workers the crowd will be able\
-% to generate higher throughput of tasks which helps requesters by reducing the amount of time it\
-% takes for the tasks that they publish to get completed. This improved efficiency will also help crowd workers make more\
-% money. Specifically regarding the application of my research, using Intelligent Batching,\
-% I predict workers would reduce the amount of time it takes them to find and complete tasks and would also improve\
-% the quality of work that is done through the surfacing of the required skills it takes to complete\
-% a task. With explicit information on the required skills that are needed to complete a task,\
-% workers can make intelligent and efficient decisions on whether they should engage with a task or not.
 
 \chapter{Related Work}
 
 \subsection{Topic Modeling of Crowdsourcing Tasks}
 Add stuff here on the topic modeling of crowdsourcing tasks
-
+Talk about papers from the conference that Tom suggested.
 \subsection{Crowdworker Efficiency}
 \subsubsection{Existing Tools}
 Crowd workers have created a variety of user plugins and browser extensions to help out the community of\
@@ -396,34 +384,34 @@ useful recommendations of tasks that are curated based off worker history, exper
 content-based analysis of the feasibility of a task, and Intelligent Batching to reduce time spent switching
 context.
 
-\subsubsection{Existing Recommendation Systems}
-%% This section should touch on some research for text classification and recommendation systems
-There are several different approaches to developing recommendation systems, the two most common are collaborative\
-filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
-however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
-Alternatively, content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
-crowd workers in our use case.
+% \subsubsection{Existing Recommendation Systems}
+% %% This section should touch on some research for text classification and recommendation systems
+% There are several different approaches to developing recommendation systems, the two most common are collaborative\
+% filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
+% however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
+% Alternatively, content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
+% crowd workers in our use case.
 
-Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
-and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
-to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
-this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
-media corporations like Buzzfeed. The researchers (Wang et al.) of the study leverage a character level neual network langauge model (a CNN) to perform\
-low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
-platforms are constantly getting outdated after a worker completes a task, the specific task is resolved and will not be reused, making
-any type of collaborative filtering approach forseeably ineffective.
+% Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
+% and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
+% to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
+% this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
+% media corporations like Buzzfeed. The researchers (Wang et al.) of the study leverage a character level neual network langauge model (a CNN) to perform\
+% low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
+% platforms are constantly getting outdated after a worker completes a task, the specific task is resolved and will not be reused, making
+% any type of collaborative filtering approach forseeably ineffective.
 
-Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. \cite{yuen2012task} Their approach\
-was predicated on using matrix factorization on crowd worker performance history as well as their task searching history\
-to surface relevant reccomendations to crowd workers. Another set of researchers applied two different techniques based on \
-implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
-of the downfalls of their research was that they only used 24 users to evaluate their approach.
+% Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. \cite{yuen2012task} Their approach\
+% was predicated on using matrix factorization on crowd worker performance history as well as their task searching history\
+% to surface relevant reccomendations to crowd workers. Another set of researchers applied two different techniques based on \
+% implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
+% of the downfalls of their research was that they only used 24 users to evaluate their approach.
 
-From my initial investigation, I haven't found any research that is directly related to my approach of extracting necessary\
-skills from tasks using text classification. The primary targeted application of my research is to eventually create\
-a content based recommendation system that will match a user to a task in a crowdsourcing platform based on implicit skills\
-the user has obtained (based on previously completed tasks and user provided characteristics) and the required skills that\
-are needed to complete a task.
+% From my initial investigation, I haven't found any research that is directly related to my approach of extracting necessary\
+% skills from tasks using text classification. The primary targeted application of my research is to eventually create\
+% a content based recommendation system that will match a user to a task in a crowdsourcing platform based on implicit skills\
+% the user has obtained (based on previously completed tasks and user provided characteristics) and the required skills that\
+% are needed to complete a task.
 
 \subsubsection{Text Classification of Crowdsourcing Tasks}
 Interesting related work in the field of text classification of tasks in crowdsourcing platforms can be found in an analysis\
@@ -653,7 +641,7 @@ Word embeddings as previously addressed have had a substantial effect on the fie
 that leverage these distributed word representations to account for semantically meaningful relationships between words has led to advances in topic modeling as well as\
 the development of state of the art topic models.
 
-From an implentation perspective the \emph{lda2vec} model modifies the Skipgram Negative-Sampling (SGNS) objective from \cite{mikolov2013distributed} to learn document-wide\
+From an implentation perspective the \emph{lda2vec} model modifies the Skipgram Negative-Sampling (SGNS) objective from Mikolov et al. \cite{mikolov2013distributed} to learn document-wide\
 feature vectors in concurrence with discovering document weights that are loaded onto topic vectors \cite{moody2016mixing}. \
 The loss of the \emph{lda2vec} model can be represented with the following equations (\ref{eqn:lda2vec1}, \ref{eqn:lda2vec2} \cite{moody2016mixing}):
 
@@ -666,21 +654,25 @@ The loss of the \emph{lda2vec} model can be represented with the following equat
 
 In the equations above the total loss $\mathcal{L}$ is represented by the sum of the Dirichlet likelihood of term of document weights $\mathcal{L}^d$ \
 while the summation of $\mathcal{L}^{neg}_{ij}$ represents the paper's modification of the Skipgram objective. In further depth \
-$\vec{c_j}$ represents the context vector which accounts for the models combination of word and document vectors (See Equation \ref{eqn:lda2vec3} below).
+$\vec{c_j}$ represents the context vector which accounts for the models combination of word and document vectors (See Equation \ref{eqn:lda2vec3} below \cite{moody2016mixing}).
 
 \begin{eqnarray}
 	\label{eqn:lda2vec3}
 	\vec{c_j} = \vec{w_j} + \vec{d_j}
 \end{eqnarray}
 
-For additional explanation please reference the visual of the \emph{lda2vec} model architecture in Figure \ref{fig:lda2vec} on the page below.
+For additional explanation please reference the visual of the \emph{lda2vec} model architecture in \ref{fig:lda2vec} \cite{moody2016mixing} on the page below.
 
-\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture -- note the combination of the Skip grams from \emph{word2vec} \cite{mikolov2013distributed} used in conjunction with the LDA architecture \cite{blei2003latent}}
+\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture \cite{moody2016mixing} -- note the combination of the Skip grams from \emph{word2vec} \cite{mikolov2013distributed} used in conjunction with the LDA architecture \cite{blei2003latent}}
 
 \newpage
 From an application perspective, the author states that he used several preprocessing techniques including lemmatization which as discussed in the preprocessing\
 section above, can be detrimental to model performance. The author also leverage pretrained word embeddings in one of the experiments using the\
-pretrained values discussed in the Skipgram paper \cite{mikolov2013distributed}. During the experiments the researcher used the \emph{C\_v} topic coherence mertric \
+pretrained values discussed in the Skipgram paper \cite{mikolov2013distributed}. For the implementation of \emph{lda2vec} in the experiments on \
+the MTURK dataset, pretrained GloVe embeddings referenced in the GloVe paper was leveraged \cite{pennington2014glove}. \
+Specifically, the 300d vector that was trained on the 2014 English Wikipedia corpus and English Gigaword 5th Edition corpus with\
+6B tokens and a vocab of 400k.
+During the experiments the researcher used the \emph{C\_v} topic coherence mertric \
 which was shown to correlate with human interpretability \cite{roder2015exploring}. The \emph{C\_v} analysis on this experiment was used with \
 the online \emph{Palmetto} \cite{palmetto} topic evaluation tool. However, the \emph{C\_v} coherence metric that was used to evaluate topic coherence in these experiments \
 has been discovered to have a negative correlation other topic coherence metrics \cite{palmetto} that correlate with human interpretability \cite{mimno2011optimizing} \cite{newman2010automatic}\
@@ -690,16 +682,119 @@ and thus this metric will not be leveraged to evaluate topic coherence in the ex
 conjunction with word embeddings can effect the interpretability of topics on our dataset.
 
 \subsubsection{Embedded Topic Model (ETM)}
-\subsection{Evaluation}
-In this section I will outline some of the experiments I plan to conduct to develop an effective algorithm which
-will be able to accurately extract skills that are required to complete tasks.
+The Embedded Topic Model (ETM) is another topic model that combines traditional topic models together with word embeddings. The ETM is \
+a generative probabilistic model like the LDA, however, the word-topic probability is represented as an embedding instead of a probabilistic\
+distribution where each topic exists in the word embedding space \cite{dieng2019topic}. Some of the existing benefits of the model that is addressed\
+in the paper is that the model is able to handle stop words effectively using the topic representation in the embedding space while also introducing\
+an algorithm to efficiently compute the posterior of topic proportions which allows the model to fit to large vocabularies and large corpora, a previously\
+unaddressed space in topic modeling \cite{dieng2019topic}.
 
-\subsubsection{Metrics}
-Discuss the differing metrics of evaluating topic models. Discuss topic coherence vs. perplexity.
-Provide figures and dank math stuff here
-Explain which specific topic coherence metrics you are going to use and justify with literature.
+From an implementation standpoint the ETM focuses on the Continuous Bag of Words (CBOW) version of word embeddings \cite{mikolov2013distributed}, in CBOW\
+the representation of a given word can be expressed using the equation below \ref{eqn:etm} \cite{dieng2019topic}: 
 
-\subsubsection{Qualitative Analysis}
+\begin{eqnarray}
+	\label{eqn:etm}
+	w_{dn} \sim softmax(\rho^T\alpha_{dn})
+\end{eqnarray}
+
+In the equation the subscripts \emph{d} and \emph{n} denote the \emph{n\-th} word in a document (\emph{d}). In the equation $\rho$ signifies a matrix that contains \
+the embedding representation of the vocabulary in the corpus and $\alpha$ represents the \emph{context embedding} which is the sum of the context embedding vectors of \
+the words surrounding the current word \cite{dieng2019topic}. In the context of the ETM model, this \emph{context embedding} is referred to as a \emph{topic embedding}\
+where the topic embedding is a distributed representation of the current topic in the space of words in the document. What this allows the topic embedding to do is form\
+a topic distribution over the words in the corpus and then assign a ``high probability'' to a given word in a given topic based off the agreement between the word and topic\
+embeddings \cite{dieng2019topic}.
+
+In the paper, the authors outline two methodologies for creating $\rho$: leverage pretrained word embeddings\
+(which the authors refer to Labelled-ETM) or discover the word embeddings during the training process.\
+During the analysis section of the paper, the author's explained the Labelled-ETM which used pretrained skipgram embeddings\
+outperformed the ETM which learned embeddings during the training process. For this reason, the Labelled-ETM will be\
+leveraged for the analysis or our dataset.\
+For the experiments ran in the study, the Author's version of the Labelled ETM leverages Skip-gram embeddings\
+that were trained on the \emph{New York Times} corpus \cite{sandhaus2008nyt}. However, for the implementation of the ETM\
+in the experiments on the MTURK dataset, the GloVe embeddings \cite{pennington2014glove} used in our implementation for \emph{lda2vec} are also\
+used for our implementation of the ETM. In the GloVe embedding paper, the GLovE word representation is cited as "performing significantly"\
+better than other word representations including the CBOW and Skip gram models proposed by Mikolov et al. \cite{pennington2014glove}.
+
+From a higher level perspective the generative process of the ETM model can be described with the following steps in \ref{eqn:etm}:
+\begin{figure}
+	
+	\begin{enumerate}
+		\item Draw topic proportions $\theta_d \sim \mathcal{L}\mathcal{N}(0,I)$
+		\item For each word \emph{n} in the document:
+		\begin{enumerate}
+			\item Draw the topic assignment $z_{dn} \sim Cat(\theta_d)$
+			\item Draw the word $w_{dn} \sim softmax(\rho^T\alpha_{z_{dn}})$
+		\end{enumerate}
+	\end{enumerate}
+	\caption{ETM model generative procedure \cite{dieng2019topic}}
+	\label{eqn:etm}
+\end{figure}
+
+The steps 1-2a are very similar to the generative procedure followed by the LDA \cite{blei2003latent}, randomly generating topic proportions over documents in the corpus, then\
+for each word in a document, drawing a topic assignment for the word. However, instead of then proceeding to assign the word to a topic like in the LDA based off of the topic proportion\
+in the document and the word assignment to topics throughout the corpus, the ETM actually assigns the word based off of the CBOW representation of the topic embedding from the document\
+context \cite{dieng2019topic}. Step 2b also differs from the direct CBOW implementation because instead of using a sliding window of words to develop the embeddings, the \
+topic embeddings are created with respect to the entire document. 
+
+During the analysis section the authors measure topic quality using the UMass topic coherence score \cite{mimno2011optimizing} in conjunction with their own
+metric they define as topic diversity, which assesses the diversity in the topics generated by the topic models \cite{dieng2019topic}. \
+Using these metrics, the authors claim that the ETM significantly outperforms both the LDA and the simplistic constrained neural \
+variational document model (NVDM), a multinomial factor model of documents \cite{miao2016neural}.\
+The ETM is a state of the art topic model according to the analysis in the paper and is cited as outperforming the LDA on the metric of topic\
+coherence (which is linked to interpretability \cite{mimno2011optimizing}). This makes the ETM an excellent candidate to test against our dataset.
+
+\subsection{Qualitative Analysis}
+For the quantitative analysis !!!!Describe Qual analysis here!!!!
+
+\subsection{Quantitative Analysis}
+Evaluating topic models has generally been a difficult topic to broach. The overarching goal of topic modeling is to garner\
+understanding and meaning from unstructured text which has been a difficult problem for researchers to attempt to quantify.\
+
+\subsubsection{Perplexity}
+During the early days of topic modeling\
+the defacto standard for evaluating topic models was \emph{perplexity}, a general metric for evaluating statistical models
+which measures how well a probability distribution can predict a sample.\ In fact, perplexity was the method used \	
+to originally evaluate the LDA and is even used by modern topic models that claim they are state of the art using the
+metric of perplexity \cite{kesiraju2019learning}. However, as apart of a pivoting study in the field of topic modeling\
+that has been frequently cited, researchers discovered that perplexity actually has a negative correlation with human\
+interpretability \cite{chang2009reading}. In the study by Chang et al., the researchers performed a large scale human\
+study on Amazon MTurk and discovered that humans find that topics generated by models that achieve higher perplexity scores\
+are often considered less interpretable in latent spaces \cite{chang2009reading}. This work would give way to a new means\
+of evaluating topic coherence.
+
+\subsubsection{Topic Coherence}
+The goal of topic coherence is to automate the evaluation of the interpretability of latent topics that topic models generate.\
+Topic coherence metrics achieve this by measuring the semantic similiarity between top words in a topic allowing for the separation\
+of topics that are actually interpretable and the topics that were simply inferred statistically \cite{stevens2012exploring}.
+There have been several approaches that have been confirmed to have a positive correlation with human interpretability\
+and have been applied to evaluate the effectiveness of advances in the field of topic modeling.
+
+The two topic coherence that will be used to evaluate topic coherence in the experiments on the datset are UCI \cite{newman2010automatic}\
+and UMass \cite{mimno2011optimizing} which have both been shown to correlate with human judgement on topic quality.
+
+\paragraph{UCI}
+UCI defines the word pair score between words as a pointwise mutual information between words shown in \ref{eqn:uci} \cite{stevens2012exploring}:
+\begin{eqnarray}
+	\label{eqn:uci}
+	score(v_i,v_j,\epsilon) = log \frac{p(v_i,v_j) + \epsilon}{p(v_i)p(v_j)}
+\end{eqnarray}
+
+These word probabilities are then computed using a sliding window over an external corpus like Wikipedia \cite{stevens2012exploring}.
+
+\paragraph{UMass}
+Where UCI is based of the word pair score in the topics, the UMass metric is based off of document co-occurence as defined\
+by the equation below in \ref{eqn:umass} \cite{mimno2011optimizing}:
+
+\begin{eqnarray}
+	\label{eqn:umass}
+	score(v_i,v_j,\epsilon) = log \frac{D(v_i,v_j) + \epsilon}{D(v_i)}
+\end{eqnarray}
+
+UMass takes more of an internal approach by counting the number of documents that contain words in a topic and computing \
+this metric of the corpus the model trained on, rather than an external corpus like UCI \cite{stevens2012exploring}.
+
+\subsection{Number of Topics}
+talk about the number of topics research found in stevens and what you're going to do for your dataset
 \subsection{Approach}
 Summarize the approach with the research justification
 
@@ -712,7 +807,7 @@ This section will analyze the data that was collected by Dr. Chuan Yue's researc
 Chat about the dataset.
 
 \subsubsection{Implications}
-Explain the findings of Thien Ngo's HIT Analysis
+Explain the findings of HIT Analysis
 How would this effect topic modeling?
 Cite the literature on how duplicate documents shouldn't influence the result of the topics.
 
@@ -753,9 +848,15 @@ word clouds of top topics
 t-SNE visualization
 Observations and analysis on the topics
 
+\paragraph{ETM}
+
+talk about the performance of the ETM
+
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
+
+\paragraph{Analysis}
 
 \subsubsection{HIT Title}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
@@ -781,9 +882,15 @@ word clouds of top topics
 t-SNE visualization
 Observations and analysis on the topics
 
+\paragraph{ETM}
+
+talk about the performance of the ETM
+
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
+
+\paragraph{Analysis}
 
 \subsubsection{HIT Preview}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
@@ -811,10 +918,15 @@ word clouds of top topics
 t-SNE visualization
 Observations and analysis on the topics
 
+\paragraph{ETM}
+
+talk about the performance of the ETM
+
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
 
+\paragraph{Analysis}
 \subsubsection{Results}
 Discuss the difference between models on the different datasets.
 Discuss the differences between different datasets, what gives us more meaningful information
@@ -829,45 +941,10 @@ What do these topics tell us about the value of different parts of the dataset
 What is the most valuable part of HITs on MTURK (in regards to title, description, preview)?
 How can this information be used to improve crowdworker efficiency?
 
+Discuss interesting insights like the coronavirus
 \chapter{Conclusion}
 Conclude
-% \subsection{Outline of Project Timeline}
-% \begin{itemize}
-% 	\item \textbf{November 25:} Thesis Proposal
-% 	\item \textbf{December 16:} Send Thesis Committee updated timeline, research unsupervised learning/transfer learning in NLP
-% 	\item \textbf{December 23:} Research unsupervised/transfer learning in NLP
-% 	\item \textbf{January 6:} Develop data pipeline for testing different unsupervised learning/transfer learning techniques. Begin developing transfer learning models.
-% 	\item \textbf{January 13:} Receive task webscrape data from Dr. Yue's team. Begin testing unsupervised techniques.
-% 	\item \textbf{January 20:} Begin testing unsupervised techniques. Begin testing transfer learning techniques.
-% 	\item \textbf{January 27:} Test unsupervised techniques. Test transfer learning techniques.
-% 	\item \textbf{February 10:} Test unsupervised techniques. Test transfer learning techniques. Begin drafting paper for conference submission.
-% 	\item \textbf{February 24:} Algorithm iteration and improvement, continue writing paper for conference submission, start drafting thesis
-% 	\item \textbf{March 9:} Develop visualization and analysis of test results, further iteration and improvement of algorithms, continue writing paper for conference submission, begin writing thesis
-% 	\item \textbf{March 23:} Continue algorithm analysis, continue writing paper for conference submission, continue writing thesis
-% 	\item \textbf{April 6:} Defend Thesis
-% 	\item \textbf{April 13:} Complete graduation checkout course, submit signed thesis defense form, upload content approved thesis to ProQuest
-% 	\item \textbf{April 17:} Thesis formatting approval by 1:00pm
-% 	\item \textbf{April 17 - May 7:} Continue drafting paper and submit to conferences
-% 	\item \textbf{May 7:} Graduate
-% \end{itemize}
 
-% \subsection{Further Applications}
-% In addition to Intelligent Batching, one of the further applications of this research is the development of a task\
-% recommendation system for crowdsourcing platforms. In order to develop a recommendation engine which leverages the skill\
-% inference method I will be researching I will require a large dataset of crowd worker interactions with tasks in a crowdsourcing\
-% platform which isn't going to be available in the initial dataset collected by Dr. Yue's team. If enough of this data were to\
-% be collected you could develop a recommendation engine using a content-based approach which would implicitly determine user skills\
-% from a user's completed task history in addition to skills that could be inferred and harvested from a user profile or a resume\
-% and then match a user to tasks that they would be able to complete and that were relevant to the calculated user skillset based on\
-% skill inference of tasks in the crowdsourcing platform.
-% \subsection{Support}
-% In order to deliver high quality research I request the following meeting cadence with the thesis\
-% committee to gather feedback and correction on my approach as needed:
-% \begin{itemize}
-% 	\item \textbf{Dr. Chuan Yue (Thesis Advisor):} Weekly status meeting and review. This meeting should be leveraged to review weekly progress and to give feedback and code review to ensure satisfactory progress. \textbf{Suggested Duration: 1 hr}
-% 	\item \textbf{Dr. Thomas Williams (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
-% 	\item \textbf{Dr. Hua Wang (Committee Member):} Bi-weekly status meeting on research progress. This meeting will be leveraged to gather feedback on specific research techniques, to update committee member on progress, and for guidance and additional considerations. \textbf{Suggested Duration: 15-30 min}
-% \end{itemize}
 
 % \begin{eqnarray}
 % 	\label{eq:importance}

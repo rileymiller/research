@@ -1,0 +1,110 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+```{r}
+library(dplyr)
+#Data file path
+hits_file <- "/Users/rileymiller/code/research/mturk/20200126-20200312-hits.json"
+# Read in the data
+hits_data <- read.csv(hits_file, header = TRUE)
+
+```
+
+```{r}
+head(hits_data)
+```
+
+
+```{r}
+hits_data_small <- select(hits_data, requester_id, hit_set_id, title, description, assignable_hits_count,  assignment_duration_in_seconds,creation_time, requesterInfo.activityLevel,requesterInfo.taskReviewTime)
+names(hits_data_small)[names(hits_data_small) == "requesterInfo.taskReviewTime"] <- "review_time"
+names(hits_data_small)[names(hits_data_small) == "requesterInfo.activityLevel"] <- "requester_activity_level"
+hits_data_small
+```
+
+```{r}
+hits_per_requester <- count(hits_data_small,requester_id)
+hits_per_requester
+```
+
+```{r}
+num_hits_vs_num_requesters <- count(hits_per_requester,n)
+names(num_hits_vs_num_requesters)[names(num_hits_vs_num_requesters) == "n"] <- "num_hits_requested"
+names(num_hits_vs_num_requesters)[names(num_hits_vs_num_requesters) == "nn"] <- "num_requesters"
+num_hits_vs_num_requesters
+```
+
+
+
+```{r}
+library(ggplot2)
+ggplot(data = num_hits_vs_num_requesters, mapping = aes(x = num_hits_requested, y = num_requesters)) + 
+  geom_line() + ggtitle("Plot 1")
+
+```
+
+
+```{r}
+attach(mtcars)
+plot(wt, mpg, main="Scatterplot Example",
+   xlab="num_hits_requested", ylab="num_requesters", pch=19)
+```
+
+
+
+```{r}
+# library & data
+library(ggplot2)
+
+# Basic plot with title
+ggplot( data=num_hits_vs_num_requesters, aes(x = num_hits_requested)) + 
+  geom_histogram(fill="skyblue") +
+  ggtitle("A blue Histogram")
+```
+
+
+
+```{r}
+
+sorted_hits_per_requester <- hits_per_requester[order(-hits_per_requester$n),]
+sorted_hits_per_requester
+```
+
+```{r}
+top_10_requesters_hits <- sorted_hits_per_requester$n[1] + sorted_hits_per_requester$n[2] + sorted_hits_per_requester$n[3] + sorted_hits_per_requester$n[4] + sorted_hits_per_requester$n[5] + sorted_hits_per_requester$n[6] + sorted_hits_per_requester$n[7] + sorted_hits_per_requester$n[8] + sorted_hits_per_requester$n[9] + sorted_hits_per_requester$n[10]
+other_requesters_hits <- sum(sorted_hits_per_requester$n) - top_10_requesters_hits
+
+```
+
+
+
+```{r}
+library(plotrix)
+pie_data1 <- c(sorted_hits_per_requester$n[1], sorted_hits_per_requester$n[2], sorted_hits_per_requester$n[3], sorted_hits_per_requester$n[4], sorted_hits_per_requester$n[5], sorted_hits_per_requester$n[6], sorted_hits_per_requester$n[7], sorted_hits_per_requester$n[8], sorted_hits_per_requester$n[9], sorted_hits_per_requester$n[10], other_requesters_hits)
+lb1 <- c("1st","2nd", "3nd", "4th","5th","6th","7th","8th","9th","10th","others")
+pie(pie_data1,labels=pie_data1,
+   main="Pie Chart of top 10 requesters' hits and other requesters (# hits)")
+```
+
+```{r}
+library(plotrix)
+pie_data1 <- c(sorted_hits_per_requester$n[1], sorted_hits_per_requester$n[2], sorted_hits_per_requester$n[3], sorted_hits_per_requester$n[4], sorted_hits_per_requester$n[5], sorted_hits_per_requester$n[6], sorted_hits_per_requester$n[7], sorted_hits_per_requester$n[8], sorted_hits_per_requester$n[9], sorted_hits_per_requester$n[10], other_requesters_hits)
+lb1 <- c("1st","2nd", "3nd", "4th","5th","6th","7th","8th","9th","10th","others")
+pie(pie_data1,labels=lb1,
+   main="Pie Chart of top 10 requesters' hits and other requesters(Places)")
+```
+
+
+
+
+
+
+
+
+
+
+
