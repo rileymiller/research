@@ -73,7 +73,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-\title{Thesis: Topic Modelling of Amazon MTURK}
+\title{Topic Modeling on Amazon MTURK}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -564,8 +564,14 @@ For the preview corpus there is also an additional preprocessing step to clean u
 extracting data from a web page there exists a good deal of noise that comes with extracting raw text from the web such as HTML, styling, scripts injected into the web page as\
 well as web page boiler plate. Gathering input from the page source of a website requires significant preprocessing in order for the data to be a good input for topic models \cite{boyd2014care}.\
 To clean up the page source of documents in the preview corpus, each document is put through additional preprocessing than the title and descriptions which are extracted only as strings\
-rather than web source code and each preview is stripped of all HTML, scripts, styles, and new lines using the Beautiful Soup tool \cite{richardson2007beautiful}.
-
+rather than web source code and each preview is stripped of all HTML, scripts, styles, and new lines using the Beautiful Soup tool \cite{richardson2007beautiful}. \
+After stripping the web entities out of the page source, the size of the data was massive and had a large and unique vocabulary -- the dataset was reduced to 5\% of \
+it's original size. This decision was backed by the fact that the handling of large vocablularies by topic models is still an area yet to be addressed by research \cite{dieng2019topic}.\
+To reduce the dataset, the combined dataset was sampled randomly until it was reduced from $32814$ unique documents to $1640$ unique documents. After being reduced in size,\
+this dataset was then manually checked for combined/inerrent tokens to allow the models to discover unigram topics. This manual step was deemed necessary after examining\
+results from topic models on the preview dataset that contained conjoined words (i.e ``zoomblank'', ``berniesanders'', ``redbox'') which was causing the models\
+to create incoherent topics. After manually separating these conjoined tokens, the previews provided the richest topics amongst datasets due in part to the size of the\
+documents themselves, and that the vocabulary had a greater diversity than that of the description and title datasets.
 \subsection{Topic Models}
 Topic modeling is a commonly used approach to perform unsupervised analysis of unstructured text. The field has become increasingly more popular as the amount of unstructured\
 data that businesses continue to collect increases, one study estimated that up to 80\% of an organizations data is unstructured \cite{Sint2009CombiningUF} making the development\
@@ -763,8 +769,6 @@ variational document model (NVDM), a multinomial factor model of documents \cite
 The ETM is a state of the art topic model according to the analysis in the paper and is cited as outperforming the LDA on the metric of topic\
 coherence (which is linked to interpretability \cite{mimno2011optimizing}). This makes the ETM an excellent candidate to test against our dataset.
 
-\subsection{Qualitative Analysis}
-For the quantitative analysis !!!!Describe Qual analysis here!!!!
 
 \subsection{Quantitative Analysis}
 Evaluating topic models has generally been a difficult topic to broach. The overarching goal of topic modeling is to garner\
@@ -835,6 +839,12 @@ Upon these findings on the topic coherence metrics that will be used to evaluate
 study, each model will be evaluated on the dataset over $10-100$ topics using 5 step intervals. This will\
 allow for the comparison of the models over a range of topics and will give statistical backing for the\
 latent topics that receive further in-depth analysis.
+
+\subsection{Qualitative Analysis}
+For the experiments, the quantitative results will drive the quantitative analysis. Based off the highest scoring\
+topic for each dataset and for each model, the topics that drove the highest coherence score will be analyzed\
+extrinsically to give higher level meaning to the information that was extracted from the text.
+
 \subsection{Approach}
 To summarize the approach of the following experiments: the 4 separate datasets that were collected\
 from webscraping Amazon MTurk by Dr. Yue's research team will be combined and used as the source of truth over the course\
@@ -853,7 +863,43 @@ number of topics for each model on each dataset.
 This section will analyze the data that was collected by Dr. Chuan Yue's research team.
 
 \subsubsection{HIT Dataset}
-Chat about the dataset.
+Chat about the dataset. Requester Name is replaced since permission to use the requester's name \
+was not optained.
+\ref{tab:requester_top_10}
+\begin{table}
+	\caption{\label{tab:requester_top_10} Top 10 Requesters by Number of Hits Created}
+	\begin{center}
+		\begin{tabular}{|l|c|}
+			\hline
+			\textbf{Requester} & \textbf{Count} \\
+			\hline
+			Requester 1 & 400699 \\
+			\hline
+			Requester 2 & 57289 \\
+			\hline
+			Requester 3 & 55919 \\
+			\hline
+			Requester 4 & 49162 \\
+			\hline
+			Requester 5 & 44926 \\
+			\hline
+			Requester 6 & 36025 \\
+			\hline
+			Requester 7 & 34017 \\
+			\hline
+			Requester 8 & 31734 \\
+			\hline
+			Requester 9 & 31336 \\
+			\hline
+			Requester 10 & 24841 \\
+			\hline
+			Rest of Requesters & 342754 \\
+			\hline
+			\textbf{Total HITs} & \textbf{1108702} \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
 \ref{fig:top10-pi}
 \csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters by Number of HITs }
@@ -880,21 +926,70 @@ Discuss the number of topics used for extracting topics during these experiments
 \subsubsection{HIT Descriptions}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
 
-\paragraph{LSI Analysis}
+\paragraph{Corpus Statistics}
+Total unique words 4229
+Total words in corpus: 23767
+\ref{tab:description_top_words}
+
+\begin{table}
+	\caption{\label{tab:description_top_words} Top 10 Words in Description Corpus}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Word} & \textbf{Count} \\
+			\hline
+			survey & 880 \\
+			\hline
+			study & 511 \\
+			\hline
+			questions & 455 \\
+			\hline
+			answer & 369 \\
+			\hline
+			minutes & 335 \\
+			\hline
+			asked & 298 \\
+			\hline
+			complete & 275 \\
+			\hline
+			short & 271 \\
+			\hline
+			opinion & 256 \\
+			\hline
+			give & 243 \\
+			\hline
+			\textbf{Unique Words} & 4229 \\
+			\hline
+			\textbf{Total Words} & 23767 \\
+			\hline
+			\textbf{Number of Documents} & 2744 \\
+			\hline
+			\textbf{Average Document Length (Characters)} & 69 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:description-50-bar}
+\csmfigure{description-50-bar}{figures/description-50-bar}{6.5in}{Description - Top 50 Words}
+
+\ref{fig:description-50-pi}
+\csmfigure{description-50-pi}{figures/description-50-pi}{6.5in}{Description Corpus Distribution}
+
+\newpage
+\paragraph{LSI}
 result of LSI on the number of topics, output the topics
 \ref{fig:lsi-umass-description}
 \ref{fig:lsi-uci-description}
 \csmfigure{lsi-umass-description}{figures/lsi-umass-description}{5.5in}{LSI UMass Topic Coherence}
-adfkalsdmfdsamkl
 
-adsf asdf as
 \csmfigure{lsi-uci-description}{figures/lsi-uci-description}{5.5in}{LSI UCI Topic Coherence}
 
 % lsi-umass-description.png
 \newpage
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
+
 Observations and analysis on the topics
 
 \paragraph{LDA}
@@ -908,17 +1003,17 @@ lorem ipsum
 lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum
 lorem ipsum
 \csmfigure{lda-uci-description}{figures/lda-uci-description}{5.5in}{LDA UCI Topic Coherence}
-
+\newpage
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
+
 Observations and analysis on the topics
 
-\paragraph{Lda2vec}
+\paragraph{lda2vec}
 result of LSI on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
+
 Observations and analysis on the topics
 
 \paragraph{ETM}
@@ -929,15 +1024,72 @@ talk about the performance of the ETM
 
 \ref{fig:etm-uci-description}
 \csmfigure{etm-uci-description}{figures/etm-uci-description}{5.5in}{ETM UCI Topic Coherence}
+\newpage
+
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
 
-\paragraph{Analysis}
+\ref{fig:umass-description}
+\csmfigure{umass-description}{figures/umass-description}{5.5in}{Description UMass Topic Coherence}
 
+\ref{fig:uci-description}
+\csmfigure{uci-description}{figures/uci-description}{5.5in}{Description UCI Topic Coherence}
+
+\newpage
 \subsubsection{HIT Title}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+\paragraph{Corpus Statistics}
+Total unique words 3337
+Total words in corpus: 14584
+\ref{tab:title_top_words}
 
+\begin{table}
+	\caption{\label{tab:title_top_words} Top 10 Words in Title Corpus}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Word} & \textbf{Count} \\
+			\hline
+			survey & 956 \\
+			\hline
+			minutes & 849 \\
+			\hline
+			answer & 391 \\
+			\hline
+			study & 230 \\
+			\hline
+			short & 224 \\
+			\hline
+			hit & 151 \\
+			\hline
+			image & 145 \\
+			\hline
+			minute & 127 \\
+			\hline
+			compensation & 101 \\
+			\hline
+			opinions & 100 \\
+			\hline
+			\textbf{Unique Words} & 3337 \\
+			\hline
+			\textbf{Total Words} & 14584 \\
+			\hline
+			\textbf{Number of Documents} & 3145 \\
+			\hline
+			\textbf{Average Document Length (Characters)} & 38 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:title-50-bar}
+\csmfigure{title-50-bar}{figures/title-50-bar}{6.5in}{Title - Top 50 Words}
+
+\ref{fig:title-50-pi}
+\csmfigure{title-50-pi}{figures/title-50-pi}{6.5in}{Title Corpus Distribution}
+
+\newpage
 \paragraph{LSI}
 
 \ref{fig:lsi-umass-title}
@@ -948,9 +1100,9 @@ Use this section to discuss the experiments run on the descriptions of HITS in t
 result of LSI on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
-Observations and analysis on the topics
 
+Observations and analysis on the topics
+\newpage
 \paragraph{LDA}
 
 \ref{fig:lda-umass-title}
@@ -961,14 +1113,14 @@ Observations and analysis on the topics
 result of LDA on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
-Observations and analysis on the topics
 
-\paragraph{Lda2vec}
+Observations and analysis on the topics
+\newpage
+\paragraph{lda2vec}
 result of Lda2vec on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
+
 Observations and analysis on the topics
 
 \paragraph{ETM}
@@ -981,37 +1133,91 @@ talk about the performance of the ETM
 
 \ref{fig:etm-uci-title}
 \csmfigure{etm-uci-title}{figures/etm-uci-title}{5.5in}{ETM UCI Topic Coherence}
-
+\newpage
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
 
-\paragraph{Analysis}
+\ref{fig:umass-title}
+\csmfigure{umass-title}{figures/umass-title}{5.5in}{Title UMass Topic Coherence}
 
+\ref{fig:uci-title}
+\csmfigure{uci-title}{figures/uci-title}{5.5in}{Title UCI Topic Coherence}
+
+\newpage
 \subsubsection{HIT Preview}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
 
-\paragraph{Preprocessing}
-Talk about why you need to preprocess the previews
+\paragraph{Corpus Statistics}
+Total unique words 22016
+Total words in corpus: 518817
+\ref{tab:preview_top_words}
+
+\begin{table}
+	\caption{\label{tab:preview_top_words} Top 10 Words in Preview Corpus}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Word} & \textbf{Count} \\
+			\hline
+			sentence & 9038 \\
+			\hline
+			answer & 7135 \\
+			\hline
+			original & 5475 \\
+			\hline
+			receipt & 5121 \\
+			\hline
+			hit & 3627 \\
+			\hline
+			text & 3144 \\
+			\hline
+			brand & 2933 \\
+			\hline
+			note & 2798 \\
+			\hline
+			product & 2797 \\
+			\hline
+			data & 2671 \\
+			\hline
+			\textbf{Unique Words} & 22016 \\
+			\hline
+			\textbf{Total Words} & 518817 \\
+			\hline
+			\textbf{Number of Documents} & 1639 \\
+			\hline
+			\textbf{Average Document Length (Characters)} & 2349 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:preview-50-bar}
+\csmfigure{preview-50-bar}{figures/preview-50-bar}{6.5in}{Preview - Top 50 Words}
+
+\ref{fig:preview-50-pi}
+\csmfigure{preview-50-pi}{figures/preview-50-pi}{6.5in}{Preview Corpus Distribution}
+
+\newpage
 \paragraph{LSI}
 result of LSI on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
+
 Observations and analysis on the topics
 
 \paragraph{LDA}
 result of LDA on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
-t-SNE visualization
+
 Observations and analysis on the topics
 
-\paragraph{Lda2vec}
+\paragraph{lda2vec}
 result of Lda2vec on the number of topics, output the topics\
 visualization of document topic distribution\
 word clouds of top topics\
-t-SNE visualization\
+\
 bservations and analysis on the topics
 
 \paragraph{ETM}
@@ -1022,14 +1228,29 @@ talk about the performance of the ETM
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
 
-\paragraph{Analysis}
 \subsubsection{Results}
 Discuss the difference between models on the different datasets.
 Discuss the differences between different datasets, what gives us more meaningful information
 
+\ref{fig:lsi-umass-dataset-comparison}
+\csmfigure{lsi-umass-dataset-comparison}{figures/lsi-umass-dataset-comparison}{5.5in}{LSI UMass Topic Coherence Dataset Comparison}
+\ref{fig:lsi-uci-dataset-comparison}
+\csmfigure{lsi-uci-dataset-comparison}{figures/lsi-uci-dataset-comparison}{5.5in}{LSI UCI Topic Coherence Dataset Comparison}
+
+\ref{fig:lda-umass-dataset-comparison}
+\csmfigure{lda-umass-dataset-comparison}{figures/lda-umass-dataset-comparison}{5.5in}{LDA UMass Topic Coherence Dataset Comparison}
+\ref{fig:lda-uci-dataset-comparison}
+\csmfigure{lda-uci-dataset-comparison}{figures/lda-uci-dataset-comparison}{5.5in}{LDA UCI Topic Coherence Dataset Comparison}
+
+\ref{fig:etm-umass-dataset-comparison}
+\csmfigure{etm-umass-dataset-comparison}{figures/etm-umass-dataset-comparison}{5.5in}{ETM UMass Topic Coherence Dataset Comparison}
+\ref{fig:etm-uci-dataset-comparison}
+\csmfigure{etm-uci-dataset-comparison}{figures/etm-uci-dataset-comparison}{5.5in}{ETM UCI Topic Coherence Dataset Comparison}
 
 
-\chapter{Implications}
+%umass-dataset-comparison
+
+\chapter{Further Analysis}
 Discuss the implications of this research.
 
 What do these topics tell us about crowdsourcing
