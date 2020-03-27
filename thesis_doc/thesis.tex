@@ -432,7 +432,28 @@ analyze the dataset, and the evaluation methods that were leveraged in the exper
 % \label{sec:important-section}
 \subsection{Dataset}
 The dataset that was leveraged for the experiments in my thesis was collected over the course of January 26, 2020 to March 12, 2020 \
-by Dr. Yue's research team. The dataset was collected by a webscraping tool built by the team that ran on a brand new Amazon MTurk account.\
+by Dr. Yue's research team. Specifically, the dataset was collected over the following dates shown in \ref{tab:data_dates}. For the \
+topic modeling analysis that was performed in the experiments these datasets were combined and processed as a singular\
+dataset. Further analysis is also performed from an individual dataset perspective.
+\begin{table}
+	\caption{\label{tab:data_dates} Amazon MTurk Webscrape Collection Dates}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			& Dates \\
+			\hline
+			1 & 01/26/20 - 02/02/20 \\
+			\hline
+			2 & 02/17/20 - 02/27/20 \\
+			\hline
+			3 & 02/27/20 - 03/03/20 \\
+			\hline
+			4 & 03/03/20 - 03/12/20 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+The dataset was collected by a webscraping tool built by the team that ran on a brand new Amazon MTurk account.\
 One of the constraints of this dataset is that the HITs that were collected from the tool will only include HITs that would be accessible\
 to crowdworkers who haven't completed any previous HITs. Since requesters have the ability to restrict who can access their HITs based off of \
 crowdworker qualifications such as HIT approval rate, HIT submission rate, Location, total approved HITs, as well as several other HIT related\
@@ -469,7 +490,6 @@ The specific fields recorded by the tool for a given HIT document are listed in 
 \end{lstlisting}
 
 The corresponding fields recorded by the tool for the preview itself (not including the external links embedded in the preview) are listed in the JSON snippet below:\
-\newpage
 
 \begin{lstlisting}
 {
@@ -715,7 +735,7 @@ in the experiments on the MTURK dataset, the GloVe embeddings \cite{pennington20
 used for our implementation of the ETM. In the GloVe embedding paper, the GLovE word representation is cited as "performing significantly"\
 better than other word representations including the CBOW and Skip gram models proposed by Mikolov et al. \cite{pennington2014glove}.
 
-From a higher level perspective the generative process of the ETM model can be described with the following steps in \ref{eqn:etm}:
+From a higher level perspective the generative process of the ETM model can be described with the following steps in \ref{eqn:etm-procedure}:
 \begin{figure}
 	
 	\begin{enumerate}
@@ -727,7 +747,7 @@ From a higher level perspective the generative process of the ETM model can be d
 		\end{enumerate}
 	\end{enumerate}
 	\caption{ETM model generative procedure \cite{dieng2019topic}}
-	\label{eqn:etm}
+	\label{eqn:etm-procedure}
 \end{figure}
 
 The steps 1-2a are very similar to the generative procedure followed by the LDA \cite{blei2003latent}, randomly generating topic proportions over documents in the corpus, then\
@@ -791,12 +811,41 @@ by the equation below in \ref{eqn:umass} \cite{mimno2011optimizing}:
 \end{eqnarray}
 
 UMass takes more of an internal approach by counting the number of documents that contain words in a topic and computing \
-this metric of the corpus the model trained on, rather than an external corpus like UCI \cite{stevens2012exploring}.
+this metric of the corpus the model trained on, rather than an external corpus like UCI \cite{stevens2012exploring}.\
+The UMass topic coherence metric was also used to evaluate topic coherence on the ETM model.
 
 \subsection{Number of Topics}
-talk about the number of topics research found in stevens and what you're going to do for your dataset
+The number of topics that are selected when training a topic model is critically important. The majority\
+of topic models (even modern topic model architecture that use word embeddings) are still based on or used\
+in conjunction with a probability distribution over a fixed number of latent topics. This fixed parameter\
+has been a subfield of research within topic modeling and many researchers approach for tweaking this\
+value is via guess and check. One of the approaches that has been pitched as a solution to this problem\
+is to train topic models over a set number of topics and evaluate the corresponding topic coherence approaches.\
+After the advances of topic coherence metrics which possessed a positive correlation with human interpretability,\
+Stevens et al. performed a study on the number of topics and it's effect on topic coherence using several\
+heavily implemented topic models. In their study, the researchers discovered that when valuating off of \
+topic coherence alone, that topic models reach a point of stabilization in terms of topic coherence using the UCI and UMass\
+metrics at around 100 topics. This trend was consistent over the topic models analyzed in the study: LDA, LSI (SVD), and LSI (NMF)\
+\cite{stevens2012exploring}. The figure used to analyze these results, published in the paper \
+is shown below in \ref{fig:num_topics}:
+
+\csmfigure{num_topics}{figures/num_topics}{6.5in}{Effect of Number of Topics on UCI and UMass Topic Coherence \cite{stevens2012exploring}}
+
+Upon these findings on the topic coherence metrics that will be used to evaluate topic quality in this\
+study, each model will be evaluated on the dataset over $10-100$ topics using 5 step intervals. This will\
+allow for the comparison of the models over a range of topics and will give statistical backing for the\
+latent topics that receive further in-depth analysis.
 \subsection{Approach}
-Summarize the approach with the research justification
+To summarize the approach of the following experiments: the 4 separate datasets that were collected\
+from webscraping Amazon MTurk by Dr. Yue's research team will be combined and used as the source of truth over the course\
+of the experiment. This dataset will then preprocess to remove stopwords and document duplicates, as well a \
+website page source data in the preview datasets. This dataset will then be analyzed for high level trends \
+and relationships that can provide further insight to the results of the topic models and to understand the \
+characteristics of the dataset itself. Then, using the LSI, LDA, \emph{lda2vec}, and ETM, these models will \
+be used to extract information from the titles, description, and previews of the HITS in the dataset. These models\
+will be evaluated over a range of $10-100$ topics, stepping in intervals of 5 topics, and will be analyzed quantitatively\
+using the UCI and UMass topic coherence metrics as well as in further depth qualitatively for the high performing\
+number of topics for each model on each dataset. 
 
 \chapter{What are the primary topics of Amazon MTURK HITs?}
 
@@ -805,6 +854,10 @@ This section will analyze the data that was collected by Dr. Chuan Yue's researc
 
 \subsubsection{HIT Dataset}
 Chat about the dataset.
+
+\ref{fig:top10-pi}
+\csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters by Number of HITs }
+adfkalsdmfdsamkl
 
 \subsubsection{Implications}
 Explain the findings of HIT Analysis
@@ -827,8 +880,18 @@ Discuss the number of topics used for extracting topics during these experiments
 \subsubsection{HIT Descriptions}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
 
-\paragraph{LSI}
+\paragraph{LSI Analysis}
 result of LSI on the number of topics, output the topics
+\ref{fig:lsi-umass-description}
+\ref{fig:lsi-uci-description}
+\csmfigure{lsi-umass-description}{figures/lsi-umass-description}{5.5in}{LSI UMass Topic Coherence}
+adfkalsdmfdsamkl
+
+adsf asdf as
+\csmfigure{lsi-uci-description}{figures/lsi-uci-description}{5.5in}{LSI UCI Topic Coherence}
+
+% lsi-umass-description.png
+\newpage
 visualization of document topic distribution
 word clouds of top topics
 t-SNE visualization
@@ -836,6 +899,16 @@ Observations and analysis on the topics
 
 \paragraph{LDA}
 result of LDA on the number of topics, output the topics
+\ref{fig:lda-umass-description}
+\ref{fig:lda-uci-description}
+
+\csmfigure{lda-umass-description}{figures/lda-umass-description}{5.5in}{LDA UMass Topic Coherence}
+lorem ipsum
+
+lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum
+lorem ipsum
+\csmfigure{lda-uci-description}{figures/lda-uci-description}{5.5in}{LDA UCI Topic Coherence}
+
 visualization of document topic distribution
 word clouds of top topics
 t-SNE visualization
@@ -851,7 +924,11 @@ Observations and analysis on the topics
 \paragraph{ETM}
 
 talk about the performance of the ETM
+\ref{fig:etm-umass-description}
+\csmfigure{etm-umass-description}{figures/etm-umass-description}{5.5in}{ETM UMass Topic Coherence}
 
+\ref{fig:etm-uci-description}
+\csmfigure{etm-uci-description}{figures/etm-uci-description}{5.5in}{ETM UCI Topic Coherence}
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
@@ -862,6 +939,12 @@ Explain the scores and what that means
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
 
 \paragraph{LSI}
+
+\ref{fig:lsi-umass-title}
+\csmfigure{lsi-umass-title}{figures/lsi-umass-title}{5.5in}{LSI UMass Topic Coherence}
+
+\ref{fig:lsi-uci-title}
+\csmfigure{lsi-uci-title}{figures/lsi-uci-title}{5.5in}{LSI UCI Topic Coherence}
 result of LSI on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
@@ -869,6 +952,12 @@ t-SNE visualization
 Observations and analysis on the topics
 
 \paragraph{LDA}
+
+\ref{fig:lda-umass-title}
+\csmfigure{lda-umass-title}{figures/lda-umass-title}{5.5in}{LDA UMass Topic Coherence}
+
+\ref{fig:lda-uci-title}
+\csmfigure{lda-uci-title}{figures/lda-uci-title}{5.5in}{LDA UCI Topic Coherence}
 result of LDA on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
@@ -884,7 +973,14 @@ Observations and analysis on the topics
 
 \paragraph{ETM}
 
+
 talk about the performance of the ETM
+
+\ref{fig:etm-umass-title}
+\csmfigure{etm-umass-title}{figures/etm-umass-title}{5.5in}{ETM UMass Topic Coherence}
+
+\ref{fig:etm-uci-title}
+\csmfigure{etm-uci-title}{figures/etm-uci-title}{5.5in}{ETM UCI Topic Coherence}
 
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
@@ -912,11 +1008,11 @@ t-SNE visualization
 Observations and analysis on the topics
 
 \paragraph{Lda2vec}
-result of Lda2vec on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
-t-SNE visualization
-Observations and analysis on the topics
+result of Lda2vec on the number of topics, output the topics\
+visualization of document topic distribution\
+word clouds of top topics\
+t-SNE visualization\
+bservations and analysis on the topics
 
 \paragraph{ETM}
 
