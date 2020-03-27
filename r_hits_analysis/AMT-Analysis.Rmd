@@ -7,10 +7,11 @@ output:
 
 ```{r}
 library(dplyr)
+library("rjson")
 #Data file path
 hits_file <- "/Users/rileymiller/code/research/mturk/20200126-20200312-hits.json"
 # Read in the data
-hits_data <- read.csv(hits_file, header = TRUE)
+hits_data <- fromJSON(file = hits_file)
 
 ```
 
