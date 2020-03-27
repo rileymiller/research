@@ -1,0 +1,12 @@
+study, task, complete, questions, minutes, participate, survey, research, answer, asked
+survey, complete, minutes, people, hit, short, questions, study, research, asked
+series, asked, images, page, shown, questions, read, survey, give, opinion
+survey, minutes, people, hit, complete, study, research, minute, short, questions
+survey, complete, minutes, people, hit, short, study, task, questions, research
+survey, minutes, people, questions, short, study, complete, answer, asked, hit
+opinion, give, survey, questions, answer, shown, minutes, images, minute, people
+survey, minute, research, participate, people, minutes, study, complete, hit, short
+questions, answer, short, read, asked, series, task, survey, shown, minutes
+study, asked, minutes, survey, short, complete, questions, people, answer, research
+questions, answer, read, short, asked, series, survey, task, minutes, opinion
+study, short, participate, complete, read, minutes, research, asked, shown, survey

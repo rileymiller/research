@@ -1,0 +1,17 @@
+text, words, english, review, people, meaning, writing, good, day, word
+select, image, option, read, submit, images, javascript, button, task, click
+answer, casing, spelling, brand, original, edit, hair, scent, note, proper
+search, find, results, provided, link, page, website, found, click, workers
+company, find, website, correct, country, address, check, number, phone, url
+sentence, original, number, population, choose, university, universities, york, harvard, meaning
+profile, text, copy, appears, company, link, click, job, work, years
+product, brand, description, title, information, products, design, images, long, match
+receipt, item, leave, items, number, total, blank, id, choose, valid
+person, phone, number, click, https, link, email, address, website, copy
+amazon, hits, information, service, world, report, time, guide, javascript, work
+preview, accept, information, rate, review, payment, years, requester, work, average
+blank, unclear, zoom, rotate, work, special, text, ctrl, page, copy
+receipt, data, item, reject, left, fields, side, readable, match, select
+answer, acceptable, bad, good, question, content, answers, people, marked, response
+question, answer, questions, answers, task, responses, work, multiple, single, paid
+survey, article, paste, link, complete, code, end, box, receive, form
