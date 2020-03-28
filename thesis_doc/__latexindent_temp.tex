@@ -19,6 +19,7 @@
 \usepackage{array}
 \usepackage{longtable}
 
+\usepackage{booktabs}
 \usepackage{enumitem}
 % For inserting sideways tables and figures
 \usepackage{rotating}
@@ -51,6 +52,12 @@
 
 % For matrices:
 \usepackage{amsmath}
+
+\usepackage{longtable}
+
+
+\usepackage{array}
+\newcolumntype{L}{>{\arraybackslash}m{5.5in}}
 
 % For using helvetica instead of Computer Modern
 %\usepackage{helvet}
@@ -214,21 +221,27 @@ This project would never have succeeded without the love and support of my frien
 \chapter{Introduction}
 
 The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines.\
-My research will be centered around the extraction and analysis of topics in HITS on Amazon MTURK. 
+My research will be centered around the extraction and analysis of topics in Human Intelligence Tasks (HITs) on Amazon MTURK. 
 
 In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools.
 \subsection{Background}
 Crowdsourcing platforms have become increasingly popular over the course of the last\ 
-several years, introducing the concept of utilizing ``crowd`` intelligence to complete\
-work \cite{kuek2015global}. These platforms are historically architected to facilitate the relationship\ 
+several years, introducing the concept of utilizing ``crowd'' intelligence to complete\
+work \cite{kuek2015global}. Growing crowdsourcing platforms are a result of the growing\
+online "gig economy" and has started the conversation for changing labor legislature\
+to account for workers who don't fit nicely into the mold of employee or independent contractor\
+\cite{harris2015proposal}.
+These platforms are historically architected to facilitate the relationship\ 
 between requesters, who create work on the platform in the form of items commonly\ 
 referred to as tasks, and crowd workers who are real people that complete tasks that\ 
 are curated by the requesters. There are a variety of different crowdsourcing platforms\ 
 that have entered the crowdsourcing market such as Figure Eight, ClickWorker, CrowdFlower, Spare5,\ 
-Respondent, Swagbucks, and the most popular platform: Amazon Mechanical Turk (MTURK).\ 
+Respondent, Swagbucks, and one the most popular platforms: Amazon Mechanical Turk (MTURK).\ 
+Amazon MTurk has been used frequently by the research community and has become and integral\
+part of outsourcing. \cite{hitlin2016research}\ 
 These platforms are used for a variety of different use cases ranging from collecting\
 data via surveys, image/video annotation, translations, spreadsheet modifications and\ 
-analysis, writing, to theoretically anything. The typical workflow in crowdsourcing\ 
+analysis, and writing. \cite{ipeirotis2010Analysis} The typical workflow in crowdsourcing\ 
 platforms starts with requesters who breakdown work that they need to get completed\ 
 into smaller chunks called tasks. This process usually involves writing a description of what needs to be\ 
 done, how it needs to be completed, providing the input the crowd worker needs to\ 
@@ -258,7 +271,7 @@ time and allow them to focus on higher priority tasks. Some of the practical use
 cases that requesters offload to crowdsourcing sites are bulk tasks that require\ 
 human input but take a considerable amount of time like data annotation of machine\ 
 learning and computer vision datasets which requires a large amount of accurately\ 
-labeled data to fuel deep learning algorithms. One of the primary benefits that\
+labeled data to fuel deep learning algorithms. \cite{hitlin2016research} One of the primary benefits that\
 crowdsourcing platforms present requesters is that requesters are able to curate a\ 
 massive amount of tasks and distribute them amongst crowd workers for a reasonable cost\ 
 considering the average wage for crowd workers lingers around \$2-\$5 and hour \cite{Kaplan2018,hara2018data}.
@@ -282,7 +295,7 @@ who performed the survey on crowdsourcing workers in Amazon MTURK discovered tha
 crowd workers were employed fulltime and 50.2\% of workers had recieved a four year education.\cite{Kaplan2018}\
 This data shows that many of the crowd workers don't rely on their crowdsourcing work as a\
 primary source of income and that many crowd workers are formally educated. However, since\
-many crowd workers aren't reliant on crowdsourcing platforms as their primary source of income\
+many crowd workers aren't reliant on crowdsourcing platforms as their primary source of income,\
 this suggests that quality will be a lower priority for crowd workers in exchange for efficiency\
 as the repercussions for low quality work have much less severe implications than they would\
 for low quality work with their full-time employers. With the primary motivation of crowd workers\
@@ -303,8 +316,22 @@ requesters who are able to dominate the dynamic using several features that are 
 crowdsourcing platforms such as: the ability to specify certain qualifications that workers must\
 meet to access certain tasks and having ultimate authority over accepting or rejecting the work\
 that crowd workers complete based on their own personal, subjective view on quality. \cite{Kaplan2018,allahbakhsh2013quality}\
-This imbalance\
-places workers at a severe disadvantage in crowdsourcing platforms in addition to flaws in the platforms\
+
+This imbalance has been the cause of several different pieces of research to help address unfairness in\
+in crowdsourcing. Often times, the fruits of research on this topic has resulted in the develpoment\
+of tools to help crowdworkers rate and interact with requesters like Turkopticon \cite{irani2013turkopticon}
+which gives crowdworkers the ability to rate requesters. Another interesting tool that was developed\
+was Dynamo, a tool to allow crowd workers to organize and pursue collective action in an effort\
+to combat the largely unregulated crowdsourcing market \cite{salehi2015we}. One of the structural issues\
+with crowdsourcing marketplaces is due in large part to issues with the "gig economy" in general as defined\
+by Harris et al. which discussed the inefficiencies in current legislature to protect "gig workers" who \
+generally don't qualify for common government protections that apply to full-time employees and independent\
+contractors \cite{harris2015proposal}. This problem has recently gained high-profile attention in light\
+of the coronavirus pandemic, after the CEO of Uber, Dara Khosrowshahi, wrote a public letter to the \
+President of the United States, requesting protection for independed workers, colloquially defined as\
+"gig workers" \cite{kohsrowshahi_2020}.
+
+This imbalance places workers at a severe disadvantage in crowdsourcing platforms in addition to flaws in the platforms\
 themselves. Some of the disadvantages that crowdsourcing platforms inflict on workers include: naive search\
 functionality for surfacing tasks, lack of metrics for how long it will take to complete a task,\
 stated feasibility of tasks, and a lack of estimated wage value for tasks \cite{Kaplan2018}.\
@@ -318,16 +345,15 @@ in the Amazon MTURK crowdsourcing platform are loss of compensation on rejected 
 data on whether or not a given task is even completeable (often times a task may not even be \
 completeable because requesters may not have provided enough information for workers to successfully\
 complete the task), and the amount of time it takes to find a task or switch context between different\
-types of tasks \cite{Kaplan2018}. The two pain points that I plan to explore as apart of my research\
-are decreasing the number of returned or rejected tasks by providing data upfront to workers regarding\
-the feasibility of a task as well as decreasing the amount of time spent searching for tasks. Another\
+types of tasks \cite{Kaplan2018}. Another\
 interesting data point the researchers (Kaplan et al) collected from their survey on crowd workers was\
 that 30\% of respondents said that finding a task was reported ``4 - Very`` or ``5 - Extremely`` \
 difficult, but probably even more intriguing was the data that the most pertinent reason for \
 ending a session was that they were unable to find a task worth doing (48\% said this ranked\
 as an ``5 - Extremely Important`` reason in terminating a crowdsourcing session). \cite{Kaplan2018} This dissatisfaction\
 of crowd workers shows that the current working model for crowdsourcing platforms needs to be improved\
-to improve the user experience of crowd workers. The crowdsourcing community has a vested interest to improve\
+to improve the user experience of crowd workers.
+The crowdsourcing community has a vested interest to improve\
 the user experience of crowd workers in order to continue to facilitate the adoption\
 of crowdsourcing platforms by new crowd workers. This area of crowdsourcing has\
 a lot of opportunity for research and is relatively sparse compared to other fields\
@@ -841,15 +867,14 @@ allow for the comparison of the models over a range of topics and will give stat
 latent topics that receive further in-depth analysis.
 
 \subsection{Qualitative Analysis}
-For the experiments, the quantitative results will drive the quantitative analysis. Based off the highest scoring\
-topic for each dataset and for each model, the topics that drove the highest coherence score will be analyzed\
-extrinsically to give higher level meaning to the information that was extracted from the text.
+For each model implementation on each dataset, a table of topics at a high scoring number of topics (\emph{K}) based\
+off the topic coherence metrics will analyzed for common trends and topics. 
 
 \subsection{Approach}
 To summarize the approach of the following experiments: the 4 separate datasets that were collected\
 from webscraping Amazon MTurk by Dr. Yue's research team will be combined and used as the source of truth over the course\
-of the experiment. This dataset will then preprocess to remove stopwords and document duplicates, as well a \
-website page source data in the preview datasets. This dataset will then be analyzed for high level trends \
+of the experiment. This dataset will then be preprocessed to remove stopwords and document duplicates, as well a \
+web entities in the preview datasets. This dataset will then be analyzed for high level trends \
 and relationships that can provide further insight to the results of the topic models and to understand the \
 characteristics of the dataset itself. Then, using the LSI, LDA, \emph{lda2vec}, and ETM, these models will \
 be used to extract information from the titles, description, and previews of the HITS in the dataset. These models\
@@ -863,65 +888,620 @@ number of topics for each model on each dataset.
 This section will analyze the data that was collected by Dr. Chuan Yue's research team.
 
 \subsubsection{HIT Dataset}
-Chat about the dataset. Requester Name is replaced since permission to use the requester's name \
-was not optained.
+Chat about the dataset. \
+was not optained. This data was based off of the raw dataset, before preprocessing.
 \ref{tab:requester_top_10}
 \begin{table}
-	\caption{\label{tab:requester_top_10} Top 10 Requesters by Number of Hits Created}
+	\caption{\label{tab:requester_top_10} Top 10 Requesters by Number of Hits Created before Preprocessing}
 	\begin{center}
-		\begin{tabular}{|l|c|}
+		\begin{tabular}{| c | c |}
 			\hline
-			\textbf{Requester} & \textbf{Count} \\
+			\textbf{Requester Name} & \textbf{Number of HITs} \\
 			\hline
-			Requester 1 & 400699 \\
+			Panel              &          400699 \\
 			\hline
-			Requester 2 & 57289 \\
+			Ibotta, Inc.       &           57289 \\
 			\hline
-			Requester 3 & 55919 \\
+			411Richmond        &           55919 \\
 			\hline
-			Requester 4 & 49162 \\
+			Shopping Receipts  &           49162 \\
 			\hline
-			Requester 5 & 44926 \\
+			p9r                &           44926 \\
 			\hline
-			Requester 6 & 36025 \\
+			Rece Capture       &           36025 \\
 			\hline
-			Requester 7 & 34017 \\
+			MLDataLabeler      &           34017 \\
 			\hline
-			Requester 8 & 31734 \\
+			Crowdsurf Support  &           31734 \\
 			\hline
-			Requester 9 & 31336 \\
+			TeamZ              &           31336 \\
 			\hline
-			Requester 10 & 24841 \\
+			lovergingers       &           24841 \\
 			\hline
-			Rest of Requesters & 342754 \\
+			Rest of Requesters &          342754 \\
 			\hline
 			\textbf{Total HITs} & \textbf{1108702} \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:top10-pi}
+\csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters by Number of HITs before Preprocessing }
+\newpage
+
+\ref{tab:title_requester_top_10}
+\begin{table}
+	\caption{\label{tab:title_requester_top_10} Title -- Top 10 Requesters by Number of Hits Created after Preprocessing}
+	\begin{center}
+		\begin{tabular}{| c | c |}
+			\hline
+			\textbf{Requester Name} &  \textbf{Number of Titles} \\
+			\hline
+			SET Master Account &              97 \\
+			\hline
+			quarrel-recast     &              91 \\
+			\hline
+			Plancky            &              60 \\
+			\hline
+			PickFu             &              45 \\
+			\hline
+			Alexey Kuznetsov   &              44 \\
+			\hline
+			MLDataLabeler      &              36 \\
+			\hline
+			WikiRealty         &              35 \\
+			\hline
+			joanna socha       &              31 \\
+			\hline
+			Angela Listy       &              30 \\
+			\hline
+			UserBob            &              22 \\
+			\hline
+			Rest of Requesters &            2657 \\
+			\hline
+			\textbf{Total Titles} & 3148 \\
 			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-\ref{fig:top10-pi}
-\csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters by Number of HITs }
+\ref{fig:title-post-top10-pi}
+\csmfigure{title-post-top10-pi}{figures/title-post-top10-pi}{6.5in}{Title -- Top 10 Requesters by Number of HITs after Preprocessing }
+\newpage
+
+\ref{tab:description_requester_top_10}
+\begin{table}
+	\caption{\label{tab:description_requester_top_10} Description -- Top 10 Requesters by Number of Hits Created after Preprocessing}
+	\begin{center}
+		\begin{tabular}{| c | c |}
+				\hline
+				\textbf{Requester Name} &  \textbf{Number of Descriptions} \\
+				\hline
+				SET Master Account &              97 \\
+				\hline
+				Volker Rieck       &              65 \\
+				\hline
+				Alexey Kuznetsov   &              50 \\
+				\hline
+				Angela Listy       &              27 \\
+				\hline
+				Positly            &              16 \\
+				\hline
+				The Wharton School &              12 \\
+				\hline
+				Aparna Garimella   &              11 \\
+				\hline
+				Lindsay Kramer     &              10 \\
+				\hline
+				Robert Zeithammer  &              10 \\
+				\hline
+				Oliver Borchers    &               8 \\
+				\hline
+				Rest of Requesters &            2438 \\
+				\hline
+				\textbf{Total Descriptions} &  \textbf{2744} \\
+				\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:description-post-top10-pi}
+\csmfigure{description-post-top10-pi}{figures/description-post-top10-pi}{6.5in}{Description -- Top 10 Requesters by Number of HITs after Preprocessing }
+
+\newpage
+
 adfkalsdmfdsamkl
 
-\subsubsection{Implications}
 Explain the findings of HIT Analysis
 How would this effect topic modeling?
 Cite the literature on how duplicate documents shouldn't influence the result of the topics.
 
+\newpage
 \subsection{Experiments}
 This section should talk about the experiments that were run
 
-\subsubsection{Preprocessing}
-Talk about why document duplication matters,
-(maybe run an experiment on topic coherence for document dup vs. taking out dups) relate this to
-how certain requesters dominate much of the HITs
+\subsubsection{Implementation}
+\paragraph{LSI}
+The LSI Experiments were conducted using the \emph{gensim} library \cite{gensim} which implemented the specific\
+algorithms described in Chapter 3. For each dataset, an LSI model with a batch size of 100 was trained with the preprocessed\
+data described in Ch. 3 for values \emph{K}: $10 - 100$ on a five step interval (i.e 10, 15 .... 95, 100). After the model was trained, the top 10\
+words for each topic \emph{K} were written to a text file which was then used to calculate the different topic coherence\
+values for each model.
 
-Talk about related work on stopwords, lemmatization, etc, and decisions for preprocessing
+\paragraph{LDA}
+The LDA Experiments were conducted using the \emph{gensim} library \cite{gensim} which implemented the specific\
+algorithms described in Chapter 3. For each dataset, an LDA model with a chunk size of 100, random state of 100,\
+for 13 passes. The model was trained with the preprocessed data described in Ch. 3 for values \emph{K}: $10 - 100$\
+ on a five step interval (i.e 10, 15 .... 95, 100). After the model was trained, the top 10\
+words for each topic \emph{K} were written to a text file which was then used to calculate the different topic coherence\
+values for each model.
 
-\subsubsection{Number of Topics}
-Discuss the number of topics used for extracting topics during these experiments
+\paragraph{LSI}
+describe implementation
+
+\paragraph{lda2vec}
+lda2vec implementation \cite{lda2vecGithub}
+
+\paragraph{ETM}
+describe implementation 
+etm implementation \cite{etmGithub}
+
+\subsubsection{HIT Title}
+Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+\paragraph{Corpus Statistics}
+Total unique words 3337
+Total words in corpus: 14584
+\ref{tab:title_top_words}
+
+\begin{table}
+	\caption{\label{tab:title_top_words} Title -- Top 10 Words Corpus}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Word} & \textbf{Count} \\
+			\hline
+			survey & 956 \\
+			\hline
+			minutes & 849 \\
+			\hline
+			answer & 391 \\
+			\hline
+			study & 230 \\
+			\hline
+			short & 224 \\
+			\hline
+			hit & 151 \\
+			\hline
+			image & 145 \\
+			\hline
+			minute & 127 \\
+			\hline
+			compensation & 101 \\
+			\hline
+			opinions & 100 \\
+			\hline
+			\textbf{Unique Words} & 3337 \\
+			\hline
+			\textbf{Total Words} & 14584 \\
+			\hline
+			\textbf{Number of Documents} & 3148 \\
+			\hline
+			\textbf{Average Document Length (Characters)} & 38 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:title-50-bar}
+\csmfigure{title-50-bar}{figures/title-50-bar}{6.5in}{Title - Top 50 Words}
+
+\ref{fig:title-50-pi}
+\csmfigure{title-50-pi}{figures/title-50-pi}{6.5in}{Title -- Corpus Distribution}
+
+\newpage
+\paragraph{LSI}
+\ref{tab:lsi_title_tc}
+\begin{table}
+	\caption{\label{tab:lsi_title_tc} Title -- LSI Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{LSI} \\
+			\emph{K} &   UMass &     UCI \\
+			\midrule
+			10  &  \textbf{-9.687} &  \textbf{-5.975} \\
+			15  & -10.903 &  -7.084 \\
+			20  & -12.441 &  -8.593 \\
+			25  & -13.247 &  -9.334 \\
+			30  & -12.343 &  -8.254 \\
+			35  & -13.305 &  -9.381 \\
+			40  & -13.581 &  -9.475 \\
+			45  & -13.980 &  -9.874 \\
+			50  & -14.417 & -10.234 \\
+			55  & -14.632 & -10.434 \\
+			60  & -15.160 & -10.886 \\
+			65  & -15.409 & -11.101 \\
+			70  & -15.473 & -11.114 \\
+			75  & -15.886 & -11.498 \\
+			80  & -16.046 & -11.632 \\
+			85  & -15.921 & -11.504 \\
+			90  & -16.202 & -11.714 \\
+			95  & -16.366 & -11.847 \\
+			100 & -16.500 & -11.922 \\
+			\midrule
+			$\sigma^2$ & 3.734 & 2.854 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{tab:lsi_title_k}
+\begin{table}
+	\caption{\label{tab:lsi_title_k} Title -- LSI Generated Topics for $\emph{K} = 15$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                          \textbf{Keywords} \\
+			\hline
+			1  &                     survey, minutes, answer, short, study, opinions, minute, hit, consumer, min \\
+			\hline
+			2  &             minutes, survey, answer, study, hit, compensation, opinions, question, based, short \\
+			\hline
+			3  &  image, tagging, clickable, label, classification, categorization, single, drew, receipt, multi \\
+			\hline
+			4  &              answer, survey, questions, based, minute, question, opinions, hit, children, short \\
+			\hline
+			5  &                  short, study, hit, article, summary, compensation, il, survey, question, based \\
+			\hline
+			6  &             study, short, hit, compensation, article, summary, content, adult, decision, worker \\
+			\hline
+			7  &         study, hit, minutes, adult, content, worker, warning, discretion, advised, compensation \\
+			\hline
+			8  &            question, based, children, minute, nutritional, child, member, prime, amazon, answer \\
+			\hline
+			9  &             categorization, web, page, label, tagging, clickable, image, data, collect, contact \\
+			\hline
+			10 &                        fox, game, watch, superbowl, nfl, calculate, latency, sports, tv, online \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:lsi-umass-title}
+\csmfigure{lsi-umass-title}{figures/lsi-umass-title}{5.5in}{Title -- LSI UMass Topic Coherence}
+
+\ref{fig:lsi-uci-title}
+\csmfigure{lsi-uci-title}{figures/lsi-uci-title}{5.5in}{Title -- LSI UCI Topic Coherence}
+result of LSI on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+
+Observations and analysis on the topics
+\newpage
+\paragraph{LDA}
+\ref{tab:lda_title_tc}
+\begin{table}
+	\caption{\label{tab:lda_title_tc} Title -- LDA Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{LDA} \\
+			\emph{K} &   UMass &    UCI \\
+			\midrule
+			10  & -10.364 & -6.718 \\
+			15  & \textbf{-10.228} & \textbf{-6.538} \\
+			20  & -10.709 & -6.692 \\
+			25  & -10.740 & -6.868 \\
+			30  & -10.708 & \textbf{-6.569} \\
+			35  & -11.444 & -7.125 \\
+			40  & -11.344 & -7.071 \\
+			45  & -11.450 & -7.126 \\
+			50  & -11.988 & -7.488 \\
+			55  & -11.665 & -7.217 \\
+			60  & -11.961 & -7.291 \\
+			65  & -12.617 & -7.851 \\
+			70  & -13.407 & -8.348 \\
+			75  & -13.113 & -8.078 \\
+			80  & -13.244 & -8.077 \\
+			85  & -12.938 & -7.647 \\
+			90  & -12.812 & -7.394 \\
+			95  & -12.608 & -7.185 \\
+			100 & -12.657 & -7.005 \\
+			\midrule
+			$\sigma^2$ & 1.065 & 0.278 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{tab:lda_title_k}
+\begin{table}
+	\caption{\label{tab:lda_title_k} Title -- LDA Generated Topics for $\emph{K} = 20$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                        \textbf{Keywords} \\
+			\hline
+			1  &       survey, answer, minute, minutes, short, attitudes, respondents, qualify, game, personal \\
+			\hline
+			2  &               estimate, project, ca, construction, minutes, fees, adu, permit, survey, mobile \\
+			\hline
+			3  &                     data, collect, information, contact, survey, voice, web, site, life, time \\
+			\hline
+			4  &  minutes, study, survey, research, online, product, evaluation, perceptions, short, attitudes \\
+			\hline
+			5  &            survey, answer, minutes, questions, opinion, give, instagram, company, tasks, find \\
+			\hline
+			6  &         minutes, survey, study, image, behavior, workplace, consumer, complete, images, short \\
+			\hline
+			7  &                article, short, summary, create, characters, words, story, il, text, companies \\
+			\hline
+			8  &       survey, label, personality, classification, minutes, short, visual, online, multi, text \\
+			\hline
+			9  &               question, survey, based, children, female, amazon, member, answer, prime, child \\
+			\hline
+			10 &                       survey, minutes, answer, short, video, min, hit, study, minute, service \\
+			\hline
+			11 &              test, marketing, minutes, bounding, boxes, draw, consumer, sentence, user, brand \\
+			\hline
+			12 &       categorization, page, web, image, minute, survey, upload, screencast, website, judgment \\
+			\hline
+			13 &                   survey, minutes, find, property, zoning, map, home, short, events, emotions \\
+			\hline
+			14 &                answer, survey, minutes, questions, media, study, type, business, social, read \\
+			\hline
+			15 &        decision, minutes, making, study, survey, min, understanding, psychology, quick, bonus \\
+			\hline
+			16 &              minutes, study, test, tts, relationships, part, image, clickable, tagging, alixr \\
+			\hline
+			17 &             hit, minutes, compensation, content, survey, worker, adult, easy, answer, advised \\
+			\hline
+			18 &  survey, answer, minutes, opinions, short, preferences, consumer, experience, questions, task \\
+			\hline
+			19 &        image, tagging, clickable, grocery, everyday, categories, data, news, climate, minutes \\
+			\hline
+			20 &                     minutes, short, survey, judgments, rate, answer, mins, design, make, test \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:lda-umass-title}
+\csmfigure{lda-umass-title}{figures/lda-umass-title}{5.5in}{Title -- LDA UMass Topic Coherence}
+
+\ref{fig:lda-uci-title}
+\csmfigure{lda-uci-title}{figures/lda-uci-title}{5.5in}{Title -- LDA UCI Topic Coherence}
+result of LDA on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+
+Observations and analysis on the topics
+\newpage
+\paragraph{lda2vec}
+
+\ref{tab:lda2vec_title_tc}
+\begin{table}
+	\caption{\label{tab:lda2vec_title_tc} Title -- \emph{lda2vec} Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{lda2vec} \\
+			\emph{K} &   UMass &    UCI \\
+			\midrule
+			10  &  -8.467 & -6.003 \\
+			15  & -10.435 & -7.471 \\
+			20  &  \textbf{-7.414} & \textbf{-4.765} \\
+			25  &  -8.998 & -6.074 \\
+			30  &  -7.937 & -5.026 \\
+			35  & -10.015 & -7.245 \\
+			40  &  \textbf{-7.339} & \textbf{-4.362} \\
+			45  &  -8.253 & -5.227 \\
+			50  &  -8.824 & -5.880 \\
+			55  &  -8.331 & -5.158 \\
+			60  &  -9.308 & -6.268 \\
+			65  &  -8.696 & -5.493 \\
+			70  & -10.347 & -7.495 \\
+			75  &  -8.864 & -5.819 \\
+			80  &  -8.117 & -5.212 \\
+			85  &  -9.374 & -6.693 \\
+			90  &  -9.924 & -7.191 \\
+			95  &  -9.208 & -6.048 \\
+			100 & -10.282 & -7.244 \\
+			\midrule
+			$\sigma^2$ & 0.903 & 0.936 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+
+\ref{tab:lda2vec_title_k}
+\begin{table}
+	\caption{\label{tab:lda2vec_title_k} Title -- \emph{lda2vec} Generated Topics for $\emph{K} = 20$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                        \textbf{Keywords} \\
+			\hline
+				1  &        answer, survey, study, part, short, opinions, minutes, question, quick, work \\
+				\hline
+				2  &   answer, survey, opinions, question, short, study, part, quick, questions, minutes \\
+				\hline
+				3  &     answer, survey, study, opinions, short, part, question, minutes, quick, opinion \\
+				\hline
+				4  &     answer, opinions, study, short, question, survey, part, opinion, quick, minutes \\
+				\hline
+				5  &     answer, survey, opinions, study, question, part, short, quick, minutes, opinion \\
+				\hline
+				6  &        answer, opinions, survey, study, part, short, question, minutes, quick, work \\
+				\hline
+				7  &     answer, opinions, question, short, study, part, opinion, quick, minutes, survey \\
+				\hline
+				8  &  answer, opinions, short, study, part, question, quick, opinion, experience, survey \\
+				\hline
+				9  &        answer, opinions, short, study, part, question, survey, minutes, work, quick \\
+				\hline
+				10 &     answer, opinions, question, survey, short, study, part, quick, minutes, opinion \\
+				\hline
+				11 &     answer, opinions, study, part, short, survey, question, minutes, opinion, quick \\
+				\hline
+				12 &     answer, opinions, survey, study, question, short, part, quick, minutes, opinion \\
+				\hline
+				13 &        answer, opinions, survey, study, short, part, minutes, question, quick, work \\
+				\hline
+				14 &     answer, survey, opinions, study, question, short, part, quick, minutes, opinion \\
+				\hline
+				15 &     answer, opinions, survey, study, short, part, question, quick, minutes, opinion \\
+				\hline
+				16 &        answer, study, opinions, part, survey, short, quick, work, question, minutes \\
+				\hline
+				17 &     answer, opinions, study, survey, part, short, minutes, question, quick, opinion \\
+				\hline
+				18 &     answer, opinions, study, part, survey, short, question, quick, minutes, opinion \\
+				\hline
+				19 &   answer, opinions, survey, study, short, question, part, quick, opinion, questions \\
+				\hline
+				20 &     answer, opinions, survey, study, short, part, question, minutes, opinion, quick \\
+				\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:lda2vec-umass-title}
+\csmfigure{lda2vec-umass-title}{figures/lda2vec-umass-title}{5.5in}{Title -- \emph{lda2vec} UMass Topic Coherence}
+
+\ref{fig:lda2vec-uci-title}
+\csmfigure{lda2vec-uci-title}{figures/lda2vec-uci-title}{5.5in}{Title -- \emph{lda2vec} UCI Topic Coherence}
+\newpage
+result of Lda2vec on the number of topics, output the topics
+visualization of document topic distribution
+word clouds of top topics
+
+Observations and analysis on the topics
+
+\paragraph{ETM}
+
+\ref{tab:etm_title_tc}
+\begin{table}
+	\caption{\label{tab:etm_title_tc} Title -- ETM Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{ETM} \\
+			\emph{K} &  UMass &    UCI \\
+			\midrule
+			10  & \textbf{-8.265} & \textbf{-5.273} \\
+			15  & -9.573 & -6.428 \\
+			20  & -9.846 & -6.576 \\
+			25  & -9.464 & -6.280 \\
+			30  & -9.132 & -6.043 \\
+			35  & -9.474 & -6.392 \\
+			40  & \textbf{-7.934} & \textbf{-5.010} \\
+			45  & -8.366 & -5.353 \\
+			50  & -8.853 & -5.888 \\
+			55  & -8.901 & -5.886 \\
+			60  & -9.555 & -6.461 \\
+			65  & -8.659 & -5.651 \\
+			70  & -9.415 & -6.341 \\
+			75  & -8.808 & -5.822 \\
+			80  & -9.650 & -6.488 \\
+			85  & -9.124 & -6.102 \\
+			90  & -9.846 & -6.690 \\
+			95  & -8.814 & -5.773 \\
+			100 & -9.672 & -6.582 \\
+			\midrule
+			$\sigma^2$ & 0.311 & 0.235 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{tab:etm_title_k}
+\begin{table}
+	\caption{\label{tab:etm_title_k} Title -- ETM Generated Topics for $\emph{K} = 10$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                     \textbf{Keywords} \\
+			\hline
+			1  &  survey, study, research, minutes, questions, participate, complete, minute, people, short \\
+			\hline			
+			2  &                asked, images, series, shown, read, questions, opinion, page, short, answer \\
+			\hline			
+			3  &                 asked, page, questions, answer, study, short, survey, minutes, shown, read \\
+			\hline			
+			4  &  survey, people, study, minutes, research, participate, minute, complete, questions, short \\
+			\hline			
+			5  &              questions, answer, read, short, asked, people, survey, opinion, task, minutes \\
+			\hline			
+			6  &             questions, survey, short, answer, task, minutes, people, complete, study, read \\
+			\hline			
+			7  &              opinion, task, give, survey, questions, answer, minutes, minute, short, study \\
+			\hline			
+			8  &  survey, study, research, minutes, minute, people, participate, complete, questions, short \\
+			\hline			
+			9  &       study, task, complete, short, participate, minutes, read, research, questions, asked \\
+			\hline			
+			10 &              complete, hit, survey, minutes, study, short, task, minute, questions, people \\
+			\hline			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+talk about the performance of the ETM
+
+\ref{fig:etm-umass-title}
+\csmfigure{etm-umass-title}{figures/etm-umass-title}{5.5in}{Title -- ETM UMass Topic Coherence}
+
+\ref{fig:etm-uci-title}
+\csmfigure{etm-uci-title}{figures/etm-uci-title}{5.5in}{Title -- ETM UCI Topic Coherence}
+\newpage
+\paragraph{Topic Coherence}
+Create a figure displaying the different topic coherence results
+Explain the scores and what that means
+
+\ref{tab:combo_title_tc}
+\begin{table}
+	\caption{\label{tab:combo_title_tc} Title -- Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{|l|rr|rr|rr|rr|}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{LSI}} & \multicolumn{2}{c|}{\textbf{LDA}} & \multicolumn{2}{c|}{\textbf{lda2vec}} & \multicolumn{2}{c|}{\textbf{ETM}} \\
+			\emph{K} &   UMass &     UCI &   UMass &    UCI &   UMass &    UCI &  UMass &    UCI \\
+			\hline
+			10  &  \textbf{-9.687} &  \textbf{-5.975} & -10.364 & -6.718 &  -8.467 & -6.003 & \textbf{-8.265} & \textbf{-5.273} \\
+			15  & -10.903 &  -7.084 & \textbf{-10.228} & \textbf{-6.538} & -10.435 & -7.471 & -9.573 & -6.428 \\
+			20  & -12.441 &  -8.593 & -10.709 & -6.692 & \textbf{-7.414} & \textbf{-4.765} & -9.846 & -6.576 \\
+			25  & -13.247 &  -9.334 & -10.740 & -6.868 &  -8.998 & -6.074 & -9.464 & -6.280 \\
+			30  & -12.343 &  -8.254 & -10.708 & \textbf{-6.569} &  -7.937 & -5.026 & -9.132 & -6.043 \\
+			35  & -13.305 &  -9.381 & -11.444 & -7.125 & -10.015 & -7.245 & -9.474 & -6.392 \\
+			40  & -13.581 &  -9.475 & -11.344 & -7.071 &  \textbf{-7.339} & \textbf{-4.362} & \textbf{-7.934} & \textbf{-5.010} \\
+			45  & -13.980 &  -9.874 & -11.450 & -7.126 &  -8.253 & -5.227 & -8.366 & -5.353 \\
+			50  & -14.417 & -10.234 & -11.988 & -7.488 &  -8.824 & -5.880 & -8.853 & -5.888 \\
+			55  & -14.632 & -10.434 & -11.665 & -7.217 &  -8.331 & -5.158 & -8.901 & -5.886 \\
+			60  & -15.160 & -10.886 & -11.961 & -7.291 &  -9.308 & -6.268 & -9.555 & -6.461 \\
+			65  & -15.409 & -11.101 & -12.617 & -7.851 &  -8.696 & -5.493 & -8.659 & -5.651 \\
+			70  & -15.473 & -11.114 & -13.407 & -8.348 & -10.347 & -7.495 & -9.415 & -6.341 \\
+			75  & -15.886 & -11.498 & -13.113 & -8.078 &  -8.864 & -5.819 & -8.808 & -5.822 \\
+			80  & -16.046 & -11.632 & -13.244 & -8.077 &  -8.117 & -5.212 & -9.650 & -6.488 \\
+			85  & -15.921 & -11.504 & -12.938 & -7.647 &  -9.374 & -6.693 & -9.124 & -6.102 \\
+			90  & -16.202 & -11.714 & -12.812 & -7.394 &  -9.924 & -7.191 & -9.846 & -6.690 \\
+			95  & -16.366 & -11.847 & -12.608 & -7.185 &  -9.208 & -6.048 & -8.814 & -5.773 \\
+			100 & -16.500 & -11.922 & -12.657 & -7.005 & -10.282 & -7.244 & -9.672 & -6.582 \\
+			\hline
+			$\sigma^2$ & 3.734 & 2.854 & 1.065 & 0.278 & 0.903 & 0.936 & 0.311 & 0.236 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\ref{fig:umass-title}
+\csmfigure{umass-title}{figures/umass-title}{5.5in}{Title UMass Topic Coherence}
+
+\ref{fig:uci-title}
+\csmfigure{uci-title}{figures/uci-title}{5.5in}{Title UCI Topic Coherence}
+
+\newpage
 
 \subsubsection{HIT Descriptions}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
@@ -932,7 +1512,7 @@ Total words in corpus: 23767
 \ref{tab:description_top_words}
 
 \begin{table}
-	\caption{\label{tab:description_top_words} Top 10 Words in Description Corpus}
+	\caption{\label{tab:description_top_words} Description -- Top 10 Words in Corpus}
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -979,11 +1559,90 @@ Total words in corpus: 23767
 \newpage
 \paragraph{LSI}
 result of LSI on the number of topics, output the topics
+\ref{tab:lsi_tc_scores}
+
+\begin{table}
+	\caption{\label{tab:lsi_tc_scores} Description -- LSI Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{LSI} \\
+			\emph{K} &   UMass &    UCI \\
+			\midrule
+			10  &  -5.859 & -3.087 \\
+			15  &  \textbf{-4.984} & \textbf{-2.546} \\
+			20  &  -6.464 & -3.730 \\
+			25  &  -5.371 & -2.800 \\
+			30  &  -5.505 & -3.068 \\
+			35  &  -6.197 & -3.892 \\
+			40  &  -7.093 & -4.735 \\
+			45  &  -7.416 & -5.037 \\
+			50  &  -8.008 & -5.462 \\
+			55  &  -8.439 & -5.753 \\
+			60  &  -8.833 & -6.179 \\
+			65  &  -8.871 & -6.191 \\
+			70  &  -9.790 & -6.880 \\
+			75  &  -9.749 & -6.873 \\
+			80  & -10.414 & -7.567 \\
+			85  & -10.697 & -7.795 \\
+			90  & -10.873 & -7.913 \\
+			95  & -11.292 & -8.359 \\
+			100 & -11.395 & -8.325 \\
+			\midrule
+			$\sigma^2$ & 4.654 & 3.913 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+Discuss topic coherence scores
+\ref{tab:lsi_description_topics}
+\begin{table}
+	\caption{\label{tab:lsi_description_topics} Description -- LSI Generated Topics for $\emph{K} = 15$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                                \textbf{Keywords} \\
+			\hline
+			1  &               study, survey, complete, questions, minutes, short, answer, asked, task, participate \\
+			\hline
+			2  &  survey, study, answer, task, screener, questions, computer, participate, participant, interaction \\
+			\hline
+			3  &                      questions, asked, answer, survey, shown, series, images, click, red, enclosed \\
+			\hline
+			4  &                         questions, answer, asked, shown, images, click, box, red, enclosed, series \\
+			\hline
+			5  &                       page, extract, links, download, stream, http, html, cc, container, filecrypt \\
+			\hline
+			6  &       short, participant, interaction, screener, read, complete, study, questions, minutes, letter \\
+			\hline
+			7  &             opinion, give, questions, complete, products, answer, unique, experience, public, text \\
+			\hline
+			8  &                minutes, complete, part, survey, approximately, short, web, asked, interaction, hit \\
+			\hline
+			9  &                         web, page, minutes, content, complete, screen, shot, extract, asked, links \\
+			\hline
+			10 &                        task, study, screener, hit, people, complete, research, web, part, computer \\
+			\hline
+			11 &                        unique, people, complete, task, words, text, part, write, research, article \\
+			\hline
+			12 &                 part, complete, hit, minutes, people, unique, asked, task, approximately, research \\
+			\hline
+			13 &                             unique, write, text, article, accepted, words, people, task, hit, part \\
+			\hline
+			14 &              part, section, minutes, short, complete, receive, study, link, participate, questions \\
+			\hline
+			15 &                 hit, research, section, university, people, complete, bonus, romantic, asked, task \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+
 \ref{fig:lsi-umass-description}
 \ref{fig:lsi-uci-description}
-\csmfigure{lsi-umass-description}{figures/lsi-umass-description}{5.5in}{LSI UMass Topic Coherence}
+\csmfigure{lsi-umass-description}{figures/lsi-umass-description}{5.5in}{Description -- LSI UMass Topic Coherence}
 
-\csmfigure{lsi-uci-description}{figures/lsi-uci-description}{5.5in}{LSI UCI Topic Coherence}
+\csmfigure{lsi-uci-description}{figures/lsi-uci-description}{5.5in}{Description -- LSI UCI Topic Coherence}
 
 % lsi-umass-description.png
 \newpage
@@ -993,16 +1652,95 @@ word clouds of top topics
 Observations and analysis on the topics
 
 \paragraph{LDA}
+
+\ref{tab:lda_description_tc}
+\begin{table}
+	\caption{\label{tab:lda_description_tc} Description -- LDA Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{LDA} \\
+			\emph{K} &  UMass &    UCI \\
+			\midrule
+			10  & -5.029 & \textbf{-2.108} \\
+			15  & \textbf{-4.982} & -2.166 \\
+			20  & -5.500 & -2.685 \\
+			25  & -6.044 & -3.063 \\
+			30  & -5.728 & -2.860 \\
+			35  & -6.394 & -3.325 \\
+			40  & -6.402 & -3.462 \\
+			45  & -6.353 & -3.189 \\
+			50  & -7.371 & -4.098 \\
+			55  & -7.116 & -3.905 \\
+			60  & -7.108 & -3.846 \\
+			65  & -7.067 & -3.781 \\
+			70  & -7.887 & -4.547 \\
+			75  & -7.675 & -4.205 \\
+			80  & -7.919 & -4.410 \\
+			85  & -8.869 & -5.257 \\
+			90  & -8.374 & -4.769 \\
+			95  & -8.354 & -4.755 \\
+			100 & -9.127 & -5.264 \\
+			\midrule
+			$\sigma^2$ & 1.549 & 0.901 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{tab:lda_description_topics}
+\begin{table}
+	\caption{\label{tab:lda_description_topics} Description -- LDA Generated Topics for $\emph{K} = 15$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                   \textbf{Keywords} \\
+			\hline
+			1  &          questions, answer, survey, short, minutes, read, study, complete, online, asked \\
+			\hline
+			2  &            survey, study, minute, people, interested, box, test, draw, minutes, bounding \\
+			\hline
+			3  &         study, survey, minutes, complete, research, short, making, decision, part, asked \\
+			\hline
+			4  &                    opinion, give, page, extract, links, download, http, html, stream, cc \\
+			\hline
+			5  &        study, survey, opinion, give, asked, part, complete, research, minutes, behaviors \\
+			\hline
+			6  &    survey, questions, answer, opinions, minutes, video, complete, product, read, article \\
+			\hline
+			7  &         survey, short, minute, consumer, task, minutes, complete, based, question, study \\
+			\hline
+			8  &   collect, study, data, survey, company, marketing, advertising, messages, select, label \\
+			\hline
+			9  &                     unique, web, page, text, asked, write, words, survey, shown, content \\
+			\hline
+			10 &                   images, asked, click, series, shown, box, enclosed, red, survey, image \\
+			\hline
+			11 &  survey, questions, answer, study, social, complete, minutes, information, issues, asked \\
+			\hline
+			12 &            survey, study, extract, social, media, page, download, links, https, complete \\
+			\hline
+			13 &      questions, answer, survey, read, give, opinion, asked, scenario, short, personality \\
+			\hline
+			14 &        survey, study, minutes, questions, short, asked, make, evaluate, products, choice \\
+			\hline
+			15 &      study, task, survey, participate, read, perceptions, rate, social, question, minute \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+
+
 result of LDA on the number of topics, output the topics
 \ref{fig:lda-umass-description}
 \ref{fig:lda-uci-description}
 
-\csmfigure{lda-umass-description}{figures/lda-umass-description}{5.5in}{LDA UMass Topic Coherence}
+\csmfigure{lda-umass-description}{figures/lda-umass-description}{5.5in}{Description -- LDA UMass Topic Coherence}
 lorem ipsum
 
 lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum
 lorem ipsum
-\csmfigure{lda-uci-description}{figures/lda-uci-description}{5.5in}{LDA UCI Topic Coherence}
+\csmfigure{lda-uci-description}{figures/lda-uci-description}{5.5in}{Description -- LDA UCI Topic Coherence}
 \newpage
 visualization of document topic distribution
 word clouds of top topics
@@ -1010,141 +1748,235 @@ word clouds of top topics
 Observations and analysis on the topics
 
 \paragraph{lda2vec}
-result of LSI on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
 
-Observations and analysis on the topics
-
-\paragraph{ETM}
-
-talk about the performance of the ETM
-\ref{fig:etm-umass-description}
-\csmfigure{etm-umass-description}{figures/etm-umass-description}{5.5in}{ETM UMass Topic Coherence}
-
-\ref{fig:etm-uci-description}
-\csmfigure{etm-uci-description}{figures/etm-uci-description}{5.5in}{ETM UCI Topic Coherence}
-\newpage
-
-\paragraph{Topic Coherence}
-Create a figure displaying the different topic coherence results
-Explain the scores and what that means
-
-\ref{fig:umass-description}
-\csmfigure{umass-description}{figures/umass-description}{5.5in}{Description UMass Topic Coherence}
-
-\ref{fig:uci-description}
-\csmfigure{uci-description}{figures/uci-description}{5.5in}{Description UCI Topic Coherence}
-
-\newpage
-\subsubsection{HIT Title}
-Use this section to discuss the experiments run on the descriptions of HITS in the dataset
-\paragraph{Corpus Statistics}
-Total unique words 3337
-Total words in corpus: 14584
-\ref{tab:title_top_words}
-
+\ref{tab:lda2vec_description_tc}
 \begin{table}
-	\caption{\label{tab:title_top_words} Top 10 Words in Title Corpus}
+	\caption{\label{tab:lda2vec_description_tc} Description -- \emph{lda2vec} Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Word} & \textbf{Count} \\
-			\hline
-			survey & 956 \\
-			\hline
-			minutes & 849 \\
-			\hline
-			answer & 391 \\
-			\hline
-			study & 230 \\
-			\hline
-			short & 224 \\
-			\hline
-			hit & 151 \\
-			\hline
-			image & 145 \\
-			\hline
-			minute & 127 \\
-			\hline
-			compensation & 101 \\
-			\hline
-			opinions & 100 \\
-			\hline
-			\textbf{Unique Words} & 3337 \\
-			\hline
-			\textbf{Total Words} & 14584 \\
-			\hline
-			\textbf{Number of Documents} & 3145 \\
-			\hline
-			\textbf{Average Document Length (Characters)} & 38 \\
-			\hline
+		\begin{tabular}{lrr}
+			\toprule
+				{} & \multicolumn{2}{l}{lda2vec} \\
+				\emph{K} &   UMass &    UCI \\
+				\midrule
+				10  &  \textbf{-8.102} & \textbf{-5.023} \\
+				15  &  -8.545 & -5.307 \\
+				20  & -10.735 & -7.396 \\
+				25  & -10.371 & -7.084 \\
+				30  &  -9.153 & -6.115 \\
+				35  &  -8.889 & -6.156 \\
+				40  &  -8.641 & -5.582 \\
+				45  & -10.986 & -7.708 \\
+				50  &  -9.806 & -6.577 \\
+				55  &  -9.597 & -6.652 \\
+				60  &  -9.469 & -6.379 \\
+				65  &  -9.580 & -6.328 \\
+				70  &  -9.548 & -6.319 \\
+				75  &  -9.674 & -6.429 \\
+				80  &  -9.204 & -5.955 \\
+				85  &  -9.621 & -6.507 \\
+				90  &  -9.705 & -6.406 \\
+				95  &  -9.562 & -6.425 \\
+				100 &  -9.562 & -6.260 \\
+			\midrule
+			$\sigma^2$ & 0.493 & 0.409 \\
+			\bottomrule
 		\end{tabular}
 	\end{center}
 \end{table}
-
-\ref{fig:title-50-bar}
-\csmfigure{title-50-bar}{figures/title-50-bar}{6.5in}{Title - Top 50 Words}
-
-\ref{fig:title-50-pi}
-\csmfigure{title-50-pi}{figures/title-50-pi}{6.5in}{Title Corpus Distribution}
-
-\newpage
-\paragraph{LSI}
-
-\ref{fig:lsi-umass-title}
-\csmfigure{lsi-umass-title}{figures/lsi-umass-title}{5.5in}{LSI UMass Topic Coherence}
-
-\ref{fig:lsi-uci-title}
-\csmfigure{lsi-uci-title}{figures/lsi-uci-title}{5.5in}{LSI UCI Topic Coherence}
 result of LSI on the number of topics, output the topics
+
+\ref{tab:lda2vec_description_topics}
+\begin{table}
+	\caption{\label{tab:lda2vec_description_topics} Description -- \emph{lda2vec} Generated Topics for $\emph{K} = 10$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                             \textbf{Keywords} \\
+			\hline
+			1  &      participants, study, time, understand, making, part, interested, unique, participation, takes \\
+			\hline
+			2  &   making, completing, participants, study, part, participation, takes, complete, participate, make \\
+			\hline
+			3  &                            unique, shown, words, write, give, enclosed, red, text, article, stream \\
+			\hline
+			4  &           takes, participants, time, answer, view, part, scenario, participation, completing, read \\
+			\hline
+			5  &                          unique, words, collect, find, website, give, text, write, stream, opinion \\
+			\hline
+			6  &                           unique, website, collect, find, words, stream, shown, text, page, search \\
+			\hline
+			7  &  part, takes, participants, participation, time, study, understand, interested, making, completing \\
+			\hline
+			8  &       part, takes, participants, completing, participation, time, complete, making, qualify, study \\
+			\hline
+			9  &                                shown, enclosed, click, red, page, box, screen, images, web, stream \\
+			\hline
+			10 &                   unique, shown, give, words, article, website, opinion, content, find, understand \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
 visualization of document topic distribution
 word clouds of top topics
 
 Observations and analysis on the topics
+\ref{fig:lda2vec-umass-description}
+\csmfigure{lda2vec-umass-description}{figures/lda2vec-umass-description}{5.5in}{Description -- \emph{lda2vec} UMass Topic Coherence}
+
+\ref{fig:lda2vec-uci-description}
+\csmfigure{lda2vec-uci-description}{figures/lda2vec-uci-description}{5.5in}{Description \emph{lda2vec} UCI Topic Coherence}
 \newpage
-\paragraph{LDA}
-
-\ref{fig:lda-umass-title}
-\csmfigure{lda-umass-title}{figures/lda-umass-title}{5.5in}{LDA UMass Topic Coherence}
-
-\ref{fig:lda-uci-title}
-\csmfigure{lda-uci-title}{figures/lda-uci-title}{5.5in}{LDA UCI Topic Coherence}
-result of LDA on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
-
-Observations and analysis on the topics
-\newpage
-\paragraph{lda2vec}
-result of Lda2vec on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
-
-Observations and analysis on the topics
-
 \paragraph{ETM}
 
+\ref{tab:etm_description_tc}
+\begin{table}
+	\caption{\label{tab:etm_description_tc} Description -- ETM Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{ETM} \\
+			\emph{K} &  UMass &    UCI \\
+			\midrule
+			10  & -5.536 & -2.517 \\
+			15  & -5.176 & -2.330 \\
+			20  & \textbf{-4.523} & \textbf{-1.583} \\
+			25  & -5.693 & -2.775 \\
+			30  & -5.538 & -2.654 \\
+			35  & -5.352 & -2.333 \\
+			40  & -5.591 & -2.603 \\
+			45  & -5.183 & -2.271 \\
+			50  & -5.183 & -2.259 \\
+			55  & -5.209 & -2.361 \\
+			60  & \textbf{-4.529} & \textbf{-1.724} \\
+			65  & -5.019 & -2.093 \\
+			70  & -5.053 & -2.057 \\
+			75  & -5.268 & -2.308 \\
+			80  & -5.130 & -2.200 \\
+			85  & -5.356 & -2.490 \\
+			90  & -5.104 & -2.225 \\
+			95  & -5.386 & -2.530 \\
+			100 & -5.119 & -2.282 \\
+			\midrule
+			$\sigma^2$ & 0.094 & 0.086 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
 
+
+\ref{tab:etm_description_k}
+\begin{table}
+	\caption{\label{tab:etm_description_k} Description -- ETM Generated Topics for $\emph{K} = 20$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                             \textbf{Keywords} \\
+			\hline
+			1  &           study, task, bonus, complete, questions, minutes, survey, participants, participate, min \\
+			\hline
+			2  &        complete, part, minutes, study, survey, social, approximately, academic, participate, asked \\
+			\hline
+			3  &          questions, answer, asked, read, short, personality, related, minutes, series, perceptions \\
+			\hline
+			4  &                           short, video, questions, answer, make, minutes, write, asked, task, read \\
+			\hline
+			5  &                               asked, images, series, click, red, enclosed, web, page, shown, based \\
+			\hline
+			6  &                     links, download, unique, stream, text, article, words, extract, related, write \\
+			\hline
+			7  &  survey, hit, consumer, attitudes, social, opinions, preferences, minute, perceptions, experiences \\
+			\hline
+			8  &       survey, hit, minute, experiences, opinions, attitudes, consumer, opinion, social, experience \\
+			\hline
+			9  &                       opinion, product, products, image, person, find, rate, based, give, evaluate \\
+			\hline
+			10 &         survey, hit, social, minute, consumer, attitudes, opinions, preferences, perceptions, rate \\
+			\hline
+			11 &               study, short, participate, complete, read, minutes, experience, social, asked, write \\
+			\hline
+			12 &        study, people, research, make, understand, interested, asked, participate, opinions, survey \\
+			\hline
+			13 &             questions, answer, read, short, personality, asked, series, perceptions, related, work \\
+			\hline
+			14 &                       opinion, person, image, find, products, rate, product, give, based, evaluate \\
+			\hline
+			15 &                           task, data, information, collect, based, time, work, bonus, make, person \\
+			\hline
+			16 &           survey, minute, hit, attitudes, social, opinions, experiences, consumer, min, experience \\
+			\hline
+			17 &        survey, online, complete, behaviors, asked, related, minutes, takes, participants, evaluate \\
+			\hline
+			18 &          minutes, takes, decision, approximately, making, survey, academic, asked, evaluate, study \\
+			\hline
+			19 &        study, people, research, understand, asked, participate, interested, survey, make, opinions \\
+			\hline
+			20 &          questions, answer, read, short, personality, related, asked, perceptions, minutes, series \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
 talk about the performance of the ETM
+\ref{fig:etm-umass-description}
+\csmfigure{etm-umass-description}{figures/etm-umass-description}{5.5in}{Description -- ETM UMass Topic Coherence}
 
-\ref{fig:etm-umass-title}
-\csmfigure{etm-umass-title}{figures/etm-umass-title}{5.5in}{ETM UMass Topic Coherence}
-
-\ref{fig:etm-uci-title}
-\csmfigure{etm-uci-title}{figures/etm-uci-title}{5.5in}{ETM UCI Topic Coherence}
+\ref{fig:etm-uci-description}
+\csmfigure{etm-uci-description}{figures/etm-uci-description}{5.5in}{Description -- ETM UCI Topic Coherence}
 \newpage
+
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
 
-\ref{fig:umass-title}
-\csmfigure{umass-title}{figures/umass-title}{5.5in}{Title UMass Topic Coherence}
+\ref{tab:combo_description_tc}
+\begin{table}
+	\caption{\label{tab:combo_description_tc} Description -- Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{|l|rr|rr|rr|rr|}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{LSI}} & \multicolumn{2}{c|}{\textbf{LDA}} & \multicolumn{2}{c|}{\textbf{lda2vec}} & \multicolumn{2}{c|}{\textbf{ETM}} \\
+			\emph{K} &   UMass &    UCI &  UMass &    UCI &   UMass &    UCI &  UMass &    UCI \\
+			\hline
+			10  &  -5.859 & -3.087 & -5.029 & \textbf{-2.108} &  \textbf{-8.102} & \textbf{-5.023} & -5.536 & -2.517 \\
+			15  &  \textbf{-4.984} & \textbf{-2.546} & \textbf{-4.982} & -2.166 &  -8.545 & -5.307 & -5.176 & -2.330 \\
+			20  &  -6.464 & -3.730 & -5.500 & -2.685 & -10.735 & -7.396 & \textbf{-4.523} & \textbf{-1.583} \\
+			25  &  -5.371 & -2.800 & -6.044 & -3.063 & -10.371 & -7.084 & -5.693 & -2.775 \\
+			30  &  -5.505 & -3.068 & -5.728 & -2.860 &  -9.153 & -6.115 & -5.538 & -2.654 \\
+			35  &  -6.197 & -3.892 & -6.394 & -3.325 &  -8.889 & -6.156 & -5.352 & -2.333 \\
+			40  &  -7.093 & -4.735 & -6.402 & -3.462 &  -8.641 & -5.582 & -5.591 & -2.603 \\
+			45  &  -7.416 & -5.037 & -6.353 & -3.189 & -10.986 & -7.708 & -5.183 & -2.271 \\
+			50  &  -8.008 & -5.462 & -7.371 & -4.098 &  -9.806 & -6.577 & -5.183 & -2.259 \\
+			55  &  -8.439 & -5.753 & -7.116 & -3.905 &  -9.597 & -6.652 & -5.209 & -2.361 \\
+			60  &  -8.833 & -6.179 & -7.108 & -3.846 &  -9.469 & -6.379 & -4.529 & -1.724 \\
+			65  &  -8.871 & -6.191 & -7.067 & -3.781 &  -9.580 & -6.328 & -5.019 & -2.093 \\
+			70  &  -9.790 & -6.880 & -7.887 & -4.547 &  -9.548 & -6.319 & -5.053 & -2.057 \\
+			75  &  -9.749 & -6.873 & -7.675 & -4.205 &  -9.674 & -6.429 & -5.268 & -2.308 \\
+			80  & -10.414 & -7.567 & -7.919 & -4.410 &  -9.204 & -5.955 & -5.130 & -2.200 \\
+			85  & -10.697 & -7.795 & -8.869 & -5.257 &  -9.621 & -6.507 & -5.356 & -2.490 \\
+			90  & -10.873 & -7.913 & -8.374 & -4.769 &  -9.705 & -6.406 & -5.104 & -2.225 \\
+			95  & -11.292 & -8.359 & -8.354 & -4.755 &  -9.562 & -6.425 & -5.386 & -2.530 \\
+			100 & -11.395 & -8.325 & -9.127 & -5.264 &  -9.562 & -6.260 & -5.119 & -2.282 \\
+			\hline
+			$\sigma^2$ & 4.654 & 3.913 & 1.549 & 0.901 & 0.493 & 0.409 & 0.094 & 0.086 \\ 
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
 
-\ref{fig:uci-title}
-\csmfigure{uci-title}{figures/uci-title}{5.5in}{Title UCI Topic Coherence}
+\ref{fig:umass-description}
+\csmfigure{umass-description}{figures/umass-description}{5.5in}{Description -- UMass Topic Coherence}
+
+\ref{fig:uci-description}
+\csmfigure{uci-description}{figures/uci-description}{5.5in}{Description -- UCI Topic Coherence}
 
 \newpage
+
+\paragraph{Discussion}
+
+Discuss the findings and the topics found in the description
+
+Best scoring topic coherence \ref{tab:etm_description_k} \ref{tab:etm_description_tc}
+
+
 \subsubsection{HIT Preview}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
 
@@ -1154,7 +1986,7 @@ Total words in corpus: 518817
 \ref{tab:preview_top_words}
 
 \begin{table}
-	\caption{\label{tab:preview_top_words} Top 10 Words in Preview Corpus}
+	\caption{\label{tab:preview_top_words} Preview -- Top 10 Words in Corpus}
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -1196,10 +2028,117 @@ Total words in corpus: 518817
 \csmfigure{preview-50-bar}{figures/preview-50-bar}{6.5in}{Preview - Top 50 Words}
 
 \ref{fig:preview-50-pi}
-\csmfigure{preview-50-pi}{figures/preview-50-pi}{6.5in}{Preview Corpus Distribution}
+\csmfigure{preview-50-pi}{figures/preview-50-pi}{6.5in}{Preview -- Corpus Distribution}
 
 \newpage
 \paragraph{LSI}
+
+\ref{tab:lsi_preview_tc}
+\begin{table}
+	\caption{\label{tab:lsi_preview_tc} Preview -- LSI Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{LSI} \\
+			\emph{K} &  UMass &    UCI \\
+			\midrule
+			10  & \textbf{-4.915} & -5.294 \\
+			15  & -5.281 & -6.560 \\
+			20  & -5.217 & -6.153 \\
+			25  & \textbf{-4.959} & -5.652 \\
+			30  & -5.604 & -5.834 \\
+			35  & -5.375 & -5.271 \\
+			40  & -5.096 & \textbf{-5.069} \\
+			45  & -5.159 & -5.250 \\
+			50  & -5.522 & -5.594 \\
+			55  & -5.979 & -5.909 \\
+			60  & -6.064 & -6.290 \\
+			65  & -6.295 & -6.281 \\
+			70  & -6.527 & -6.736 \\
+			75  & -6.675 & -6.876 \\
+			80  & -6.353 & -6.661 \\
+			85  & -6.700 & -6.918 \\
+			90  & -7.018 & -7.084 \\
+			95  & -7.038 & -7.049 \\
+			100 & -7.183 & -7.375 \\
+			\midrule
+			$\sigma^2$ & 0.588 & 0.514 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+
+\ref{tab:lsi_preview_k}
+\begin{table}
+	\caption{\label{tab:lsi_preview_k} Preview -- LSI Generated Topics for $\emph{K} = 25$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+				\textbf{Topic} &                                                                                               \textbf{Keywords} \\
+				\hline
+				1  &                           info, profile, text, copy, appears, company, linkedin, link, school, click \\
+				\hline
+				2  &                       answer, original, kiwi, botanicals, sentence, shower, gel, casing, brand, hair \\
+				\hline
+				3  &                sentence, original, number, answer, kiwi, botanicals, shower, gel, choose, population \\
+				\hline
+				4  &                     agree, disagree, strongly, slightly, book, mother, kiwi, botanicals, shower, gel \\
+				\hline
+				5  &                     agree, disagree, mother, strongly, slightly, kiwi, botanicals, shower, gel, book \\
+				\hline
+				6  &                       book, mother, receipt, hair, kiwi, botanicals, gel, shower, fictional, journal \\
+				\hline
+				7  &                            receipt, book, journal, data, blank, bird, fictional, item, total, number \\
+				\hline
+				8  &                 preview, receipt, accept, qualify, years, rate, requester, book, information, review \\
+				\hline
+				9  &                 answer, mother, kiwi, botanicals, hair, gel, shower, question, acceptable, deodorant \\
+				\hline
+				10 &                       blank, unclear, rotate, zoom, instructions, receipt, special, ctrl, work, page \\
+				\hline
+				11 &                    amazon, bird, journal, book, birdwatching, watching, notebook, select, post, gift \\
+				\hline
+				12 &                  answer, acceptable, question, bad, mother, deodorant, casing, ivory, medical, scent \\
+				\hline
+				13 &                     medical, bird, records, birdwatching, health, amazon, watching, pet, record, dog \\
+				\hline
+				14 &                 sale, store, business, data, company, estate, items, categories, traditional, number \\
+				\hline
+				15 &                          company, website, amazon, correct, country, find, cote, rica, sale, product \\
+				\hline
+				16 &                       sale, amazon, data, chromatography, medical, age, war, bronze, item, fictional \\
+				\hline
+				17 &                sale, amazon, data, medical, chromatography, positivity, bird, leave, item, fictional \\
+				\hline
+				18 &  positivity, journal, bird, amazon, chromatography, gratitude, birdwatching, age, watching, positive \\
+				\hline
+				19 &                             skill, amazon, skills, product, person, aws, linkedin, click, info, book \\
+				\hline
+				20 &                              amazon, skill, book, product, aws, page, post, select, fictional, guide \\
+				\hline
+				21 &                   product, amazon, print, variations, miu, title, products, book, brand, description \\
+				\hline
+				22 &              chromatography, age, bronze, war, analysis, methods, analytical, gas, chemistry, liquid \\
+				\hline
+				23 &               fish, identification, age, bronze, species, guide, chromatography, fishes, reef, field \\
+				\hline
+				24 &                page, invoice, question, count, item, acceptable, questions, amount, multiple, birite \\
+				\hline
+				25 &                        question, page, invoice, acceptable, questions, bad, count, prompt, war, step \\
+				\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:lsi-umass-preview}
+\csmfigure{lsi-umass-preview}{figures/lsi-umass-preview}{5.5in}{Preview -- LSI UMass Topic Coherence}
+
+\ref{fig:lsi-uci-preview}
+\csmfigure{lsi-uci-preview}{figures/lsi-uci-preview}{5.5in}{Preview -- LSI UCI Topic Coherence}
+\newpage
+
+
 result of LSI on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
@@ -1207,6 +2146,92 @@ word clouds of top topics
 Observations and analysis on the topics
 
 \paragraph{LDA}
+
+\ref{tab:lda_preview_tc}
+\begin{table}
+	\caption{\label{tab:lda_preview_tc} Preview -- LDA Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{LDA} \\
+			\emph{K} &  UMass &    UCI \\
+			\midrule
+			10  & \textbf{-1.904} & \textbf{-1.757} \\
+			15  & \textbf{-1.858} & -2.123 \\
+			20  & -2.547 & -2.142 \\
+			25  & -2.625 & -2.757 \\
+			30  & -2.997 & -2.751 \\
+			35  & -3.200 & -3.149 \\
+			40  & -2.439 & -2.594 \\
+			45  & -2.460 & -2.254 \\
+			50  & -2.774 & -2.194 \\
+			55  & -2.682 & -2.447 \\
+			60  & -3.013 & -2.497 \\
+			65  & -3.386 & -2.461 \\
+			70  & -2.812 & -2.066 \\
+			75  & -3.003 & \textbf{-1.707} \\
+			80  & -3.039 & -2.335 \\
+			85  & -2.800 & \textbf{-1.859} \\
+			90  & -3.130 & -2.161 \\
+			95  & -3.102 & -2.224 \\
+			100 & -3.094 & -2.189 \\
+			\midrule
+			$\sigma^2$ & 0.167 & 0.128 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+
+\ref{tab:lda_preview_k}
+\begin{table}
+	\caption{\label{tab:lda_preview_k} Preview -- LDA Generated Topics for $\emph{K} = 15$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                            \textbf{Keywords} \\
+			\hline
+			1  &              answer, acceptable, bad, good, question, answers, content, advice, people, president \\
+			\hline
+			2  &                    answer, casing, original, brand, kiwi, spelling, botanicals, edit, shower, gel \\
+			\hline
+			3  &                         agree, disagree, item, strongly, slightly, class, type, text, select, hit \\
+			\hline
+			4  &                       blank, unclear, zoom, rotate, instructions, special, work, text, ctrl, page \\
+			\hline
+			5  &                    hit, answer, user, book, agent, text, journal, submit, instructions, responses \\
+			\hline
+			6  &               sale, article, business, store, paste, title, body, estate, categories, traditional \\
+			\hline
+			7  &  sentence, original, number, choose, population, universities, university, york, harvard, meaning \\
+			\hline
+			8  &                          receipt, data, item, reject, match, select, readable, side, left, fields \\
+			\hline
+			9  &                               mother, hair, shampoo, dry, spray, beach, babe, product, edit, care \\
+			\hline
+			10 &                          phone, number, email, address, company, find, link, website, https, role \\
+			\hline
+			11 &              hit, survey, preview, questions, accept, work, answers, information, review, payment \\
+			\hline
+			12 &                   company, book, amazon, website, find, country, bird, fictional, correct, number \\
+			\hline
+			13 &          results, veterinary, names, ophthalmology, summary, domain, search, group, workers, link \\
+			\hline
+			14 &                     receipt, question, answer, store, number, leave, blank, present, total, items \\
+			\hline
+			15 &                        profile, info, text, copy, linkedin, appears, skill, company, link, school \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:lda-umass-preview}
+\csmfigure{lda-umass-preview}{figures/lda-umass-preview}{5.5in}{Preview -- LDA UMass Topic Coherence}
+
+\ref{fig:lda-uci-preview}
+\csmfigure{lda-uci-preview}{figures/lda-uci-preview}{5.5in}{Preview -- LDA UCI Topic Coherence}
+\newpage
+
 result of LDA on the number of topics, output the topics
 visualization of document topic distribution
 word clouds of top topics
@@ -1214,34 +2239,406 @@ word clouds of top topics
 Observations and analysis on the topics
 
 \paragraph{lda2vec}
+\ref{tab:lda2vec_preview_tc}
+\begin{table}
+	\caption{\label{tab:lda2vec_preview_tc} Preview -- \emph{lda2vec} Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{lda2vec} \\
+			\emph{K} &   UMass &     UCI \\
+			\midrule
+			10  & -16.717 & -13.474 \\
+			15  & -15.109 & -13.119 \\
+			20  & -15.036 & -12.749 \\
+			25  & \textbf{-13.695} & -12.317 \\
+			30  & -14.548 & -12.174 \\
+			35  & -15.275 & -12.683 \\
+			40  & -14.925 & -12.061 \\
+			45  & -15.067 & -12.288 \\
+			50  & -14.713 & -12.002 \\
+			55  & -14.663 & -12.104 \\
+			60  & -13.743 & -11.530 \\
+			65  & -14.251 & -11.848 \\
+			70  & -14.280 & -11.514 \\
+			75  & \textbf{-13.646} & \textbf{-11.191} \\
+			80  & -13.932 & -11.564 \\
+			85  & -13.891 & -11.327 \\
+			90  & -14.263 & -11.901 \\
+			95  & -13.801 & -11.483 \\
+			100 & -14.893 & -11.770 \\
+			\midrule
+			$\sigma^2$ & 0.167 & 0.128 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+
+\ref{tab:lda2vec_preview_k}
+\begin{table}
+	\caption{\label{tab:lda2vec_preview_k} Preview -- \emph{lda2vec} Generated Topics for $\emph{K} = 20$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+				\textbf{Topic} &                                                                                                       \textbf{Keywords} \\
+				\hline
+				1  &                               postal, foreign, fuel, threat, dislike, rude, shampoo, moral, unclear, smarter \\
+				\hline
+				2  &                 trk, bloggers, hairstylist, fendi, influencers, tagline, logomania, instagram, tina, youtube \\
+				\hline
+				3  &     tease, hairbrush, hairstylist, wording, masculine, exaggeration, husbands, clothe, casserole, intolerant \\
+				\hline
+				4  &      botanicals, purifying, kiwi, hairstylist, familiarize, consignment, gel, blacked, paraphrase, hairbrush \\
+				\hline
+				5  &  insensitive, exaggeration, judgmental, intolerant, prejudiced, muslim, violent, offense, imminent, intruder \\
+				\hline
+				6  &                   wording, ownership, babe, anomalies, diverging, bananas, approval, feeds, omnipresent, bal \\
+				\hline
+				7  &      sweet, innovative, hairbrush, transcribed, snack, polarity, acceptable, compared, responses, reputation \\
+				\hline
+				8  &                          stalin, tangle, joseph, babe, jesus, enjoys, perfector, violates, retailer, cashier \\
+				\hline
+				9  &                                typos, coherent, insole, summary, mistakes, kiwi, neck, jacobs, heel, branded \\
+				\hline
+				10 &                accurate, tina, unprovable, moderate, insult, chooses, alterations, copied, nonsense, spanish \\
+				\hline
+				11 &                       purifying, excluding, botanicals, consignment, nedi, pickup, kiwi, thrift, pawn, panel \\
+				\hline
+				12 &                       requesters, sr, jacobs, sporting, homage, exclamation, slip, spice, masculine, cashier \\
+				\hline
+				13 &                       brainstorming, straeter, endtime, utc, damon, fine, buttons, responds, donald, proceed \\
+				\hline
+				14 &     overlaps, sampled, consolidating, semantics, opting, refined, hairbrush, exclamation, annotator, violate \\
+				\hline
+				15 &                              cent, links, subsidiary, evolved, thrift, gmbh, parent, matched, stating, typos \\
+				\hline
+				16 &                allotted, brunch, dashboard, punctuated, panel, nedi, unavailable, zoomed, remails, purifying \\
+				\hline
+				17 &                                   cure, cloquet, spied, potato, tangle, miu, decimals, feeds, aids, conducts \\
+				\hline
+				18 &                        corp, headquarters, latch, logo, jacobs, sweatshirt, pumps, typos, acceptable, insole \\
+				\hline
+				19 &                          link, completion, www, register, matched, billings, requesters, survey, hitid, http \\
+				\hline
+				20 &                       reo, craigslist, instagram, hairstylist, babe, outdated, cardshark, thrift, blog, html \\
+				\hline
+			\end{tabular}
+	\end{center}
+\end{table}
 result of Lda2vec on the number of topics, output the topics\
 visualization of document topic distribution\
 word clouds of top topics\
 \
 bservations and analysis on the topics
 
+To run the \emph{lda2vec} model through the topic coherence metrics a post-processing step was needed\
+to remove unicode characters that didn't appear in the \emph{gensim} corpus.
+
 \paragraph{ETM}
 
+\ref{tab:etm_preview_tc}
+\begin{table}
+	\caption{\label{tab:etm_preview_tc} Preview -- ETM Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{lrr}
+			\toprule
+			{} & \multicolumn{2}{l}{ETM} \\
+			\emph{K} &  UMass &    UCI \\
+			\midrule
+			10  & \textbf{-1.025} & \textbf{-0.683} \\
+			15  & -1.170 & -1.047 \\
+			20  & -1.290 & \textbf{-0.839} \\
+			25  & -1.284 & -1.009 \\
+			30  & -1.374 & -1.617 \\
+			35  & -1.385 & -1.648 \\
+			40  & -1.418 & -1.702 \\
+			45  & -1.447 & -1.812 \\
+			50  & -1.448 & -1.961 \\
+			55  & -1.474 & -2.083 \\
+			60  & -1.470 & -1.938 \\
+			65  & -1.471 & -1.948 \\
+			70  & -1.518 & -2.013 \\
+			75  & -1.587 & -2.375 \\
+			80  & -1.559 & -2.333 \\
+			85  & -1.582 & -2.487 \\
+			90  & -1.539 & -2.288 \\
+			95  & -1.538 & -2.352 \\
+			100 & -1.510 & -2.523 \\
+			\midrule
+			$\sigma^2$ & 0.021 & 0.32 \\
+			\bottomrule
+			\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{tab:etm_preview_k}
+\begin{table}
+	\caption{\label{tab:etm_preview_k} Preview -- ETM Generated Topics for $\emph{K} = 20$}
+	\begin{center}
+		\begin{tabular}{| l | L |}
+			\hline
+			\textbf{Topic} &                                                                                              \textbf{Keywords} \\
+			\hline
+			1  &  sentence, original, number, population, university, universities, choose, york, harvard, sentences \\
+			\hline			
+			2  &                                   person, select, click, full, https, find, post, www, data, search \\
+			\hline			
+			3  &                          answer, casing, spelling, brand, original, edit, hair, scent, note, proper \\
+			\hline			
+			4  &                                receipt, leave, blank, number, total, items, id, valid, choose, code \\
+			\hline			
+			5  &                       company, website, number, phone, find, address, country, email, correct, link \\
+			\hline			
+			6  &                     answer, acceptable, bad, good, question, content, answers, people, marked, rate \\
+			\hline			
+			7  &                          image, option, read, submit, task, work, javascript, button, images, table \\
+			\hline			
+			8  &              product, brand, description, information, products, title, design, images, long, match \\
+			\hline			
+			9  &                            receipt, data, item, reject, left, match, readable, fields, select, side \\
+			\hline			
+			10 &                              blank, unclear, zoom, rotate, work, special, text, ctrl, copy, picture \\
+			\hline			
+			11 &                preview, accept, review, information, rate, requester, years, average, payment, work \\
+			\hline			
+			12 &                         hits, information, writing, world, report, work, time, guide, meaning, text \\
+			\hline			
+			13 &                             responses, time, change, check, begin, work, questions, day, good, make \\
+			\hline			
+			14 &                            item, page, type, price, select, find, search, results, amount, quantity \\
+			\hline			
+			15 &                amazon, business, text, group, categories, service, english, customer, online, legal \\
+			\hline			
+			16 &                                profile, text, copy, appears, company, link, click, work, years, job \\
+			\hline			
+			17 &                                  article, paste, title, copy, body, link, form, text, click, titles \\
+			\hline			
+			18 &                               survey, link, code, provide, complete, end, box, paste, receive, open \\
+			\hline			
+			19 &             question, answers, questions, answer, task, sentence, written, work, identify, multiple \\
+			\hline			
+			20 &                               answer, words, people, don, correct, write, word, based, submit, read \\
+			\hline			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\ref{fig:etm-umass-preview}
+\csmfigure{etm-umass-preview}{figures/etm-umass-preview}{5.5in}{Preview -- ETM UMass Topic Coherence}
+
+\ref{fig:etm-uci-preview}
+\csmfigure{etm-uci-preview}{figures/etm-uci-preview}{5.5in}{Preview -- ETM UCI Topic Coherence}
+\newpage
 talk about the performance of the ETM
 
 \paragraph{Topic Coherence}
 Create a figure displaying the different topic coherence results
 Explain the scores and what that means
+\ref{tab:preview_tc}
+\begin{table}
+	\caption{\label{tab:preview_tc} Preview -- Topic Coherence Scores for \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{| l |rr|rr|rr|rr|}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{LSI}} & \multicolumn{2}{c|}{\textbf{LDA}} & \multicolumn{2}{c|}{\textbf{lda2vec}} & \multicolumn{2}{c|}{\textbf{ETM}} \\
+			\emph{K} &  UMass &    UCI &  UMass &    UCI &   UMass &     UCI &  UMass &    UCI \\
+			\hline
+			10  & -4.915 & -5.294 & -1.904 & -1.757 & -16.717 & -13.474 & -1.025 & -0.683 \\
+			15  & -5.281 & -6.560 & -1.858 & -2.123 & -15.109 & -13.119 & -1.170 & -1.047 \\
+			20  & -5.217 & -6.153 & -2.547 & -2.142 & -15.036 & -12.749 & -1.290 & -0.839 \\
+			25  & -4.959 & -5.652 & -2.625 & -2.757 & -13.695 & -12.317 & -1.284 & -1.009 \\
+			30  & -5.604 & -5.834 & -2.997 & -2.751 & -14.548 & -12.174 & -1.374 & -1.617 \\
+			35  & -5.375 & -5.271 & -3.200 & -3.149 & -15.275 & -12.683 & -1.385 & -1.648 \\
+			40  & -5.096 & -5.069 & -2.439 & -2.594 & -14.925 & -12.061 & -1.418 & -1.702 \\
+			45  & -5.159 & -5.250 & -2.460 & -2.254 & -15.067 & -12.288 & -1.447 & -1.812 \\
+			50  & -5.522 & -5.594 & -2.774 & -2.194 & -14.713 & -12.002 & -1.448 & -1.961 \\
+			55  & -5.979 & -5.909 & -2.682 & -2.447 & -14.663 & -12.104 & -1.474 & -2.083 \\
+			60  & -6.064 & -6.290 & -3.013 & -2.497 & -13.743 & -11.530 & -1.470 & -1.938 \\
+			65  & -6.295 & -6.281 & -3.386 & -2.461 & -14.251 & -11.848 & -1.471 & -1.948 \\
+			70  & -6.527 & -6.736 & -2.812 & -2.066 & -14.280 & -11.514 & -1.518 & -2.013 \\
+			75  & -6.675 & -6.876 & -3.003 & -1.707 & -13.646 & -11.191 & -1.587 & -2.375 \\
+			80  & -6.353 & -6.661 & -3.039 & -2.335 & -13.932 & -11.564 & -1.559 & -2.333 \\
+			85  & -6.700 & -6.918 & -2.800 & -1.859 & -13.891 & -11.327 & -1.582 & -2.487 \\
+			90  & -7.018 & -7.084 & -3.130 & -2.161 & -14.263 & -11.901 & -1.539 & -2.288 \\
+			95  & -7.038 & -7.049 & -3.102 & -2.224 & -13.801 & -11.483 & -1.538 & -2.352 \\
+			100 & -7.183 & -7.375 & -3.094 & -2.189 & -14.893 & -11.770 & -1.510 & -2.523 \\
+			\hline
+			$\sigma^2$ & 0.588 & 0.514 & 0.167 & 0.128 & 0.588 & 0.514 & 0.021 & 0.32 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+INSERT TABLE FOR MODEL TC COMPARISON
 
+\csmfigure{umass-preview}{figures/umass-preview}{5.5in}{Preview -- UMass Topic Coherence}
+
+\ref{fig:uci-preview}
+\csmfigure{uci-preview}{figures/uci-preview}{5.5in}{Preview -- UCI Topic Coherence}
+\newpage
 \subsubsection{Results}
+
+
 Discuss the difference between models on the different datasets.
 Discuss the differences between different datasets, what gives us more meaningful information
+
+
+\ref{tab:lsi_data_comp}
+\begin{table}
+	\caption{\label{tab:lsi_data_comp} LSI -- Topic Coherence Scores for Datasets on \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{| l | rr | rr | rr |}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{Title}} & \multicolumn{2}{c|}{\textbf{Description}} & \multicolumn{2}{c|}{\textbf{Preview}} \\
+			{} &       UMass &    UCI &  UMass &    UCI &   UMass &    UCI \\
+			\hline
+				10  &  -9.687 &  -5.975 &      -5.859 & -3.087 &  -4.915 & -5.294 \\
+				15  & -10.903 &  -7.084 &      -4.984 & -2.546 &  -5.281 & -6.560 \\
+				20  & -12.441 &  -8.593 &      -6.464 & -3.730 &  -5.217 & -6.153 \\
+				25  & -13.247 &  -9.334 &      -5.371 & -2.800 &  -4.959 & -5.652 \\
+				30  & -12.343 &  -8.254 &      -5.505 & -3.068 &  -5.604 & -5.834 \\
+				35  & -13.305 &  -9.381 &      -6.197 & -3.892 &  -5.375 & -5.271 \\
+				40  & -13.581 &  -9.475 &      -7.093 & -4.735 &  -5.096 & -5.069 \\
+				45  & -13.980 &  -9.874 &      -7.416 & -5.037 &  -5.159 & -5.250 \\
+				50  & -14.417 & -10.234 &      -8.008 & -5.462 &  -5.522 & -5.594 \\
+				55  & -14.632 & -10.434 &      -8.439 & -5.753 &  -5.979 & -5.909 \\
+				60  & -15.160 & -10.886 &      -8.833 & -6.179 &  -6.064 & -6.290 \\
+				65  & -15.409 & -11.101 &      -8.871 & -6.191 &  -6.295 & -6.281 \\
+				70  & -15.473 & -11.114 &      -9.790 & -6.880 &  -6.527 & -6.736 \\
+				75  & -15.886 & -11.498 &      -9.749 & -6.873 &  -6.675 & -6.876 \\
+				80  & -16.046 & -11.632 &     -10.414 & -7.567 &  -6.353 & -6.661 \\
+				85  & -15.921 & -11.504 &     -10.697 & -7.795 &  -6.700 & -6.918 \\
+				90  & -16.202 & -11.714 &     -10.873 & -7.913 &  -7.018 & -7.084 \\
+				95  & -16.366 & -11.847 &     -11.292 & -8.359 &  -7.038 & -7.049 \\
+				100 & -16.500 & -11.922 &     -11.395 & -8.325 &  -7.183 & -7.375 \\
+			\hline
+			$\sigma^2$ & 3.734 & 2.854 & 4.654 & 3.913 & 0.588 & 0.514 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+\ref{fig:umass-preview}
 
 \ref{fig:lsi-umass-dataset-comparison}
 \csmfigure{lsi-umass-dataset-comparison}{figures/lsi-umass-dataset-comparison}{5.5in}{LSI UMass Topic Coherence Dataset Comparison}
 \ref{fig:lsi-uci-dataset-comparison}
 \csmfigure{lsi-uci-dataset-comparison}{figures/lsi-uci-dataset-comparison}{5.5in}{LSI UCI Topic Coherence Dataset Comparison}
 
+
+\ref{tab:lda_data_comp}
+\begin{table}
+	\caption{\label{tab:lda_data_comp} LDA -- Topic Coherence Scores for Datasets on \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{| l | rr | rr | rr |}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{Title}} & \multicolumn{2}{c|}{\textbf{Description}} & \multicolumn{2}{c|}{\textbf{Preview}} \\
+			\emph{K} &       UMass &    UCI &  UMass &    UCI &   UMass &    UCI \\
+			\hline
+				10  & -10.364 & -6.718 &      -5.029 & -2.108 &  -1.904 & -1.757 \\
+				15  & -10.228 & -6.538 &      -4.982 & -2.166 &  -1.858 & -2.123 \\
+				20  & -10.709 & -6.692 &      -5.500 & -2.685 &  -2.547 & -2.142 \\
+				25  & -10.740 & -6.868 &      -6.044 & -3.063 &  -2.625 & -2.757 \\
+				30  & -10.708 & -6.569 &      -5.728 & -2.860 &  -2.997 & -2.751 \\
+				35  & -11.444 & -7.125 &      -6.394 & -3.325 &  -3.200 & -3.149 \\
+				40  & -11.344 & -7.071 &      -6.402 & -3.462 &  -2.439 & -2.594 \\
+				45  & -11.450 & -7.126 &      -6.353 & -3.189 &  -2.460 & -2.254 \\
+				50  & -11.988 & -7.488 &      -7.371 & -4.098 &  -2.774 & -2.194 \\
+				55  & -11.665 & -7.217 &      -7.116 & -3.905 &  -2.682 & -2.447 \\
+				60  & -11.961 & -7.291 &      -7.108 & -3.846 &  -3.013 & -2.497 \\
+				65  & -12.617 & -7.851 &      -7.067 & -3.781 &  -3.386 & -2.461 \\
+				70  & -13.407 & -8.348 &      -7.887 & -4.547 &  -2.812 & -2.066 \\
+				75  & -13.113 & -8.078 &      -7.675 & -4.205 &  -3.003 & -1.707 \\
+				80  & -13.244 & -8.077 &      -7.919 & -4.410 &  -3.039 & -2.335 \\
+				85  & -12.938 & -7.647 &      -8.869 & -5.257 &  -2.800 & -1.859 \\
+				90  & -12.812 & -7.394 &      -8.374 & -4.769 &  -3.130 & -2.161 \\
+				95  & -12.608 & -7.185 &      -8.354 & -4.755 &  -3.102 & -2.224 \\
+				100 & -12.657 & -7.005 &      -9.127 & -5.264 &  -3.094 & -2.189 \\
+			\hline
+			$\sigma^2$ & 1.065 & 0.278 & 1.549 & 0.901 & 0.167 & 0.128 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+\ref{fig:umass-preview}
 \ref{fig:lda-umass-dataset-comparison}
 \csmfigure{lda-umass-dataset-comparison}{figures/lda-umass-dataset-comparison}{5.5in}{LDA UMass Topic Coherence Dataset Comparison}
 \ref{fig:lda-uci-dataset-comparison}
 \csmfigure{lda-uci-dataset-comparison}{figures/lda-uci-dataset-comparison}{5.5in}{LDA UCI Topic Coherence Dataset Comparison}
 
+
+\ref{tab:lda2vec_data_comp}
+\begin{table}
+	\caption{\label{tab:lda2vec_data_comp} \emph{lda2vec} -- Topic Coherence Scores for Datasets on \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{| l | rr | rr | rr |}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{Title}} & \multicolumn{2}{c|}{\textbf{Description}} & \multicolumn{2}{c|}{\textbf{Preview}} \\
+			\emph{K} &       UMass &    UCI &  UMass &    UCI &   UMass &    UCI \\
+			\hline
+			10  &  -8.467 & -6.003 &      -8.102 & -5.023 & -16.717 & -13.474 \\
+			15  & -10.435 & -7.471 &      -8.545 & -5.307 & -15.109 & -13.119 \\
+			20  &  -7.414 & -4.765 &     -10.735 & -7.396 & -15.036 & -12.749 \\
+			25  &  -8.998 & -6.074 &     -10.371 & -7.084 & -13.695 & -12.317 \\
+			30  &  -7.937 & -5.026 &      -9.153 & -6.115 & -14.548 & -12.174 \\
+			35  & -10.015 & -7.245 &      -8.889 & -6.156 & -15.275 & -12.683 \\
+			40  &  -7.339 & -4.362 &      -8.641 & -5.582 & -14.925 & -12.061 \\
+			45  &  -8.253 & -5.227 &     -10.986 & -7.708 & -15.067 & -12.288 \\
+			50  &  -8.824 & -5.880 &      -9.806 & -6.577 & -14.713 & -12.002 \\
+			55  &  -8.331 & -5.158 &      -9.597 & -6.652 & -14.663 & -12.104 \\
+			60  &  -9.308 & -6.268 &      -9.469 & -6.379 & -13.743 & -11.530 \\
+			65  &  -8.696 & -5.493 &      -9.580 & -6.328 & -14.251 & -11.848 \\
+			70  & -10.347 & -7.495 &      -9.548 & -6.319 & -14.280 & -11.514 \\
+			75  &  -8.864 & -5.819 &      -9.674 & -6.429 & -13.646 & -11.191 \\
+			80  &  -8.117 & -5.212 &      -9.204 & -5.955 & -13.932 & -11.564 \\
+			85  &  -9.374 & -6.693 &      -9.621 & -6.507 & -13.891 & -11.327 \\
+			90  &  -9.924 & -7.191 &      -9.705 & -6.406 & -14.263 & -11.901 \\
+			95  &  -9.208 & -6.048 &      -9.562 & -6.425 & -13.801 & -11.483 \\
+			100 & -10.282 & -7.244 &      -9.562 & -6.260 & -14.893 & -11.770 \\
+			\hline
+			$\sigma^2$ & 0.903 & 0.936 & 0.493 & 0.409 & 0.588 & 0.514 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
+\ref{fig:lda2vec-umass-dataset-comparison}
+\csmfigure{lda2vec-umass-dataset-comparison}{figures/lda2vec-umass-dataset-comparison}{5.5in}{lda2vec UMass Topic Coherence Dataset Comparison}
+\ref{fig:lda2vec-uci-dataset-comparison}
+\csmfigure{lda2vec-uci-dataset-comparison}{figures/lda2vec-uci-dataset-comparison}{5.5in}{lda2vec UCI Topic Coherence Dataset Comparison}
+
+\ref{tab:etm_data_comp}
+\begin{table}
+	\caption{\label{tab:etm_data_comp} ETM -- Topic Coherence Scores for Datasets on \emph{K} Topics}
+	\begin{center}
+		\begin{tabular}{| l | rr | rr | rr |}
+			\hline
+			{} & \multicolumn{2}{c|}{\textbf{Title}} & \multicolumn{2}{c|}{\textbf{Description}} & \multicolumn{2}{c|}{\textbf{Preview}} \\
+			\emph{K} &       UMass &    UCI &  UMass &    UCI &   UMass &    UCI \\
+			\hline
+			10  & -8.265 & -5.273 &      -5.536 & -2.517 &  -1.025 & -0.683 \\
+			15  & -9.573 & -6.428 &      -5.176 & -2.330 &  -1.170 & -1.047 \\
+			20  & -9.846 & -6.576 &      -4.523 & -1.583 &  -1.290 & -0.839 \\
+			25  & -9.464 & -6.280 &      -5.693 & -2.775 &  -1.284 & -1.009 \\
+			30  & -9.132 & -6.043 &      -5.538 & -2.654 &  -1.374 & -1.617 \\
+			35  & -9.474 & -6.392 &      -5.352 & -2.333 &  -1.385 & -1.648 \\
+			40  & -7.934 & -5.010 &      -5.591 & -2.603 &  -1.418 & -1.702 \\
+			45  & -8.366 & -5.353 &      -5.183 & -2.271 &  -1.447 & -1.812 \\
+			50  & -8.853 & -5.888 &      -5.183 & -2.259 &  -1.448 & -1.961 \\
+			55  & -8.901 & -5.886 &      -5.209 & -2.361 &  -1.474 & -2.083 \\
+			60  & -9.555 & -6.461 &      -4.529 & -1.724 &  -1.470 & -1.938 \\
+			65  & -8.659 & -5.651 &      -5.019 & -2.093 &  -1.471 & -1.948 \\
+			70  & -9.415 & -6.341 &      -5.053 & -2.057 &  -1.518 & -2.013 \\
+			75  & -8.808 & -5.822 &      -5.268 & -2.308 &  -1.587 & -2.375 \\
+			80  & -9.650 & -6.488 &      -5.130 & -2.200 &  -1.559 & -2.333 \\
+			85  & -9.124 & -6.102 &      -5.356 & -2.490 &  -1.582 & -2.487 \\
+			90  & -9.846 & -6.690 &      -5.104 & -2.225 &  -1.539 & -2.288 \\
+			95  & -8.814 & -5.773 &      -5.386 & -2.530 &  -1.538 & -2.352 \\
+			100 & -9.672 & -6.582 &      -5.119 & -2.282 &  -1.510 & -2.523 \\
+			\hline
+			$\sigma^2$ & 0.311 & 0.236 & 0.094 & 0.086 & 0.021 & 0.32 \\
+			\hline
+			\end{tabular}
+	\end{center}
+\end{table}
 \ref{fig:etm-umass-dataset-comparison}
 \csmfigure{etm-umass-dataset-comparison}{figures/etm-umass-dataset-comparison}{5.5in}{ETM UMass Topic Coherence Dataset Comparison}
 \ref{fig:etm-uci-dataset-comparison}
@@ -1619,7 +3016,7 @@ asd
 % %% Example for use with ``breqn'' automatic equation breaking:
 % \ifbreqn
 % 	\appendix{Equation Breaking Tests}
-
+ 
 % 	\begin{equation*}
 % 	r = \frac{i}{n F} = k' c_i \exp\left\{ \frac{-G^{\ddagger}}{R T} \right\}
 % 	\end{equation*}

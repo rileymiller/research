@@ -1,0 +1,13 @@
+page, person, image, click, search, select, provide, link, https, find
+receipt, item, number, leave, total, items, type, blank, id, price
+sentence, original, number, population, university, choose, universities, york, harvard, sentences
+preview, accept, information, review, work, rate, requester, payment, years, hits
+amazon, business, text, service, group, information, world, guide, english, categories
+answer, casing, brand, spelling, original, edit, hair, scent, note, proper
+question, questions, answers, answer, task, multiple, responses, add, work, single
+read, good, words, black, people, submit, option, task, meaning, writing
+receipt, data, item, reject, left, match, select, readable, fields, side
+blank, unclear, zoom, rotate, special, work, text, ctrl, picture, page
+company, product, survey, link, website, paste, phone, number, find, code
+answer, acceptable, bad, good, content, question, answers, people, marked, response
+profile, text, copy, appears, company, link, click, job, work, years
