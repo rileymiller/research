@@ -182,6 +182,9 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 OUTPUT /Users/rileymiller/code/research/thesis_doc/thesis.lot
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /Users/rileymiller/code/research/thesis_doc/figures/hit_visibility.png
+INPUT /Users/rileymiller/code/research/thesis_doc/figures/hit_visibility.png
+INPUT /Users/rileymiller/code/research/thesis_doc/figures/hit_visibility.png
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /Users/rileymiller/code/research/thesis_doc/figures/lda_diagram.png
 INPUT /Users/rileymiller/code/research/thesis_doc/figures/lda_diagram.png
