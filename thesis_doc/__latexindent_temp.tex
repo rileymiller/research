@@ -799,7 +799,8 @@ coherence (which is linked to interpretability \cite{mimno2011optimizing}). This
 \subsection{Quantitative Analysis}
 Evaluating topic models has generally been a difficult topic to broach. The overarching goal of topic modeling is to garner\
 understanding and meaning from unstructured text which has been a difficult problem for researchers to attempt to quantify.\
-
+However, in order to study and advance the field of topic modeling, researchers have developed intrinsic and extring metrics\
+for evaluating topic model performance with the two most popular methodlogies being perplexity and topic coherence.
 \subsubsection{Perplexity}
 During the early days of topic modeling\
 the defacto standard for evaluating topic models was \emph{perplexity}, a general metric for evaluating statistical models
@@ -867,8 +868,8 @@ allow for the comparison of the models over a range of topics and will give stat
 latent topics that receive further in-depth analysis.
 
 \subsection{Qualitative Analysis}
-For each model implementation on each dataset, a table of topics at a high scoring number of topics (\emph{K}) based\
-off the topic coherence metrics will analyzed for common trends and topics. 
+For each model implementation for each dataset, a test run with a high or relevant number of topics \emph{K}\
+will be analyzed for the topics that the experiment generated.
 
 \subsection{Approach}
 To summarize the approach of the following experiments: the 4 separate datasets that were collected\
@@ -884,13 +885,25 @@ number of topics for each model on each dataset.
 
 \chapter{What are the primary topics of Amazon MTURK HITs?}
 
-\subsection{Data}
-This section will analyze the data that was collected by Dr. Chuan Yue's research team.
+\subsection{HIT Dataset}
+As discussed in Chapter 3, the dataset that was used to analyze the topics of HITs on MTurk was collected over a time\
+range of January 26, 2020 to March 12, 2020 with the specific dates outlined in \ref{tab:data_dates}. One of the interesting\
+considerations of topic modeling is the characteristics of the dataset. After performing some tests to understand the shape\
+or our data, it was discovered that from the raw dataset itself, there was an extremely large disparity in the number of HITs\
+that were administed by certain requesters on the platform. From the 1,108,702 HITs that were collected for this analysis, \
+out of 2012 unique requesters the top 10 requesters by HITs submitted accounted for 69.1\% of the HITs in the dataset shown\
+in \ref{fig:top10-pi}. \
+What was even more alarming was that a single requester administered a whopping 36.1\% of the HITs in the dataset with 
+over 400699 HITs as shown in \ref{tab:requester_top_10}. \
 
-\subsubsection{HIT Dataset}
-Chat about the dataset. \
-was not optained. This data was based off of the raw dataset, before preprocessing.
-\ref{tab:requester_top_10}
+Due to the probabilistic nature of the topic models that were used for the topic modeling analysis on this dataset, the \
+overrepresentation of certain requesters draws needed recognition. In the preprocessing section in Chapter 3, it was discussed\
+that although document duplication would not effect the discovery of topics from other documents, it would cause the generation\
+of topics that were very specific to the duplicated documents in the corpus \cite{schofieldunderstanding}. In the interest of generating\
+topics that were prevelant to documents across the corpus and not just a specific cluster of documents created by certain \
+requesters, duplicated documents were removed from the corpus before being handed off to the topic models. The characterization\
+of the corpora after this preprocessing step of duplicate removal can be seen in the visuals below.
+
 \begin{table}
 	\caption{\label{tab:requester_top_10} Top 10 Requesters by Number of Hits Created before Preprocessing}
 	\begin{center}
@@ -926,11 +939,22 @@ was not optained. This data was based off of the raw dataset, before preprocessi
 	\end{center}
 \end{table}
 
-\ref{fig:top10-pi}
+
 \csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters by Number of HITs before Preprocessing }
 \newpage
 
-\ref{tab:title_requester_top_10}
+After the preprocessing step of document de-duplication, the dataset was reduced from 1,108,702 total documents,\
+to 3,148 Title documents, 2,744 Description documents, and 1,639 Preview documents. The difference in the number\
+of documents is the result of additional preprocessing in which punctuation, digits, symbols, web entities, and \
+other characters were removed from the specific corpora before document duplicates were removed. The Preview corpus was reduced even \ 
+more so as described in further length in the Preprocessing section of Chapter 3 due to it's large vocabulary size \ 
+and large number of unique documents which causes topic models fits and is an area of unexplored research \cite{dieng2019topic}.\
+
+With specific regards to the Title corpus, it can be seen that the impact of certain requesters on the title corpus is significantly less\
+after preprocessing with the top 10 requesters accounting for only 15.6\% of the documents in the corpus as shown in \ref{fig:title-post-top10-pi} \
+compared to 69.1\% before preprocessing. The top 10 requesters by number of unique Title documents also account for a\
+significantly smaller portion of the corpus as shown in \ref{tab:title_requester_top_10}.
+
 \begin{table}
 	\caption{\label{tab:title_requester_top_10} Title -- Top 10 Requesters by Number of Hits Created after Preprocessing}
 	\begin{center}
@@ -960,17 +984,24 @@ was not optained. This data was based off of the raw dataset, before preprocessi
 			\hline
 			Rest of Requesters &            2657 \\
 			\hline
-			\textbf{Total Titles} & 3148 \\
+			\textbf{Total Titles} & \textbf{3148} \\
 			\hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-\ref{fig:title-post-top10-pi}
+
 \csmfigure{title-post-top10-pi}{figures/title-post-top10-pi}{6.5in}{Title -- Top 10 Requesters by Number of HITs after Preprocessing }
 \newpage
 
-\ref{tab:description_requester_top_10}
+The Description corpus also experienced a significant impact after preprocessing and the removal of document duplicates.\ 
+In the chart below, it can be seen that the impact of certain requesters on the description corpus is also \
+significantly less than the original dataset with the top 10 requesters accounting for only 11.2\% of the documents \
+in the corpus as shown in \ref{fig:description-post-top10-pi} \
+compared to 69.1\% before preprocessing. The top 10 requesters by number of unique Description documents also account for a\
+significantly smaller portion of the corpus as shown with the top requester only accounting for 3.5\% of the corpus, compared\
+to 36.1\% before preprocessing, decribed in greater detail by \ref{tab:description_requester_top_10}.
+
 \begin{table}
 	\caption{\label{tab:description_requester_top_10} Description -- Top 10 Requesters by Number of Hits Created after Preprocessing}
 	\begin{center}
@@ -1006,53 +1037,108 @@ was not optained. This data was based off of the raw dataset, before preprocessi
 	\end{center}
 \end{table}
 
-\ref{fig:description-post-top10-pi}
 \csmfigure{description-post-top10-pi}{figures/description-post-top10-pi}{6.5in}{Description -- Top 10 Requesters by Number of HITs after Preprocessing }
 
 \newpage
 
-adfkalsdmfdsamkl
+Due to the structure of the data collected for the Preview dataset not containing information related to the requester name. A fair \
+analysis of the effect of preprocessing on the presence of requesters in the corpus could no be administered. \
+Although the Preview dataset contained a ``uid'' attribute that correlated to the requester id, after specific analysis\
+it was found that the number of users by ``requester\_name'' was different than the ``requester\_id'', implying\
+that requesters can have more than one ``requester\_id'' in our dataset which would lead to an accurate analysis \
+of the Preview dataset. The specific shape of the data collected for the Preview dataset is described in the Dataset\
+section of Chapter 3.
 
-Explain the findings of HIT Analysis
-How would this effect topic modeling?
-Cite the literature on how duplicate documents shouldn't influence the result of the topics.
+Another interesting observation on the effect of preprocessing on the dataset is that none of the top 10 requesters,\
+prior to preprocessing appeared in the top 10 of either the Description or Title corpora after preprocessing. \
+This shows that many requesters administer HITs in bulk and in large numbers.
 
-\newpage
+\begin{table}
+	\caption{\label{tab:corpora_comparison} Dataset Corpora Statistics}
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			{} &  \textbf{Title} & \textbf{Description} & \textbf{Preview} \\
+			\hline
+			Average Length & 38 & 69 & 2349\\
+			\hline
+			Total Unique Words & 3337 & 4229 & 22016\\
+			\hline
+			Total Words & 14584 & 23767 & 518817\\
+			\hline
+			Total Documents & 3148 & 2744 & 1639 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+As shown in \ref{tab:corpora_comparison}, there is a considerable difference between the Title and Description corpora and the \
+Preview corpus. Even though there is half as many documents for the Preview corpus, there are considerably\
+more words in the corpus, resulting in a longer document length. This information can be used to predict that \
+the Preview corpus will generate higher quality topics and that the diversity in the topics extracted will\
+be greater than that of the Title and Description corpora.
+
 \subsection{Experiments}
-This section should talk about the experiments that were run
+Following the preprocessing of the data, the three corpora are then analyzed using the four different\
+topic modeling techniques discussed in Chapter 3. For each dataset, each topic model is trained and evaluated\
+for topics \emph{K} such that:
+\begin{eqnarray}
+	\label{eqn:k-topics}
+	\emph{K} \: \epsilon \: \{ 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 \}
+\end{eqnarray}
 
+Following the analysis of topic coherence, each test will then include additional qualitative analysis on a set of \
+ topics for a value \emph{K} to draw additional insights and to answer the overarching question ``What are the primary topics of Amazon MTurk HITs?''.
 \subsubsection{Implementation}
+The following sections discuss the implementation for each individual topic model including the libraries leveraged, the hyperparameter \
+settings, and the procedure for evaluating each model. At a high level most of the models were tested locally on\
+a 2017 15in. 2.9 GHz Intel i7 16GB RAM Apple Macbook Pro using Jupyter Notebooks, Python scripts, and Bash scripts\
+before being uploaded to an Nvidia DGX Workstation v4.4.0 provided by Dr. Chuan Yue for the automation of model training. 
 \paragraph{LSI}
 The LSI Experiments were conducted using the \emph{gensim} library \cite{gensim} which implemented the specific\
-algorithms described in Chapter 3. For each dataset, an LSI model with a batch size of 100 was trained with the preprocessed\
-data described in Ch. 3 for values \emph{K}: $10 - 100$ on a five step interval (i.e 10, 15 .... 95, 100). After the model was trained, the top 10\
+\emph{SVD} algorithm described in Chapter 3. For each dataset, an LSI model with a batch size of 100 was trained with the preprocessed\
+data described in Ch. 3 for values \emph{K} defined in \ref{eqn:k-topics}. After the model was trained, the top 10\
 words for each topic \emph{K} were written to a text file which was then used to calculate the different topic coherence\
 values for each model.
 
 \paragraph{LDA}
 The LDA Experiments were conducted using the \emph{gensim} library \cite{gensim} which implemented the specific\
 algorithms described in Chapter 3. For each dataset, an LDA model with a chunk size of 100, random state of 100,\
-for 13 passes. The model was trained with the preprocessed data described in Ch. 3 for values \emph{K}: $10 - 100$\
- on a five step interval (i.e 10, 15 .... 95, 100). After the model was trained, the top 10\
+for 13 passes was trained for values \emph{K} in \ref{eqn:k-topics}. After the model was trained, the top 10\
 words for each topic \emph{K} were written to a text file which was then used to calculate the different topic coherence\
 values for each model.
 
-\paragraph{LSI}
-describe implementation
-
 \paragraph{lda2vec}
-lda2vec implementation \cite{lda2vecGithub}
+The \emph{lda2vec} leveraged a TensorFlow v.1 implementation \cite{lda2vecTF} of Moody's algorithm \
+with pretrained GloVe embeddings from the 2014 Wikipedia corpus \cite{pennington2014glove}. The model was\
+then run through the preprocesser provided in the library to prepare the corpus for the \emph{lda2vec} implementation\
+which was then trained for a number of topics \emph{K}, 150 epochs, a batch size of 4096 for the description and\
+title corpora and a batch size of 32768 for the preview corpora (the model implementation kept running out \
+of memory with a batch size of 4096 on the Preview corpus), and a switch loss epoch value of 75. After the model\
+was initialized, it was then trained and the topics generated by the model were then saved to a text file\
+to evaluate topic coherence.
 
 \paragraph{ETM}
-describe implementation 
-etm implementation \cite{etmGithub}
+The ETM model used the source code provided by the Authors', stored on the first Author's GitHub \cite{etmGithub}.\
+For the ETM model the same pretrained GloVe embeddings \cite{pennington2014glove} used for the \emph{lda2vec} implementation\
+were also used for the ETM implementation. For this model, the word embeddings for each corpus were prepared in a script\
+provided by the source code and save for training. For the model hyperparameters the model was set to train for 1000\
+epochs, a loss of zero, and a batch size of 1000. The model was then trained and the generated topics were then\
+saved in a text file to evaluate topic coherence.
 
 \subsubsection{HIT Title}
-Use this section to discuss the experiments run on the descriptions of HITS in the dataset
+This section describes the experiments performed on the Title corpus. Accoding to the statistics outlined,\
+in \ref{tab:corpora_comparison}, it is shown that the Title corpus is the smallest of the three corpora\
+across all topics. Thus, it can be predicted that the Title corpus will have less topical diversity extracted.\
+However, the topics extracted from this corpora can be used to gain insight on how requesters generally\
+label HITs.
 \paragraph{Corpus Statistics}
-Total unique words 3337
-Total words in corpus: 14584
-\ref{tab:title_top_words}
+
+The most frequently occuring words in the Title corpus are listed in \ref{tab:title_top_words} and visualized in\
+\ref{fig:title-50-bar}. Prior to topic extraction, this information shows that many of the titles are related\
+to surveys, the time it will take to complete the HIT, compensation, content generation, and images. The top 50\
+most frequently occuring words in the Title corpus has been shown by \ref{fig:title-50-pi} to account for 37.4\%
+of the corpus.
 
 \begin{table}
 	\caption{\label{tab:title_top_words} Title -- Top 10 Words Corpus}
@@ -1093,15 +1179,19 @@ Total words in corpus: 14584
 	\end{center}
 \end{table}
 
-\ref{fig:title-50-bar}
 \csmfigure{title-50-bar}{figures/title-50-bar}{6.5in}{Title - Top 50 Words}
 
-\ref{fig:title-50-pi}
 \csmfigure{title-50-pi}{figures/title-50-pi}{6.5in}{Title -- Corpus Distribution}
 
 \newpage
 \paragraph{LSI}
-\ref{tab:lsi_title_tc}
+
+Described as the predecessor to the LDA \cite{blei2003latent}, it is predicted that this model will\
+have the lowest performance in regards to topic coherence. From the experiment for topics \emph{K}, \
+the highest topic coherence score were -9.687 for UMass and -7.084 with variances of 3.734 and 2.854\
+as shown in \ref{tab:lsi_title_tc}. As seen in \ref{fig:lsi-umass-title} and \ref{fig:lsi-uci-title},\
+the topic coherence scores for both metrics decrease as \emph{K} increases with noticeable variance.
+
 \begin{table}
 	\caption{\label{tab:lsi_title_tc} Title -- LSI Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1136,9 +1226,17 @@ Total words in corpus: 14584
 	\end{center}
 \end{table}
 
-\ref{tab:lsi_title_k}
+
+\csmfigure{lsi-umass-title}{figures/lsi-umass-title}{5.5in}{Title -- LSI UMass Topic Coherence}
+
+\csmfigure{lsi-uci-title}{figures/lsi-uci-title}{5.5in}{Title -- LSI UCI Topic Coherence}
+\newpage
+
+From the topic coherence scores listed in \ref{tab:lsi_title_tc}, the topics generated by the LSI for $\emph{K} = 10$
+are to be used in \ref{tab:lsi_title_k} for further analysis.
+
 \begin{table}
-	\caption{\label{tab:lsi_title_k} Title -- LSI Generated Topics for $\emph{K} = 15$}
+	\caption{\label{tab:lsi_title_k} Title -- LSI Generated Topics for $\emph{K} = 10$}
 	\begin{center}
 		\begin{tabular}{| l | L |}
 			\hline
@@ -1168,19 +1266,21 @@ Total words in corpus: 14584
 	\end{center}
 \end{table}
 
-\ref{fig:lsi-umass-title}
-\csmfigure{lsi-umass-title}{figures/lsi-umass-title}{5.5in}{Title -- LSI UMass Topic Coherence}
 
-\ref{fig:lsi-uci-title}
-\csmfigure{lsi-uci-title}{figures/lsi-uci-title}{5.5in}{Title -- LSI UCI Topic Coherence}
-result of LSI on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
-
-Observations and analysis on the topics
+From the topics in \ref{tab:lsi_title_k}, there were several interesting topics that were extracted. In\
+As shown in the table, topics 1, 2, 4, 5, 6 are related to short surveys related to opinions. Topics 3 and\
+9 are both related to image classification and annotation, a common use case for researchers on MTurk. Interestingly\
+the LSI model extracted a very coherent topic related to the Superbowl, the NFL championship that recently took\
+place on February 2, 2020. This was a widely televised event that was broadcast by Fox news on a wide variety\
+of different mediums, including television and the internet.
 \newpage
 \paragraph{LDA}
-\ref{tab:lda_title_tc}
+
+The LDA is one of the most frequently implemented topic models and has been around since 2003 \cite{blei2003latent}. In \
+\ref{tab:lda_title_tc}, it is shown that the highest scoring number of topics was at 15 topics, with a high score\
+at 30 topics as well. In general, the LDA decreased in score until around 80 topics, before increasing linearly up\
+to 100 topics, these trends are illustrated in \ref{fig:lda-umass-title} and \ref{fig:lda-uci-title}.
+
 \begin{table}
 	\caption{\label{tab:lda_title_tc} Title -- LDA Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1215,7 +1315,15 @@ Observations and analysis on the topics
 	\end{center}
 \end{table}
 
-\ref{tab:lda_title_k}
+\csmfigure{lda-umass-title}{figures/lda-umass-title}{5.5in}{Title -- LDA UMass Topic Coherence}
+
+\csmfigure{lda-uci-title}{figures/lda-uci-title}{5.5in}{Title -- LDA UCI Topic Coherence}
+\newpage
+
+Based off of the topic coherence scores in \ref{tab:lda_title_tc}, it was decided to further analyze\
+the topics generated by the LDA on the Title corpus for 20 topics as shown in \ref{tab:lda_title_k} since\
+the LDA scored well at 15 and 30 topics.\
+
 \begin{table}
 	\caption{\label{tab:lda_title_k} Title -- LDA Generated Topics for $\emph{K} = 20$}
 	\begin{center}
@@ -1267,20 +1375,18 @@ Observations and analysis on the topics
 	\end{center}
 \end{table}
 
-\ref{fig:lda-umass-title}
-\csmfigure{lda-umass-title}{figures/lda-umass-title}{5.5in}{Title -- LDA UMass Topic Coherence}
-
-\ref{fig:lda-uci-title}
-\csmfigure{lda-uci-title}{figures/lda-uci-title}{5.5in}{Title -- LDA UCI Topic Coherence}
-result of LDA on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
-
-Observations and analysis on the topics
+From the topics extracted in \ref{tab:lda_title_k}, there were some additional clusters of topics that were extracted\
+compared to the extraction of the LSI. From the table topics 1, 5, 9, 10, 13, 14, and 18 all relate to surveys. However,\
+the LDA extracted additional information on what the survey were related to such as perceptions of products in topic 3,\
+surveys related to construction in topic 13, and surveys related to Amazon prime in topic 9. Additionally topics\
+were extracted that related to construction in topic 2, image annotation in topics 11 16, and 19, and content creation in topic 7.
 \newpage
 \paragraph{lda2vec}
+The \emph{lda2vec} was one of the first topic models to combine word embeddings with existing techniques. However, \
+as the author described in the repository holding the source code for the model, the model is experimental and should\
+only be used after exhausting existing topic modeling techniques. The topic coherence scores are listed in \ref{tab:lda2vec_title_tc}
+and the scores are shown to loosely decrease as the number of topics increaes as shown in \ref{fig:lda2vec-umass-title} and \ref{fig:lda2vec-uci-title}.
 
-\ref{tab:lda2vec_title_tc}
 \begin{table}
 	\caption{\label{tab:lda2vec_title_tc} Title -- \emph{lda2vec} Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1316,7 +1422,13 @@ Observations and analysis on the topics
 \end{table}
 
 
-\ref{tab:lda2vec_title_k}
+\csmfigure{lda2vec-umass-title}{figures/lda2vec-umass-title}{5.5in}{Title -- \emph{lda2vec} UMass Topic Coherence}
+
+\csmfigure{lda2vec-uci-title}{figures/lda2vec-uci-title}{5.5in}{Title -- \emph{lda2vec} UCI Topic Coherence}
+
+The \emph{lda2vec} was analyzed in further detail for 20 topics but as seen in \ref{tab:lda2vec_title_k}, there\
+is hardly any topic diversity extracted by \emph{lda2vec} on this corpus with all of the topics being related\
+to giving opinions on surveys.
 \begin{table}
 	\caption{\label{tab:lda2vec_title_k} Title -- \emph{lda2vec} Generated Topics for $\emph{K} = 20$}
 	\begin{center}
@@ -1368,21 +1480,14 @@ Observations and analysis on the topics
 	\end{center}
 \end{table}
 
-\ref{fig:lda2vec-umass-title}
-\csmfigure{lda2vec-umass-title}{figures/lda2vec-umass-title}{5.5in}{Title -- \emph{lda2vec} UMass Topic Coherence}
-
-\ref{fig:lda2vec-uci-title}
-\csmfigure{lda2vec-uci-title}{figures/lda2vec-uci-title}{5.5in}{Title -- \emph{lda2vec} UCI Topic Coherence}
-\newpage
-result of Lda2vec on the number of topics, output the topics
-visualization of document topic distribution
-word clouds of top topics
-
-Observations and analysis on the topics
+The performance of the model on this topic will be analyzed in further depth later on but this performance may be\
+due in part to the small number of unique words in the Topic corpus.
 
 \paragraph{ETM}
-
-\ref{tab:etm_title_tc}
+The ETM model was cited as outperforming the LDA and the NVDM and is being evaluated as the state of the art\
+for topic modeling. As seen below the ETM performed fairly consistently across all topics with low variance as \
+seen in \ref{tab:etm_title_tc}. According the trends in topic coherence scores shown in \ref{fig:etm-umass-title} and \ref{fig:etm-uci-title}\
+there is a general correlation of topic coherence scores descreasing and the number of topics increases.
 \begin{table}
 	\caption{\label{tab:etm_title_tc} Title -- ETM Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1417,7 +1522,14 @@ Observations and analysis on the topics
 	\end{center}
 \end{table}
 
-\ref{tab:etm_title_k}
+
+\csmfigure{etm-umass-title}{figures/etm-umass-title}{5.5in}{Title -- ETM UMass Topic Coherence}
+
+\csmfigure{etm-uci-title}{figures/etm-uci-title}{5.5in}{Title -- ETM UCI Topic Coherence}
+
+Accoding to the topic coherence scores in \ref{tab:etm_title_tc}, it was decided to further analyze the ETM\
+topics on the Title corpus using 10 topics as shown in \ref{tab:etm_title_k}.
+
 \begin{table}
 	\caption{\label{tab:etm_title_k} Title -- ETM Generated Topics for $\emph{K} = 10$}
 	\begin{center}
@@ -1449,19 +1561,20 @@ Observations and analysis on the topics
 	\end{center}
 \end{table}
 
-talk about the performance of the ETM
+The output of the topics generated by the ETM which are shown in \ref{tab:etm_title_k} are primarily related to\
+surveys, the length of the surveys, and how long it should take to complete the task. This trends,\
+are replicated throughout all of the topic models. The ETM has more diversity in the topics that were \
+extracted from this corpus than the \emph{lda2vec} but not as much diversity as the topics extracted by\
+the LSI and the LDA.
 
-\ref{fig:etm-umass-title}
-\csmfigure{etm-umass-title}{figures/etm-umass-title}{5.5in}{Title -- ETM UMass Topic Coherence}
-
-\ref{fig:etm-uci-title}
-\csmfigure{etm-uci-title}{figures/etm-uci-title}{5.5in}{Title -- ETM UCI Topic Coherence}
-\newpage
 \paragraph{Topic Coherence}
-Create a figure displaying the different topic coherence results
-Explain the scores and what that means
-
-\ref{tab:combo_title_tc}
+From a topic coherence standpoint shown in \ref{tab:combo_title_tc}, the \emph{lda2vec} metric outperformed the rest of the models. \
+However, since the words in the topics generated by \emph{lda2vec} were nearly identical across topics, this\
+performance isn't very insightful. For the rest of the models, the ETM outperformed both the LSI and the LDA\
+in topic coherence with the primary topics being related to surveys, while the LDA outperformed the LSI on both\
+metrics as shown in \ref{fig:umass-title} and \ref{fig:uci-title}. Something else that is worth noting\
+is that the performance of the LDA remained relatively consistent as the number of topics increased while\
+the performance of the LSI decreased as the number of topics increased.
 \begin{table}
 	\caption{\label{tab:combo_title_tc} Title -- Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1495,13 +1608,18 @@ Explain the scores and what that means
 		\end{tabular}
 	\end{center}
 \end{table}
-\ref{fig:umass-title}
 \csmfigure{umass-title}{figures/umass-title}{5.5in}{Title UMass Topic Coherence}
 
-\ref{fig:uci-title}
 \csmfigure{uci-title}{figures/uci-title}{5.5in}{Title UCI Topic Coherence}
-
 \newpage
+\paragraph{Insights}
+While the prevelance of surveys and answering questions which was extremely prominent as shown in the Corpus Statistics\
+section above. There was additional information extracted from the topics as well including: image annotation,\
+content creation, predicted task length, the super bowl, and titles related to construction.\
+Some other interesting insights from the analysis of this corpus are that the modernized topic models that leverage\
+pretrained word embeddings showed less topic diversity than the older, probabilistic topic models.\
+This may be due in part to the size of the corpus and that frankly the majority of the topics in the Title corpus\
+were related to surveys.
 
 \subsubsection{HIT Descriptions}
 Use this section to discuss the experiments run on the descriptions of HITS in the dataset
