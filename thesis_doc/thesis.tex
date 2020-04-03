@@ -27,11 +27,11 @@
 
 \usepackage{mathtools}
 
-% Since hyperref and cite don't completely get along, the template now recommends using natbib:
+% Since hyperref and cite do not completely get along, the template now recommends using natbib:
 % For an explanation, see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=citesort
 \usepackage[numbers]{natbib}
 % If you wish to use ``cite'' instead then your choices are:
-% 1) Don't use the hyperref package
+% 1) do not use the hyperref package
 % 2) Put ``cite'' before hyperref, resulting in no citation hyperlinks
 % 3) Put ``cite'' after hyperref, resulting in ugly looking citations
 
@@ -80,7 +80,7 @@
 	%}
 % <<AUTOMATIC PYRAMID:>>
 % Do not put any carriage returns (\\), all normal LaTeX should function properly.
-\title{Topic Modeling on Amazon MTURK}
+\title{Topic Modeling on Amazon MTurk}
 % Please note: If you are generating a title containing math mode then it is best to use \texorpdfstring to provide an alternative text for the PDF Title.  If you do not do this then you will see a ''Token not allowed in a PDFDocEncoded string`` warning when rendering your document.
 % eg. \texorpdfstring{H$_2$O}{Water}
 % One final word of caution: The usage of atoms/molecules in titles <may> need to be spelled out on the cover since the binding company cannot typeset them.
@@ -122,7 +122,11 @@
 %%% Parts of a Thesis - Front Matter - Abstract (required)
 
 \begin{abstract}
-<Insert abstraction upon completion of the document>
+Crowdsourcing is an advancing job market and has been the recent focus of many researchers \
+to help improve crowdsourcing platforms for both crowd workers and requesters. To better understand\
+the content of HITs on Amazon MTurk and to advance further research, extensive topic modeling\
+was performed on a dataset that included HIT titles, descriptions, and previously unexplored in\
+crowdsourcing research: HIT previews.
 \end{abstract}
 
 \newpage
@@ -220,37 +224,37 @@ This project would never have succeeded without the love and support of my frien
 
 \chapter{Introduction}
 
-The following contains my proposal for the research I plan to conduct under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines.\
-My research will be centered around the extraction and analysis of topics in Human Intelligence Tasks (HITs) on Amazon MTURK. 
+The following contains my research I conducted under the guidance of Dr. Chuan Yue in pursuit of my Masters of Computer Science degree from Colorado School of Mines.\
+My research will be centered around the extraction and analysis of topics in Human Intelligence Tasks (HITs) on Amazon MTurk. 
 
 In this section I will outline the problem that we are trying to solve, provide a high level overview of crowdsourcing platforms, ecosystems, and tools.
 \subsection{Background}
 Crowdsourcing platforms have become increasingly popular over the course of the last\ 
 several years, introducing the concept of utilizing ``crowd'' intelligence to complete\
 work \cite{kuek2015global}. Growing crowdsourcing platforms are a result of the growing\
-online "gig economy" and has started the conversation for changing labor legislature\
-to account for workers who don't fit nicely into the mold of employee or independent contractor\
+online ``gig economy'' and have started the conversation for changing labor legislature\
+to account for workers who do not fit nicely into the mold of employee or independent contractor\
 \cite{harris2015proposal}.
 These platforms are historically architected to facilitate the relationship\ 
 between requesters, who create work on the platform in the form of items commonly\ 
 referred to as tasks, and crowd workers who are real people that complete tasks that\ 
 are curated by the requesters. There are a variety of different crowdsourcing platforms\ 
 that have entered the crowdsourcing market such as Figure Eight, ClickWorker, CrowdFlower, Spare5,\ 
-Respondent, Swagbucks, and one the most popular platforms: Amazon Mechanical Turk (MTURK).\ 
-Amazon MTurk has been used frequently by the research community and has become and integral\
+Respondent, Swagbucks, and one the most popular platforms: Amazon Mechanical Turk (MTurk).\ 
+Amazon MTurk has been used frequently by the research community and has become an integral\
 part of outsourcing. \cite{hitlin2016research}\ 
 These platforms are used for a variety of different use cases ranging from collecting\
 data via surveys, image/video annotation, translations, spreadsheet modifications and\ 
-analysis, and writing. \cite{ipeirotis2010Analysis} The typical workflow in crowdsourcing\ 
-platforms starts with requesters who breakdown work that they need to get completed\ 
+analysis, and writing \cite{ipeirotis2010Analysis}. The typical workflow in crowdsourcing\ 
+platforms starts with requesters who break down work that they need to get completed\ 
 into smaller chunks called tasks. This process usually involves writing a description of what needs to be\ 
 done, how it needs to be completed, providing the input the crowd worker needs to\ 
 complete the work, setting a qualification so that only certain crowd workers may\ 
 have access to the task based off their work history, setting a lifetime on the\ 
 task for when the work needs to be completed, and setting a reward for successful\ 
 completion of the task. All of these specifications vary by platform since a\ 
-universal specification standard between different crowdsourcing platforms fails\ 
-to exist. \cite{allahbakhsh2013quality} After the requesters finish a task and publish it to the crowdsourcing\ 
+universal specification standard between different crowdsourcing platforms does\ 
+not exist \cite{allahbakhsh2013quality}. After the requesters finish a task and publish it to the crowdsourcing\ 
 platform, the task becomes available to crowd workers (depending on the platform it\ 
 may only be made available to crowd workers who match the qualification set by the\ 
 requesters) who can then attempt to complete the task. After the crowd workers are\ 
@@ -266,12 +270,12 @@ be improved in order for crowdsourcing platforms to continue to grow.
 % paragraph on the motivation for requesters
 Requesters often utilize crowdsourcing platforms to outsource large pieces of\ 
 work to a distributed workforce to leverage the skills, time, and experience of\ 
-crowd workers. \cite{kuek2015global} This allows requesters to offload tasks to ultimately save themselves\ 
+crowd workers \cite{kuek2015global}. This allows requesters to offload tasks to ultimately save themselves\ 
 time and allow them to focus on higher priority tasks. Some of the practical use\ 
 cases that requesters offload to crowdsourcing sites are bulk tasks that require\ 
 human input but take a considerable amount of time like data annotation of machine\ 
 learning and computer vision datasets which requires a large amount of accurately\ 
-labeled data to fuel deep learning algorithms. \cite{hitlin2016research} One of the primary benefits that\
+labeled data to fuel deep learning algorithms \cite{hitlin2016research}. One of the primary benefits that\
 crowdsourcing platforms present requesters is that requesters are able to curate a\ 
 massive amount of tasks and distribute them amongst crowd workers for a reasonable cost\ 
 considering the average wage for crowd workers lingers around \$2-\$5 and hour \cite{Kaplan2018,hara2018data}.
@@ -287,15 +291,15 @@ crowd workers perform.
 \subsection{Crowd Worker Role in Crowdsourcing Platforms}
 % paragraph on the motivation for workers
 While requesters supply crowdsourcing platforms with the volume of work, crowd workers supply the labor.\
-The primary motivation of crowd workers discovered empirically as apart of a study in 2018 by\
+The primary motivation of crowd workers discovered empirically as a part of a study in 2018 by\
 a team of crowdsourcing researchers was simple: earn money \cite{Kaplan2018}. The distributed workforce\
 of crowd workers complete tasks all over the world with a wide range of skillsets and experience\
 while providing human intelligence to complete work published by requesters. The researchers
-who performed the survey on crowdsourcing workers in Amazon MTURK discovered that over half (61.7\%) of\
-crowd workers were employed fulltime and 50.2\% of workers had recieved a four year education.\cite{Kaplan2018}\
-This data shows that many of the crowd workers don't rely on their crowdsourcing work as a\
+who performed the survey on crowdsourcing workers in Amazon MTurk discovered that over half (61.7\%) of\
+crowd workers were employed full-time and 50.2\% of workers had recieved a four year education.\cite{Kaplan2018}\
+This data shows that many of the crowd workers do not rely on their crowdsourcing work as a\
 primary source of income and that many crowd workers are formally educated. However, since\
-many crowd workers aren't reliant on crowdsourcing platforms as their primary source of income,\
+many crowd workers are not reliant on crowdsourcing platforms as their primary source of income,\
 this suggests that quality will be a lower priority for crowd workers in exchange for efficiency\
 as the repercussions for low quality work have much less severe implications than they would\
 for low quality work with their full-time employers. With the primary motivation of crowd workers\
@@ -308,28 +312,28 @@ while completing tasks.
 
 % outline problems with the relationship between requesters and workers
 \subsection{Requester vs. Crowd Worker Imbalance}
-The two differing motives of both requesters and workers develops inherent tension between\
-the primary relationship in crowdsourcing platforms. Requesters desire high quality work, whereas,\
+The two differing motives of both requesters and workers causes inherent tension within\
+the primary relationship in crowdsourcing platforms. Requesters desire high quality work, whereas\
 crowd workers desire efficient work resulting in two states in the crowdsourcing platform that\
 are relatively mutally exclusive. However, unfortunately for crowd workers, the power in this relationship leans heavily towards\
 requesters who are able to dominate the dynamic using several features that are common amongst\
 crowdsourcing platforms such as: the ability to specify certain qualifications that workers must\
 meet to access certain tasks and having ultimate authority over accepting or rejecting the work\
-that crowd workers complete based on their own personal, subjective view on quality. \cite{Kaplan2018,allahbakhsh2013quality}\
+that crowd workers complete based on their own personal, subjective view on quality \cite{Kaplan2018,allahbakhsh2013quality}.\
 
 This imbalance has been the cause of several different pieces of research to help address unfairness in\
-in crowdsourcing. Often times, the fruits of research on this topic has resulted in the develpoment\
-of tools to help crowdworkers rate and interact with requesters like Turkopticon \cite{irani2013turkopticon}
-which gives crowdworkers the ability to rate requesters. Another interesting tool that was developed\
+in crowdsourcing. Often times, research on this topic has resulted in the development\
+of tools to help crowd workers rate and interact with requesters like Turkopticon \cite{irani2013turkopticon}
+which gives crowd workers the ability to rate requesters. Another interesting tool that was developed\
 was Dynamo, a tool to allow crowd workers to organize and pursue collective action in an effort\
 to combat the largely unregulated crowdsourcing market \cite{salehi2015we}. One of the structural issues\
-with crowdsourcing marketplaces is due in large part to issues with the "gig economy" in general as defined\
-by Harris et al. which discussed the inefficiencies in current legislature to protect "gig workers" who \
-generally don't qualify for common government protections that apply to full-time employees and independent\
+with crowdsourcing marketplaces is due in large part to issues with the ``gig economy'' in general as defined\
+by Harris et al. which discussed the inefficiencies in current legislature to protect ``gig workers'' who \
+generally do not qualify for common government protections that apply to full-time employees and independent\
 contractors \cite{harris2015proposal}. This problem has recently gained high-profile attention in light\
-of the coronavirus pandemic, after the CEO of Uber, Dara Khosrowshahi, wrote a public letter to the \
-President of the United States, requesting protection for independed workers, colloquially defined as\
-"gig workers" \cite{kohsrowshahi_2020}.
+of the COVID-19 pandemic, after the CEO of Uber, Dara Khosrowshahi, wrote a public letter to the \
+President of the United States, requesting protection for independent workers, colloquially known as\
+``gig workers'' \cite{kohsrowshahi_2020}.
 
 This imbalance places workers at a severe disadvantage in crowdsourcing platforms in addition to flaws in the platforms\
 themselves. Some of the disadvantages that crowdsourcing platforms inflict on workers include: naive search\
@@ -340,17 +344,17 @@ in crowdsourcing platforms which harms worker participation, a fundamental requi
 platforms to be successful.
 
 \subsection{Crowd Worker Difficulties}
-More specifically, a survey on crowd workers showed that the biggest painpoints for crowd workers\
-in the Amazon MTURK crowdsourcing platform are loss of compensation on rejected or returned tasks,\
-data on whether or not a given task is even completeable (often times a task may not even be \
-completeable because requesters may not have provided enough information for workers to successfully\
+More specifically, a survey on crowd workers showed that the biggest pain points for crowd workers\
+in the Amazon MTurk crowdsourcing platform are loss of compensation on rejected or returned tasks,\
+data on whether or not a given task is even completable (often times a task may not even be \
+completable because requesters may not have provided enough information for workers to successfully\
 complete the task), and the amount of time it takes to find a task or switch context between different\
 types of tasks \cite{Kaplan2018}. Another\
-interesting data point the researchers (Kaplan et al) collected from their survey on crowd workers was\
-that 30\% of respondents said that finding a task was reported ``4 - Very`` or ``5 - Extremely`` \
-difficult, but probably even more intriguing was the data that the most pertinent reason for \
+interesting data point the researchers (Kaplan et al.) collected from their survey on crowd workers was\
+that 30\% of respondents said that finding a task was reported ``4 - Very'' or ``5 - Extremely'' \
+difficult, but probably even more intriguing was the discovery that the most pertinent reason for \
 ending a session was that they were unable to find a task worth doing (48\% said this ranked\
-as an ``5 - Extremely Important`` reason in terminating a crowdsourcing session). \cite{Kaplan2018} This dissatisfaction\
+as an ``5 - Extremely Important'' reason in terminating a crowdsourcing session) \cite{Kaplan2018}. This dissatisfaction\
 of crowd workers shows that the current working model for crowdsourcing platforms needs to be improved\
 to improve the user experience of crowd workers.
 The crowdsourcing community has a vested interest to improve\
@@ -362,14 +366,14 @@ of research on crowdsourcing platforms.
 \subsection{Goal}
 %% This section should explicitly state goals of research
 \textbf{To analyze common topics and trends found in crowdsourcing tasks on Amazon Mechanical Turk to\
- improve crowdworker efficiency.}
+ improve crowd worker efficiency.}
 
 \subsection{Approach}
 I will be focusing my research on improving the efficiency of crowd workers in crowdsourcing\
 platforms through the analysis of crowdsource tasks to determine common topics and trends found \
 in crowdsourcing tasks. Specifically I will focus on applying unsupervised learning techniques in the\
 form of topic modeling to improve the understanding of crowdsourcing tasks administered by requesters \ 
-as well as how this information can be leveraged to optimize crowdworker efficiency. 
+as well as how this information can be leveraged to optimize crowd worker efficiency. 
 
 \chapter{Related Work}
 
@@ -379,7 +383,7 @@ crowdsourcing tasks \cite{gadiraju2014taxonomy}. This work is very prevelant to 
 in the interpretation of the topics automatically generated by the topic models and algorithms used in my research.\
 The categorization presented in this work has also been leveraged by other related works and has been heavily\
 cited when addressing the categories of microtasks and HITs. For the study itself, the researchers conducted\
-an extensive study of crowdworkers on the CrowdFlower platform. From the study, the researchers manually\
+an extensive study of crowd workers on the CrowdFlower platform. From the study, the researchers manually\
 identified a list of high level categories that they used to classify tasks, the list below was extracted \
 verbatim from the paper publishing the findings of Gadiraju et al. \cite{gadiraju2014taxonomy}: 
 \begin{itemize}
@@ -409,9 +413,9 @@ The findings from this paper will allow for comparison from the topics generated
 in the experiments recorded below.
 
 \subsection{Topic Modeling of Crowdsourcing Tasks}
-As apart of a study performed by Hara et al., the researchers performed an analysis of the different types\
-of work on Amazon MTURK and how the types of work (using the categories presented by Gadiraju et al. \cite{gadiraju2014taxonomy}),
-effected wages on Amazon MTURK \cite{hara2018data}. In the analysis, the researchers used a dataset of over\
+As a part of a study performed by Hara et al., the researchers performed an analysis of the different types\
+of work on Amazon MTurk and how the types of work (using the categories presented by Gadiraju et al. \cite{gadiraju2014taxonomy}),
+effected wages on Amazon MTurk \cite{hara2018data}. In the analysis, the researchers used a dataset of over\
 3.8 millions HITs from 2,646 workers collected using the Crowd Workers Chrome plugin \cite{hara2018data,callison2014crowd}.\
 In the researchers' experiments, the researchers used Latent Semantic Analysis (LSA) (a variation of Latent Semantic Indexing (LSI)\
 which is one of the topic models used to generate topics in the following experiments) on HIT descriptions and titles,\
@@ -424,7 +428,7 @@ while IA and CA reported higher wages \cite{hara2018data}.
 \subsection{Classification of Crowdsourcing Tasks}
 Another piece of interesting related work performed by Difallah et al. automated the classification of \
 tasks using the categories defined by Gadiraju et al \cite{difallah2015dynamics}. In their work, the researchers\
-manually annotated a uniform sample of 5,000 HITs by asking workers on Amazon MTURK to classify a HIT to one of \
+manually annotated a uniform sample of 5,000 HITs by asking workers on Amazon MTurk to classify a HIT to one of \
 the categories defined by Gadiraju et al. based off a HIT title, description, keywords, reward, date, time allotted,\
 and batch size. The researchers then trained a multi-class Support Vector Machine (SVM) to classify HITs.\
 The researchers, then used this classifier to gain insights from their dataset of HITs \
@@ -432,22 +436,22 @@ over a period of time \cite{difallah2015dynamics}.
 
 % Talk about papers from the conference that Tom suggested.
 \subsection{Existing Tools}
-Crowd workers and researchers have created a variety of user plugins and browser extensions to help out the community of\
+Crowd workers and researchers have created a variety of user plugins and browser extensions to help the community of\
 crowd workers to try and improve crowd worker efficiency. Some of the more prominent plugins focus on batching\
 similar tasks to reduce the time users spend switching context between dissimilar tasks and plugins for workers\
-to rate requesters based off their interactions directly and indirectly with how the tasks are structured. I've\
-curated a list of tools used by crowd workers from my own research and from the results of a survey of crowd workers\
+to rate requesters based off their interactions directly and indirectly with how the tasks are structured. Here \
+is a list of tools from independent research and from the results of a survey of crowd workers\
 \cite{Kaplan2018}. 
 
 %% use item for existing tools
 \begin{itemize}
-	\item \textbf{HIT Scraper:} A web scraper that helps provide additional search filters not offered as apart of the native offering for Amazon MTurk.
+	\item \textbf{HIT Scraper:} A web scraper that helps provide additional search filters not offered as a part of the native offering for Amazon MTurk.
 	\item \textbf{MTurk Suite:} A browser extension used to combine a plethora of other crowd worker tooling.
 	\item \textbf{Turkopticon:} A web tool that allows crowd workers to rate requesters and tasks.
 	\item \textbf{Greasemonkey/Tampermonkey:} A browser extension that allows crowd workers to run custom scripts to help boost efficiency in crowdsourcing platforms.
 	\item \textbf{Panda Crazy:} A tool used by crowd workers to batch similar tasks together.
 	\item \textbf{Turkmaster:} A script that monitors search pages, requesters, and can automatically accepts tasks on Amazon MTurk.
-	\item \textbf{Block Requesters:} Allows users to block and ignore requesters from search results, useful if crowd workers have a bad experience with a requester and wish to avoid future interactions.
+	\item \textbf{Block Requesters:} Allows users to block and ignore requesters from search results; useful if crowd workers have a bad experience with a requester and wish to avoid future interactions.
 	\item \textbf{Pending Earning:} Allows crowd workers to view pending earnings for tasks that have been completed and submitted but not approved.
 	\item \textbf{MTurk HIT DataBase:} Improved interface for searching tasks that you have worked on previously, Amazon MTurk.
 	\item \textbf{MTurk Worst Case Scenario Calculator:} Tool to calculate approval rate and how many rejections it would take to drop your approval percentage to a certain threshold.
@@ -458,34 +462,32 @@ curated a list of tools used by crowd workers from my own research and from the 
 These tools show the desire for improvement in the crowd worker user experience from the native\
 crowdsourcing platform and a high level of community involvement and support for crowd workers.\
 Although there is existing tooling for batching similar tasks using keywords and search filters\
-there still lacks tooling for common painpoints highlighted in the survey results collected by (Kaplan et al).\
+there still lacks tooling for common pain points highlighted in the survey results collected by Kaplan et al.\
 Some of the main areas of the crowd worker user experience that still need to be addressed are: surfacing\
 useful recommendations of tasks that are curated based off worker history, expertise, and preferences,\
-content-based analysis of the feasibility of a task, and Intelligent Batching to reduce time spent switching
-context.
+content-based analysis of the feasibility of a task, and intelligent batching to reduce time spent switching
+context .
 
-% \subsubsection{Existing Recommendation Systems}
-% %% This section should touch on some research for text classification and recommendation systems
-% There are several different approaches to developing recommendation systems, the two most common are collaborative\
-% filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
-% however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
-% Alternatively, content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
-% crowd workers in our use case.
+\subsection{Existing Recommendation Systems}
+%% This section should touch on some research for text classification and recommendation systems
+There are several different approaches to developing recommendation systems, the two most common are collaborative\
+filtering and content based approaches. Collaborative filtering is generally more accurate than content based approaches,\
+however, collaborative filtering struggles with recommending new items, a characteristic of tasks in crowdsourcing platforms.\
+Alternatively, content based approaches are based on determining the similarity between items and how they associate with users in the platform,\
+crowd workers in our use case.
 
-% Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
-% and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
-% to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
-% this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
-% media corporations like Buzzfeed. The researchers (Wang et al.) of the study leverage a character level neual network langauge model (a CNN) to perform\
-% low-level textual feature learning \cite{wang2017dynamic}. This is a very applicable approach to my research since tasks in crowdsourcing\
-% platforms are constantly getting outdated after a worker completes a task, the specific task is resolved and will not be reused, making
-% any type of collaborative filtering approach forseeably ineffective.
+Often times in platforms that are trying to develop a recommendation system where new data is constantly entering the platform\
+and old data is constantly becoming outdated, the platform will apply a content based approach instead of collaborative filtering\
+to address the cold start problem and the sparseness of interaction of similar users on similar tasks. One example of\
+this use case to a similar problem is the use of a content based approach to surface relevant news articles to content reviewers for\
+media corporations like Buzzfeed. The researchers Wang et al. of the study leverage a character level neural network langauge model (a CNN) to perform\
+low-level textual feature learning \cite{wang2017dynamic}.
 
-% Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. \cite{yuen2012task} Their approach\
-% was predicated on using matrix factorization on crowd worker performance history as well as their task searching history\
-% to surface relevant reccomendations to crowd workers. Another set of researchers applied two different techniques based on \
-% implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
-% of the downfalls of their research was that they only used 24 users to evaluate their approach.
+Researchers (Yuen et al.) developed a matrix factorization method of recommending tasks in Amazon MTurk. \cite{yuen2012task} Their approach\
+was predicated on using matrix factorization on crowd worker performance history as well as their task searching history\
+to surface relevant reccomendations to crowd workers. Another set of researchers applied two different techniques based on \
+implicit modeling of user history leveraging a Bag-of-words Approach and a classification approach \cite{ambati2011towards}. One\
+of the downfalls of their research was that they only used 24 users to evaluate their approach.
 
 % From my initial investigation, I haven't found any research that is directly related to my approach of extracting necessary\
 % skills from tasks using text classification. The primary targeted application of my research is to eventually create\
@@ -509,7 +511,7 @@ by Dr. Yue's research team. Specifically, the dataset was collected over the fol
 topic modeling analysis that was performed in the experiments these datasets were combined and processed as a singular\
 dataset. Further analysis is also performed from an individual dataset perspective.
 \begin{table}
-	\caption{\label{tab:data_dates} Amazon MTurk Webscrape Collection Dates}
+	\caption{\label{tab:data_dates} Dataset -- Collection Dates}
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -527,19 +529,19 @@ dataset. Further analysis is also performed from an individual dataset perspecti
 	\end{center}
 \end{table}
 The dataset was collected by a webscraping tool built by the team that ran on a brand new Amazon MTurk account.\
-One of the constraints of this dataset is that the HITs that were collected from the tool will only include HITs that would be accessible\
-to crowdworkers who haven't completed any previous HITs. Since requesters have the ability to restrict who can access their HITs based off of \
-crowdworker qualifications such as HIT approval rate, HIT submission rate, Location, total approved HITs, as well as several other HIT related\
-criteria--the tool is not going to be able to cover the bredth of every possible HIT that would be available on MTurk due to the subjective\
-nature of the requester restrictions. To mitigate this, the team decided to collect data from the perspective of a new crowdworker on Amazon MTurk\
-and thus the corresponding analysis and topics that are surfaced from the dataset will reflect this perspective.
+One of the constraints of this dataset is that the Human Intelligence Tasks (HIT) that were collected from the tool will only include HITs that would be accessible\
+to crowd workers who have not completed any previous HITs. Since requesters have the ability to restrict who can access their HITs based off of \
+crowd worker qualifications such as HIT approval rate, HIT submission rate, location, total approved HITs, as well as several other HIT related\
+criteria, the tool is not going to be able to cover the bredth of every possible HIT that would be available on MTurk due to the subjective\
+nature of the requester restrictions. To mitigate this, the team decided to collect data from the perspective of a new crowd worker on Amazon MTurk\
+and thus the corresponding analysis and topics that are obtained from the dataset will reflect this perspective.
 
-The tool leveraged several tools to collect the dataset. Specifically the Amazon MTurk account used a Chrome extension to refresh the page periodically\
+The tool leveraged several tools to collect the dataset. Specifically the Amazon MTurk account used a Google Chrome extension to refresh the page periodically\
 and record new HITs as they became available in conjunction with Selenium which would be used to access the HIT Preview, record screenshots of the preview\
 and access and record external links. All of the data that is collected from a HIT is then stored locally in a MongoDB database on an external hard drive.\
 The tool records three different documents for each HIT that are stored whenever a new HIT becomes available: HIT data which store relevant HIT metadata,\
 HIT lifetime data which stores metadata corresponding to the lifecycle of the HIT, preview data which holds metadata the tool records from accessing the HIT\
-preview, as well as external links data that the tool records while accessing the preview. For my analysis I only leveraged the HIT and preview collections\
+preview, as well as external links that the tool records while accessing the preview. For my analysis I only leveraged the HIT and preview collections\
 in the database since the documents in these collections contained the raw text that was unique to the HIT itself which lends itself nicely to the\
 unsupervised analysis of topic modeling on unstructured, raw text.
 
@@ -588,15 +590,15 @@ topic models that were leveraged for the topic modeling analysis. Preprocessing 
 There are a variety of different perspectives on the effectiveness of different preprocessing methodologies that I will explain in depth\
 in the following section.
 
-\subsection{Amazon MTURK Constraints}
-When requesters on Amazon MTURK are creating tasks, requesters have the option to specify qualifications for\
-the crowdworkers that can view, preview, and work on their tasks. One of the specific options the will effect\
+\subsection{Amazon MTurk Constraints}
+When requesters on Amazon MTurk are creating tasks, requesters have the option to specify qualifications for\
+the crowd workers that can view, preview, and work on their tasks. One of the specific options that will affect\
 the data collected by the tool is the ``HIT Visibility'' option, shown in \ref{fig:hit_visibility}. This option\
-allows requesters to restrict which crowdworkers can view the preview of the HIT or even the HIT itself. This\
+allows requesters to restrict which crowd workers can view the preview of the HIT or even the HIT itself. This\
 restriction will influence the topics that are extracted from the datasets since the tool is collecting\
-HITs from a fresh Amazon MTURK and thus will not have any existing qualifications.
+HITs from a new Amazon MTurk and thus will not have any existing qualifications.
 
-\csmfigure{hit_visibility}{figures/hit_visibility}{6in}{Amazon MTURK Requester HIT Visibility Option}
+\csmfigure{hit_visibility}{figures/hit_visibility}{6in}{Amazon MTurk Requester HIT Visibility Option}
 
 
 \subsection{Preprocessing}
@@ -605,79 +607,79 @@ Some of the preprocessing techniques that relate specifically to topic modeling 
 removal \cite{silva2003importance}, and document duplication \cite{bouayad1999duplication}. The effectiveness of these techniques on\
 topic modeling is debated and I have taken these considerations into my experimental design decisions.
 
-Stemming and lemmatization are commonly found in NLP libraries. These techniques have bee around for years and have been studied thoroughly \cite{lovins1968development, kanis2010comparison, jivani2011comparative, larkey2002improving}.
+Stemming and lemmatization are commonly found in NLP libraries. These techniques have been around for years and have been studied thoroughly \cite{lovins1968development, kanis2010comparison, jivani2011comparative, larkey2002improving}.
 The process of stemming essentially consolidates similar words down into a root word, often times removing prefixes and suffixes or other semantic\
-modifications. However, in context to topic modeling, stemming techniques have been found to do more harm then good and actually decrease model performance \cite{schofieldunderstanding} \
-by "diminishing interpretability" \cite{boyd2014care}. For this reason I chose note to utilize lemmatization techniques as apart of the preprocessing of my \
-data so as not to decrease model performance--especially since some of the recent innovations in the field of topic modeling leverage word embeddings \cite{mikolov2013distributed} and the\
+modifications. However, in context to topic modeling, stemming techniques have been found to do more harm than good and actually decrease model performance \cite{schofieldunderstanding} \
+by ``diminishing interpretability'' \cite{boyd2014care}. For this reason I chose not to utilize lemmatization techniques as a part of the preprocessing of my \
+data so as not to decrease model performance. This is especially important because some of the recent innovations in the field of topic modeling leverage word embeddings \cite{mikolov2013distributed} and the\
 semantic meaning of the word becomes more important than distribution based models such as the Latent Dirichlet Allocation (LDA) \cite{blei2003latent} which rely on the appearance of the\
-word in the document rather then it's position relative to its surroundings.
+word in the document rather then it is position relative to its surroundings.
 
-Stop word removal, the removal of words that don't add contextual meaning to a sentence such as ``the'', ``and'', ``a'' is another common preprocessing technique in topic modeling.\
-As far as literature goes, there are several studies that debate the effectiveness of removing stopwords during processing. One study states that using stop-word lists\
-is incomplete since it is difficult for these lists to encompass corpus-specific stopwords \cite{boyd2014care} and that alternative methods are to leverage \emph{tf-idf}\cite{Salton1968AutomaticIO}\
-to automate the selection of stopwords by only allowing words over a certain threshold. While another study shows that removing additional stopwords beyond the top 12 most occurent stop words doesn't\
+Stop word removal, the removal of words that do not add contextual meaning to a sentence such as ``the'', ``and'', ``a'' is another common preprocessing technique in topic modeling.\
+As far as literature goes, there are several studies that debate the effectiveness of removing stop words during processing. One study states that using stop word lists\
+is not viable since it is difficult for these lists to encompass corpus-specific stop words \cite{boyd2014care} and that alternative methods leverage \emph{tf-idf}\cite{Salton1968AutomaticIO}\
+to automate the selection of stop words by only allowing words over a certain frequency threshold remain in the corpus. Another study shows that removing additional stop words beyond the top 12 most commonly occuring stop words does not\
 have an acknowledgeable effect on model performance or topic coherence \cite{schofieldunderstanding}. This same study did, however, find that the\
 removal of determiners, conjunctions, and prepositions did in fact improve performance. For my performance I decided to use a fixed list of stop words\
-as apart of my preprocessing phase. The driving reason for doing so was to implement the ETM model \cite{dieng2019topic}, a state of the art topic model,\
-on our dataset which utilizes a stop word list during it's preprocessing step. Removing stop words from the raw data during preprocessing allows for fair comparison across\
+as a part of my preprocessing phase. The driving reason for doing so was to implement the ETM model \cite{dieng2019topic}, a state of the art topic model,\
+on our dataset which utilizes a stop word list during it is preprocessing step. Removing stop words from the raw data during preprocessing allows for fair comparison across\
 models as well as replication of the ETM model. One of the other benefits of using a fixed stop word list over using the \emph{tfidf} approach discussed in \cite{boyd2014care}\
 is the persistence of sparse words that would otherwise be removed from the corpus but may have a strong correlation to a specific topic.
 
 Document duplication removal is a rather common text modeling preprocessing technique. In essence, this technique is used to simply remove duplicates from the corpus. \
-This is a large consideration in our dataset since requesters in crowdsourcing platforms often publish HITs in large batches ranging from a couple hundred to tens of thousand\
-HITs that are duplicates. This is due in large part to one of the primary use cases for requesters on the platform being data annotation, many researchers will\
-publish massive annotation task batches that duplicative which would bloat the size of the corpus used in this analysis without additional preprocessing. One study\
-found that duplication in the corpus can in fact effect model performance but only for large quantities of duplicates and that these duplicate documents in the corpus\
-can be quickly clustered into individual topics \cite{schofieldunderstanding}. This means that document duplication wouldn't have a profound effect on the topics\
-discovered by the topic models since the effect would be contained to several specific topics without effecting unrelated topics. However, for the topic analysis I decided \
-to remove document duplicates since there exists a large number of duplicate HITS in the corpus which would increase the training time exponentially without any positive effect\
+This is an important consideration in our dataset since requesters in crowdsourcing platforms often publish HITs in large batches ranging from a couple hundred to tens of thousand of\
+HITs that are duplicates. This is due in large part to one of the primary use cases for requesters on the platform being data annotation; many researchers will\
+publish massive annotation task batches that are duplicative which would bloat the size of the corpus used in this analysis without additional preprocessing. One study\
+found that duplication in the corpus can in fact affect model performance but only for large quantities of duplicates and that these duplicate documents in the corpus\
+can be quickly clustered into individual topics \cite{schofieldunderstanding}. This means that document duplication would not have a profound effect on the topics\
+discovered by the topic models since the effect would be contained to several specific topics without affecting unrelated topics. However, for the topic analysis I decided \
+to remove document duplicates since there exist a large number of duplicate HITS in the corpus which would increase the training time exponentially without any positive effect\
 on the results of the models on the corpus.
 
 While the original LDA paper was trained for unigram tokens and made the assumption that words are generally independent of one another \cite{blei2003latent}, the LDA has also\
-been extended to perform topic modeling on n-gram tokens as well \cite{wang2005note}. However, the use of \texttt{n-gram} in topic models such as the LDA increase the complexity\
-of the model \cite{wang2007topical}. To mitigate increasing the model perplexity and simultaneously increasing the training time of the models and also respecting the implentation of\
-the modern topic models that are implemented in the analysis of the corpus which used unigrams as input for their models \cite{moody2016mixing}\cite{dieng2019topic}, the analysis\
+been extended to perform topic modeling on \emph{n-gram} tokens as well \cite{wang2005note}. However, the use of \texttt{n-gram} in topic models such as the LDA increase the complexity\
+of the model \cite{wang2007topical}. To mitigate increasing the model perplexity and simultaneously increasing the training time of the models. The implentation of\
+the modern topic models that are implemented in the analysis of the corpus use unigrams as input for their models \cite{moody2016mixing}\cite{dieng2019topic}, the analysis\
 will only consider unigrams as input to the models to allow for a fair, consistent, and efficient comparison of the different topic models on our dataset.
 
 In addition to removing stop words from a fixed list and removing duplicates from the corpus, I also filter out punctuation and several comon symbols using a regular expression\
 as well as cast all of the unigram tokens to lowercase to consolidate capitalization into one word. During the removal of stop words, the preprocessing step also includes a simple check\
 to remove standalone numbers using the \texttt{nltk} \cite{loper2002nltk} \texttt{isnumeric()} function.
 
-For the preview corpus there is also an additional preprocessing step to clean up the page source that captures the raw text of the preview from the web page. Often time when\
+For the preview corpus there is also an additional preprocessing step to clean up the page source that captures the raw text of the preview from the web page. Often times when\
 extracting data from a web page there exists a good deal of noise that comes with extracting raw text from the web such as HTML, styling, scripts injected into the web page as\
 well as web page boiler plate. Gathering input from the page source of a website requires significant preprocessing in order for the data to be a good input for topic models \cite{boyd2014care}.\
-To clean up the page source of documents in the preview corpus, each document is put through additional preprocessing than the title and descriptions which are extracted only as strings\
+To clean up the page source of documents in the preview corpus, each document is put through additional preprocessing aside from that of the titles and descriptions which are extracted only as strings\
 rather than web source code and each preview is stripped of all HTML, scripts, styles, and new lines using the Beautiful Soup tool \cite{richardson2007beautiful}. \
-After stripping the web entities out of the page source, the size of the data was massive and had a large and unique vocabulary -- the dataset was reduced to 5\% of \
-it's original size. This decision was backed by the fact that the handling of large vocablularies by topic models is still an area yet to be addressed by research \cite{dieng2019topic}.\
+After stripping the web entities out of the page source--the size of the data was massive and had a large and unique vocabulary -- the dataset was reduced to 5\% of \
+its original size. This decision was backed by the fact that the handling of large vocablularies by topic models is still an area yet to be addressed by research \cite{dieng2019topic}.\
 To reduce the dataset, the combined dataset was sampled randomly until it was reduced from $32814$ unique documents to $1640$ unique documents. After being reduced in size,\
 this dataset was then manually checked for combined/inerrent tokens to allow the models to discover unigram topics. This manual step was deemed necessary after examining\
-results from topic models on the preview dataset that contained conjoined words (i.e ``zoomblank'', ``berniesanders'', ``redbox'') which was causing the models\
+results from topic models on the preview dataset that contained conjoined words (i.e ``zoomblank'', ``berniesanders'', ``redbox'') which caused the models\
 to create incoherent topics. After manually separating these conjoined tokens, the previews provided the richest topics amongst datasets due in part to the size of the\
 documents themselves, and that the vocabulary had a greater diversity than that of the description and title datasets.
 \subsection{Topic Models}
 Topic modeling is a commonly used approach to perform unsupervised analysis of unstructured text. The field has become increasingly more popular as the amount of unstructured\
-data that businesses continue to collect increases, one study estimated that up to 80\% of an organizations data is unstructured \cite{Sint2009CombiningUF} making the development\
+data that businesses continue to collect increases. One study estimated that up to 80\% of an organizations data is unstructured \cite{Sint2009CombiningUF} making the development\
 of algorithms and models that can extract insights and meaning from this unstructured data increasingly more important. The ability to process and extract meaning\
-from unstructured data makes topic modeling an excellent candidate to analyze and extract common topics and themes that appear in HITs on Amazon MTURK. The extraction and understanding\
-of this data will be valuable for implementing future works related to improving crowdworker efficiency.
+from unstructured data makes topic modeling an excellent candidate to analyze and extract common topics and themes that appear in HITs on Amazon MTurk. The extraction and understanding\
+of this data will be valuable for implementing future works related to improving crowd worker efficiency.
 
-Topic modeling has its origins around the beginning of the 21st century beginning with a several algorithms published on the subject of topic modeling such as \
-Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing (LSI) \cite{papadimitriou2000latent} (LSI) which would pave the way for the\
+Topic modeling originated around the beginning of the 21st century beginning with several algorithms published on the subject of topic modeling such as \
+Probabilistic latent semantic indexing \cite{hofmann1999probabilistic} and Latent semantic indexing (LSI) \cite{papadimitriou2000latent} paved the way for the\
 creation of the Latent Dirichlet allocation (LDA) \cite{blei2003latent} which is the most commonly implemented topic modeling algorithm in use today. In recent years, \
-researchers have begun to develop topic modeling algorithms that have acheived state of the art performance leveraging word embeddings \cite{mikolov2013distributed} \cite{dieng2019topic}.\
-Word embeddings have opened the door for innovations across the field of natural language processing and topic modeling is no different. 
+researchers have begun to develop topic modeling algorithms that have acheived state of the art performance leveraging word embeddings \cite{mikolov2013distributed, dieng2019topic}.\
+Word embeddings have opened the door for innovations across the field of natural language processing, and topic modeling is no different. 
 
 The dataset will be analyzed using four different topic models namely LSI, LDA, lda2vec, and the Embedded Topic Model (ETM). 
 \subsubsection{Latent Semantic Indexing (LSI)}
 Latent Semantic indexing was originally proposed in the paper ``Indexing by latent semantic analysis'' by Deerwester et al. \cite{deerwester1990indexing}. The authors\
 proposed the algorithm as a means to improve information reteival (IR) by treating IR as a statistical problem. One of the shortcomings in the field of IR at the time\
 the paper was written was the inability to capture conceptual meaning from a user search on the corpus. LSI was created to address these problems by assuming that there\
-exists underlying semantic meaning in a document and thus through estimating the noise in a given set of data with respect to word choice their methodology can associate\
+exists underlying semantic meaning in a document and thus, through estimating the noise in a given set of data with respect to word choice, their methodology can associate\
 terms and documents through the expression of a singular value decomposition (SVD) on term to document data.
 
-Specifically, LSI can be defined by a $n$ $x$ $m$ matrix $A$ where the rows are represented by the words in the corpus and the columns represent the documents with a rank of \emph{r}.\
+Specifically, LSI can be defined by an $n$ x $m$ matrix $A$ where the rows represent the words in the corpus and the columns represent the documents with a rank of \emph{r}.\
 From this matrix, using a SVD, \emph{A} can then be represented as the product of 3 separate matrices as shown in Equation \ref{eqn:lsi}:
 
 \begin{eqnarray}
@@ -685,8 +687,8 @@ From this matrix, using a SVD, \emph{A} can then be represented as the product o
 	\label{eqn:lsi}
 \end{eqnarray}
 
-Where $D$ is a diagonal $r$ $x$ $r$ matrix of the eigenvalues of $AA^T$, $U$ is a $n$ $x$ $r$ matrix of rank $r$ that has orthonormal columns,\
-and $V$ is an $m$ $x$ $r$ matrix with orthonormal columns as well \cite{papadimitriou2000latent}. This SVD is the LSI space of the term-document\
+Where $D$ is a diagonal $r$ x $r$ matrix of the eigenvalues of $AA^T$, $U$ is a $n$ x $r$ matrix of rank $r$ that has orthonormal columns,\
+and $V$ is an $m$ x $r$ matrix with orthonormal columns as well \cite{papadimitriou2000latent}. This SVD is the LSI space of the term-document\
 representation of the corpus. 
 
 For the implementation of the LSI in the experiments, the \emph{gensim} \cite{gensim} library is utilized. The \emph{gensim} implementation of the library\
@@ -715,9 +717,9 @@ a probability distribution over words in the corpus. In the paper, the LDA is de
 	\label{eqn:lda}
 \end{figure}
 
-In laymen terms, the LDA is fed a paremeter for the number of topics $z$ that the model will be trained for and from those topics it then generates \
-a topic mixture for a document using a Dirichlet distribution over $z$, then for each word, select a topic that the word should belong\
-based off of what topics are in the selected document as well as how many times the word has been assigned to a topic in other documents. \
+In laymen's terms, the LDA is fed a paremeter for the number of topics $z$ that the model will be trained for and from those topics it then generates \
+a topic mixture for a document using a Dirichlet distribution over $z$. Then for each word, it selects a topic that the word should belong\
+in based off of what topics are in the selected document as well as how many times the word has been assigned to a topic in other documents. \
 A visualization of this model can be seen in \ref{fig:lda}: 
 
 \csmfigure{lda}{figures/lda_diagram}{4in}{Basic LDA model architecture \cite{blei2003latent}}
@@ -727,16 +729,16 @@ document specific topic distribution, $z$ signifies the topic for the selected w
 of the box $\beta$ represents the per-topic word distribution throughout the corpus. The outer boxes $M$ and $N$ are representative of \
 the generative approach of the LDA in that $N$ represents the assignment of words to topics in a document while $M$ represents the collection\
 of documents that make up the corpus.
-The bread and butter of the LDA is this two-headed process by which a word is assigned to a topic according to the topic-document distribution\
+The key facet of the LDA is this two-headed process by which a word is assigned to a topic according to the topic-document distribution\
 in conjunction with how the selected word has been assigned to other topics across documents in the corpus.\
 The LDA then repeats this process until it reaches the number of passes that are specified as a parameter to the model, resulting in the formation of $z$\
-topics across the corpus with words that were topically assigned based off of the the context of the word in the document it appears as well as how\
-the word is assigned in documents across the bredth of the corpus.
+topics across the corpus with words that were topically assigned based off of the the context of the word in the document it appears in as well as how\
+the word is assigned in documents across the breadth of the corpus.
 
 From the performance perspective, in the original paper the LDA is cited as outperforming the \emph{pLSI} \cite{hofmann1999probabilistic}, an adaption of the original \emph{LSI},\
 measured on the perplexity metric which was commonly used to evaluate early topic models. In the empirical evaluation section of the paper the authors\
 cited that the design of the LDA led to the avoidance of some of the shortcomings of the \emph{pLSI} especially overfitting by utilizing a variational\
-Bayesian smoothing scheme \cite{attias2000variational} \cite{blei2003latent}. 
+Bayesian smoothing scheme \cite{attias2000variational,blei2003latent}. 
 
 For the implementation of the LDA in the experiments, the \emph{gensim} library is leveraged which is based off of the code presented by some of the original authors of the LDA \cite{hoffman2010online}.
 The specific hyperparameters that were implemented in the experiments are discussed at greater lengths in experiments in Chapter 4.
@@ -745,13 +747,13 @@ The LDA was selected for the experiments because it is the most widely used and 
 models compare their performance.
 \subsubsection{lda2vec}
 The \emph{lda2vec} model was one of the first topic models to develop a hybrid approach which married the sparse document-topic representation of a corpus used in\
-traditional topic modeling like the LDA with the innovation of word embeddings. \emph{lda2vec} was developed to address one of the primary shortcoming of traditional\
-topic modeling approach--the failure to take advantage of recent innovations in distributed word representation such as the skip gram representation presented in \emph{word2vec} \cite{mikolov2013distributed}.\
-Word embeddings as previously addressed have had a substantial effect on the field of NLP over a wide array of applications and the development of hybrid topic models\
+traditional topic modeling like the LDA with the innovation of word embeddings. \emph{lda2vec} was developed to address one of the primary shortcomings of traditional\
+topic modeling approaches--the failure to take advantage of recent innovations in distributed word representation such as the Skip gram representation presented in \emph{word2vec} \cite{mikolov2013distributed}.\
+Word embeddings as previously addressed have had a substantial effect on the field of NLP over a wide array of applications, and the development of hybrid topic models\
 that leverage these distributed word representations to account for semantically meaningful relationships between words has led to advances in topic modeling as well as\
 the development of state of the art topic models.
 
-From an implentation perspective the \emph{lda2vec} model modifies the Skipgram Negative-Sampling (SGNS) objective from Mikolov et al. \cite{mikolov2013distributed} to learn document-wide\
+From an implentation perspective the \emph{lda2vec} model modifies the Skip gram Negative-Sampling (SGNS) objective from Mikolov et al. \cite{mikolov2013distributed} to learn document-wide\
 feature vectors in concurrence with discovering document weights that are loaded onto topic vectors \cite{moody2016mixing}. \
 The loss of the \emph{lda2vec} model can be represented with the following equations (\ref{eqn:lda2vec1}, \ref{eqn:lda2vec2} \cite{moody2016mixing}):
 
@@ -763,7 +765,7 @@ The loss of the \emph{lda2vec} model can be represented with the following equat
 \end{eqnarray}
 
 In the equations above the total loss $\mathcal{L}$ is represented by the sum of the Dirichlet likelihood of term of document weights $\mathcal{L}^d$ \
-while the summation of $\mathcal{L}^{neg}_{ij}$ represents the paper's modification of the Skipgram objective. In further depth \
+while the summation of $\mathcal{L}^{neg}_{ij}$ represents the paper's modification of the Skip gram objective. In further depth \
 $\vec{c_j}$ represents the context vector which accounts for the models combination of word and document vectors (See Equation \ref{eqn:lda2vec3} below \cite{moody2016mixing}).
 
 \begin{eqnarray}
@@ -773,14 +775,14 @@ $\vec{c_j}$ represents the context vector which accounts for the models combinat
 
 For additional explanation please reference the visual of the \emph{lda2vec} model architecture in \ref{fig:lda2vec} \cite{moody2016mixing} on the page below.
 
-\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{lda2vec model architecture \cite{moody2016mixing} -- note the combination of the Skip grams from \emph{word2vec} \cite{mikolov2013distributed} used in conjunction with the LDA architecture \cite{blei2003latent}}
+\csmfigure{lda2vec}{figures/lda2vec_diagram}{3.65in}{\emph{lda2vec} Model Architecture \cite{moody2016mixing}}
 
 \newpage
 From an application perspective, the author states that he used several preprocessing techniques including lemmatization which as discussed in the preprocessing\
-section above, can be detrimental to model performance. The author also leverage pretrained word embeddings in one of the experiments using the\
-pretrained values discussed in the Skipgram paper \cite{mikolov2013distributed}. For the implementation of \emph{lda2vec} in the experiments on \
-the MTURK dataset, pretrained GloVe embeddings referenced in the GloVe paper was leveraged \cite{pennington2014glove}. \
-Specifically, the 300d vector that was trained on the 2014 English Wikipedia corpus and English Gigaword 5th Edition corpus with\
+section above, can be detrimental to model performance. The author also leveraged pretrained word embeddings in one of the experiments using the\
+pretrained values discussed in the Skip gram paper \cite{mikolov2013distributed}. For the implementation of \emph{lda2vec} in the experiments on \
+the MTurk dataset, pretrained GloVe embeddings referenced in the GloVe paper were leveraged \cite{pennington2014glove}. \
+Specifically, the 300 dimensional vector was trained on the 2014 English Wikipedia corpus and English Gigaword 5th Edition corpus with\
 6B tokens and a vocab of 400k.
 During the experiments the researcher used the \emph{C\_v} topic coherence mertric \
 which was shown to correlate with human interpretability \cite{roder2015exploring}. The \emph{C\_v} analysis on this experiment was used with \
@@ -789,17 +791,17 @@ has been discovered to have a negative correlation other topic coherence metrics
 and thus this metric will not be leveraged to evaluate topic coherence in the experiments on the MTurk dataset.
 
 \emph{lda2vec} is an excellent comparison against traditional topic models and will reveal valuable insights on how leveraging topic-document distributions in\
-conjunction with word embeddings can effect the interpretability of topics on our dataset.
+conjunction with word embeddings can affect the interpretability of topics on our dataset.
 
 \subsubsection{Embedded Topic Model (ETM)}
 The Embedded Topic Model (ETM) is another topic model that combines traditional topic models together with word embeddings. The ETM is \
 a generative probabilistic model like the LDA, however, the word-topic probability is represented as an embedding instead of a probabilistic\
-distribution where each topic exists in the word embedding space \cite{dieng2019topic}. Some of the existing benefits of the model that is addressed\
-in the paper is that the model is able to handle stop words effectively using the topic representation in the embedding space while also introducing\
-an algorithm to efficiently compute the posterior of topic proportions which allows the model to fit to large vocabularies and large corpora, a previously\
+distribution where each topic exists in the word embedding space \cite{dieng2019topic}. Some of the existing benefits of the model that are addressed\
+in the paper are that the model is able to handle stop words effectively using the topic representation in the embedding space while also introducing\
+an algorithm to efficiently compute the posterior of topic proportions, which allows the model to fit large vocabularies and large corpora, a previously\
 unaddressed space in topic modeling \cite{dieng2019topic}.
 
-From an implementation standpoint the ETM focuses on the Continuous Bag of Words (CBOW) version of word embeddings \cite{mikolov2013distributed}, in CBOW\
+From an implementation standpoint the ETM focuses on the Continuous Bag of Words (CBOW) version of word embeddings \cite{mikolov2013distributed}. In CBOW\
 the representation of a given word can be expressed using the equation below \ref{eqn:etm} \cite{dieng2019topic}: 
 
 \begin{eqnarray}
@@ -807,25 +809,25 @@ the representation of a given word can be expressed using the equation below \re
 	w_{dn} \sim softmax(\rho^T\alpha_{dn})
 \end{eqnarray}
 
-In the equation the subscripts \emph{d} and \emph{n} denote the \emph{n\-th} word in a document (\emph{d}). In the equation $\rho$ signifies a matrix that contains \
+In the equation the subscripts \emph{d} and \emph{n} denote the \emph{n\-th} word in a document \emph{d}. In the equation $\rho$ signifies a matrix that contains \
 the embedding representation of the vocabulary in the corpus and $\alpha$ represents the \emph{context embedding} which is the sum of the context embedding vectors of \
-the words surrounding the current word \cite{dieng2019topic}. In the context of the ETM model, this \emph{context embedding} is referred to as a \emph{topic embedding}\
+the words surrounding the current word \cite{dieng2019topic}. In the context of the ETM model, this \emph{context embedding} is referred to as \emph{topic embedding}\
 where the topic embedding is a distributed representation of the current topic in the space of words in the document. What this allows the topic embedding to do is form\
-a topic distribution over the words in the corpus and then assign a ``high probability'' to a given word in a given topic based off the agreement between the word and topic\
+a topic distribution over the words in the corpus and then assign a ``high probability'' to a given word in a given topic based on the agreement between the word and topic\
 embeddings \cite{dieng2019topic}.
 
 In the paper, the authors outline two methodologies for creating $\rho$: leverage pretrained word embeddings\
 (which the authors refer to Labelled-ETM) or discover the word embeddings during the training process.\
-During the analysis section of the paper, the author's explained the Labelled-ETM which used pretrained skipgram embeddings\
-outperformed the ETM which learned embeddings during the training process. For this reason, the Labelled-ETM will be\
-leveraged for the analysis or our dataset.\
-For the experiments ran in the study, the Author's version of the Labelled ETM leverages Skip-gram embeddings\
-that were trained on the \emph{New York Times} corpus \cite{sandhaus2008nyt}. However, for the implementation of the ETM\
-in the experiments on the MTURK dataset, the GloVe embeddings \cite{pennington2014glove} used in our implementation for \emph{lda2vec} are also\
-used for our implementation of the ETM. In the GloVe embedding paper, the GLovE word representation is cited as "performing significantly"\
+During the analysis section of the paper, the authors explained that the Labelled-ETM, which used pretrained Skip gram embeddings,\
+outperformed the ETM, which learned embeddings during the training process. For this reason, the Labelled-ETM will be\
+leveraged for the analysis of our dataset.\
+For the experiments run in the study, the authors' version of the Labelled ETM leverages Skip gram embeddings\
+were trained on the \emph{New York Times} corpus \cite{sandhaus2008nyt}. However, for the implementation of the ETM\
+in the experiments on the MTurk dataset, the GloVe embeddings \cite{pennington2014glove} used in our implementation for \emph{lda2vec} are also\
+used for our implementation of the ETM. In the GloVe embedding paper, the GLovE word representation is cited as ``performing significantly''\
 better than other word representations including the CBOW and Skip gram models proposed by Mikolov et al. \cite{pennington2014glove}.
 
-From a higher level perspective the generative process of the ETM model can be described with the following steps in \ref{eqn:etm-procedure}:
+From a higher level perspective the generative process of the ETM model can be described with the steps in \ref{eqn:etm-procedure}:
 \begin{figure}
 	
 	\begin{enumerate}
@@ -836,13 +838,13 @@ From a higher level perspective the generative process of the ETM model can be d
 			\item Draw the word $w_{dn} \sim softmax(\rho^T\alpha_{z_{dn}})$
 		\end{enumerate}
 	\end{enumerate}
-	\caption{ETM model generative procedure \cite{dieng2019topic}}
+	\caption{ETM Model Generative Procedure \cite{dieng2019topic}}
 	\label{eqn:etm-procedure}
 \end{figure}
 
 The steps 1-2a are very similar to the generative procedure followed by the LDA \cite{blei2003latent}, randomly generating topic proportions over documents in the corpus, then\
-for each word in a document, drawing a topic assignment for the word. However, instead of then proceeding to assign the word to a topic like in the LDA based off of the topic proportion\
-in the document and the word assignment to topics throughout the corpus, the ETM actually assigns the word based off of the CBOW representation of the topic embedding from the document\
+for each word in a document, drawing a topic assignment for the word. However, instead of then proceeding to assign the word to a topic like in the LDA--based off of the topic proportion\
+in the document and the word assignment to topics throughout the corpus--the ETM actually assigns the word based off of the CBOW representation of the topic embedding from the document\
 context \cite{dieng2019topic}. Step 2b also differs from the direct CBOW implementation because instead of using a sliding window of words to develop the embeddings, the \
 topic embeddings are created with respect to the entire document. 
 
@@ -851,20 +853,19 @@ metric they define as topic diversity, which assesses the diversity in the topic
 Using these metrics, the authors claim that the ETM significantly outperforms both the LDA and the simplistic constrained neural \
 variational document model (NVDM), a multinomial factor model of documents \cite{miao2016neural}.\
 The ETM is a state of the art topic model according to the analysis in the paper and is cited as outperforming the LDA on the metric of topic\
-coherence (which is linked to interpretability \cite{mimno2011optimizing}). This makes the ETM an excellent candidate to test against our dataset.
+coherence (which is linked to interpretability) \cite{mimno2011optimizing}. This makes the ETM an excellent candidate to test against our dataset.
 
 
 \subsection{Quantitative Analysis}
 Evaluating topic models has generally been a difficult topic to broach. The overarching goal of topic modeling is to garner\
 understanding and meaning from unstructured text which has been a difficult problem for researchers to attempt to quantify.\
-However, in order to study and advance the field of topic modeling, researchers have developed intrinsic and extring metrics\
+However, in order to study and advance the field of topic modeling, researchers have developed intrinsic and extrinsic metrics\
 for evaluating topic model performance with the two most popular methodlogies being perplexity and topic coherence.
 \subsubsection{Perplexity}
 During the early days of topic modeling\
 the defacto standard for evaluating topic models was \emph{perplexity}, a general metric for evaluating statistical models
 which measures how well a probability distribution can predict a sample.\ In fact, perplexity was the method used \	
-to originally evaluate the LDA and is even used by modern topic models that claim they are state of the art using the
-metric of perplexity \cite{kesiraju2019learning}. However, as apart of a pivoting study in the field of topic modeling\
+to originally evaluate the LDA and is even used by some modern topic models \cite{kesiraju2019learning}. However, as a part of a pivoting study in the field of topic modeling\
 that has been frequently cited, researchers discovered that perplexity actually has a negative correlation with human\
 interpretability \cite{chang2009reading}. In the study by Chang et al., the researchers performed a large scale human\
 study on Amazon MTurk and discovered that humans find that topics generated by models that achieve higher perplexity scores\
@@ -878,7 +879,7 @@ of topics that are actually interpretable and the topics that were simply inferr
 There have been several approaches that have been confirmed to have a positive correlation with human interpretability\
 and have been applied to evaluate the effectiveness of advances in the field of topic modeling.
 
-The two topic coherence that will be used to evaluate topic coherence in the experiments on the datset are UCI \cite{newman2010automatic}\
+The two topic coherence metrics that will be used to evaluate topic coherence in the experiments on the datset are UCI \cite{newman2010automatic}\
 and UMass \cite{mimno2011optimizing} which have both been shown to correlate with human judgement on topic quality.
 
 \paragraph{UCI}
@@ -891,7 +892,7 @@ UCI defines the word pair score between words as a pointwise mutual information 
 These word probabilities are then computed using a sliding window over an external corpus like Wikipedia \cite{stevens2012exploring}.
 
 \paragraph{UMass}
-Where UCI is based of the word pair score in the topics, the UMass metric is based off of document co-occurence as defined\
+Where UCI is based of the word pair score in the topics, the UMass metric is based on document co-occurence as defined\
 by the equation below in \ref{eqn:umass} \cite{mimno2011optimizing}:
 
 \begin{eqnarray}
@@ -900,25 +901,25 @@ by the equation below in \ref{eqn:umass} \cite{mimno2011optimizing}:
 \end{eqnarray}
 
 UMass takes more of an internal approach by counting the number of documents that contain words in a topic and computing \
-this metric of the corpus the model trained on, rather than an external corpus like UCI \cite{stevens2012exploring}.\
+this metric for the corpus the model trained on, rather than an external corpus like in UCI \cite{stevens2012exploring}.\
 The UMass topic coherence metric was also used to evaluate topic coherence on the ETM model.
 
 \subsection{Number of Topics}
 The number of topics that are selected when training a topic model is critically important. The majority\
 of topic models (even modern topic model architecture that use word embeddings) are still based on or used\
 in conjunction with a probability distribution over a fixed number of latent topics. This fixed parameter\
-has been a subfield of research within topic modeling and many researchers approach for tweaking this\
+has been a subfield of research within topic modeling and many researchers' approach for tweaking this\
 value is via guess and check. One of the approaches that has been pitched as a solution to this problem\
 is to train topic models over a set number of topics and evaluate the corresponding topic coherence approaches.\
 After the advances of topic coherence metrics which possessed a positive correlation with human interpretability,\
-Stevens et al. performed a study on the number of topics and it's effect on topic coherence using several\
+Stevens et al. performed a study on the number of topics and its effect on topic coherence using several\
 heavily implemented topic models. In their study, the researchers discovered that when valuating off of \
 topic coherence alone, that topic models reach a point of stabilization in terms of topic coherence using the UCI and UMass\
 metrics at around 100 topics. This trend was consistent over the topic models analyzed in the study: LDA, LSI (SVD), and LSI (NMF)\
-\cite{stevens2012exploring}. The figure used to analyze these results, published in the paper \
+\cite{stevens2012exploring}. The figure used to analyze these results, published in the paper, \
 is shown below in \ref{fig:num_topics}:
 
-\csmfigure{num_topics}{figures/num_topics}{6.5in}{Effect of Number of Topics on UCI and UMass Topic Coherence \cite{stevens2012exploring}}
+\csmfigure{num_topics}{figures/num_topics}{6.5in}{Number of Topics and Topic Coherence \cite{stevens2012exploring}}
 
 Upon these findings on the topic coherence metrics that will be used to evaluate topic quality in this\
 study, each model will be evaluated on the dataset over $10-100$ topics using 5 step intervals. This will\
@@ -930,9 +931,9 @@ For each model implementation for each dataset, a test run with a high or releva
 will be analyzed for the topics that the experiment generated.
 
 \subsection{Approach}
-To summarize the approach of the following experiments: the 4 separate datasets that were collected\
+To summarize the approach of the following experiments: the four separate datasets that were collected\
 from webscraping Amazon MTurk by Dr. Yue's research team will be combined and used as the source of truth over the course\
-of the experiment. This dataset will then be preprocessed to remove stopwords and document duplicates, as well a \
+of the experiment. This dataset will then be preprocessed to remove stop words and document duplicates, as well a \
 web entities in the preview datasets. This dataset will then be analyzed for high level trends \
 and relationships that can provide further insight to the results of the topic models and to understand the \
 characteristics of the dataset itself. Then, using the LSI, LDA, \emph{lda2vec}, and ETM, these models will \
@@ -941,29 +942,29 @@ will be evaluated over a range of $10-100$ topics, stepping in intervals of 5 to
 using the UCI and UMass topic coherence metrics as well as in further depth qualitatively for the high performing\
 number of topics for each model on each dataset. 
 
-\chapter{What are the primary topics of Amazon MTURK HITs?}
+\chapter{What are the primary topics of Amazon MTurk HITs?}
 
 \subsection{HIT Dataset}
-As discussed in Chapter 3, the dataset that was used to analyze the topics of HITs on MTurk was collected over a time\
+As discussed in Chapter 3, the dataset that was used to analyze the topics of HITs on MTurk was collected over a date\
 range of January 26, 2020 to March 12, 2020 with the specific dates outlined in \ref{tab:data_dates}. One of the interesting\
 considerations of topic modeling is the characteristics of the dataset. After performing some tests to understand the shape\
 or our data, it was discovered that from the raw dataset itself, there was an extremely large disparity in the number of HITs\
 that were administed by certain requesters on the platform. From the 1,108,702 HITs that were collected for this analysis, \
-out of 2012 unique requesters the top 10 requesters by HITs submitted accounted for 69.1\% of the HITs in the dataset shown\
+out of 2,012 unique requesters the top 10 requesters by HITs submitted accounted for 69.1\% of the HITs in the dataset shown\
 in \ref{fig:top10-pi}. \
 What was even more alarming was that a single requester administered a whopping 36.1\% of the HITs in the dataset with 
-over 400699 HITs as shown in \ref{tab:requester_top_10}. \
+over 400,699 HITs as shown in \ref{tab:requester_top_10}. \
 
 Due to the probabilistic nature of the topic models that were used for the topic modeling analysis on this dataset, the \
 overrepresentation of certain requesters draws needed recognition. In the preprocessing section in Chapter 3, it was discussed\
-that although document duplication would not effect the discovery of topics from other documents, it would cause the generation\
+that although document duplication would not affect the discovery of topics from other documents, it would cause the generation\
 of topics that were very specific to the duplicated documents in the corpus \cite{schofieldunderstanding}. In the interest of generating\
 topics that were prevelant to documents across the corpus and not just a specific cluster of documents created by certain \
 requesters, duplicated documents were removed from the corpus before being handed off to the topic models. The characterization\
 of the corpora after this preprocessing step of duplicate removal can be seen in the visuals below.
 
 \begin{table}
-	\caption{\label{tab:requester_top_10} Top 10 Requesters by Number of Hits Created before Preprocessing}
+	\caption{\label{tab:requester_top_10} Top 10 Requesters before Preprocessing}
 	\begin{center}
 		\begin{tabular}{| c | c |}
 			\hline
@@ -998,15 +999,15 @@ of the corpora after this preprocessing step of duplicate removal can be seen in
 \end{table}
 
 
-\csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters by Number of HITs before Preprocessing }
+\csmfigure{top10-pi}{figures/top10-pi}{6.5in}{Top 10 Requesters before Preprocessing }
 \newpage
 
 After the preprocessing step of document de-duplication, the dataset was reduced from 1,108,702 total documents,\
 to 3,148 Title documents, 2,744 Description documents, and 1,639 Preview documents. The difference in the number\
 of documents is the result of additional preprocessing in which punctuation, digits, symbols, web entities, and \
 other characters were removed from the specific corpora before document duplicates were removed. The Preview corpus was reduced even \ 
-more so as described in further length in the Preprocessing section of Chapter 3 due to it's large vocabulary size \ 
-and large number of unique documents which causes topic models fits and is an area of unexplored research \cite{dieng2019topic}.\
+more so as described in further length in the Preprocessing section of Chapter 3 due to its large vocabulary size \ 
+and large number of unique documents which causes topic models fits \cite{dieng2019topic}.\
 
 With specific regards to the Title corpus, it can be seen that the impact of certain requesters on the title corpus is significantly less\
 after preprocessing with the top 10 requesters accounting for only 15.6\% of the documents in the corpus as shown in \ref{fig:title-post-top10-pi} \
@@ -1014,7 +1015,7 @@ compared to 69.1\% before preprocessing. The top 10 requesters by number of uniq
 significantly smaller portion of the corpus as shown in \ref{tab:title_requester_top_10}.
 
 \begin{table}
-	\caption{\label{tab:title_requester_top_10} Title -- Top 10 Requesters by Number of Hits Created after Preprocessing}
+	\caption{\label{tab:title_requester_top_10} Title -- Top 10 Requesters after Preprocessing}
 	\begin{center}
 		\begin{tabular}{| c | c |}
 			\hline
@@ -1049,7 +1050,7 @@ significantly smaller portion of the corpus as shown in \ref{tab:title_requester
 \end{table}
 
 
-\csmfigure{title-post-top10-pi}{figures/title-post-top10-pi}{6.5in}{Title -- Top 10 Requesters by Number of HITs after Preprocessing }
+\csmfigure{title-post-top10-pi}{figures/title-post-top10-pi}{6.5in}{Title -- Top 10 Requesters after Preprocessing }
 \newpage
 
 The Description corpus also experienced a significant impact after preprocessing and the removal of document duplicates.\ 
@@ -1061,7 +1062,7 @@ significantly smaller portion of the corpus as shown with the top requester only
 to 36.1\% before preprocessing, decribed in greater detail by \ref{tab:description_requester_top_10}.
 
 \begin{table}
-	\caption{\label{tab:description_requester_top_10} Description -- Top 10 Requesters by Number of Hits Created after Preprocessing}
+	\caption{\label{tab:description_requester_top_10} Description -- Top 10 Requesters after Preprocessing}
 	\begin{center}
 		\begin{tabular}{| c | c |}
 				\hline
@@ -1095,24 +1096,24 @@ to 36.1\% before preprocessing, decribed in greater detail by \ref{tab:descripti
 	\end{center}
 \end{table}
 
-\csmfigure{description-post-top10-pi}{figures/description-post-top10-pi}{6.5in}{Description -- Top 10 Requesters by Number of HITs after Preprocessing }
+\csmfigure{description-post-top10-pi}{figures/description-post-top10-pi}{6.5in}{Description -- Top 10 Requesters after Preprocessing }
 
 \newpage
 
-Due to the structure of the data collected for the Preview dataset not containing information related to the requester name. A fair \
-analysis of the effect of preprocessing on the presence of requesters in the corpus could no be administered. \
+Due to the structure of the data collected for the Preview dataset not containing information related to the requester name, a fair \
+analysis of the effect of preprocessing on the presence of requesters in the corpus could not be administered. \
 Although the Preview dataset contained a ``uid'' attribute that correlated to the requester id, after specific analysis\
 it was found that the number of users by ``requester\_name'' was different than the ``requester\_id'', implying\
-that requesters can have more than one ``requester\_id'' in our dataset which would lead to an accurate analysis \
+that requesters can have more than one ``requester\_id'' in our dataset which would lead to an inaccurate analysis \
 of the Preview dataset. The specific shape of the data collected for the Preview dataset is described in the Dataset\
 section of Chapter 3.
 
-Another interesting observation on the effect of preprocessing on the dataset is that none of the top 10 requesters,\
+Another interesting observation of the effect of preprocessing on the dataset is that none of the top 10 requesters,\
 prior to preprocessing appeared in the top 10 of either the Description or Title corpora after preprocessing. \
 This shows that many requesters administer HITs in bulk and in large numbers.
 
 \begin{table}
-	\caption{\label{tab:corpora_comparison} Dataset Corpora Statistics}
+	\caption{\label{tab:corpora_comparison} Dataset -- Corpora Statistics}
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
 			\hline
@@ -1155,7 +1156,7 @@ before being uploaded to an Nvidia DGX Workstation v4.4.0 provided by Dr. Chuan 
 \paragraph{LSI}
 The LSI Experiments were conducted using the \emph{gensim} library \cite{gensim} which implemented the specific\
 \emph{SVD} algorithm described in Chapter 3. For each dataset, an LSI model with a batch size of 100 was trained with the preprocessed\
-data described in Ch. 3 for values \emph{K} defined in \ref{eqn:k-topics}. After the model was trained, the top 10\
+data described in Chapter 3 for values \emph{K} defined in \ref{eqn:k-topics}. After the model was trained, the top 10\
 words for each topic \emph{K} were written to a text file which was then used to calculate the different topic coherence\
 values for each model.
 
@@ -1170,22 +1171,22 @@ values for each model.
 The \emph{lda2vec} leveraged a TensorFlow v.1 implementation \cite{lda2vecTF} of Moody's algorithm \
 with pretrained GloVe embeddings from the 2014 Wikipedia corpus \cite{pennington2014glove}. The model was\
 then run through the preprocesser provided in the library to prepare the corpus for the \emph{lda2vec} implementation\
-which was then trained for a number of topics \emph{K}, 150 epochs, a batch size of 4096 for the description and\
-title corpora and a batch size of 32768 for the preview corpora (the model implementation kept running out \
-of memory with a batch size of 4096 on the Preview corpus), and a switch loss epoch value of 75. After the model\
+which was then trained for a number of topics \emph{K}, 150 epochs, a batch size of 4,096 for the description and\
+title corpora and a batch size of 32,768 for the preview corpora (the model implementation repeatedly ran out \
+of memory with a batch size of 4,096 on the Preview corpus), and a switch loss epoch value of 75. After the model\
 was initialized, it was then trained and the topics generated by the model were then saved to a text file\
 to evaluate topic coherence.
 
 \paragraph{ETM}
-The ETM model used the source code provided by the Authors', stored on the first Author's GitHub \cite{etmGithub}.\
+The ETM model used the source code provided by the authors of the model, stored on the first author's GitHub \cite{etmGithub}.\
 For the ETM model the same pretrained GloVe embeddings \cite{pennington2014glove} used for the \emph{lda2vec} implementation\
 were also used for the ETM implementation. For this model, the word embeddings for each corpus were prepared in a script\
-provided by the source code and save for training. For the model hyperparameters the model was set to train for 1000\
-epochs, a loss of zero, and a batch size of 1000. The model was then trained and the generated topics were then\
+provided by the source code and save for training. For the model hyperparameters, the model was set to train for 1,000\
+epochs, a loss of zero, and a batch size of 1,000. The model was then trained and the generated topics were\
 saved in a text file to evaluate topic coherence.
 
 \subsubsection{HIT Title}
-This section describes the experiments performed on the Title corpus. Accoding to the statistics outlined,\
+This section describes the experiments performed on the Title corpus. Accoding to the statistics outlined\
 in \ref{tab:corpora_comparison}, it is shown that the Title corpus is the smallest of the three corpora\
 across all topics. Thus, it can be predicted that the Title corpus will have less topical diversity extracted.\
 However, the topics extracted from this corpora can be used to gain insight on how requesters generally\
@@ -1195,7 +1196,7 @@ label HITs.
 The most frequently occuring words in the Title corpus are listed in \ref{tab:title_top_words} and visualized in\
 \ref{fig:title-50-bar}. Prior to topic extraction, this information shows that many of the titles are related\
 to surveys, the time it will take to complete the HIT, compensation, content generation, and images. The top 50\
-most frequently occuring words in the Title corpus has been shown by \ref{fig:title-50-pi} to account for 37.4\%
+most frequently occuring words in the Title corpus are shown in \ref{fig:title-50-pi} to account for 37.4\%
 of the corpus.
 
 \begin{table}
@@ -1237,8 +1238,20 @@ of the corpus.
 	\end{center}
 \end{table}
 
+For the bar graph described in \ref{fig:title-50-bar}, it can be observed that many of the top\
+words have to do with Surveys, with word like ``survey'', ``answer'', ``questions'', ``opinions'',\
+``attitudes'', ``experience'', and ``study'' appearing at the front end of the graph with large disparity relative to the rest of the \
+corpus. It can also be seen that words that fit in the VV category also frequently appear in the \
+top words with words like ``image'', ``clickable'', ``evaluation'', and ``test''. CC is also represented\
+with words like ``find'' and IA is represented with words like ``categorization'' and rate.\ However, based off of raw word count, \
+the Survey HIT category is dominant amongst the Title corpus. This is also seen in \ref{tab:title_top_words}.
+
 \csmfigure{title-50-bar}{figures/title-50-bar}{6.5in}{Title - Top 50 Words}
 
+
+In the Title corpus distribution chart shown in \ref{fig:title-50-pi}, the relevance of the top words\
+in comparison with the rest of the corpus showing that the top words account for well over a third of\
+the corpus which will effect the topics that are extracted by the topic models.
 \csmfigure{title-50-pi}{figures/title-50-pi}{6.5in}{Title -- Corpus Distribution}
 
 \newpage
@@ -1284,6 +1297,9 @@ the topic coherence scores for both metrics decrease as \emph{K} increases with 
 	\end{center}
 \end{table}
 
+In further depth, there are stark trends present in both the UMass and UCI topic coherence charts \
+for the LSI on the Title corpus shown in \ref{fig:lsi-uci-title} and \ref{fig:lsi-umass-title}. \
+Specifically, a clear decrease in score as \emph{K} increases is observed.
 
 \csmfigure{lsi-umass-title}{figures/lsi-umass-title}{5.5in}{Title -- LSI UMass Topic Coherence}
 
@@ -1327,8 +1343,9 @@ are to be used in \ref{tab:lsi_title_k} for further analysis.
 
 From the topics in \ref{tab:lsi_title_k}, there were several interesting topics that were extracted. In\
 As shown in the table, topics 1, 2, 4, 5, 6 are related to short surveys related to opinions. Topics 3 and\
-9 are both related to image classification and annotation, a common use case for researchers on MTurk. Interestingly\
-the LSI model extracted a very coherent topic related to the Superbowl, the NFL championship that recently took\
+9 are both related to image classification and annotation, a common use case for researchers on MTurk falling\
+under the IA HIT category. Interestingly,\
+the LSI model extracted a very coherent topic related to the Super Bowl, the NFL championship that recently took\
 place on February 2, 2020. This was a widely televised event that was broadcast by Fox news on a wide variety\
 of different mediums, including television and the internet.
 \newpage
@@ -1373,13 +1390,23 @@ to 100 topics, these trends are illustrated in \ref{fig:lda-umass-title} and \re
 	\end{center}
 \end{table}
 
+At greater depth, the LDA's performance over the Title corpus exhibits interesting trends over both metrics,
+with similar behavior on both metrics. In \ref{fig:lda-umass-title}, the model increases in score, peaking out\
+at about 15 topics and then decreasing linearly until 70 topics where scores then rebound fairly linearly\
+over the course of the rest of the range up to a score of -12.657 when \emph{K} equals 100.
+
+For the UCI metric, the behaviour is observed to be a bit more drastic with similar behaviour for the\
+model over the corpus until \emph{K} eqauls 60 topics, but on the UCI the performance plummets to a low \
+score of -8.348 when \emph{K} equals 70 topics before sharply rebounding in a linear fashion for a final\
+score of -7.005 when \emph{K} equals 100 topics. This behavior will become more relevant when comparing the\
+performance of the models across corpora later in the chapter.
+
 \csmfigure{lda-umass-title}{figures/lda-umass-title}{5.5in}{Title -- LDA UMass Topic Coherence}
 
 \csmfigure{lda-uci-title}{figures/lda-uci-title}{5.5in}{Title -- LDA UCI Topic Coherence}
 \newpage
 
-Based off of the topic coherence scores in \ref{tab:lda_title_tc}, it was decided to further analyze\
-the topics generated by the LDA on the Title corpus for 20 topics as shown in \ref{tab:lda_title_k} since\
+Based on the topic coherence scores in \ref{tab:lda_title_tc}, the LDA on the Title corpus was further analyzed for 20 topics as shown in \ref{tab:lda_title_k} since\
 the LDA scored well at 15 and 30 topics.\
 
 \begin{table}
@@ -1434,16 +1461,17 @@ the LDA scored well at 15 and 30 topics.\
 \end{table}
 
 From the topics extracted in \ref{tab:lda_title_k}, there were some additional clusters of topics that were extracted\
-compared to the extraction of the LSI. From the table topics 1, 5, 9, 10, 13, 14, and 18 all relate to surveys. However,\
-the LDA extracted additional information on what the survey were related to such as perceptions of products in topic 3,\
-surveys related to construction in topic 13, and surveys related to Amazon prime in topic 9. Additionally topics\
-were extracted that related to construction in topic 2, image annotation in topics 11 16, and 19, and content creation in topic 7.
+compared to the extraction of the LSI. From the table, topics 1, 5, 9, 10, 13, 14, and 18 all relate to surveys. However,\
+the LDA extracted additional information on what the surveys were related to such as perceptions of products in topic 3,\
+surveys related to construction in topic 13, and surveys related to Amazon Prime in topic 9. Additionally, topics\
+were extracted that related to construction in topic 2, IA in topics 11 16, and 19, \
+and CC in topic 7.
 \newpage
 \paragraph{lda2vec}
 The \emph{lda2vec} was one of the first topic models to combine word embeddings with existing techniques. However, \
 as the author described in the repository holding the source code for the model, the model is experimental and should\
 only be used after exhausting existing topic modeling techniques. The topic coherence scores are listed in \ref{tab:lda2vec_title_tc}
-and the scores are shown to loosely decrease as the number of topics increaes as shown in \ref{fig:lda2vec-umass-title} and \ref{fig:lda2vec-uci-title}.
+and the scores are shown to loosely decrease as the number of topics increases as shown in \ref{fig:lda2vec-umass-title} and \ref{fig:lda2vec-uci-title}.
 
 \begin{table}
 	\caption{\label{tab:lda2vec_title_tc} Title -- \emph{lda2vec} Topic Coherence Scores for \emph{K} Topics}
@@ -1479,6 +1507,9 @@ and the scores are shown to loosely decrease as the number of topics increaes as
 	\end{center}
 \end{table}
 
+The topic coherence scores for \emph{lda2vec} on the Title corpus exhibited a lot of noise with \
+a loose negative correlations of topic coherence decreasing as \emph{K} increased demonstrated by\
+the line of best fit.
 
 \csmfigure{lda2vec-umass-title}{figures/lda2vec-umass-title}{5.5in}{Title -- \emph{lda2vec} UMass Topic Coherence}
 
@@ -1538,14 +1569,14 @@ to giving opinions on surveys.
 	\end{center}
 \end{table}
 
-The performance of the model on this topic will be analyzed in further depth later on but this performance may be\
+The performance of the model on this topic will be analyzed in further depth in Section 4.7 but this performance may be\
 due in part to the small number of unique words in the Topic corpus.
 
 \paragraph{ETM}
 The ETM model was cited as outperforming the LDA and the NVDM and is being evaluated as the state of the art\
 for topic modeling. As seen below the ETM performed fairly consistently across all topics with low variance as \
 seen in \ref{tab:etm_title_tc}. According the trends in topic coherence scores shown in \ref{fig:etm-umass-title} and \ref{fig:etm-uci-title}\
-there is a general correlation of topic coherence scores descreasing and the number of topics increases.
+there is a general trend of topic coherence scores descreasing as the number of topics increases.
 \begin{table}
 	\caption{\label{tab:etm_title_tc} Title -- ETM Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1580,6 +1611,11 @@ there is a general correlation of topic coherence scores descreasing and the num
 	\end{center}
 \end{table}
 
+From looking at the topic coherence scores, both graphs show a loose negative linear correlation\
+of decreasing in score as \emph{K} increases. However, \ref{tab:etm_title_tc} describes \
+that there is low variance for the performance of the ETM over both topic coherence metrics\
+with tight bounds, showing that performance is fairly constant as \emph{K} increases which is\
+a trend that the creators of the ETM observed in their original analysis \cite{dieng2019topic}.
 
 \csmfigure{etm-umass-title}{figures/etm-umass-title}{5.5in}{Title -- ETM UMass Topic Coherence}
 
@@ -1620,19 +1656,20 @@ topics on the Title corpus using 10 topics as shown in \ref{tab:etm_title_k}.
 \end{table}
 
 The output of the topics generated by the ETM which are shown in \ref{tab:etm_title_k} are primarily related to\
-surveys, the length of the surveys, and how long it should take to complete the task. This trends,\
-are replicated throughout all of the topic models. The ETM has more diversity in the topics that were \
+surveys, the length of the surveys, and how long it should take to complete the task. These trends,\
+are replicated throughout all of the topic models on the Title corpus. The ETM has more diversity in the topics that were \
 extracted from this corpus than the \emph{lda2vec} but not as much diversity as the topics extracted by\
 the LSI and the LDA.
 
 \paragraph{Insights}
 From a topic coherence standpoint shown in \ref{tab:combo_title_tc}, the \emph{lda2vec} metric outperformed the rest of the models. \
 However, since the words in the topics generated by \emph{lda2vec} were nearly identical across topics, this\
-performance isn't very insightful. For the rest of the models, the ETM outperformed both the LSI and the LDA\
+performance is not very insightful. For the rest of the models, the ETM outperformed both the LSI and the LDA\
 in topic coherence with the primary topics being related to surveys, while the LDA outperformed the LSI on both\
 metrics as shown in \ref{fig:umass-title} and \ref{fig:uci-title}. Something else that is worth noting\
 is that the performance of the LDA remained relatively consistent as the number of topics increased while\
 the performance of the LSI decreased as the number of topics increased.
+
 \begin{table}
 	\caption{\label{tab:combo_title_tc} Title -- Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1666,33 +1703,44 @@ the performance of the LSI decreased as the number of topics increased.
 		\end{tabular}
 	\end{center}
 \end{table}
-\csmfigure{umass-title}{figures/umass-title}{5.5in}{Title UMass Topic Coherence}
 
-\csmfigure{uci-title}{figures/uci-title}{5.5in}{Title UCI Topic Coherence}
+When looking at the performance of all of the models on the Title corpus together, the trends\
+and performance are pretty consistent across metrics shown in \ref{fig:umass-title} and \ref{fig:uci-title}.
+In terms of performance the \emph{lda2vec} scored well while only producing assimilar topics. The ETM\
+exhibited similar scores to \emph{lda2vec} but while producing more coherent and distinct topics.\
+The LDA decreased in performance on the UMass metric, scoring noticeably lower than the word \
+embedding topic models while outperforming the LSI. However, on the UCI metric the LDA showed\
+a much more constant trend in topic coherence score while scoring very closely to the word embeddings\
+at the top of the range. The LSI, however, scored lowest in terms of topic coherence and the performance\
+decreased linearly on both metrics as \emph{K} increased.
 
-While the prevelance of surveys and answering questions which was extremely prominent as shown in the Corpus Statistics\
+\csmfigure{umass-title}{figures/umass-title}{5.5in}{Title -- UMass Topic Coherence}
+
+\csmfigure{uci-title}{figures/uci-title}{5.5in}{Title -- UCI Topic Coherence}
+
+The prevelance of surveys and answering questions was extremely prominent as shown in the Corpus Statistics\
 section above. There was additional information extracted from the topics as well including: image annotation,\
-content creation, predicted task length, the super bowl, and titles related to construction.\
+content creation, predicted task length, the Super Bowl, and titles related to construction.\
 Some other interesting insights from the analysis of this corpus are that the modernized topic models that leverage\
 pretrained word embeddings showed less topic diversity than the older, probabilistic topic models.\
-This may be due in part to the size of the corpus and that frankly the majority of the topics in the Title corpus\
+This may be due in part to the size of the corpus and that the majority of the words
+ in the Title corpus\
 were related to surveys.
 
 \subsubsection{HIT Descriptions}
-The HIT descriptions are an additional field displayed to crowdworkers on Amazon MTURK with additional information\
-reguarding the HIT. The description are typically fairly brief but bring additional clarity and context to HITs \
-on the MTURK dashboard. In terms of the Description corpus itself, it takes a similar shape to that of the Title \
-corpus drawing similar comparisons in the top 10 words, total number of words, and the number documents, however,\
-each description is typically around two time the length of the title which leads to the prediction that\
+The HIT descriptions are a field displayed to crowd workers on Amazon MTurk with additional information\
+regarding the HIT. The descriptions are typically fairly brief but bring additional clarity and context to HITs \
+on the MTurk dashboard. In terms of the Description corpus itself, it takes a similar shape to that of the Title \
+corpus drawing similar comparisons in the top 10 words, total number of words, and the number documents. However,\
+each description is typically around two times the length of the title which leads to the prediction that\
 the description will have better topic quality.
 
 \paragraph{Corpus Statistics}
 The shape of the Description corpus defined in \ref{tab:description_top_words} closely resembles the Title\
 corpus. Many of the top words that appear in the Description corpus also appear in the Title corpus\
-with many of the top words for the Description corpus also heavily relating to opinion related opinions\
-and the length of time that the HIT will take to complete, this can be seen in greater depth in \ref{fig:description-50-bar}\
+with many of the top words for the Description corpus also heavily relating to surveys\
+and the length of time that the HIT will take to complete. This can be seen in greater depth in \ref{fig:description-50-bar}\
 and \ref{fig:description-50-pi}.
-\ref{tab:description_top_words}
 
 \begin{table}
 	\caption{\label{tab:description_top_words} Description -- Top 10 Words in Corpus}
@@ -1738,9 +1786,21 @@ document (69 characters for each description and 38 characters for each title) w
 words in the Description corpus. The increase in size leads to the prediction that the Description corpus\
 will be more insightful than the Title corpus.
 
+In terms of the most frequent words themselves, it appears that survey related words are also\
+heavily prevalent in the Description corpus. However, in the top 50 word frequency graph shown\
+in \ref{fig:description-50-bar} it appears that there is also a heavy presence of some of the other\
+HIT categories described by Gadiraju such as IF with words like ``extract'', ``takes'', ``provide'',\
+CA with words like ``web'', ``links'', ``online'', ``download'', and ``click'', CC with words like ``make'', ``write'',\
+and ``provide''. The presence of frequent words from other HIT categories outside of surveys \
+indicates that additional topics relating to other categories defined by Gadiraju et al. will\
+be automatically extracted by the topic models.
 \csmfigure{description-50-bar}{figures/description-50-bar}{6.5in}{Description - Top 50 Words}
 
-\csmfigure{description-50-pi}{figures/description-50-pi}{6.5in}{Description Corpus Distribution}
+As seen in \ref{fig:description-50-pi}, the top 50 words in the Description corpus \
+account for a smaller population of the corpus compared to that of the Title corpus in which\
+37.4\% of the corpus consisted of the top 50 most frequently compared to only 31.8\% in the \
+Description corpus.
+\csmfigure{description-50-pi}{figures/description-50-pi}{6.5in}{Description -- Corpus Distribution}
 
 \newpage
 \paragraph{LSI}
@@ -1784,11 +1844,14 @@ and \ref{fig:lsi-uci-description}.
 	\end{center}
 \end{table}
 
+Specifically, the LSI performance on the Description corpus is very similar across metrics. This similarity\
+was also observed across metric for the LSI on the Title corpus. it is intersting to observe very similar\
+shapes in graph across the two metrics and a consistent negative correlation as \emph{K} increases.
 \csmfigure{lsi-umass-description}{figures/lsi-umass-description}{5.5in}{Description -- LSI UMass Topic Coherence}
 
 \csmfigure{lsi-uci-description}{figures/lsi-uci-description}{5.5in}{Description -- LSI UCI Topic Coherence}
 \newpage
-Based off the topic coherence performance, the LSI on the Description corpus is analyzed in greater depth in \
+Based on the topic coherence performance, the LSI on the Description corpus is analyzed in greater depth in \
 \ref{tab:lsi_description_topics} with a value $\emph{K} = 15$.
 
 
@@ -1833,11 +1896,11 @@ Based off the topic coherence performance, the LSI on the Description corpus is 
 	\end{center}
 \end{table}
 
-In the topics extracted in \ref{tab:lsi_description_topics}, their appears to be much greater topic diversity \
-than the topics extracted on the Title corpus. Specifically topics 1, 2, 6 relate to surveys and HIT time length.\
-Topics 3, 4, and 9 relate heavily to image annotation and categorization which resembles the primary topics\
-extracted from the Title corpus. There also exists distinct topics related to content creation on topics 11 and 14\
-as well as information extraction represented by topic 15. Compared to the Title corpus, the topics generated by\
+In the topics extracted in \ref{tab:lsi_description_topics}, there appears to be much greater topic diversity \
+than the topics extracted on the Title corpus. Specifically, topics 1, 2, 6 relate to surveys and HIT time length.\
+Topics 3, 4, and 9 relate heavily to image annotation and categorization falling under the IA category. There also\
+ exist distinct topics related to CC on topics 11 and 14\
+as well as IF represented by topic 15. Compared to the Title corpus, the topics generated by\
 the LSI on the Description corpus are significantly more interpretable with greater diversity.
 % lsi-umass-description.png
 \newpage
@@ -1849,7 +1912,7 @@ score as \emph{K} increased as the LSI. The correlation observed in the LDA on t
 than the trends observed for the LDA on the Title corpus, specifically the influx in topic coherence near the upper\
 bound for \emph{K}. Instead, the LDA maintains a consistent, linear decrease in topic coherence as the number of topics\
 increases observed in \ref{fig:lda-umass-description} and \ref{fig:lda-uci-description}.
-\ref{tab:lda_description_tc}
+
 \begin{table}
 	\caption{\label{tab:lda_description_tc} Description -- LDA Topic Coherence Scores for \emph{K} Topics}
 	\begin{center}
@@ -1884,6 +1947,8 @@ increases observed in \ref{fig:lda-umass-description} and \ref{fig:lda-uci-descr
 	\end{center}
 \end{table}
 
+In particular, \ref{fig:lda-umass-description} and \ref{fig:lda-uci-description} show very similar behavior\
+across metrics which was also observed for the LSI comparison across metrics.
 \csmfigure{lda-umass-description}{figures/lda-umass-description}{5.5in}{Description -- LDA UMass Topic Coherence}
 
 \csmfigure{lda-uci-description}{figures/lda-uci-description}{5.5in}{Description -- LDA UCI Topic Coherence}
@@ -1934,9 +1999,9 @@ at $\emph{K} = 15$.
 \end{table}
 
 Similar topics were extracted by the LDA on the Description corpus as the LSI. Topics 1, 2, 3, 5, 6, 7, 12, 14, and 15\
-relate to surveys. However, aspects of these topics also pertain to content creation, image annotation, and information\
-extraction as demonstrated by topics 2, 3, 6, and 12. The LDA also extracted several other cluster of topics such as \
-information extraction demonstrated by topic 4 and 8 and annotation demonstrated by topic 10. Although many of the topics\
+relate to surveys. However, aspects of these topics also pertain to CC, IA, and IF as demonstrated by topics 2, 3, 6, and 12.\
+The LDA also extracted several other distinct cluster of topics such as \
+IF demonstrated by topics 4, 8 and 10. Although many of the topics\
 extracted by the LDA on the Description corpus resemble the topics extracted on the Title corpus, the interpretability\
 of the topics generated by the descriptions is noticeably better.
 
@@ -1982,6 +2047,10 @@ at a value of 55 topics, shown in \ref{fig:lda2vec-umass-description} and \ref{f
 	\end{center}
 \end{table}
 
+Both metrics exhibit an iteresting fluctuation in topic coherence scores near the beginning of the range.\
+On the UMass metric, \emph{lda2vec} swings from -8.545 to -10.986 before stabilizing at 55 topics. This same\
+fluctuation is observed on the UCI metric with scores r=aning from -5.307 to -7.708 before stabilizing at 55 topics\
+as well.
 \csmfigure{lda2vec-umass-description}{figures/lda2vec-umass-description}{5.5in}{Description -- \emph{lda2vec} UMass Topic Coherence}
 
 \csmfigure{lda2vec-uci-description}{figures/lda2vec-uci-description}{5.5in}{Description \emph{lda2vec} UCI Topic Coherence}
@@ -2022,11 +2091,12 @@ value of $\emph{K} = 10$, described in \ref{tab:lda2vec_description_topics}.
 	\end{center}
 \end{table}
 
-Some of the topics observed in \ref{tab:lda2vec_description_topics} include content creation observed in topics 1 , 2,\
-and 10, information extraction obeserved in topics 5 and 6. As well as annotation shown in topics 3 and 9.\
+Some of the topics observed in \ref{tab:lda2vec_description_topics} include CC observed in topics 1 , 2,\
+and 10, IF obeserved in topics 5 and 6, and annotation relating to IA shown in topics 3 and 9.\
 The performance of \emph{lda2vec} on the Description corpus was significantly improved compared to its performance\
 on the Title corpus.
 
+\newpage
 \paragraph{ETM}
 The ETM performed well consistently across the range of topics \emph{K}, exhibiting high performance at 20 and \
 60 topics, described in \ref{tab:etm_description_tc}. The consistency in topic coherence over the range of topcis\
@@ -2066,14 +2136,17 @@ can be seen in \ref{fig:etm-umass-description} and \ref{fig:etm-uci-description}
 	\end{center}
 \end{table}
 
+The ETM model shows extremely low levels of variance on both topic coherence metrics. This is reflected in\
+both \ref{fig:etm-umass-description} and \ref{fig:etm-uci-description}. Both graphs show similar behavior\
+with no real observable correlation one way or another. The model exhibits the same level of topic\
+coherence performance across \emph{K}.
 \csmfigure{etm-umass-description}{figures/etm-umass-description}{5.5in}{Description -- ETM UMass Topic Coherence}
 
 \csmfigure{etm-uci-description}{figures/etm-uci-description}{5.5in}{Description -- ETM UCI Topic Coherence}
 
-\newpage
 According to the ETM model's performance over topic coherence metrics, the model is analyzed in further depth\
 at a value $\emph{K} = 20$ in \ref{tab:etm_preview_k}.
-
+\newpage
 \begin{table}
 	\caption{\label{tab:etm_description_k} Description -- ETM Generated Topics for $\emph{K} = 20$}
 	\begin{center}
@@ -2124,49 +2197,50 @@ at a value $\emph{K} = 20$ in \ref{tab:etm_preview_k}.
 			\end{tabular}
 	\end{center}
 \end{table}
-
-While the diversity of topics generated by the ETM was fairly one dimensional, significant improvements in topic\
+\newpage
+While the diversity of topics generated by the ETM was fairly one-dimensional, significant improvements in topic\
 quality and topic diversity are observed for the ETM on the Description corpus. The topics generated by the ETM on\
-the Decription are also significantly more interpretable. What's particularly interesting about the topics\
-extracted by the ETM is the richness amongst topics in the same general category. For example, in the survey\
-related topics such as topics 7, 8, 16, and 17 it is very clear that the topics are related to surveys \
-having to do with expressing peoples' personal opinions and attitudes on a topic, whereas, survey related\
+the Decription are also significantly more interpretable. What is particularly interesting about the topics\
+extracted by the ETM is the richness amongst topics in the same general category. For example, in the survey-related\
+ topics such as topics 7, 8, 16, and 17 it is very clear that the topics are related to surveys \
+having to do with expressing peoples' personal opinions and attitudes on a topic, whereas, survey-related\
 topics generated by the LSI and LDA are more susceptible to randomness and are more loosely correlated. \
 Other topics extracted by the ETM include different questions regarding work, tasks, and compensation, potentially\
 even relating to a survey of crowdsourcing in topic 15. The model also extracted a topic related to HIT compensation\
 in topic 1. Topic 4 also clearly relates to watching a short video and answering a series of questions. Topic 5 is\
 clearly related to image annotation having to do with interacting with images over the web and bounding boxes. Topic 6\
-is very clearly related to data collection, a common use case for researchers in which they leverage crowdworkers\
+is very clearly related to IF, a common use case for researchers in which they leverage crowd workers\
 to fetch contextual information from the internet--a use case that is currently difficult for computers.\
 Topic 14 is clearly related to sentiment on specific products given an image.
 
-The performance of the ETM as described by the topic coherence metrics as well as the interpretability and the\
-richness of the topics generated in \ref{tab:etm_description_k} is a considerable improvement over the other\
+The performance of the ETM as described by the topic coherence metrics as well as the interpretability and\
+richness of the topics generated in \ref{tab:etm_description_k}, the ETM is a considerable improvement over the other\
 topic models on the Description corpus.
 
 \newpage
 
 \paragraph{Insights}
 According to table \ref{tab:combo_description_tc}, the ETM outperforms all of the topic models on every metric.\
-This was interated during the interpretation of the topics generated by the ETM, however, the ETM also\
-outperfoms the other topic models on the different topics coherence metrics, across the number of topics,
+This was shown during the interpretation of the topics generated by the ETM, however, the ETM also\
+outperfoms the other topic models on the different topic coherence metrics, across the number of topics,
 with significantly less variance.
 
 Another interesting insight can be seen in \ref{fig:umass-description} and \ref{fig:uci-description}\
 where the probabilistic topic models experience a linear decrease in performance as the number of topics\
-increases, the ETM performance remains constat with low variance as the number of topics. \
+increases, whereas the ETM performance remains constant with low variance as the number of topics increases. \
 This observation is also in line with the findings of Dieng et al. in their analysis of the ETM, where\
-they observed the consistency of the UMass topic coherence score as the number of topics increased.
+they observed the constant performance of the ETM on the UMass topic coherence score as the number of topics increased.
 
 The visualizations of the topic coherence metrics also show that the LDA outperforms the LSI while\
 experiencing less of a decrease in topic coherence as the number of topics increased. This finding\
 is consistent with the trends observed over the Title corpus.
 
-The \emph{lda2vec} was the worst performing model on the Description corpus, however, the model\
+The \emph{lda2vec} was the worst performing model on the Description corpus. However, the model\
 exhibited significant improvement on the Description corpus in comparison to its\
 performance on the Title corpus. The \emph{lda2vec}, while experiencing high variance over the lower\
-range of topics, maintained fairly consistent topic coherence as the number of topics increased\
-which is comparable to the performance of the other word embedding topic model, the ETM.
+range of topics, maintained fairly consistent topic coherence, albeit scoring low, as the number of topics increased.\
+The consistent nature of the \emph{lda2vec} topic coherence scores follows the same trend of constant topic \
+coherence scores as the performance of the other word embedding topic model, the ETM.
 
 \begin{table}
 	\caption{\label{tab:combo_description_tc} Description -- Topic Coherence Scores for \emph{K} Topics}
@@ -2208,10 +2282,10 @@ which is comparable to the performance of the other word embedding topic model, 
 
 \newpage
 \subsubsection{HIT Preview}
-HIT previews allow crowdworkers to get an idea of the specific details of the work required to complete\
-a certain task before accepting to work on a given task. In order to view a preview in the MTURK dashboard,\
-a crowdworker must meet the qualifications specified by a requester. For the dataset that was collected \
-for these experiments, the ``crowdworker", perspective the data collection tool was running from, had not \
+HIT previews allow crowd workers to get an idea of the specific details of the work required to complete\
+a certain task before accepting to work on a given task. In order to view a preview in the MTurk dashboard,\
+a crowd worker must meet the qualifications specified by a requester. For the dataset that was collected \
+for these experiments, the ``crowd worker'' perspective the data collection tool was running from had not \
 previously completed any tasks and thus only had access to HITs that requesters specified as having ``Public''\
 visibility, the least restrictive visibility option.
 
@@ -2219,14 +2293,14 @@ visibility, the least restrictive visibility option.
 
 \paragraph{Corpus Statistics}
 Even given the constraints of HIT visibility, the size of the data was still several magnitudes larger than that of the Description and Title\
-corpora with 22016 unique words compared to 4229 and 3337, 518817 total words compared to 23767 and 14584, and an average \
-document length of 2349 compared to 69 and 38, all while having about half as many documents.
+corpora with 22,016 unique words compared to 4,229 and 3,337, 518,817 total words compared to 23,767 and 14,584, and an average \
+document length of 2,349 compared to 69 and 38, all while having about half as many documents.
 
 \ref{tab:preview_top_words} also shows a very different set of top 10 words that appear in the dataset\
 compared to the top words found in the Description and Title corpora. Instead of brandishing words related\
 almost specifically to surveys, the Preview corpus contains a diverse set of top words including ``product'',\
 ``data'', ``brand'', ``receipt'', and the other words shown in \ref{tab:preview_top_words} and in \ref{fig:preview-50-bar}.\
-\ref{fig:preview-50-pi} also shows that the Preview corpus accounts for considerably less than \
+\ref{fig:preview-50-pi} also shows that the top words in the Preview corpus account for considerably less than \
 the Description and Title corpora.
 
 Given the increase of size over the other corpora, it is predicted the Preview corpus will generate\
@@ -2279,8 +2353,8 @@ a set of topics that is richer and more diverse than its predecessors.
 \paragraph{LSI}
 The LSI exhibited different behavior between metrics over the Preview corpus, shown in \ref{tab:lsi_preview_tc}\
 and in \ref{fig:lsi-umass-preview} and \ref{fig:lsi-uci-preview}. Specifically, both metrics showed\
-sinusoidal behavior as each topic coherence score decreased with respect to the increase in topics, however,\
-the amplitude between metrics was significant and different then previously observed linear decrease in \
+sinusoidal behavior as each topic coherence score decreased with respect to an increase in number of topics, however,\
+the scores tended to fluctuate from the line of best fit which was different than previously observed linear decreases in \
 topic coherence as the number of topics increased reaching high scores at a \emph{K} of 10 and 25 for UMass\
 and 40 for UCI. 
 
@@ -2387,7 +2461,7 @@ for $K = 25$, shown in \ref{tab:lsi_preview_k}.
 \end{table}
 
 The topics generated by the LSI are drastically different than the topics extracted on the Description and \
-Title corpora. Specifically, topics centered around text extraction and LinkedIn appear in topic 1.\
+Title corpora. Specifically, topics centered around IF and LinkedIn appear in topic 1.\
 HIT specific metadata is clustered in topic 8. Preview instructions and context are recorded in topics 10 and 24.\
 Topics on bird watching are recorded in topic 11 and 18. A topic on scents and smells is identified in topic 12. \
 A topic on animal health is extracted in topic 13. A topic on sales is extracted in topic 14. A topic on skills\
@@ -2401,7 +2475,7 @@ to the content in our dataset compared to the topics generated by the LSI on the
 The LDA exhibited high topic coherence over both metrics near the beginning of the range of the topics,\
 while also observing high scores in UCI in higher numbered topics like $\emph{K} = 75$ and $\emph{K} = 85$, defined\
 in \ref{tab:lda_preview_tc}. From a trend perspective, the LDA maintained the same linear decrease as the number\
-of topics increased for the UMass metric (shown in \ref{fig:lda-umass-preview}) that was observed in both the Description and Title corpora, however,\
+of topics increased for the UMass metric (shown in \ref{fig:lda-umass-preview}) that was observed in both the Description and Title corpora. However,\
 the linear decrease in topic coherence over the UCI metric that the LDA exhibited over both the Description and Title\
 corpora did not apply to the LDA's performance on the UCI metric over the Preview corpus as shown in \ref{fig:lda-uci-preview}.\
 
@@ -2446,7 +2520,7 @@ corpora did not apply to the LDA's performance on the UCI metric over the Previe
 \newpage
 
 Based on the performance observed in the topic coherence metrics, the LDA on the Preview corpus\
-was further analyzed at $\emph{K} = 15$, described in \ref{tab:lda_preview_k}.
+was further analyzed at $\emph{K} = 15$, illustrated in \ref{tab:lda_preview_k}.
 
 \begin{table}
 	\caption{\label{tab:lda_preview_k} Preview -- LDA Generated Topics for $\emph{K} = 15$}
@@ -2494,12 +2568,12 @@ The LDA generates a wide array of specific, distinct, interpretable topics. For 
 answer series and the respective criteria. Topic 2 pertains to different brands of toiletries. Topic 3 relates\
 to classification. Topic 4 contains keywords that apply to preview specific instructions. Topic 6 relates to\
 business. Topic 7 extracts a cluster of keywords related to receipt annotation. Topic 9 has a very specific \
-topic on female hair care. While topic 15 relates to worker skills.
+topic on female hair care. Topic 15 relates to worker skills.
 \newpage
 
 \paragraph{lda2vec}
 The \emph{lda2vec} performed poorly over the Preview corpus with consistently high scores on both topic coherence\
-metrics, the performance of the model as the number of topics increases can be seen in greater depth in\
+metrics. The performance of the model as the number of topics increases can be seen in greater depth in\
 \ref{fig:lda2vec-umass-preview} and \ref{fig:lda2vec-uci-preview} as well as \ref{tab:lda2vec_preview_tc}.
 
 
@@ -2541,7 +2615,7 @@ metrics, the performance of the model as the number of topics increases can be s
 
 \csmfigure{lda2vec-uci-preview}{figures/lda2vec-uci-preview}{5.5in}{Preview -- \emph{lda2vec} UCI Topic Coherence}
 
-The \emph{lda2vec} model topics were described in further depth in \ref{tab:lda2vec_preview_k}.
+The \emph{lda2vec} model topics are described in further depth in \ref{tab:lda2vec_preview_k}.
 
 \begin{table}
 	\caption{\label{tab:lda2vec_preview_k} Preview -- \emph{lda2vec} Generated Topics for $\emph{K} = 20$}
@@ -2596,15 +2670,15 @@ The \emph{lda2vec} model topics were described in further depth in \ref{tab:lda2
 
 As described by the performance of the model in the topic coherence table there aren't many interpretable topics that\
 were generated by \emph{lda2vec} on the Preview corpus. For many of the topics there are several words that seem to\
-relate to one another, however, many of the words in some of these topics don't seem related at all. Some of the interesting\
+relate to one another, however, many of the words in some of these topics do not seem related at all. Some of the interesting\
 topics that were generated by the model on the Preview corpus include topic 5 which seems to describe a topic concerning\
 prejudices against muslims. Topic 4 contains keywords pertaining to haircare. One of the interesting topics\ 
-ironically capitulates the poor performance of \emph{lda2vec} on the Preview corpus is topic 8, which clusters\
+capitulates the poor performance of \emph{lda2vec} on the Preview corpus is topic 8, which clusters\
 ``stalin'', ``jesus'', ``babe'', ``perfector'', and ``violates'' into the same sentence, seemingly a topic of antonyms.
 
 \paragraph{ETM}
 The ETM performed remarkably well on the Preview corpus, demonstrating high scores for both topic coherence metrics,\
-defined in \ref{tab:etm_preview_tc}. One of the interesting insights of the ETM's performance on the Preview corpus\
+illustrated in \ref{tab:etm_preview_tc}. One of the interesting insights of the ETM's performance on the Preview corpus\
 is that for the first corpus of the three corpora explored in these experiments, the ETM actually shows a linear decrease\
 in topic coherence as the number of topics increases, demonstrated in \ref{fig:etm-umass-preview} and \ref{fig:etm-uci-preview}.
 
@@ -2645,7 +2719,7 @@ in topic coherence as the number of topics increases, demonstrated in \ref{fig:e
 \csmfigure{etm-umass-preview}{figures/etm-umass-preview}{5.5in}{Preview -- ETM UMass Topic Coherence}
 \csmfigure{etm-uci-preview}{figures/etm-uci-preview}{5.5in}{Preview -- ETM UCI Topic Coherence}
 \newpage
-Based off of the topic coherence performance, the ETM will analyzed at greater lengths for a value\
+Based off of the topic coherence performance, the topics generated by the ETM on the Preview corpus are displayed for\
 $\emph{K} = 20$ in \ref{tab:etm_preview_k}.
 
 \begin{table}
@@ -2701,21 +2775,21 @@ $\emph{K} = 20$ in \ref{tab:etm_preview_k}.
 
 Contrary to the topics extracted by the other topic models on the Preview corpus, the ETM does an\
 excellent job extracting the different types of tasks that are defined in the corpora, instead of \
-pulling out HIT specific information. The nature and the interpretability of the topics that the ETM\
+pulling out HIT-specific information. The nature and the interpretability of the topics that the ETM\
 extracts presents an excellent opportunity to really understand the type of work that requesters are\
-asking crowdworkers to complete on Amazon MTURK.
-Data collection is represent specifically by topics 2, 5, 14, 16 and 17 highlighting tasks that ask\
-crowdworkers to find data on the internet and record it in the HIT.
+asking crowd workers to complete on Amazon MTurk.
+Data collection is represented by topics 2, 5, 14, 16 and 17, highlighting tasks that ask\
+crowd workers to find data on the internet and record it in the HIT.
 Annotation and categorization are represented by topics 4, 7, 8 and 9.
-Surveys, opinions, and attitudes are represented by topics 6, 18, 19
+Surveys, opinions, and attitudes are represented by topics 6, 18, 19.
 Content creation is represented by topics 12 and 20.
-HIT specific metadata is represented by topics 10 and 11, 
+HIT specific metadata is represented by topics 10 and 11. 
 
 \paragraph{Insights}
 As shown in \ref{tab:preview_tc}, the ETM scored the highest topic coherence score on both \
-metrics again. However, as shown in \ref{fig:umass-preview} and \ref{fig:uci-preview}, the LDA\
-exhibited similar performance as the ETM on the Preview corpus, performing slightly worse across all\
-topics using the UMass score and even scoring higher than the ETM at higher numbered topics on the UCI metric.
+metrics. However, as shown in \ref{fig:umass-preview} and \ref{fig:uci-preview}, the LDA\
+exhibited similar performance to the ETM on the Preview corpus, performing slightly worse across all\
+topics using the UMass score and scored higher than the ETM at higher numbered topics on the UCI metric.
 
 Both the ETM and LDA extracted meaningful, interpretable topics on the Preview corpus with the ETM \
 extracting topics specific to the type of work performed in the HIT and the LDA extracting distinct\
@@ -2723,7 +2797,7 @@ topics regarding the content of the HIT.
 
 In addition to the ETM and LDA, the LSI exhibited slightly worse performance in regards to topic coherence\
 but still extracted meaningful, interpretable topics. The content of the topics that the LSI extracted\
-modeled closely to the type of topics extracted by the LDA, primarily representing the content itself\
+related closely to the type of topics extracted by the LDA, primarily representing the content itself\
 embedded in the HIT.
 
 \emph{lda2vec} scored its lowest topic coherence scores out of all three corpora on the Preview corpus and \
@@ -2788,8 +2862,8 @@ between LSI topic coherence across datasets can be seen in \ref{fig:lsi-umass-da
 For the Preview and Description corpora, it can be observed that using the UMass metric, the Preview corpus\
 scored higher across most topics and its performance decayed less quickly than the Description corpus\
 as the number of topics increased. Using the UCI metric, both the Description and Preview corpus exhibited\
-similar performance with the LSI scoring higher on lower topics on the Description corpus and scoring higher\
-on higher topics on the Preview corpus. 
+similar performance with the LSI scoring higher on a lower amount of topics on the Description corpus and scoring higher\
+on a higher amount of topics on the Preview corpus. 
 
 
 \begin{table}
@@ -2826,18 +2900,18 @@ on higher topics on the Preview corpus.
 	\end{center}
 \end{table}
 
-\csmfigure{lsi-umass-dataset-comparison}{figures/lsi-umass-dataset-comparison}{5.5in}{LSI UMass Topic Coherence Dataset Comparison}
-\csmfigure{lsi-uci-dataset-comparison}{figures/lsi-uci-dataset-comparison}{5.5in}{LSI UCI Topic Coherence Dataset Comparison}
+\csmfigure{lsi-umass-dataset-comparison}{figures/lsi-umass-dataset-comparison}{5.5in}{LSI -- UMass Topic Coherence Dataset Comparison}
+\csmfigure{lsi-uci-dataset-comparison}{figures/lsi-uci-dataset-comparison}{5.5in}{LSI -- UCI Topic Coherence Dataset Comparison}
 
 \newpage
 
-\subsection{LDA}
-The LDA performed well relative to the other topic models across all of the corpora. The LDA,\
-tended to experience it's highest topic coherence values on a number of topics in the lower end of the \
+\subsubsection{LDA}
+The LDA performed well relative to the other topic models across all of the corpora. The LDA\
+tended to experience its highest topic coherence values on a number of topics in the lower end of the \
 range with the exception of the UCI metric on the Preview corpus which had its highest score observed\
-for $\emph{K} = 75$, these results are shown in \ref{tab:lda_data_comp}.
+for $\emph{K} = 75$. These results are shown in \ref{tab:lda_data_comp}.
 
-Across datasets, the LDA scored higher topic coherence values on the Preview corpus across all number of topics\
+Across datasets, the LDA scored higher topic coherence values on the Preview corpus across all numbers of topics\
 for the UMass metric and the majority of topics on the UCI metric (the LDA scored a higher UCI on the Description\
 corpus for $\emph{K} = 35$). The LDA scores on the Description corpus tracked the performance on the \
 Preview corpus, while the LDA scored considerably lower on the Title corpus. The scores of the LDA across\
@@ -2875,17 +2949,17 @@ datasets is shown in \ref{fig:lda-umass-dataset-comparison} and \ref{fig:lda-uci
 			\end{tabular}
 	\end{center}
 \end{table}
-\csmfigure{lda-umass-dataset-comparison}{figures/lda-umass-dataset-comparison}{5.5in}{LDA UMass Topic Coherence Dataset Comparison}
-\csmfigure{lda-uci-dataset-comparison}{figures/lda-uci-dataset-comparison}{5.5in}{LDA UCI Topic Coherence Dataset Comparison}
+\csmfigure{lda-umass-dataset-comparison}{figures/lda-umass-dataset-comparison}{5.5in}{LDA -- UMass Topic Coherence Dataset Comparison}
+\csmfigure{lda-uci-dataset-comparison}{figures/lda-uci-dataset-comparison}{5.5in}{LDA -- UCI Topic Coherence Dataset Comparison}
 \newpage
-\subsection{lda2vec}
+\subsubsection{lda2vec}
 The \emph{lda2vec} performed considerably worse than all of the other topic models in terms of topic\
-coherence across all corpora, producing it's highest scores on the Title corpus in which the generated\
+coherence across all corpora, producing its highest scores on the Title corpus in which the generated\
 topics appeared nearly identical to one another. The specific coherence scores for the model are listed\
-in \ref{tab:lda2vec_data_comp} and shown in \ref{fig:lda2vec-umass-dataset-comparison} and \ref{fig:lda2vec-uci-dataset-comparison}\
+in \ref{tab:lda2vec_data_comp} and shown in \ref{fig:lda2vec-umass-dataset-comparison} and \ref{fig:lda2vec-uci-dataset-comparison},\
 \emph{lda2vec} experienced similar scores for both metrics between the Title and Description corpora while\
-scoring considerably worse on the Preview corpus while performance across the number of topics remained relatively constant\
-without any really noticeable trends and the number of topics increased.
+scoring considerably worse on the Preview corpus. Performance across the number of topics remained relatively constant\
+without any noticeable trends as the number of topics increased.
 \ref{tab:lda2vec_data_comp}
 \begin{table}
 	\caption{\label{tab:lda2vec_data_comp} \emph{lda2vec} -- Topic Coherence Scores for Datasets on \emph{K} Topics}
@@ -2920,10 +2994,10 @@ without any really noticeable trends and the number of topics increased.
 			\end{tabular}
 	\end{center}
 \end{table}
-\csmfigure{lda2vec-umass-dataset-comparison}{figures/lda2vec-umass-dataset-comparison}{5.5in}{lda2vec UMass Topic Coherence Dataset Comparison}
-\csmfigure{lda2vec-uci-dataset-comparison}{figures/lda2vec-uci-dataset-comparison}{5.5in}{lda2vec UCI Topic Coherence Dataset Comparison}
+\csmfigure{lda2vec-umass-dataset-comparison}{figures/lda2vec-umass-dataset-comparison}{5.5in}{\emph{lda2vec} -- UMass Topic Coherence Dataset Comparison}
+\csmfigure{lda2vec-uci-dataset-comparison}{figures/lda2vec-uci-dataset-comparison}{5.5in}{\emph{lda2vec} -- UCI Topic Coherence Dataset Comparison}
 \newpage
-\subsection{ETM}
+\subsubsection{ETM}
 The ETM scored the best across all topics on each corpus on the UMass metric as well as on the UCI \
 metric, except for the higher topics on the Preview corpus in which the ETM was outscored by the LDA.
 
@@ -2933,7 +3007,7 @@ and visualized in \ref{fig:etm-umass-dataset-comparison} and \ref{fig:etm-uci-da
 The ETM experienced similar results as both the LSI and LDA, scoring highest on the Preview corpus, followed\
 by the Description corpus, then the Title corpus for the UMass metric while experiencing much closer scores\
 between the Preview and Description corpora on the UCI metric.
-\ref{tab:etm_data_comp}
+
 \begin{table}
 	\caption{\label{tab:etm_data_comp} ETM -- Topic Coherence Scores for Datasets on \emph{K} Topics}
 	\begin{center}
@@ -2967,10 +3041,8 @@ between the Preview and Description corpora on the UCI metric.
 			\end{tabular}
 	\end{center}
 \end{table}
-\ref{fig:etm-umass-dataset-comparison}
-\csmfigure{etm-umass-dataset-comparison}{figures/etm-umass-dataset-comparison}{5.5in}{ETM UMass Topic Coherence Dataset Comparison}
-\ref{fig:etm-uci-dataset-comparison}
-\csmfigure{etm-uci-dataset-comparison}{figures/etm-uci-dataset-comparison}{5.5in}{ETM UCI Topic Coherence Dataset Comparison}
+\csmfigure{etm-umass-dataset-comparison}{figures/etm-umass-dataset-comparison}{5.5in}{ETM -- UMass Topic Coherence Dataset Comparison}
+\csmfigure{etm-uci-dataset-comparison}{figures/etm-uci-dataset-comparison}{5.5in}{ETM -- UCI Topic Coherence Dataset Comparison}
 
 \subsection{Results}
 %umass-dataset-comparison
@@ -2981,33 +3053,31 @@ To begin, the characteristics of the Title corpus showed that the majority of th
 contained information regarding surveys, how long it should take to complete a given task\
 and the level of compensation for completing a certain task. These findings were echoed\
 during the actual topic modeling experiments with the majority of the topics that were extracted\
-being related to: surveys, how long it should take to complete a task, and image annotation and classification.
+being related to surveys, how long it should take to complete a task, and image annotation and classification.
 
-Although the Title and Description corpora shared many similar characteristics from a statistical standpoint\
-including: similar top 50 words, similar representation of the top 50 words in the corpus, similar number of documents,
+Although the Title and Description corpora shared many similar characteristics from a statistical standpoint,\
+including similar top 50 words, similar representation of the top 50 words in the corpus, similar number of documents,
 and similar number of total and unique words, the Description corpus significantly outperformed the Title corpus on all topic coherence metrics\
 for each model that produces interpretable topics. Based on these findings, the data in the experiments\
 shows that the document length has a significant impact on the quality of the topics extracted by topic models.
 
 The Description corpus was an excellent theatre for the comparison of different topic model and provided\
-meaningful insights into HITS on Amazon MTURK. While possessing similar datset characteristics compared\
+meaningful insights into HITS on Amazon MTurk. While possessing similar datset characteristics compared\
 to the Title corpus, the Description corpus exhibited significantly higher topic coherence scores than the \
-Title corpus and even scored close to and even higher in some instances compared to the Preview corpus\
+Title corpus, and scored close to and even higher in some instances compared to the Preview corpus,\
 which had a significantly more diverse and robust vocabulary and a number of words that was significantly higher\
 than the amount in the Description corpus. This shows that more data does not necessarily correlate to higher\
 topic coherence scores across probabilistic topic models as well as recently developed topic models that leverage\
 word embeddings.
 
-While the Description corpus contained similar frequently occurring words to the Title corpus, more interpretable\
+While the Description corpus contained similar frequently-occurring words to the Title corpus, more interpretable\
 topics were extracted from the description corpus demonstrated by better performance across topic coherence\
 metrics across different topic models. In terms of the actual insights gained from the topic models that\
 extracted topics from the Description corpus, most of the topics that were extracted pertained to the\
-different kinds of work that requesters leverage crowd intelligence to complete. Some of the specific\
-topics extracted from the Description corpus were related to survey, image annotation and categorization,\
-content creation, crowdsourcing specific surveys, data collection, and sentiment. Some of the main topics\
-extracted from the Description corpus, however the topics of this nature that were extracted from the Description\
-corpus were considerably more interpretable which is also backed by the topic coherence scores between the \
-two datasets. The topics extracted from the Description corpus also exhibited much higher granularity,\
+different kinds of work that requesters leverage crowd intelligence to complete. These topics\
+were similar to the main topics extracted from the Title corpus. However, the topics of this nature that were extracted from the Description\
+corpus were considerably more interpretable, which is evidenced by the topic coherence scores between the \
+two datasets. The topics extracted from the Description corpus also exhibited much higher granularity\
 than the topics extracted from the Title corpus.
 
 The Preview corpus contained significantly different characteristics than both the Description and \
@@ -3015,11 +3085,11 @@ Title corpora. Specifically, the Preview corpus had a different set of frequentl
 a significantly more expansive vocabulary and total number of words, all in about half as many\
 documents as the Description and Title corpora. The Preview corpus exhibited higher topic coherence\
 scores across models on the UMass metric while also exhibiting higher topic coherence scores across\
-models on the majority of topics for the UCI metric as well, being outscored in some instances by certain\
+models on the majority of topics for the UCI metric, being outscored in some instances by certain\
 models at certain topics on the Description corpus.
 
 The topic coherence scores of the Preview corpus show that the topics extracted from the corpus are \
-more likely to be human interpretable than the topics extracted from the other corpora. One of the interesting\
+more likely to be interpretable by humans than the topics extracted from the other corpora. One of the interesting\
 observations on the topics extracted from the Preview corpus is that the probabilistic models like the LSI\
 and LDA extracted topics that were more specific to the data pertinent to specific tasks in the corpus\
 compared to the topics extracted by the ETM which were much more oriented towards the higher level type\
@@ -3028,41 +3098,246 @@ the two different types of models. The discovery of topics by probabilistic mode
 of words in the document rather than the specific context surrounding the word which would lead to the extraction\
 of certain clusters of words based sheerly off of word frequency. On the contrary, the ETM learns topic embeddings\
 using a hybrid approach of word frequency in conjunction with the latent semantic context of surrounding words in\
-a document which allows for the creation and extraction of specific topics that are related to what the presence of a word\
+a document, which allows for the creation and extraction of specific topics that are related to what the presence of a word\
 means in relation to the surrounding words rather than the word itself like in probabilistic models. This approach\
-of taking the surrounding context into account would allow for the extraction of higher level topics regarding to the \
-type of work a preview is related to rather than topics with preview specific information that just so happened\
+of taking the surrounding context into account would allow for the extraction of higher level topics regarding the \
+type of work a preview is related to rather than topics with preview-specific information that happened\
 to occur in other previews in the corpus.
 
 Some of the specific topics that were extracted by topic models on the Preview corpus include data collection,
 information extraction, surveys, image categorization and annotation, product sentiment, receipt classification,
 women's hair products, science, and content creation.
 
-<Touch on how the topics extracted from the corpora relate to the kinds of topics extracted in the Related Works).
 According to the research done on topic coherence metrics, high topic coherence scores for both UMass\
 and UCI metrics has been shown to correlate to improved human interpretability \cite{mimno2011optimizing,newman2010automatic}.
-This means that in general the topics extracted from HIT previews, closely followed by HIT descriptions\
-can contain rich, human interpretable information that can be further interpreted or passed on to other\
+This means that, in general, the topics extracted from HIT previews, closely followed by HIT descriptions\
+can contain rich, human-interpretable information that can be further interpreted or passed on to other\
 machine learning algorithms for further interpolation.
+
+Something really interesting to note is that the decrease in performance between the LSI compared\
+to the other model is notable. The performance of the LSI in the experiments shows that the researchers Hara et al. \
+that leverage the LSA (a close sibling of the LSI) to perform topic modeling on the title and\
+descriptions of HITs in their dataset would extract improved accuracy in their results by choosing\
+a different topic model \cite{hara2018data}.
+
+One of the interesting observations of the topic models on the different corpora, was the consistent\
+ability to automatically extract topics pertaining to the different categories specified by Gadiraju et al. \cite{gadiraju2014taxonomy}\
+Throughout the different corpora the models were able to extract topics for surveys, Information Finding (IF),\
+Verification and Validation (VV), Interpretation and Analysis (IA), Content Creation (CC), and Content Access (CA).
+
 \chapter{Further Analysis}
+Given the experiments conducted above, this chapter will extend the analysis above to further discuss special topics,\
+different insights on HITs, and how this research can improve crowd worker efficiency.
 
-Is this really necessary??
-Discuss the implications of this research.
+\subsection{Special Topics}
+This section includes several interesting topics that the topic models managed to extract that \
+are prevalant to current events including the Super Bowl, Democratic Presidential Primaries,\
+and the COVID-19 pandemic.
 
-What do these topics tell us about crowdsourcing
-What do these topics tell us about the value of different parts of the dataset
-What is the most valuable part of HITs on MTURK (in regards to title, description, preview)?
-How can this information be used to improve crowdworker efficiency?
+\subsubsection{Super Bowl LIV}
+The Super Bowl is an annual event that occurs each February for the National Football League (NFL)\
+championship, occuring on February 2, 2020. The Super Bowl draws extremely high volumes of viewership\
+and is generally a hotbed for advertising. The event is widely broadcasted on different mediums throughout\
+the world. 
+During the topic modeling experiments, both the LSI and LDA extracted very specific topics reguarding\
+the event from the LSI on the Title and Description corpora as well as from the LDA on the Description \
+corpus. Some of the keywords that the models extracted to form the topic include ``fox'', ``game'', ``watch'',\
+``nfl'', and ``superbowl'' listed specifically in \ref{tab:super_bowl}.
+\begin{table}
+	\caption{\label{tab:super_bowl} Special Topics -- Super Bowl LIV}
+	\begin{center}
+	\begin{tabular}{|l|l|l|p{11cm}|}
+		\hline
+		\textbf{Model} &       \textbf{Corpus} &   \textbf{K} &                                                                        \textbf{Keywords} \\
+		\hline
+			LSI &        Title &  15 &        fox, game, watch, superbowl, nfl, calculate, latency, sports, tv, online \\
+			\hline
+			LSI &  Description &  40 &  participants, game, qualify, related, fox, work, compare, rate, superbowl, nfl \\
+			\hline
+			LDA &  Description &  85 &         compare, watch, fox, game, superbowl, cable, satellite, nfl, delay, air \\
+		\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+\newpage
 
-Discuss interesting insights like the coronavirus
+\subsubsection{2020 Presidential Election}
+The United States Presidential office has a term limit of four years with a maximum of two terms of service.\
+The year 2020 is an election year with the Republican Donald Trump, the current President of the United States,\
+running for re-election as the incumbent against a yet to be decided Democratic candidate. The 2016 election\
+was characterized by the spread of misinformation and controversy. With the 2020 presidential primaries ramping\
+up during the time period the data was collected for the experiments, the topic models extracted several interesting\
+and pertinent topics.
+
+In \ref{tab:dem_cand}, both the LDA and \emph{lda2vec} extracted topics regarding the Democratic primaries,
+pulling out candidate names, and sentiment regarding aspects of the election.
+\begin{table}
+	\caption{\label{tab:dem_cand} Special Topics -- 2020 Presidential Elections Topics 1}
+	\begin{center}
+	\begin{tabular}{|l|l|l|p{10cm}|}
+		\hline
+			\textbf{Model} &   \textbf{Corpus} &    \textbf{K} &                                                                                                \textbf{Keywords} \\
+		\hline
+				LDA &  Preview &  100 &         workplace, survey, candidates, study, final, behavior, congressional, actual, emotions, running \\
+		\hline
+				lda2vec &  Preview &   95 &                   candidate, bob, candidates, democratic, amy, editorial, cat, becky, klobuchar, zoomed \\
+		\hline
+				lda2vec &  Preview &   85 &  screenshots, candidates, klobuchar, amy, sentiment, ethnicity, tagline, democratic, presidential, race \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+In \ref{tab:trump}, the \emph{lda2vec} pulled out several topics regarding words with negative sentiment and President\
+Donald Trump which is very interesting.
+\begin{table}
+	\caption{\label{tab:trump} Special Topics -- 2020 Presidential Elections Topics 2}
+	\begin{center}
+	\begin{tabular}{|l|l|l|p{10cm}|}
+		\hline
+			\textbf{Model} &   \textbf{Corpus} &    \textbf{K} &                                                                                           \textbf{Keywords} \\
+		\hline
+		lda2vec &  Preview &  100 &  fake, exaggeration, prepare, sausage, reject, presidential, holiday, breakfast, insult, violation \\
+		\hline
+		lda2vec &  Preview &   55 &           already, stalin, falsehoods, donald, intolerant, more, never, insensitive, death, homage \\
+		\hline
+		lda2vec &  Preview &   45 &                            tweets, trk, facebook, photo, insult, trump, cat, joseph, christ, feeds \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+
+In \ref{tab:fake_news}, the models pulled out several topics regarding the election and the media in several keywords\
+including ``headline'', ``tweets'', ``news'', ``vote'', ``fake'', ``valid''. Based off these keywords, an interesting inference\
+would be if the origin of the topic pertained to HITs oriented around the creation of training data to develop a tool that would be able \
+to distinguish between fake and  real news.
+\begin{table}
+	\caption{\label{tab:fake_news} Special Topics -- 2020 Presidential Elections Topics 3}
+	\begin{center}
+	\begin{tabular}{|l|l|l|p{10cm}|}
+		\hline
+		\textbf{Model} &   \textbf{Corpus} &   \textbf{K} &                                                                            \textbf{Keywords} \\
+ \hline
+			LDA &  Preview &  80 &   march, people, tweet, tweets, information, vote, relevant, attended, person, term \\
+	\hline
+			lda2vec &  Preview &  80 &  tweets, twitter, keywords, headline, youtube, attended, trends, trend, valid, fake \\
+ \hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{COVID-19 Pandemic}
+Dececmber 31, 2019 marked the first reports of COVID-19 pandemic originating in Wuhan, China \cite{taylor_2020}. At\
+the time of this writing, the pandemic has swept the world and changed life as we know it with governments\
+issuing lockdowns across the world causing the economy to come to a screaming halt. As a part of the\
+experiments performed, the LDA was able to extract interpretable topics related to the COVID-19 pandemic listed below in\
+\ref{tab:corona}.
+
+\begin{table}
+	\caption{\label{tab:corona} Special Topics -- COVID-19 Topics}
+	\begin{center}
+	\begin{tabular}{|l|l|l|p{10cm}|}
+		\hline
+		\textbf{Model} &       \textbf{Corpus} &   \textbf{K} &                                                                                          \textbf{Keywords} \\
+		\hline
+			LDA &  Description &  85 &      instagram, usage, feelings, interview, behaviors, covid, identify, survey, coronavirus, tags \\
+		\hline
+			LDA &  Description &  75 &  workplace, coronavirus, health, choice, personal, write, guaranteed, approval, multiple, opinion \\
+		\hline
+			LDA &        Title &  90 &        research, mental, assessment, personal, health, reviews, study, coronavirus, china, survey \\
+		\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{HIT Insights}
+The topic modeling experiments performed on the dataset that was collected was extensive and provided\
+many high-level insights into the content of HITs on Amazon MTurk. Before, considering the wide array\
+of topics that were extracted by the topic models the constraints of the dataset must be revisited.\
+First, the collection of data for this analysis was collected over four separate time periods from\
+January 26, 2020 to March 12, 2020 with the specific dates listed in \ref{tab:data_dates}. \ This is \
+a limited time frame and the understanding of trends and content would be improved with a dataset that \
+was collected over a longer time frame.
+Second, the crowd worker perspective from which the data was collected was from a brand new worker on Amazon MTurk.\
+Given the requester ``Visibility'' option discussed in \ref{fig:hit_visibility}, the data that was collected\
+does not include HITs that were not given the ``Public'' option and thus the HITs that were collected and \
+analyzed during the experiments are restricted to HITs of this classification.
+Under these constraints, the data that was collected is still very valuable for understanding the characteristics of\
+HITs that are available to entry-level crowd workers.
+
+The Results section discussed the specific data and comparisons between datasets and different topic models\
+over the UMass and UCI topic coherence metrics \cite{mimno2011optimizing,newman2010automatic}. The\
+topic coherence metrics that were leveraged to evaluate the performance of the different topic \
+models in the experiments have shown to possess positive correlations with human interpretability,\
+thus, the topic coherence scores contain insights into which portion of the HIT can be most valuable\
+for drawing conclusions, developing automation, and improving crowd worker efficiency. 
+
+From the topic coherence scores reported in Chapter 4, it was shown that the Preview and Description\
+corpora provided significantly more insight and interpretability than the Title corpus. The Preview corpus\
+correlated with the highest topic coherence scores for both metrics, closely followed by the Description corpus,\
+and trailed by the Title corpus. This means that researchers should focus on HIT descriptions and previews when\
+analyzing crowdsourcing platforms or developing automation to improve crowdsourcing platforms in the future.\
+
+As stated in the Related Works section, when Hara et al. considered the relationship between different types \
+of HITs and the corresponding wage, only the Title and Description were considered while drawing their conclusions.\
+Although the HIT preview is generally more specific, the HIT preview also contains considerably more information\
+than the HIT title and description which as shown\
+in the experiments in this research, lead to higher topic coherence and by extension contain valuable information\
+that should be considered while analyzing HITs on Amazon MTurk. 
+
+From a qualitative perspective the extraction of topics by a wide variety of insights, including the \
+special topics covered earlier in this section. Holistically, the experiments run in this research showed\
+that topic models have the ability to extract high-level topics and categories from HITs on Amazon MTurk. \
+The models used in the experiment were able to accurately and automatically extract HITs in all of the \
+high-level categories that were manually defined by Gadiraju et al: Information Finding (IF), Verification \
+and Validation (VV), Interpretation and Analysis (IA), Content Creation (CC), Surveys (S), and Content Access (CA). \
+The discovery of these topics show that topic modeling is an excellent tool for extracting insights from\
+crowdsourcing platforms.
+
 \chapter{Conclusion}
+Crowdsourcing has become more and more popular over recent years and will continue to become more\
+prevalent in our society through the emergence of the ``gig economy'' \cite{kuek2015global}. \ 
+In a means to analyze HITs on Amazon MTurk and to better understand crowdsourcing platforms\
+topic modeling was leveraged to garner understanding from a large dataset of HITs\
+collected from the perspective of a brand new worker on Amazon MTurk. \
+To perform this analysis, four different topic models were selected to extract topics from HIT titles,\
+descriptions, and previews: LSI, LDA, \emph{lda2vec}, and the ETM. These models consisted of traditional\
+probabilistic topic models that have been heavily used in the field of topic modeling, LSI and LDA, as well \
+as recently developed topic models that leverage word embeddings to generate topics using semantic meaning\
+in conjunction with document-topic probability using \emph{lda2vec} and the ETM. These models were used\
+to extract information from the three corpora and then evaluated using topic coherence metrics,\
+specifically UMass and UCI, which have been shown to correlate with human interpretability \cite{newman2010automatic,mimno2011optimizing}.
 
+Using these topic models on the data collected for the experiments, it was determined that the ETM, \
+consistently provided the most interpretable topics and scored highest on both topic coherence metrics\
+over a range of topics across all three datasets. The ETM outperformed the traditional standard in topic\
+model, the LDA, as well as outperformed a more recent topic model that leveraged topic coherence, \emph{lda2vec}.
 
+Using topic coherence to evaluate the topic models, the experiments in this research revealed that \
+the preview dataset contains valuable information that should be leveraged to analyze crowdsourcing platforms\
+and should be utilized when developing tools to improve crowdsourcing efficiency. The use of \
+the HIT preview was previously unexplored and was not considered by other researchers to my knowledge during\
+the exploration of literature.
+
+At a high-level, topic modeling has been shown through the experiments conducted in this research\
+to automatically extract the topics that were outlined by Gadiraju et al. confirming that HITs\
+consist of work that can be categorized by Information Finding (IF), Verification and Validation (VV),\
+Interpretation and Analysis (IA), Content Creation (CC), Surveys, and Content Access (CA).
 \subsection{Future Work}
+Several different areas should be considered for future work. With the progress of machine learning,\
+the topics and keywords extracted from HITs in the experiments conducted during this research provide\
+an excellent ground truth for features that can be used to develop Machine Learning based\
+tools which can improve crowd worker efficiency. Some examples of potential tools include the \
+creation of reccomendation systems or a tool to reduce the switching of context between tasks\
+by queuing tasks that are similar in nature.
 
-\subsection{Closing}
-Conclude
-
+In addition to machine learning approaches to improving crowd worker efficiency, one of the most\
+practical findings revealed during the experiments was the value that the HIT preview can provide\
+in improving the accuracy and understanding of the contents in HITs. Specifically in this study,\
+it was shown that the HIT preview was highly interpretable while considering topic coherence.
+Thus, researchers should consider the HIT preview when analyzing the crowdsourcing ecosystem as well as\
+when developing tools for crowdsourcing platforms.
 
 % \begin{eqnarray}
 % 	\label{eq:importance}
@@ -3079,13 +3354,13 @@ Conclude
 
 
 %% Below is a quick test for a figure that moves to another page
-asdfadsf
+% asdfadsf
 
-asdfasdf
+% asdfasdf
 
-dfsdfds
+% dfsdfds
 
-asd 
+% asd 
 
 
 
@@ -3115,7 +3390,7 @@ asd
 % I thought you'd like this.
 
 % \subsection{Final Results}
-% It's over (see \ref{fig:Strongbad})!  Also it is important to note the placement of labels in subfigures: \ref{fig:fsm}, and \ref{fig:fsm-pirates}.
+% it is over (see \ref{fig:Strongbad})!  Also it is important to note the placement of labels in subfigures: \ref{fig:fsm}, and \ref{fig:fsm-pirates}.
 % % NOTE: You may wish to provide a shortened caption in the list of figures, \csmlongfigure allows you to do this (the two captions are combined in the text):
 % \csmlongfigure{Strongbad}{figures/strongbad}{1in}{A world-class hero}{ of awesomeness~\cite{ref:Wikipedia}.}
 
@@ -3149,21 +3424,21 @@ asd
 
 % \subsection{We Love Our Advisors}
 % Are you really still reading this? Ok, then check out \ref{tab:magic}!
-\ref{tab:magic}
-\begin{table}
-	\caption{\label{tab:magic} A table of tabular goodness.}
-	\begin{center}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			& B & b \\
-			\hline
-			B & BB & Bb \\
-			\hline
-			b & Bb & bb \\
-			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
+% \ref{tab:magic}
+% \begin{table}
+% 	\caption{\label{tab:magic} A table of tabular goodness.}
+% 	\begin{center}
+% 		\begin{tabular}{|c|c|c|}
+% 			\hline
+% 			& B & b \\
+% 			\hline
+% 			B & BB & Bb \\
+% 			\hline
+% 			b & Bb & bb \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% \end{table}
 
 %% Below is a test for sideways figure and table floats (it also works to wrap figures and tables in a ``landscape'' environment, but the method below is preferred)
 % magic text a
