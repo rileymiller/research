@@ -643,8 +643,7 @@ the modern topic models that are implemented in the analysis of the corpus use u
 will only consider unigrams as input to the models to allow for a fair, consistent, and efficient comparison of the different topic models on our dataset.
 
 In addition to removing stop words from a fixed list and removing duplicates from the corpus, I also filter out punctuation and several comon symbols using a regular expression\
-as well as cast all of the unigram tokens to lowercase to consolidate capitalization into one word. During the removal of stop words, the preprocessing step also includes a simple check\
-to remove standalone numbers using the \texttt{nltk} \cite{loper2002nltk} \texttt{isnumeric()} function.
+as well as cast all of the unigram tokens to lowercase to consolidate capitalization into one word.
 
 For the preview corpus there is also an additional preprocessing step to clean up the page source that captures the raw text of the preview from the web page. Often times when\
 extracting data from a web page there exists a good deal of noise that comes with extracting raw text from the web such as HTML, styling, scripts injected into the web page as\
